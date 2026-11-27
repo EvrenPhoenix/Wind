@@ -14,6 +14,7 @@
   --warn:#8A5300; --warn-soft:#FBF1E1; --warn-line:#EED7B0; --danger:#B3261E; --danger-soft:#FBE9E7; --danger-line:#F0C4BF;
   --code:#F7F9FB; --code-head:#EEF2F6; --code-line:#DDE3E9;
   --tk:#8338C2; --ts:#1F7A4D; --tn:#B4530F; --tc:#6C7783; --tf:#1D6FC4; --tt:#0F6E7C; --tb:#B03E2C; --tp:#47515D; --tv:#8338C2; --tg:#1F7A4D; --ta:#B4530F;
+  --td:#B3261E; --td-bg:#FBE9E7; --ti:#1F7A4D; --ti-bg:#E3F4EA;
   --board-a:#E9EEF3; --board-b:#A8BACC; --last:rgb(29 111 196 / .24);
   --shadow-1:0 1px 2px rgb(18 22 28 / .05), 0 6px 18px -10px rgb(18 22 28 / .22);
   --shadow-2:0 30px 70px -30px rgb(18 22 28 / .45);
@@ -32,6 +33,7 @@
     --warn:#F0B35A; --warn-soft:#2A2114; --warn-line:#4A3A1E; --danger:#F2867A; --danger-soft:#2D1716; --danger-line:#5A2A26;
     --code:#11161C; --code-head:#171D25; --code-line:#242B35;
     --tk:#C79BF2; --ts:#7CD3A0; --tn:#F5B27A; --tc:#7F8A98; --tf:#6DB2F2; --tt:#6FD0DC; --tb:#F2867A; --tp:#AAB4C0; --tv:#C79BF2; --tg:#7CD3A0; --ta:#F5B27A;
+    --td:#F2867A; --td-bg:#2D1716; --ti:#7CD3A0; --ti-bg:#12261C;
     --board-a:#CBD6E1; --board-b:#7D93AB; --last:rgb(109 178 242 / .3);
     --shadow-1:0 1px 2px rgb(0 0 0 / .3), 0 8px 20px -12px rgb(0 0 0 / .6);
     --shadow-2:0 30px 70px -30px rgb(0 0 0 / .8);
@@ -47,6 +49,7 @@
   --warn:#F0B35A; --warn-soft:#2A2114; --warn-line:#4A3A1E; --danger:#F2867A; --danger-soft:#2D1716; --danger-line:#5A2A26;
   --code:#11161C; --code-head:#171D25; --code-line:#242B35;
   --tk:#C79BF2; --ts:#7CD3A0; --tn:#F5B27A; --tc:#7F8A98; --tf:#6DB2F2; --tt:#6FD0DC; --tb:#F2867A; --tp:#AAB4C0; --tv:#C79BF2; --tg:#7CD3A0; --ta:#F5B27A;
+    --td:#F2867A; --td-bg:#2D1716; --ti:#7CD3A0; --ti-bg:#12261C;
   --board-a:#CBD6E1; --board-b:#7D93AB; --last:rgb(109 178 242 / .3);
   --shadow-1:0 1px 2px rgb(0 0 0 / .3), 0 8px 20px -12px rgb(0 0 0 / .6);
   --shadow-2:0 30px 70px -30px rgb(0 0 0 / .8);
@@ -143,13 +146,7 @@ input,textarea{font:inherit;color:inherit}
 .home .sp1{flex:1}
 .home .sp2{flex:1.5}
 .greet{font:400 44px/1.04 var(--f-display);letter-spacing:-.025em;margin:0;text-wrap:balance}
-.wxline{display:flex;align-items:center;gap:8px;margin-top:14px;color:var(--ink-2);font-size:15px}
-.wxline .ico{width:18px;height:18px;color:var(--sky)}
-.sugg{list-style:none;margin:0;padding:0}
-.sugg li + li{border-top:1px solid var(--line)}
-.sugg button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 2px;text-align:left;color:var(--ink-2);font-size:15.5px;transition:color .15s}
-.sugg button:hover{color:var(--ink)}
-.sugg button .ico{width:17px;height:17px;color:var(--ink-3)}
+.sub{margin:14px 0 0;color:var(--ink-3);font-size:16.5px}
 @container app (min-width: 880px){ .greet{font-size:54px} .home .sp2{flex:1.1} }
 
 .msg-user{display:flex;justify-content:flex-end;margin:22px 0 14px}
@@ -174,6 +171,9 @@ input,textarea{font:inherit;color:inherit}
 .answer:lang(bn){line-height:1.85}
 .answer h1,.answer h2,.answer h3{font-weight:600}
 .answer .math-block{margin:.4em 0 1.1em}
+.tk{color:var(--tk)}.ts{color:var(--ts)}.tn{color:var(--tn)}.tc{color:var(--tc);font-style:italic}.tf{color:var(--tf)}.tt{color:var(--tt)}
+.tb{color:var(--tb)}.tp{color:var(--tp)}.tv{color:var(--tv)}.tg{color:var(--tg)}.ta{color:var(--ta)}
+.td{color:var(--td);background:var(--td-bg)}.ti{color:var(--ti);background:var(--ti-bg)}
 
 .src-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
 .chip{display:inline-flex;align-items:center;gap:7px;height:32px;padding:0 12px 0 5px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:13px;color:var(--ink-2);max-width:100%;text-decoration:none;transition:border-color .15s,color .15s}
@@ -185,25 +185,6 @@ input,textarea{font:inherit;color:inherit}
 .acts button:hover{background:var(--sunk);color:var(--ink)}
 .acts button[aria-pressed="true"]{color:var(--sky)}
 .acts .ico{width:18px;height:18px}
-.fups{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:14px 0 6px}
-.fup{display:inline-flex;align-items:center;gap:9px;padding:9px 15px 9px 12px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font-size:14.5px;text-align:left;transition:border-color .15s,background .15s}
-.fup:hover{border-color:var(--sky-line);background:var(--sky-soft)}
-.fup .ico{width:16px;height:16px;color:var(--sky)}
-
-.wx{border:1px solid var(--line);border-radius:20px;background:var(--surface);padding:16px 16px 12px;margin:4px 0 16px;max-width:460px}
-.wx-top{display:flex;align-items:center;gap:14px}
-.wx-top .ico{width:40px;height:40px;color:var(--sky)}
-.wx-now{font:400 46px/1 var(--f-display);letter-spacing:-.03em}
-.wx-place{font-weight:600;font-size:15px}
-.wx-cond{color:var(--ink-2);font-size:13.5px}
-.wx-days{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);text-align:center;font-size:13px;font-variant-numeric:tabular-nums}
-.wx-day{padding:6px 0;border-radius:12px}
-.wx-day.on{background:var(--sky-soft)}
-.wx-day b{display:block;font-weight:500;color:var(--ink-2);font-size:12px}
-.wx-day .ico{width:21px;height:21px;margin:6px auto;color:var(--ink-2)}
-.wx-day .lo{color:var(--ink-3)}
-.wx-day .pop{display:block;font-size:11.5px;color:var(--sky);margin-top:2px}
-.wx-src{font-size:12px;color:var(--ink-3);margin-top:10px}
 
 /* composer */
 .composer{flex:none;padding:6px 12px 12px;position:relative;z-index:3}
@@ -307,7 +288,14 @@ input,textarea{font:inherit;color:inherit}
 .player .sub{color:var(--ink-3);font-size:12.5px}
 .clock{margin-left:auto;font:500 15px/1 var(--f-mono);padding:8px 11px;border-radius:11px;background:var(--sunk);color:var(--ink-2);font-variant-numeric:tabular-nums}
 .clock.run{background:var(--btn);color:var(--btn-ink)}
-.say-w{width:100%;max-width:520px;padding:10px 14px;border-radius:6px 18px 18px 18px;background:var(--surface);border:1px solid var(--line);font-size:14.5px;min-height:42px}
+/* Wind Bot, the chess opponent: today's face and its styles, unchanged (sized in em) */
+/*@embed bot.css*/
+.bot-stage{width:100%;max-width:520px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center}
+.bot-btn{font-size:56px;line-height:0;padding:14px 6px 4px;border-radius:18px;transition:background .15s}
+.bot-btn:hover{background:var(--sunk)}
+.bot-name{font-weight:600;font-size:15px;line-height:1.2}
+.bot-sub{color:var(--ink-3);font-size:12.5px}
+.bot-say{margin-top:7px;padding:9px 13px;border-radius:4px 16px 16px 16px;background:var(--surface);border:1px solid var(--line);font-size:14.5px;line-height:1.4;min-height:40px}
 .board{width:min(100%,520px);aspect-ratio:1;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-1);user-select:none;-webkit-user-select:none;flex:none}
 .sq{position:relative;display:grid;place-items:center;cursor:pointer}
 .sq.a{background:var(--board-a)}
@@ -395,11 +383,6 @@ input,textarea{font:inherit;color:inherit}
     <symbol id="i-speak" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5H4z"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.5a7.8 7.8 0 0 1 0 11"/></g></symbol>
     <symbol id="i-retry" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3"/><path d="M19.5 4.5v4.8h-4.8"/></g></symbol>
     <symbol id="i-share" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11M7.5 8 12 3.5 16.5 8"/><path d="M5 12.5v5.8A2.2 2.2 0 0 0 7.2 20.5h9.6a2.2 2.2 0 0 0 2.2-2.2v-5.8"/></g></symbol>
-    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.2A8 8 0 1 1 9.8 4.5a6.4 6.4 0 0 0 9.7 9.7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
-    <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.8v2.1M12 19.1v2.1M2.8 12h2.1M19.1 12h2.1M5.5 5.5l1.5 1.5M17 17l1.5 1.5M5.5 18.5 7 17M17 7l1.5-1.5"/></g></symbol>
-    <symbol id="i-partly" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 6.5a3.6 3.6 0 0 1 6.6 1.3"/><path d="M8 3v1.2M3.9 6.4l.9.8M2.8 11h1.2"/><path d="M7 19.5h10.2a3.8 3.8 0 0 0 .4-7.6 5.2 5.2 0 0 0-10-.6A4.1 4.1 0 0 0 7 19.5z"/></g></symbol>
-    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18.5h10.2a3.8 3.8 0 0 0 .4-7.6 5.2 5.2 0 0 0-10-.6A4.1 4.1 0 0 0 7 18.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
-    <symbol id="i-rain" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 15.5h10.2a3.8 3.8 0 0 0 .4-7.6 5.2 5.2 0 0 0-10-.6A4.1 4.1 0 0 0 7 15.5z"/><path d="M9 18.5 8 21M13 18.5 12 21M17 18.5 16 21"/></g></symbol>
     <symbol id="i-back" viewBox="0 0 24 24"><path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
     <symbol id="i-bulb" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 17.5h5M10.5 20.5h3"/><path d="M12 3.5a5.8 5.8 0 0 0-3.4 10.5c.6.5 1 1.2 1 2v.5h4.8V16c0-.8.4-1.5 1-2A5.8 5.8 0 0 0 12 3.5z"/></g></symbol>
@@ -414,7 +397,6 @@ input,textarea{font:inherit;color:inherit}
     <symbol id="i-flip" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v15M7 19l-3-3M7 19l3-3M17 20V5M17 5l-3 3M17 5l3 3"/></g></symbol>
     <symbol id="i-flag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 21V4.5M5.5 4.5h11l-2.2 4 2.2 4h-11"/></g></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6.5 18.5 12 13 17.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-reply" viewBox="0 0 24 24"><path d="M9.5 7 4.5 12l5 5M5 12h9.5a5 5 0 0 1 5 5v1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </defs>
 </svg>
 
@@ -425,7 +407,7 @@ input,textarea{font:inherit;color:inherit}
       <button type="button" id="view-phone" aria-pressed="true">Phone</button>
       <button type="button" id="view-full" aria-pressed="false">Computer</button>
     </div>
-    <div>Sample answers only. Try the suggestions.</div>
+    <div>Sample answers only. Try “What is photosynthesis?”</div>
   </div>
   <div class="device-wrap"><div class="device">
     <div class="app" id="app">
@@ -504,15 +486,15 @@ input,textarea{font:inherit;color:inherit}
           </header>
           <div class="scroll"><div class="play-col">
             <h1>Play</h1>
-            <p>A quick break, with Wisp.</p>
+            <p>A quick break between questions.</p>
             <button class="game-card" type="button" data-act="open-chess">
               <span class="mini-board"><img alt="" id="card-knight"></span>
-              <span><h3>Chess</h3><p>Play Wisp. It plays well, and it talks back.</p><p class="rec" id="chess-rec">YOU 3 · WISP 5 · DRAWS 1</p></span>
+              <span><h3>Chess</h3><p>Play Wind Bot. It plays well, and it talks back.</p><p class="rec" id="chess-rec">YOU 3 · WIND BOT 5 · DRAWS 1</p></span>
               <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>
             </button>
             <div class="game-card soon">
               <span class="mini-board"><svg class="ico" aria-hidden="true"><use href="#i-puzzle"/></svg></span>
-              <span><h3>Daily word puzzle</h3><p>A new puzzle every day. Coming later.</p></span>
+              <span><h3>More games</h3><p>New games are on the way.</p></span>
               <span></span>
             </div>
           </div></div>
@@ -526,8 +508,11 @@ input,textarea{font:inherit;color:inherit}
             <span style="width:42px"></span>
           </header>
           <div class="chess-wrap">
-            <div class="player"><span class="wisp-slot" data-wisp="chess" id="chess-wisp"></span><span><div class="who">Wisp</div><div class="sub">Plays black</div></span><span class="clock" id="clock-b">10:00</span></div>
-            <div class="say-w" id="chess-say" aria-live="polite">Ready when you are. White moves first.</div>
+            <div class="bot-stage">
+              <button type="button" class="bot-btn" data-act="bot-poke" aria-label="Wind Bot. Tap to see its faces."><span id="bot-face"></span></button>
+              <div><div class="bot-name">Wind Bot</div><div class="bot-sub">Plays black · tap its face</div><div class="bot-say" id="chess-say" aria-live="polite">Bold of you to show up.</div></div>
+              <span class="clock" id="clock-b">10:00</span>
+            </div>
             <div class="board" id="board" role="grid" aria-label="Chess board"></div>
             <div class="player"><span class="me">You</span><span><div class="who">You</div><div class="sub">Plays white</div></span><span class="clock run" id="clock-w">10:00</span></div>
             <div class="chess-acts">
@@ -623,56 +608,55 @@ let toastT = 0;
 function toast(t) { const el = $("#toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove("on"), 2600); }
 
 // ---------------------------------------------------------------- sample answers
-const day = (n) => new Date(Date.now() + n * 864e5).toLocaleDateString("en-GB", { weekday: "short" });
 const DEMOS = {
   photo: {
     title: "Photosynthesis", prompt: "What is photosynthesis?", status: ["Searching the web", "Reading 3 sources"],
     md: () => "**Photosynthesis** is how green plants make their own food. They use sunlight to turn carbon dioxide and water into glucose, and they release oxygen.\n\nThe overall equation:\n\n$$6CO_2 + 6H_2O \\xrightarrow{\\text{light}} C_6H_{12}O_6 + 6O_2$$\n\nIt happens in two stages:\n\n1. **Light reactions** in the thylakoids capture light and split water, which releases O₂.\n2. **The Calvin cycle** in the stroma uses that energy to build glucose from CO₂.\n\n> [!TIP]\n> An easy way to remember it: plants *breathe in* CO₂ and *breathe out* O₂, the opposite of us.",
     sources: [["W", "Photosynthesis", "en.wikipedia.org"], ["B", "Photosynthesis | Britannica", "britannica.com"], ["K", "Photosynthesis review", "khanacademy.org"]],
-    fups: ["Explain it in Bangla", "Plan my chemistry revision for 3 days"],
   },
   bn: {
     title: "সালোকসংশ্লেষণ", prompt: "Explain it in Bangla", status: ["Writing in Bangla"],
     md: () => "**সালোকসংশ্লেষণ** হলো সেই প্রক্রিয়া, যাতে সবুজ উদ্ভিদ সূর্যের আলো ব্যবহার করে কার্বন ডাই-অক্সাইড ও জল থেকে গ্লুকোজ তৈরি করে এবং অক্সিজেন ছাড়ে।\n\nসমীকরণটি হলো:\n\n$$6CO_2 + 6H_2O \\xrightarrow{\\text{আলো}} C_6H_{12}O_6 + 6O_2$$\n\nএটি দুই ধাপে ঘটে:\n\n১. **আলোক পর্যায়:** ক্লোরোফিল আলো শোষণ করে, জল ভেঙে অক্সিজেন বের হয়।\n২. **অন্ধকার পর্যায় (ক্যালভিন চক্র):** সেই শক্তি দিয়ে CO₂ থেকে গ্লুকোজ তৈরি হয়।",
     sources: [["W", "সালোকসংশ্লেষণ", "bn.wikipedia.org"]],
-    fups: ["Will it rain in Dhaka tomorrow?"],
   },
-  rain: {
-    title: "Dhaka weather", prompt: "Will it rain in Dhaka tomorrow?", status: ["Checking the forecast"],
-    md: () => "**Unlikely.** Tomorrow looks dry in Dhaka, with only a **10% chance of rain**, sunny spells, a high of **28 °C** and a low of **18 °C**.\n\nEvenings are getting cooler, so a light layer after sunset is a good idea.",
-    weather: () => ({ place: "Dhaka, Bangladesh", now: 26, cond: "Sunny spells", icon: "i-partly", days: [
-      [day(0), "i-sun", 29, 19, 0], [day(1), "i-partly", 28, 18, 10], [day(2), "i-sun", 28, 18, 0], [day(3), "i-cloud", 27, 18, 20], [day(4), "i-partly", 28, 19, 10]] }),
-    sources: [["O", "Open-Meteo forecast for Dhaka", "open-meteo.com"]],
-    fups: ["What is photosynthesis?"],
+  newton: {
+    title: "Newton’s third law", prompt: "Explain Newton’s third law with an example", status: ["Thinking"],
+    md: () => "**Newton’s third law:** for every action, there is an equal and opposite reaction.\n\nWhen object A pushes on object B, B pushes back on A with a force of the same size, in the opposite direction:\n\n$$F_{AB} = -F_{BA}$$\n\n**Example: walking.** Your foot pushes the ground *backwards*. The ground pushes your foot *forwards* with an equal force, and that push moves you ahead.\n\nTwo more you see every day:\n\n- A rocket pushes hot gas down, and the gas pushes the rocket up.\n- When you jump off a boat, the boat moves backwards.\n\n> [!NOTE]\n> The two forces act on *different* objects, so they don’t cancel each other out.",
+    sources: null,
+  },
+  prime: {
+    title: "Prime number program", prompt: "Write a Python program to check a prime number", status: ["Writing code"],
+    md: () => "Here’s a short, fast version. It only checks divisors up to the square root of the number.\n\n```python\ndef is_prime(n):\n    if n < 2:\n        return False\n    i = 2\n    while i * i <= n:\n        if n % i == 0:\n            return False\n        i += 1\n    return True\n\nnum = int(input(\"Enter a number: \"))\nif is_prime(num):\n    print(num, \"is a prime number\")\nelse:\n    print(num, \"is not a prime number\")\n```\n\n**How it works:** if `n` had a divisor bigger than its square root, it would also have one smaller than it, so checking up to √n is enough. For `n = 97`, that’s only 9 checks.",
+    sources: null,
   },
   plan: {
     title: "Chemistry revision plan", prompt: "Plan my chemistry revision for 3 days", status: ["Planning"],
-    md: () => "Here’s a 3-day plan that mixes reading with practice, about 2 hours a day.\n\n| Day | Focus | Practice |\n|---|---|---|\n| 1 | Atomic structure, periodic table | 15 MCQs |\n| 2 | Chemical bonding, moles | 10 mole problems |\n| 3 | Acids, bases and salts | 1 past paper |\n\n**Each day:**\n\n- 50 minutes of reading, then a 10-minute break\n- 40 minutes of questions, marking your own answers\n- 10 minutes listing what you got wrong\n\nWant me to turn Day 1 into a quick quiz?",
+    md: () => "Here’s a 3-day plan that mixes reading with practice, about 2 hours a day.\n\n| Day | Focus | Practice |\n|---|---|---|\n| 1 | Atomic structure, periodic table | 15 MCQs |\n| 2 | Chemical bonding, moles | 10 mole problems |\n| 3 | Acids, bases and salts | 1 sample paper |\n\n**Each day:**\n\n- 50 minutes of reading, then a 10-minute break\n- 40 minutes of questions, marking your own answers\n- 10 minutes listing what you got wrong\n\nWant me to turn Day 1 into a quick quiz?",
     sources: null,
-    fups: ["What is photosynthesis?", "Will it rain in Dhaka tomorrow?"],
   },
   other: {
     title: "New chat", status: ["Thinking"],
-    md: () => "This is a mockup, so I only know a few answers so far. In the real app I can help with anything: homework, writing, news, weather and more.\n\nTry one of these:",
-    sources: null, fups: ["What is photosynthesis?", "Will it rain in Dhaka tomorrow?", "Plan my chemistry revision for 3 days"],
+    md: () => "This is a mockup, so I only know a few answers so far. In the real app I can help with anything: homework, writing, code, news and more.\n\nThe mockup can answer these:\n\n- What is photosynthesis? (then ask for it in Bangla)\n- Explain Newton’s third law with an example\n- Write a Python program to check a prime number\n- Plan my chemistry revision for 3 days",
+    sources: null,
   },
 };
 function route(text) {
   const t = text.toLowerCase();
-  if (/[ঀ-৿]/.test(text) || /bangla|bengali|bangali/.test(t)) return DEMOS.bn;
+  if (/[\u0980-\u09FF]/.test(text) || /bangla|bengali/.test(t)) return DEMOS.bn;
   if (/photosynth/.test(t)) return DEMOS.photo;
-  if (/rain|weather|forecast|umbrella/.test(t)) return DEMOS.rain;
-  if (/plan|revis|study|exam/.test(t)) return DEMOS.plan;
+  if (/newton|third law|reaction/.test(t)) return DEMOS.newton;
+  if (/prime|python|program|code/.test(t)) return DEMOS.prime;
+  if (/plan|revis|study|exam|chemistry/.test(t)) return DEMOS.plan;
   return DEMOS.other;
 }
 
 // ---------------------------------------------------------------- chats
-const doneMsgs = (d) => [{ role: "user", text: d.prompt }, { role: "wind", demo: key(d), text: d.md(), done: true, weather: d.weather ? d.weather() : null }];
+const doneMsgs = (d) => [{ role: "user", text: d.prompt }, { role: "wind", demo: key(d), text: d.md(), done: true }];
 const key = (d) => Object.keys(DEMOS).find((k) => DEMOS[k] === d);
 const SEED = () => [
   { id: "c1", title: DEMOS.plan.title, group: "Pinned", msgs: doneMsgs(DEMOS.plan) },
   { id: "c2", title: DEMOS.photo.title, group: "Today", msgs: doneMsgs(DEMOS.photo) },
-  { id: "c3", title: DEMOS.rain.title, group: "Earlier", msgs: doneMsgs(DEMOS.rain) },
+  { id: "c3", title: DEMOS.newton.title, group: "Earlier", msgs: doneMsgs(DEMOS.newton) },
   { id: "c4", title: DEMOS.bn.title, group: "Earlier", msgs: doneMsgs(DEMOS.bn) },
 ];
 const S = { screen: "chat", chats: SEED(), cur: null, run: null, think: false, n: 10, wispNew: true, wispGreeted: false };
@@ -693,34 +677,22 @@ const curChat = () => S.chats.find((c) => c.id === S.cur);
 // ---------------------------------------------------------------- home + messages
 function greeting() { const h = new Date().getHours(); return h < 5 ? "Hello, night owl" : h < 12 ? "Good morning" : h < 18 ? "Good afternoon" : "Good evening"; }
 function homeHTML() {
-  const h = new Date().getHours(), night = h < 6 || h >= 18;
-  const sug = [DEMOS.photo, DEMOS.rain, DEMOS.plan];
-  return `<div class="home"><div class="sp1"></div>
-    <h1 class="greet">${greeting()}</h1>
-    <p class="wxline">${ic(night ? "i-moon" : "i-sun")}<span>Kolkata · ${night ? "21°" : "27°"} · ${night ? "Clear night" : "Sunny"}</span></p>
-    <div class="sp2"></div>
-    <ul class="sugg">${sug.map((d) => `<li><button type="button" data-ask="${esc(d.prompt)}">${esc(d.prompt)}${ic("i-arrow")}</button></li>`).join("")}</ul></div>`;
+  return `<div class="home"><div class="sp1"></div><h1 class="greet">${greeting()}</h1><p class="sub">What’s on your mind?</p><div class="sp2"></div></div>`;
 }
 const isBn = (t) => { const bn = (t.match(/[ঀ-৿]/g) || []).length, lat = (t.match(/[A-Za-z]/g) || []).length; return bn > lat; };
 function sourcesHTML(list) {
   return `<div class="src-row">${list.map(([l, title, host]) => `<a class="chip" href="https://${host}/" target="_blank" rel="noopener noreferrer"><b>${esc(l)}</b><span>${esc(host)}</span></a>`).join("")}</div>`;
-}
-function weatherHTML(w) {
-  return `<div class="wx" role="group" aria-label="Forecast for ${esc(w.place)}"><div class="wx-top">${ic(w.icon)}<span class="wx-now">${w.now}°</span><span><div class="wx-place">${esc(w.place)}</div><div class="wx-cond">${esc(w.cond)} · feels like ${w.now - 1}°</div></span></div>
-  <div class="wx-days">${w.days.map(([d, i, hi, lo, pop], k) => `<div class="wx-day${k === 1 ? " on" : ""}"><b>${k === 0 ? "Today" : esc(d)}</b>${ic(i)}<span>${hi}°</span> <span class="lo">${lo}°</span><span class="pop">${pop ? pop + "%" : "–"}</span></div>`).join("")}</div>
-  <div class="wx-src">Forecast from Open-Meteo, for your question.</div></div>`;
 }
 function windHTML(m, isLast) {
   const d = DEMOS[m.demo];
   if (m.status) return `<div class="status"><span class="breeze" aria-hidden="true"><i></i><i></i><i></i></span><span class="label">${esc(m.status)}</span></div>`;
   const lang = isBn(m.text) ? ' lang="bn"' : "";
   const body = m.done ? MD.renderMarkdown(m.text) : MD.mdBlocks(MD.streamSafe(m.text)).join("");
-  let html = (m.thought ? `<div class="thought">${ic("i-bulb")}Thought it through</div>` : "") + (m.weather ? weatherHTML(m.weather) : "") + `<div class="answer"${lang}>${body}</div>`;
+  let html = (m.thought ? `<div class="thought">${ic("i-bulb")}Thought it through</div>` : "") + `<div class="answer"${lang}>${body}</div>`;
   if (m.stopped) html += `<p class="stopped">You stopped this answer.</p>`;
   if (m.done) {
     if (d.sources && !m.stopped) html += sourcesHTML(d.sources);
     html += `<div class="acts"><button type="button" data-msg-act="copy" aria-label="Copy">${ic("i-copy")}</button><button type="button" data-msg-act="speak" aria-label="Read aloud">${ic("i-speak")}</button><button type="button" data-msg-act="retry" aria-label="Try again">${ic("i-retry")}</button><button type="button" data-msg-act="share" aria-label="Share">${ic("i-share")}</button></div>`;
-    if (isLast && d.fups && !S.run) html += `<div class="fups">${d.fups.map((f) => `<button type="button" class="fup" data-ask="${esc(f)}">${ic("i-reply")}${esc(f)}</button>`).join("")}</div>`;
   }
   return html;
 }
@@ -756,7 +728,7 @@ go.addEventListener("click", () => {
 async function listen() {
   box.classList.add("listening"); go.dataset.mode = "stop"; go.setAttribute("aria-label", "Stop listening");
   await sleep(2300);
-  box.classList.remove("listening"); ta.value = "Will it rain in Dhaka tomorrow?"; fit(ta); syncGo(); ta.focus();
+  box.classList.remove("listening"); ta.value = "Explain Newton’s third law with an example"; fit(ta); syncGo(); ta.focus();
   toast("Voice typing filled this in. Tap send.");
 }
 $("#think").addEventListener("click", (e) => { S.think = !S.think; e.currentTarget.setAttribute("aria-pressed", String(S.think)); toast(S.think ? "Think deeper is on: slower, more careful answers" : "Think deeper is off"); });
@@ -779,7 +751,6 @@ async function play(m, i, d) {
   const steps = (m.thought ? ["Thinking it through"] : []).concat(d.status);
   for (const s of steps) { m.status = s; renderMsg(i); toBottom(); await sleep(m.thought && s === "Thinking it through" ? 1500 : 950); if (S.run.stop) break; }
   m.status = null;
-  if (d.weather && !S.run.stop) m.weather = d.weather();
   const full = d.md();
   let n = 0;
   while (n < full.length && !S.run.stop) {
@@ -795,6 +766,8 @@ async function play(m, i, d) {
 $("#chat-body").addEventListener("click", async (e) => {
   const ask = e.target.closest("[data-ask]");
   if (ask) { send(ask.dataset.ask); return; }
+  const wrap = e.target.closest(".wrap-code");
+  if (wrap) { wrap.closest(".codeblock")?.classList.toggle("wrap"); return; }
   const b = e.target.closest("[data-msg-act]"); if (!b) {
     const copy = e.target.closest(".copy-code");
     if (copy) { const code = copy.closest(".codeblock")?.querySelector("code")?.innerText || ""; try { await navigator.clipboard.writeText(code); toast("Code copied"); } catch { toast("Couldn’t copy here"); } }
@@ -809,7 +782,7 @@ $("#chat-body").addEventListener("click", async (e) => {
       const u = new SpeechSynthesisUtterance(m.text.replace(/[*#>|`$\\]|\[!TIP\]/g, " ")); u.lang = isBn(m.text) ? "bn-IN" : "en-GB"; speechSynthesis.speak(u); toast("Reading aloud. Tap again to stop.");
     } catch { toast("Read aloud works in the app"); }
   }
-  if (act === "retry") { if (S.run) return; m.text = ""; m.done = false; m.stopped = false; m.weather = null; m.thought = S.think; S.run = { stop: false }; renderChat(); await play(m, i, DEMOS[m.demo]); }
+  if (act === "retry") { if (S.run) return; m.text = ""; m.done = false; m.stopped = false; m.thought = S.think; S.run = { stop: false }; renderChat(); await play(m, i, DEMOS[m.demo]); }
   if (act === "share") toast("Sharing makes a link to this answer. It arrives in release 2.");
 });
 
@@ -845,7 +818,8 @@ document.addEventListener("click", (e) => {
     case "poke": poke(); break;
     case "chess-new": newGame(); break;
     case "chess-flip": flip = !flip; renderBoard(); break;
-    case "chess-resign": chessSay("GG! You were doing great. Rematch?"); stopClock(); break;
+    case "chess-resign": botMood("laugh", 3000, "bounce"); chessSay(pick("resign")); stopClock(); break;
+    case "bot-poke": botPoke(); break;
     case "export": toast("In the app this saves your chats as a file."); break;
   }
 });
@@ -895,8 +869,8 @@ async function wispSay(lines, m) {
 }
 const REPLIES = [
   [/exam|test|quiz|study/i, ["Ooh, exam stuff!", "Want me to quiz you, or do you need a pep talk first?"], "wow"],
-  [/tired|sad|bored|stress|lonely/i, ["Aw. Come here, I’m basically a pillow.", "Want to play a quick game of chess? I’ll go easy. Maybe."], "soft", "chess"],
-  [/chess|play|game/i, ["A rematch? I’ve been practising my evil laugh.", "Mwa-ha-ha. That was it."], "happy", "chess"],
+  [/tired|sad|bored|stress|lonely/i, ["Aw. Come here, I’m basically a pillow.", "Want a quick game of chess with Wind Bot? I’ll cheer for you."], "soft", "chess"],
+  [/chess|play|game/i, ["Chess? Wind Bot is waiting for you.", "Fair warning: it’s very smug about its record."], "happy", "chess"],
   [/hi|hello|hey|good (morning|evening|afternoon)/i, ["Hiii!", "I was just floating around, thinking about clouds."], "happy"],
 ];
 const OTHER = [["Tell me more! I’m all ears.", "Well. I don’t have ears. I’m all fluff."], ["Noted! I’ll remember that."], ["Hehe. You always make my day a little breezier."]];
@@ -907,7 +881,7 @@ async function wispSend() {
   wAdd(`<div class="w-msg me">${esc(t)}</div>`);
   mood("wow"); await sleep(380);
   const r = REPLIES.find(([re]) => re.test(t));
-  if (r) { await wispSay(r[1], r[2]); if (r[3] === "chess") wAdd(`<button type="button" class="w-chip" data-act="open-chess">${ic("i-knight")}Play chess with Wisp</button>`); }
+  if (r) { await wispSay(r[1], r[2]); if (r[3] === "chess") wAdd(`<button type="button" class="w-chip" data-act="open-chess">${ic("i-knight")}Play chess</button>`); }
   else { await wispSay(OTHER[otherN++ % OTHER.length], "happy"); }
 }
 $("#wgo").addEventListener("click", wispSend);
@@ -934,7 +908,8 @@ let B = [], sel = -1, last = [], flip = false, turn = "w", sayN = 0;
 const pieceKey = (p) => (p === p.toUpperCase() ? "w" : "b") + p.toUpperCase();
 const sqName = (i) => "abcdefgh"[i % 8] + (8 - Math.floor(i / 8));
 const idx = (n) => (8 - +n[1]) * 8 + "abcdefgh".indexOf(n[0]);
-function newGame() { B = []; for (const row of START.split("/")) for (const ch of row) { if (/\d/.test(ch)) for (let k = 0; k < +ch; k++) B.push(""); else B.push(ch); } sel = -1; last = []; turn = "w"; clocks = { w: 600, b: 600 }; renderClocks(); renderBoard(); chessSay("Ready when you are. White moves first."); if (S.screen === "chess") startClock(); }
+function newGame() { if (typeof face !== "undefined") { botMood("calm"); } B = []; for (const row of START.split("/")) for (const ch of row) { if (/\d/.test(ch)) for (let k = 0; k < +ch; k++) B.push(""); else B.push(ch); } sel = -1; last = []; turn = "w"; clocks = { w: 600, b: 600 }; renderClocks(); renderBoard(); $("#chess-say").textContent = BOT_START[Math.floor(Math.random() * BOT_START.length)]; if (S.screen === "chess") startClock(); }
+const BOT_START = ["Bold of you to show up.", "Let's make this quick.", "I've already seen how this ends."];
 function renderBoard() {
   let html = "";
   for (let v = 0; v < 64; v++) {
@@ -945,26 +920,50 @@ function renderBoard() {
   }
   $("#board").innerHTML = html;
 }
+$("#board").addEventListener("pointermove", (e) => face.lookAt(e.clientX, e.clientY, 900));
 $("#board").addEventListener("click", (e) => {
   const el = e.target.closest("[data-sq]"); if (!el || turn !== "w") return;
   const i = +el.dataset.sq, p = B[i];
-  if (p && p === p.toUpperCase()) { sel = sel === i ? -1 : i; renderBoard(); return; }
+  if (p && p === p.toUpperCase()) { sel = sel === i ? -1 : i; renderBoard(); if (sel >= 0) { face.lookAt(e.clientX, e.clientY, 1500); botMood("curious", 1500); } return; }
   if (sel < 0) return;
-  B[i] = B[sel]; B[sel] = ""; last = [sel, i]; sel = -1; turn = "b"; renderBoard(); wispMove();
+  const took = B[i];
+  B[i] = B[sel]; B[sel] = ""; last = [sel, i]; sel = -1; turn = "b"; renderBoard(); renderClocks();
+  if (took) { botMood("surprised", 1300, "jump"); chessSay(pick("you-capture")); setTimeout(wispMove, 1100); } else wispMove();
 });
 const BOOK = ["e7e5", "b8c6", "g8f6", "f8c5", "d7d6", "e8g8", "c8g4", "h7h6"];
-const LINES = ["Oh, that’s how we’re starting? Bold.", "Hmm. I see what you’re doing. I think.", "My turn! Watch this.", "You’re making me nervous. Clouds don’t sweat, but still.", "Hehe. I like this game.", "Careful now…"];
+// Wind Bot: the live app's face, its 14 expressions and its own lines (legacy/src/page/js/chess-bot.js)
+/*@embed botface.js*/
+const botHost = $("#bot-face"); botHost.innerHTML = botFaceHTML();
+const face = new BotFace(botHost.querySelector(".bot"));
+const BOT_LINES = {
+  start: ["Bold of you to show up.", "Let's make this quick.", "I've already seen how this ends."],
+  "wind-capture": ["Mine now.", "Thanks, I'll take that.", "One less thing for you to worry about."],
+  "you-capture": ["Enjoy it. It won't last.", "Cute. Keep it as a souvenir.", "That was bait. Probably."],
+  "wind-move": ["Your move. Try to keep up.", "Interesting. Wrong, but interesting.", "Take your time. I'm only calculating millions of moves."],
+  resign: ["Smart choice.", "Giving up already? Understandable."],
+};
+const pick = (k) => { const a = BOT_LINES[k]; return a[Math.floor(Math.random() * a.length)]; };
+let moodT = 0, botN = 0, pokeN = 0;
+function botMood(m, ms, fx) { face.set(m); if (fx) face.play(fx); clearTimeout(moodT); if (ms) moodT = setTimeout(() => face.set("calm"), ms); }
+const FACES = [["happy", "Hey! That tickles.", "pop"], ["laugh", "Ha! Do it again.", "bounce"], ["surprised", "Whoa. Personal space?", "jump"],
+  ["annoyed", "Hands off the antenna.", "shake"], ["worried", "Is that a smudge on my screen?", "nod"], ["bored", "Wake me up when you move.", ""],
+  ["cool", "Too cool for this board.", "nod"], ["wink", "Our little secret.", "pop"], ["dizzy", "Stop spinning me…", "shake"],
+  ["evil", "Mwa-ha-ha!", "bounce"], ["smug", "I know. I’m adorable.", "nod"], ["curious", "What are you up to?", "pop"]];
+function botPoke() { const [m, line, fx] = FACES[pokeN++ % FACES.length]; botMood(m, 2600, fx || null); chessSay(line); }
 async function wispMove() {
-  const face = $("#chess-wisp .wisp"); face.classList.add("m-wow");
-  chessSay("…"); await sleep(850);
+  botMood("think"); const r = $("#board").getBoundingClientRect();
+  face.lookAt(r.left + r.width * .2, r.top + r.height * .5, 450); await sleep(450); face.lookAt(r.left + r.width * .8, r.top + r.height * .5, 450); await sleep(500);
   let mv = null;
   for (const m of BOOK) { const a = idx(m.slice(0, 2)), b = idx(m.slice(2)); if (B[a] && B[a] === B[a].toLowerCase() && (!B[b] || B[b] === B[b].toUpperCase())) { mv = [a, b]; break; } }
   if (!mv) { for (let a = 0; a < 56 && !mv; a++) if (B[a] === "p" && !B[a + 8]) mv = [a, a + 8]; }
-  if (mv) { B[mv[1]] = B[mv[0]]; B[mv[0]] = ""; last = mv; }
-  turn = "w"; renderBoard(); face.classList.remove("m-wow"); face.classList.add("m-happy"); setTimeout(() => face.classList.remove("m-happy"), 1200);
-  chessSay(LINES[sayN++ % LINES.length]);
+  let took = "";
+  if (mv) { took = B[mv[1]]; B[mv[1]] = B[mv[0]]; B[mv[0]] = ""; last = mv; }
+  turn = "w"; renderBoard(); renderClocks(); botN++;
+  if (took) { botMood("happy", 2400, "bounce"); chessSay(pick("wind-capture")); }
+  else if (botN % 4 === 0) { botMood("evil", 2600, "bounce"); chessSay("Mwa-ha-ha. Your move."); }
+  else { botMood(["smug", "cool", "wink"][botN % 3], 2200, "nod"); chessSay(pick("wind-move")); }
 }
-function chessSay(t) { $("#chess-say").textContent = t; }
+function chessSay(t) { $("#chess-say").textContent = t; face.flag("talk", 1300); }
 let clocks = { w: 600, b: 600 }, clockT = 0;
 const fmt = (s) => Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
 function renderClocks() { $("#clock-w").textContent = fmt(clocks.w); $("#clock-b").textContent = fmt(clocks.b); $("#clock-w").classList.toggle("run", turn === "w"); $("#clock-b").classList.toggle("run", turn === "b"); }

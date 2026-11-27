@@ -1,0 +1,113 @@
+/* Wind Bot's face styles from the live Wind (legacy/src/page/styles.css), unchanged. Sizes are in em: the
+   font-size of the face's box sets its size. */
+/* ---- Wind's bot face: a dark rounded head, two glowing rounded-square eyes, an antenna. Sizes are in em, so the
+   font-size of the box sets the size. Expressions come from data-mood (set by chess-bot.js). */
+.bot{--eye:#e6f8ff;--glow:rgba(92,190,255,.9);--glow2:rgba(92,150,255,.42);--tip:#7cc4ff;--spring:cubic-bezier(.34,1.56,.64,1);
+  position:relative;display:inline-block;width:1.16em;height:1em;flex-shrink:0;vertical-align:middle;line-height:0}
+.bot-float,.bot-fx,.bot-head{position:absolute;inset:0;display:block}
+.bot-float{animation:botFloat 4.2s ease-in-out infinite}
+.bot-fx{transform-origin:50% 92%}
+.bot-head{border-radius:.31em;background:linear-gradient(165deg,#2c2848 0%,#16142a 46%,#0d0c18 100%);
+  box-shadow:inset 0 .018em 0 rgba(255,255,255,.16),inset 0 -.05em .08em rgba(0,0,0,.55),0 0 0 .02em rgba(140,120,255,.6),0 .06em .16em rgba(0,0,0,.5),0 0 .32em rgba(110,90,255,.3);
+  transition:transform .38s var(--spring)}
+:root[data-theme=light] .bot-head{box-shadow:inset 0 .018em 0 rgba(255,255,255,.16),inset 0 -.05em .08em rgba(0,0,0,.55),0 0 0 .02em rgba(124,58,237,.55),0 .08em .2em rgba(40,20,90,.3)}
+.bot-ant{position:absolute;left:50%;top:-.15em;width:.035em;height:.17em;margin-left:-.0175em;border-radius:.02em;background:linear-gradient(#625b92,#2a2546);transform-origin:50% 100%;animation:botSway 5s ease-in-out infinite}
+.bot-ant b{position:absolute;left:50%;top:-.055em;width:.1em;height:.1em;margin-left:-.05em;border-radius:50%;background:var(--tip);box-shadow:0 0 .07em var(--tip),0 0 .2em var(--tip);transition:background-color .3s,box-shadow .3s}
+.bot-screen{position:absolute;inset:.095em .095em .11em;border-radius:.23em;background:#090812;overflow:hidden;box-shadow:inset 0 0 .06em rgba(0,0,0,.9)}
+.bot-screen::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,0) 38%,rgba(120,100,255,.06));pointer-events:none}
+.bot-gaze,.bot-pose,.bot-blink{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.bot-gaze,.bot-blink{will-change:transform}
+.bot.off,.bot.off *{animation-play-state:paused!important}
+.bot-pose{transition:transform .38s var(--spring)}
+.bot-blink{gap:.15em;transition:transform .09s ease-out;filter:drop-shadow(0 0 .04em var(--glow)) drop-shadow(0 0 .13em var(--glow2))}
+.bot.blink .bot-blink{transform:scaleY(.08);transition-duration:.06s}
+.bot.talk .bot-blink{animation:botTalk .2s ease-in-out 6 alternate}
+.bot-eye{position:relative;display:block;width:.27em;height:.29em;border-radius:.085em;background:var(--eye);transition:clip-path .36s var(--spring),transform .38s var(--spring),border-radius .3s,background-color .3s}
+.bot-blush{position:absolute;top:63%;width:.17em;height:.075em;border-radius:50%;background:rgba(255,120,170,.6);opacity:0;transition:opacity .3s}
+.bot-blush.l{left:15%}
+.bot-blush.r{right:15%}
+.bot-acc{position:absolute;display:block;pointer-events:none;opacity:0;transition:opacity .25s,transform .45s var(--spring)}
+.bot-acc svg{display:block;width:100%;height:100%;overflow:visible}
+.bot-acc.glasses{left:7%;right:7%;top:31%;height:.32em;z-index:2;transform:translateY(-1.2em) rotate(-8deg)}
+.bot-acc.mark{right:-.08em;top:-.32em;width:.13em;height:.3em;transform:scale(.2) rotate(-20deg)}
+.bot-acc.vein{right:-.07em;top:-.08em;width:.25em;height:.25em;transform:scale(.3)}
+.bot-acc.sweat{right:.03em;top:.05em;width:.12em;height:.17em}
+.bot-acc.zzz{right:-.16em;top:-.34em;width:.4em;height:.4em}
+.bot-acc.zzz b{position:absolute;left:0;bottom:0;font:800 .17em/1 var(--sans);color:#9ad8ff;opacity:0}
+.bot-acc.spark{width:.17em;height:.17em;fill:#ffd66b}
+.bot-acc.spark.a{left:-.12em;top:-.08em}
+.bot-acc.spark.b{right:-.12em;top:.3em;width:.12em;height:.12em}
+/* the expressions */
+.bot[data-mood=happy],.bot[data-mood=laugh],.bot[data-mood=wink]{--eye:#fff6dc;--glow:rgba(255,200,90,.9);--glow2:rgba(255,170,60,.4);--tip:#ffcf5c}
+.bot[data-mood=happy] .bot-blush,.bot[data-mood=laugh] .bot-blush,.bot[data-mood=wink] .bot-blush{opacity:1}
+.bot[data-mood=smug]{--eye:#f1e9ff;--glow:rgba(170,120,255,.95);--glow2:rgba(140,90,255,.45);--tip:#b79dff}
+.bot[data-mood=annoyed]{--eye:#ffe4df;--glow:rgba(255,92,80,.95);--glow2:rgba(255,60,60,.45);--tip:#ff6b6b}
+.bot[data-mood=worried]{--eye:#e9ecff;--glow:rgba(150,165,255,.75);--glow2:rgba(120,140,255,.35);--tip:#9aa6ff}
+.bot[data-mood=bored]{--glow:rgba(92,190,255,.45);--glow2:rgba(92,150,255,.15);--tip:#4f6f92}
+.bot[data-mood=surprised]{--eye:#fff;--glow:rgba(140,220,255,1)}
+.bot[data-mood=surprised] .bot-eye{border-radius:50%}
+.bot[data-mood=cool]{--tip:#ffcf5c}
+.bot[data-mood=dizzy]{--eye:#ffd9f3;--glow:rgba(255,110,200,.8);--glow2:rgba(255,110,200,.3);--tip:#ff8ad8}
+.bot[data-mood=dizzy] .bot-eye{background:transparent}
+.bot[data-mood=dizzy] .bot-eye::before,.bot[data-mood=dizzy] .bot-eye::after{content:"";position:absolute;left:42%;top:-4%;width:16%;height:108%;border-radius:.03em;background:var(--eye);transform:rotate(45deg)}
+.bot[data-mood=dizzy] .bot-eye::after{transform:rotate(-45deg)}
+.bot[data-mood=dizzy] .bot-head{animation:botWobble 1.4s ease-in-out infinite}
+.bot[data-mood=laugh] .bot-pose{animation:botHop .34s ease-in-out infinite alternate}
+/* the evil laugh (after Wind wins): pink-red glow, a grin with one fang, little horns, "ha"s, and chuckling bursts:
+   about a second of laughing, a pause, again. Transforms and opacity only. */
+.bot-mouth{position:absolute;left:50%;top:69%;width:.3em;height:.135em;margin-left:-.15em;opacity:0;transform:scale(.3);transform-origin:50% 0;transition:opacity .2s,transform .35s var(--spring);filter:drop-shadow(0 0 .03em rgba(255,60,120,.9))}
+.bot-mouth svg{display:block;width:100%;height:100%}
+.bot[data-mood=evil]{--eye:#ffe3ec;--glow:rgba(255,51,102,.95);--glow2:rgba(255,0,85,.45);--tip:#ff3d6e}
+.bot[data-mood=evil] .bot-blush{opacity:1}
+.bot[data-mood=evil] .bot-mouth{opacity:1;transform:none;animation:botEvilMouth 2.8s ease-in-out infinite}
+.bot[data-mood=evil] .bot-head{animation:botEvilLaugh 2.8s ease-in-out infinite}
+.bot[data-mood=evil] .bot-screen{box-shadow:inset 0 -.1em .2em rgba(255,40,90,.25),inset 0 0 .06em rgba(0,0,0,.9)}
+.bot-acc.horn{top:-.13em;width:.17em;height:.22em;transform:translateY(.12em) scale(.2);transform-origin:50% 100%}
+.bot-acc.horn.l{left:.09em}
+.bot-acc.horn.r{right:.09em}
+.bot-acc.horn.r svg{transform:scaleX(-1)}
+.bot[data-mood=evil] .bot-acc.horn{opacity:1;transform:none}
+.bot[data-mood=evil] .bot-acc.horn.l{transform:rotate(-10deg)}
+.bot[data-mood=evil] .bot-acc.horn.r{transform:rotate(10deg)}
+.bot-acc.ha{right:-.3em;top:-.22em;width:.5em;height:.5em}
+.bot-acc.ha b{position:absolute;left:0;bottom:0;font:800 .15em/1 var(--sans);color:#ff5c8a;opacity:0;text-shadow:0 0 .2em rgba(255,60,120,.6)}
+.bot[data-mood=evil] .bot-acc.ha{opacity:1}
+.bot[data-mood=evil] .bot-acc.ha b{animation:botHa 2.8s ease-out infinite}
+.bot[data-mood=evil] .bot-acc.ha b:nth-child(2){animation-delay:.32s;left:.5em}
+.bot[data-mood=evil] .bot-acc.ha b:nth-child(3){animation-delay:.64s;left:.15em}
+.bot[data-mood=think] .bot-ant b{animation:botTip .7s ease-in-out infinite alternate}
+.bot[data-mood=cool] .bot-acc.glasses{opacity:1;transform:none}
+.bot[data-mood=surprised] .bot-acc.mark{opacity:1;transform:rotate(12deg)}
+.bot[data-mood=annoyed] .bot-acc.vein{opacity:1;transform:none;animation:botVein .9s ease-in-out infinite}
+.bot[data-mood=worried] .bot-acc.sweat{opacity:1;animation:botSweat 1.8s ease-in infinite}
+.bot[data-mood=bored] .bot-acc.zzz{opacity:1}
+.bot[data-mood=bored] .bot-acc.zzz b{animation:botZ 2.6s ease-out infinite}
+.bot[data-mood=bored] .bot-acc.zzz b+b{animation-delay:1.3s}
+.bot[data-mood=happy] .bot-acc.spark,.bot[data-mood=laugh] .bot-acc.spark,.bot[data-mood=cool] .bot-acc.spark{opacity:1;animation:botTwinkle 1.6s ease-in-out infinite}
+.bot-acc.spark.b{animation-delay:.8s!important}
+/* one-off moves */
+.bot-fx.fx-bounce{animation:botBounce .56s cubic-bezier(.3,.7,.4,1)}
+.bot-fx.fx-jump{animation:botJump .5s cubic-bezier(.3,.7,.4,1)}
+.bot-fx.fx-shake{animation:botShake .6s ease-in-out}
+.bot-fx.fx-nod{animation:botNod .6s ease-in-out}
+.bot-fx.fx-pop{animation:botPop .52s var(--spring)}
+.cv .bot{will-change:transform}
+@keyframes botEvilLaugh{0%,100%{transform:rotate(-4deg)}5%{transform:translateY(.03em) rotate(-7deg)}10%{transform:translateY(-.025em) rotate(-1deg)}15%{transform:translateY(.03em) rotate(-7deg)}20%{transform:translateY(-.025em) rotate(-1deg)}25%{transform:translateY(.03em) rotate(-7deg)}30%{transform:translateY(-.02em) rotate(-2deg)}36%{transform:translateY(.015em) rotate(-5deg)}44%{transform:rotate(-4deg)}}
+@keyframes botEvilMouth{0%,44%,100%{transform:none}5%,15%,25%{transform:scaleY(.55)}10%,20%,30%{transform:scaleY(1.08)}}
+@keyframes botHa{0%{transform:translate(0,0) scale(.5);opacity:0}8%{opacity:1}40%{transform:translate(.4em,-1.6em) scale(1.15);opacity:0}100%{opacity:0}}
+@keyframes botFloat{50%{transform:translateY(-.035em)}}
+@keyframes botSway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+@keyframes botTip{to{transform:scale(1.35);filter:brightness(1.35)}}
+@keyframes botHop{from{transform:translate(0,-9%)}to{transform:translate(0,3%)}}
+@keyframes botTalk{to{transform:scaleY(.8)}}
+@keyframes botWobble{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+@keyframes botVein{50%{transform:scale(1.18)}}
+@keyframes botSweat{0%{transform:translateY(-.03em);opacity:0}20%{opacity:1}100%{transform:translateY(.14em);opacity:0}}
+@keyframes botZ{0%{transform:translate(0,0) scale(.6);opacity:0}25%{opacity:1}100%{transform:translate(.9em,-1.4em) scale(1.25);opacity:0}}
+@keyframes botTwinkle{0%,100%{transform:scale(.35) rotate(0);opacity:.25}50%{transform:scale(1) rotate(45deg);opacity:1}}
+@keyframes botBounce{0%{transform:none}25%{transform:translateY(.03em) scale(1.07,.9)}55%{transform:translateY(-.08em) scale(.95,1.06)}80%{transform:scale(1.02,.98)}100%{transform:none}}
+@keyframes botJump{0%{transform:none}35%{transform:translateY(-.14em) scale(.96,1.05)}70%{transform:translateY(.02em) scale(1.04,.96)}100%{transform:none}}
+@keyframes botShake{0%,100%{transform:none}20%{transform:rotate(-7deg)}40%{transform:rotate(6deg)}60%{transform:rotate(-4deg)}80%{transform:rotate(2deg)}}
+@keyframes botNod{0%,100%{transform:none}30%{transform:translateY(.04em) rotate(2deg)}60%{transform:translateY(-.01em)}}
+@keyframes botPop{from{transform:scale(.4);opacity:0}}
+
