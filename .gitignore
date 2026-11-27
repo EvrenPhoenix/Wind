@@ -4,3 +4,6 @@ legacy/dist/
 .dev.vars
 *.bundle
 design/dist/
+*.png
+!design/**/*.png
+!legacy/src/icons/*.png
