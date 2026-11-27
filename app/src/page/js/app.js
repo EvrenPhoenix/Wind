@@ -454,6 +454,7 @@ function startRename(id) {
 function syncTitle() {
   const c = current(), on = !!(c && c.messages.length);
   document.title = on ? c.title + " · Wind" : "Wind — Personal AI";
+  const top = $("topChat"); if (top) top.textContent = on ? c.title : "";
 }
 function syncHash() { if (currentTab !== "chat") return; try { const c = current(), h = c && c.messages.length && !c.temp ? "#c=" + c.id : ""; if (location.hash !== h) history.replaceState(null, "", location.pathname + location.search + h); } catch (e) {} }
 // A temporary chat lives only in this page: it is never saved or listed, and it is dropped when you leave it or reload.
@@ -938,7 +939,7 @@ function parseEvent(raw, c, a) {
   let data = ""; for (const line of raw.split(/\r?\n/)) if (line.startsWith("data:")) data += line.slice(5).trim();
   if (!data || data === "[DONE]") return;
   let ev; try { ev = JSON.parse(data); } catch (e) { return; }
-  if (ev.event_type === "wind.weather") { const w = cleanWeather(ev.weather); if (w) { a.weather = w; showWeather(a); } return; }
+  if (ev.event_type === "wind.weather") return;   // no weather card in the new design; the answer itself uses the forecast
   if (ev.event_type === "wind.sources") {
     const s = cleanSources(ev.sources); if (!s) return;
     a.sources = s;
@@ -1054,13 +1055,14 @@ async function sendMessage(text, file, imgs, keep) {
 
 // ---------------------------------------------------------------- Instant / High
 const PICK = $("modePick");
+// Think deeper: one switch in the message box (it was the Instant / High menu at the top). Same setting, same request.
 function syncSlide() {
-  const lab = high ? "High" : "Instant";
-  $("modePickLabel").textContent = lab; PICK.classList.toggle("high", high);
-  PICK.querySelector(".mp-ic use").setAttribute("href", high ? "#i-gem" : "#i-bolt");
-  PICK.setAttribute("aria-label", "Mode: " + lab + ". Change mode");
+  PICK.classList.toggle("high", high); PICK.setAttribute("aria-pressed", String(high));
+  PICK.setAttribute("aria-label", high ? "Think deeper: on" : "Think deeper: off");
 }
-PICK.onclick = () => {
+PICK.onclick = () => { setHigh(!high); toast(high ? "Think deeper is on: slower, more careful answers" : "Think deeper is off"); focusPrompt(); };
+PICK.oncontextmenu = null;
+const OLD_MODE_MENU = () => {
   if (openPop && openPop.anchor === PICK) { closePopover(); return; }
   const el = document.createElement("div"); el.className = "menu mode-menu"; el.setAttribute("role", "menu"); el.setAttribute("aria-label", "Choose how Wind answers");
   for (const [mode, title, sub] of [["instant", "Instant", "Answers right away"], ["high", "High", "Thinks longer, digs deeper"]]) {

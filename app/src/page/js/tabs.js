@@ -3,10 +3,8 @@
 // wide screens get the same three at the top of the sidebar. Each tab has its own link: #wisp, #games, #chess, and
 // chats keep #c=… (currentTab is declared near the top of the script, so syncHash can leave the other tabs' links alone).
 // ============================================================================
-function syncTabbar() {   // always there on phones, in chats and while typing; only a chess game takes the whole screen
-  const main = $("main"), tb = $("tabbar"); if (!tb) return;
-  const hide = main.classList.contains("chess-mode");
-  tb.classList.toggle("away", hide); main.classList.toggle("has-tabbar", !hide);
+function syncTabbar() {   // the new design has no floating tab bar: Wisp is in the top corner, Play and Settings in the menu
+  $("main").classList.remove("has-tabbar");
 }
 function syncGames() {
   let g = null; try { g = cg || chessLoad(); } catch (e) {}

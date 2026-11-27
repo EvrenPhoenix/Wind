@@ -6,6 +6,7 @@
 // ---- follow-up questions under the newest reply
 const FUP_CACHE = new WeakSet();
 async function getFollowups(c, a, q) {
+  return;   // no suggested follow-ups in the new design (and no extra AI call after every answer)
   if (!q || FUP_CACHE.has(a)) return; FUP_CACHE.add(a);
   try {
     const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), 9000);
