@@ -5,60 +5,66 @@
 
 /* ---------------------------------------------------------------- palette (dark is the stylesheet's default) */
 :root{
-  --bg:#0D1015;--side:#111419;--panel:#151A21;--raised:#1A2028;--hover:#1C222B;--active:#242B35;--line:#242B35;--line2:#333C48;
+  --bg:#090B0F;--side:#0D1015;--panel:#13161C;--raised:#181C23;--hover:#1B1F27;--active:#22272F;--line:#1D2129;--line2:#2B313B;
   --text:#E6EAF0;--muted:#AAB4C0;--faint:#808B99;--placeholder:#808B99;
-  --rb-bg:#151A21;--rb-line:#2A323D;--rb-hover:#1C222B;--rb-ic:#E6EAF0;
-  --composer:#151A21;--composer-line:#333C48;--composer-ph:#808B99;
+  --rb-bg:#13161C;--rb-line:#262C35;--rb-hover:#1B1F27;--rb-ic:#E6EAF0;
+  --composer:#13161C;--composer-line:#2B313B;--composer-ph:#808B99;
   --voice:#E6EAF0;--voice-glow:transparent;--high:#6DB2F2;--slide-thumb:#2A323D;
   --accent:#6DB2F2;--accent-soft:rgba(109,178,242,.14);--accent-ring:rgba(109,178,242,.4);--focus-line:#3A4452;
-  --g1:#6DB2F2;--g2:#6DB2F2;--g3:#6DB2F2;--bubble:#1C222B;--bubble-text:#E6EAF0;
+  --g1:#6DB2F2;--g2:#6DB2F2;--g3:#6DB2F2;--bubble:#1B1F27;--bubble-text:#E6EAF0;
   --danger:#F2867A;--danger-soft:rgba(242,134,122,.1);--danger-line:rgba(242,134,122,.3);
   --warn:#F0B35A;--warn-soft:rgba(240,179,90,.09);--warn-line:rgba(240,179,90,.28);
-  --overlay:rgba(0,0,0,.55);--sky-soft:#0D1015;
-  --sky-home:radial-gradient(ellipse 90% 62% at 50% -8%,rgba(64,120,205,.36) 0%,rgba(40,82,150,.14) 44%,rgba(13,16,21,0) 74%),#0D1015;
+  --overlay:rgba(0,0,0,.55);--sky-soft:#090B0F;
+  --sky-home:transparent;
   
   --sky-vivid:radial-gradient(ellipse 130% 62% at 50% 74%,#08090c 0%,rgba(8,9,12,.4) 38%,rgba(8,9,12,0) 72%),linear-gradient(180deg,#14408a 0%,#0d2858 46%,#090b10 100%); /* Wisp's space keeps its sky */
   --star-o:0;
-  --tab:#151A21;--tab-line:rgba(255,255,255,.06);--tab-active:#1C222B;--tab-ink:#808B99;--tab-ink-on:#E6EAF0;
-  --glass:#151A21;--glass-line:#242B35;--glass-ink:#E6EAF0;--glass-solid:#151A21;
-  --cta:#E6EAF0;--cta-ink:#0D1015;--field:#151A21;--field-line:#333C48;
-  --card:#151A21;--card-line:#242B35;--board-a:#CBD6E1;--board-b:#7D93AB;
+  --tab:#13161C;--tab-line:rgba(255,255,255,.06);--tab-active:#1C222B;--tab-ink:#808B99;--tab-ink-on:#E6EAF0;
+  --glass:#13161C;--glass-line:#1D2129;--glass-ink:#E6EAF0;--glass-solid:#13161C;
+  --cta:#E6EAF0;--cta-ink:#090B0F;--field:#13161C;--field-line:#2B313B;
+  --card:#13161C;--card-line:#1D2129;--board-a:#CBD6E1;--board-b:#7D93AB;
   --shadow-s:0 1px 2px rgba(0,0,0,.3);--shadow-m:0 8px 24px -12px rgba(0,0,0,.6);--shadow-l:0 30px 70px -30px rgba(0,0,0,.8);
   --composer-shadow:0 8px 20px -12px rgba(0,0,0,.6);
   /* Quiet Sky names, for the rules below and the chess skin */
   --paper:var(--bg);--surface:var(--panel);--sunk:var(--hover);--ink:var(--text);--ink-2:var(--muted);--ink-3:var(--faint);--line-2:var(--line2);
-  --sky:var(--accent);--qs-soft:rgba(109,178,242,.14);--qs-line:#25486F;--btn:#E6EAF0;--btn-ink:#0D1015;
+  --sky:var(--accent);--qs-soft:rgba(109,178,242,.14);--qs-line:#25486F;--btn:#E6EAF0;--btn-ink:#090B0F;
   --shadow-1:0 1px 2px rgba(0,0,0,.3),0 8px 20px -12px rgba(0,0,0,.6);--shadow-2:0 30px 70px -30px rgba(0,0,0,.8);
-  --brand:var(--line2);--brand-deep:var(--bubble);--brand-glow:transparent;--gl:var(--panel);--gl-strong:var(--panel);--gl-line:var(--line);--gl-hi:transparent;--frost:none;--menu-bg:var(--panel);--focus-glow:var(--qs-soft);--halo:rgba(80,140,230,.32);--halo2:rgba(80,140,230,.08);--gust:transparent;--home-glow:transparent;--a1:transparent;--a2:transparent;--a3:transparent;--grain-o:0;--bar-ground:var(--bg);--mp-instant:var(--accent);
+  --brand:var(--line2);--brand-deep:var(--bubble);--brand-glow:transparent;--gl:var(--panel);--gl-strong:var(--panel);--gl-line:var(--line);--gl-hi:transparent;--frost:none;--menu-bg:var(--panel);--focus-glow:var(--qs-soft);--halo:rgba(80,140,230,.32);--halo2:rgba(80,140,230,.08);--gust:transparent;--home-glow:transparent;--a1:rgba(139,92,246,.30);--a2:rgba(37,99,235,.36);--a3:rgba(56,130,240,.42);--grain-o:.045;--bar-ground:var(--bg);--mp-instant:var(--accent);
   --f-display:"Newsreader","Wind Bengali","Iowan Old Style",Georgia,serif;
 }
 :root[data-theme=light]{
-  --bg:#F4F6F8;--side:#FFFFFF;--panel:#FFFFFF;--raised:#FFFFFF;--hover:#EBEFF3;--active:#E1E7ED;--line:#DDE3E9;--line2:#C9D1DA;
+  --bg:#FCFCFD;--side:#F5F6F8;--panel:#FFFFFF;--raised:#FFFFFF;--hover:#ECEEF2;--active:#E4E7EC;--line:#E4E7EC;--line2:#D0D5DD;
   --text:#12161C;--muted:#47515D;--faint:#6C7783;--placeholder:#6C7783;
-  --rb-bg:#FFFFFF;--rb-line:#DDE3E9;--rb-hover:#F1F4F7;--rb-ic:#12161C;
-  --composer:#FFFFFF;--composer-line:#C9D1DA;--composer-ph:#6C7783;
+  --rb-bg:#FFFFFF;--rb-line:#E4E7EC;--rb-hover:#F3F4F7;--rb-ic:#12161C;
+  --composer:#FFFFFF;--composer-line:#D7DCE3;--composer-ph:#6C7783;
   --voice:#12161C;--voice-glow:transparent;--high:#1D6FC4;--slide-thumb:#E1E7ED;
   --accent:#1D6FC4;--accent-soft:rgba(29,111,196,.1);--accent-ring:rgba(29,111,196,.35);--focus-line:#B9D3F0;
-  --g1:#1D6FC4;--g2:#1D6FC4;--g3:#1D6FC4;--bubble:#EBEFF3;--bubble-text:#12161C;
+  --g1:#1D6FC4;--g2:#1D6FC4;--g3:#1D6FC4;--bubble:#EEF0F4;--bubble-text:#12161C;
   --danger:#B3261E;--danger-soft:rgba(179,38,30,.06);--danger-line:rgba(179,38,30,.25);
   --warn:#8A5300;--warn-soft:rgba(138,83,0,.07);--warn-line:rgba(138,83,0,.28);
-  --overlay:rgba(12,16,22,.34);--sky-soft:#F4F6F8;
-  --sky-home:radial-gradient(ellipse 90% 62% at 50% -8%,rgba(110,170,235,.42) 0%,rgba(150,195,240,.18) 44%,rgba(244,246,248,0) 74%),#F4F6F8;
+  --overlay:rgba(12,16,22,.34);--sky-soft:#FCFCFD;
+  --sky-home:transparent;
   
   --sky-vivid:radial-gradient(ellipse 130% 62% at 50% 74%,#eef6fd 0%,rgba(238,246,253,.4) 38%,rgba(238,246,253,0) 72%),linear-gradient(180deg,#2d7ad3 0%,#68abea 46%,#dcebf8 100%);
   --star-o:0;
   --tab:#FFFFFF;--tab-line:rgba(18,22,28,.06);--tab-active:#EBEFF3;--tab-ink:#6C7783;--tab-ink-on:#12161C;
-  --glass:#FFFFFF;--glass-line:#DDE3E9;--glass-ink:#12161C;--glass-solid:#FFFFFF;
+  --glass:#FFFFFF;--glass-line:#E4E7EC;--glass-ink:#12161C;--glass-solid:#FFFFFF;
   --cta:#12161C;--cta-ink:#FFFFFF;--field:#FFFFFF;--field-line:#C9D1DA;
-  --card:#FFFFFF;--card-line:#DDE3E9;--board-a:#E9EEF3;--board-b:#A8BACC;
+  --card:#FFFFFF;--card-line:#E4E7EC;--board-a:#E9EEF3;--board-b:#A8BACC;
   --shadow-s:0 1px 2px rgba(18,22,28,.06);--shadow-m:0 8px 24px -12px rgba(18,22,28,.2);--shadow-l:0 30px 70px -30px rgba(18,22,28,.38);
   --composer-shadow:0 1px 2px rgba(18,22,28,.05),0 6px 18px -10px rgba(18,22,28,.22);
   --qs-soft:rgba(29,111,196,.1);--qs-line:#B9D3F0;--btn:#12161C;--btn-ink:#FFFFFF;
   --shadow-1:0 1px 2px rgba(18,22,28,.05),0 6px 18px -10px rgba(18,22,28,.22);--shadow-2:0 30px 70px -30px rgba(18,22,28,.45);
+  --a1:rgba(139,92,246,.15);--a2:rgba(59,130,246,.19);--a3:rgba(56,189,248,.16);--grain-o:.03;
 }
 
+/* ---------------------------------------------------------------- the aurora: today's slow sky, calmer, fading out smoothly (no visible rim) */
+.aurora .a1{background:radial-gradient(closest-side,var(--a1),color-mix(in srgb,var(--a1) 78%,transparent) 24%,color-mix(in srgb,var(--a1) 50%,transparent) 46%,color-mix(in srgb,var(--a1) 25%,transparent) 66%,color-mix(in srgb,var(--a1) 9%,transparent) 84%,transparent)}
+.aurora .a2{background:radial-gradient(closest-side,var(--a2),color-mix(in srgb,var(--a2) 78%,transparent) 24%,color-mix(in srgb,var(--a2) 50%,transparent) 46%,color-mix(in srgb,var(--a2) 25%,transparent) 66%,color-mix(in srgb,var(--a2) 9%,transparent) 84%,transparent)}
+.aurora .a3{background:radial-gradient(closest-side,var(--a3),color-mix(in srgb,var(--a3) 78%,transparent) 24%,color-mix(in srgb,var(--a3) 50%,transparent) 46%,color-mix(in srgb,var(--a3) 25%,transparent) 66%,color-mix(in srgb,var(--a3) 9%,transparent) 84%,transparent)}
+
 /* ---------------------------------------------------------------- left out of the new design */
-.aurora,#starters,#tabbar,.fups,.fup,.wx{display:none!important}
+#starters,#tabbar,.fups,.fup,.wx{display:none!important}
 
 /* ---------------------------------------------------------------- chess and Wind Bot: colours only */
 
@@ -97,23 +103,33 @@
 .wisp-corner.news::after{content:"";position:absolute;top:7px;right:6px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 2.5px var(--bg)}
 .main:not(.tab-chat) .wisp-corner,.main.chess-mode .wisp-corner{display:none}
 
-/* ---------------------------------------------------------------- message box: plain, one main button (talk, send or stop) */
+/* ---------------------------------------------------------------- message box: + and Think on the left; voice typing, then send, on the right */
 .composer{background:var(--composer)!important;background-image:none!important;border:1px solid var(--composer-line)!important;box-shadow:var(--composer-shadow)!important}
 .composer::before{display:none!important}
 .composer:focus-within,.composer.listening{border-color:var(--qs-line)!important;box-shadow:0 0 0 4px var(--qs-soft),var(--composer-shadow)!important}
-.composer .send,.composer .stop,.composer .voice{width:38px;height:38px;background:var(--btn)!important;color:var(--btn-ink)!important;box-shadow:none!important;filter:none!important}
-.composer .send:disabled{display:none}
-.bar-right:has(#send:not(:disabled)) #micBtn{display:none}
-.bar-right:has(#stop:not([hidden])) :is(#micBtn,#send){display:none}
-.composer .cbtn{color:var(--muted)}
-.composer .cbtn:hover{background:var(--hover);color:var(--text)}
-.mode-pick{position:static;transform:none;height:34px;margin:0 2px;padding:0 11px 0 9px;border-radius:17px;border:1px solid var(--line);font-size:13.5px;font-weight:500;color:var(--muted);gap:5px;align-self:center}
-.mode-pick .mp-mode{color:inherit;font-weight:500}
-.mode-pick .mp-ic{width:16px;height:16px}
-.mode-pick:hover{background:var(--hover);color:var(--text)}
-.mode-pick.high,.mode-pick.high:hover{background:var(--qs-soft);color:var(--accent);border-color:var(--qs-line)}
-.mode-pick.high .mp-mode{color:inherit}
+/* add and voice typing: quiet round icons */
+.composer :is(.cbtn,.voice){width:38px!important;height:38px!important;border:0!important;border-radius:50%;background:transparent!important;box-shadow:none!important;filter:none!important;color:var(--muted)!important;animation:none!important}
+@media(hover:hover){ .composer :is(.cbtn,.voice):hover{background:var(--hover)!important;color:var(--text)!important} }
+.composer .voice svg{width:20px;height:20px;stroke-width:2}
+.composer .voice .vc-eq,.composer.listening .voice .vc-mic{display:none}
+.composer.listening .voice .vc-eq{display:block;stroke-width:2.4}
+.composer.listening .voice,.composer.listening .voice:hover{background:var(--qs-soft)!important;color:var(--accent)!important}
+/* send: always there, at the far right; dimmed until there's something to send. Stop takes its place during a reply. */
+.composer :is(.send,.stop){width:36px!important;height:36px!important;margin-left:2px;background:var(--btn)!important;color:var(--btn-ink)!important;box-shadow:none!important;filter:none!important}
+.composer .send:disabled{background:var(--active)!important;color:var(--faint)!important}
+/* Think: a quiet bulb beside +. Switched on, it lights up and says "Think". */
+.composer .mode-pick{position:static;transform:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;height:38px;min-width:38px;margin:0;padding:0!important;border:0!important;border-radius:19px;background:transparent;color:var(--muted);font-size:14px;font-weight:550;align-self:center;transition:background .15s,color .15s}
+.composer .mode-pick .mp-ic{display:block!important;width:20px;height:20px;stroke-width:1.9;color:inherit}
+.composer .mode-pick .mp-mode{display:none;color:inherit;font-weight:inherit}
+@media(hover:hover){ .composer .mode-pick:hover{background:var(--hover);color:var(--text)} }
+.composer .mode-pick:active{transform:scale(.94)}
+.composer .mode-pick.high,.composer .mode-pick.high:hover{padding:0 14px 0 10px!important;background:var(--qs-soft);color:var(--accent)}
+.composer .mode-pick.high .mp-mode{display:inline}
 @media(max-width:820px){ .composer:not(:focus-within):not(.tall) .mode-pick:not(.high){display:none} }
+
+/* Wisp's message box shows focus on the pill, not with a second box around the text */
+.wp-input:focus-visible,.wp-field:focus-visible{outline:0}
+.wp-compose:focus-within{border-color:var(--qs-line)}
 
 /* ---------------------------------------------------------------- the page and messages */
 .main{background:var(--bg)}
@@ -127,6 +143,12 @@
 .side-tabs .side-row[aria-current=page],.hitem.active{background:var(--active)!important}
 .side-tabs .side-row[aria-current=page]::before,.hitem.active::before{display:none!important}
 .side-tabs .side-row[aria-current=page] .ic{color:var(--text)!important}
+/* New chat and Search are plain rows, like everything else in the menu */
+#newChat{background:transparent;border:0;box-shadow:none}
+#newChat:hover{background:var(--hover)}
+.side-search{border:0;background:transparent}
+.side-search:focus-within{background:var(--hover);box-shadow:inset 0 0 0 1px var(--line2)}
+.side-search input::placeholder{color:var(--text)}
 
 /* ---------------------------------------------------------------- the chat's title sits beside the menu button on phones */
 .topbar .top-title{position:static!important;flex:1 1 auto;min-width:0;justify-content:flex-start!important;padding:0 4px}
@@ -172,7 +194,3 @@
   .composer:not(.tall) textarea{min-height:24px!important;padding:2px 8px!important;line-height:1.45}
   .composer.tall{padding:12px 10px 8px 14px!important;border-radius:24px!important}
 }
-.composer .cbtn{width:38px;height:38px;border:0!important;background:transparent!important;box-shadow:none!important;color:var(--muted)}
-.composer .cbtn:hover{background:var(--hover)!important;color:var(--text)}
-.composer .mode-pick{height:32px;padding:0 11px 0 9px;border-color:var(--line)}
-.composer .send,.composer .stop,.composer .voice{width:36px!important;height:36px!important}

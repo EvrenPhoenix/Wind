@@ -731,7 +731,7 @@ function syncComposer() {
   const p = $("prompt"), n = compose(p.value.trim(), attachment).length, cnt = $("count"), here = busyHere();
   cnt.textContent = n.toLocaleString() + " / " + MAXLEN.toLocaleString(); cnt.classList.toggle("show", n > MAXLEN * .8); cnt.classList.toggle("over", n > MAXLEN);
   const empty = !p.value.trim() && !attachment && !images.length, send = $("send");
-  $("stop").hidden = !here; send.hidden = here || (empty && !!SR); $("form").classList.toggle("busy", here);   // send shows beside the voice button once there is something to send (always, where voice typing is unavailable)
+  $("stop").hidden = !here; send.hidden = here; $("form").classList.toggle("busy", here);   // send has its own button, right of voice typing: dimmed until there is something to send, replaced by stop during a reply
   send.disabled = !!gen || empty || n > MAXLEN;
   send.title = gen && !here ? "Wind is replying in another chat" : n > MAXLEN ? "Too long to send" : "Send message";
   const g = gen && !here ? genChat() : null;
@@ -1079,7 +1079,7 @@ const OLD_MODE_MENU = () => {
   document.body.append(el);
   openPopover(el, PICK, { temp: true, align: "center", side: "bottom" });
 };
-function setHigh(on) { high = !!on; try { localStorage.setItem(HIGH_KEY, high ? "1" : "0"); } catch (e) {} syncSlide(); announce(high ? "High mode" : "Instant mode"); }
+function setHigh(on) { high = !!on; try { localStorage.setItem(HIGH_KEY, high ? "1" : "0"); } catch (e) {} syncSlide(); announce(high ? "Think deeper on" : "Think deeper off"); }
 
 // ---------------------------------------------------------------- attachments + voice
 function encodeImg(bmp, max, q) { const sc = Math.min(1, max / Math.max(bmp.width, bmp.height)), w = Math.max(1, Math.round(bmp.width * sc)), h = Math.max(1, Math.round(bmp.height * sc)), cv = document.createElement("canvas"); cv.width = w; cv.height = h; const x = cv.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, w, h); x.drawImage(bmp, 0, 0, w, h); return cv.toDataURL("image/jpeg", q).split(",")[1] || ""; }
