@@ -25,8 +25,8 @@ npm run build
 2. Run `npm test`.
 3. Push to `main`. GitHub tests the change again and deploys it to the live site.
 
-`npm run build` writes the Worker to `dist/`, and says whether it is still the original recovered site (version 240)
-or has changed. That message is only information.
+`npm run build` writes the Worker to `dist/`: `worker.js`, with the page and every file it serves inside, and the
+chess engine.
 
 ## Files
 
@@ -46,10 +46,9 @@ or has changed. That message is only information.
 | `src/page/js/_begin.js`, `_end.js` | The wrapper that turns the modules into one script. |
 | `src/wisp-shade.js` | Wisp's clay lighting, run in a Web Worker. |
 | `src/icons/`, `src/fonts/`, `src/chess/`, `src/manifest.webmanifest` | Embedded files. `index.json` files keep their order and encoding. |
-| `build.mjs`, `layout.mjs` | The build: puts `src/` together into `dist/worker.js` and `dist/stockfish-19-lite-single.bin`. |
+| `build.mjs` | The build: puts `src/` together into `dist/worker.js` and `dist/stockfish-19-lite-single.bin`. |
 | `wrangler.jsonc` | The live Worker's Cloudflare settings. Changing one here changes it on the live site at the next deploy. |
 | `test/` | The tests (below). |
-| `tools/recover.mjs`, `tools/reference.json` | How the source was recovered from Cloudflare, and the checksums that prove it (below). |
 
 ## Tests
 
@@ -74,20 +73,3 @@ the "Edit Cloudflare Workers" template. Until it is added, the deploy job skips 
 - To undo a bad deploy, put the previous version back: `npx wrangler rollback` (or choose a version in the
   Cloudflare dashboard, Workers & Pages > assistant-api > Deployments). Then revert the commit on `main`, so the next
   push doesn't deploy it again.
-
-## How the source was recovered
-
-The original source files were lost, and the bundle on Cloudflare was the only complete copy. On 27 November 2026:
-
-1. `tools/recover.mjs` split the downloaded bundle back into ordinary files: the page, its eight script modules and
-   stylesheet, the Worker's code, and every embedded file.
-2. The build put the files back together. For the downloaded bundle (version 241), the rebuilt `worker.js` and
-   Stockfish module were identical byte for byte.
-3. Version 241 had been rolled back four minutes after it went out, and visitors got version 240. Cloudflare can't
-   download a single version, so 240 was reconstructed by undoing 241's one change, a small name label above the
-   home-screen logo.
-4. The reconstructed page was byte for byte the page the live site served. Run side by side with the live site, the
-   rebuilt Worker gave identical answers to all 22 requests that don't reach an AI.
-
-`tools/reference.json` records the checksums behind each step. The redesign that was tried afterwards ("Quiet Sky")
-is kept on the branch `archive/redesign-quiet-sky`; it is not part of the site.

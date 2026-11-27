@@ -8,18 +8,19 @@ by `.github/workflows/ci.yml`. Treat a push to `main` as a release. Push only ch
 ## Commands
 
 - `npm test`: Worker tests (Miniflare) and the reply renderer's golden tests. Nothing calls an AI provider.
-- `npm run build`: builds `src/` into `dist/` and says whether the output is still the original recovered site.
+- `npm run build`: builds `src/` into `dist/` (the Worker, with the page and its files inside).
 - `npm run deploy`: deploys by hand (needs `CLOUDFLARE_API_TOKEN`). Normally pushing to `main` does this.
 
-See README.md for the file map, how the build embeds files (`__embed("NAME")`, `/*@embed …*/`), and how the source
-was recovered.
+See README.md for the file map, and build.mjs for how the page and files are embedded in the Worker
+(`__embed("NAME")`, `/*@embed …*/`). The source was recovered from the live Worker (version 240) on 27 November 2026,
+which is why the page is one HTML file with everything inlined.
 
 ## Rules
 
 - **Secrets** (API keys) live only on Cloudflare. Never put them in the repository, in `wrangler.jsonc` or in logs.
   Deploys keep them.
-- **No preview versions.** Preview links are off (`"preview_urls": false`); the owner had the old ones removed.
-  Don't run `wrangler versions upload` or turn preview links back on unless the owner asks.
+- **No preview versions.** Preview links are off (`"preview_urls": false`). Don't run `wrangler versions upload`
+  or turn preview links back on unless the owner asks.
 - **`wrangler.jsonc` is the live configuration.** Its bindings, variables, compatibility date and observability
   mirror the live Worker; a change there changes the live site.
 - **Language:** the interface and Wind's default language are English. Wind speaks Bengali only when the user

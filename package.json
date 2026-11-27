@@ -6,14 +6,12 @@
   "scripts": {
     "build": "node build.mjs",
     "test": "node --test test/*.test.mjs",
-    "deploy": "node build.mjs && wrangler deploy",
-    "recover": "node tools/recover.mjs"
+    "deploy": "node build.mjs && wrangler deploy"
   },
   "engines": {
     "node": ">=20"
   },
   "devDependencies": {
-    "acorn": "^8.19.0",
     "miniflare": "^4.20260730.0",
     "wrangler": "^4.168.0"
   }
