@@ -5,7 +5,8 @@
   "description": "Wind, a friendly AI assistant. Recovered source of the live app, and its rebuild.",
   "scripts": {
     "recover": "node tools/recover.mjs",
-    "build:legacy": "node legacy/build.mjs",
+    "build:legacy": "node legacy/build.mjs --check",
+    "preview:legacy": "node legacy/build.mjs --check && wrangler versions upload -c legacy/wrangler.jsonc",
     "test": "node --test legacy/test/*.test.mjs"
   },
   "engines": {
