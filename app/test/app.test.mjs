@@ -18,9 +18,8 @@ before(async () => {
   mf = new Miniflare({
     scriptPath: path.join(APP, "src/worker/index.js"),
     modules: true,
-    modulesRules: [{ type: "ESModule", include: ["**/*.js"] }], // as Wrangler treats them
+    modulesRules: [{ type: "ESModule", include: ["**/*.js"] }, { type: "Data", include: ["**/*.bin"] }], // as Wrangler treats them
     compatibilityDate: "2026-07-01",
-    assets: { directory: built.out, binding: "ASSETS", routerConfig: { has_user_worker: true } },
     d1Databases: ["DAILY_USAGE"],
     bindings: { NVIDIA_API_KEY: "test-key-not-real" },
   });
@@ -84,7 +83,11 @@ test("unknown pages are 404", async () => {
   assert.equal((await get("/no-such-page")).status, 404);
 });
 
-test("the Worker no longer carries the page or its files", () => {
-  const size = fs.statSync(path.join(APP, "src/worker/index.js")).size;
-  assert.ok(size < 150 * 1024, `the Worker is ${size} bytes`);
+test("the page is checked again on each visit; named files are kept for a year", async () => {
+  const page = await get("/");
+  assert.equal(page.headers.get("cache-control"), "no-cache");
+  assert.match(page.headers.get("content-security-policy"), /frame-ancestors 'none'/);
+  assert.equal((await get("/", { headers: { "If-None-Match": page.headers.get("etag") } })).status, 304);
+  assert.match((await get("/" + built.js.name)).headers.get("cache-control"), /immutable/);
+  assert.equal((await get("/chess/engine/19.0.1/stockfish-19-lite-single.wasm")).headers.get("content-type"), "application/wasm");
 });

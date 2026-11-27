@@ -1,4 +1,4 @@
-// The new Wind: the same Worker ("assistant-api"), with the page and its files as static assets.
+// The new Wind: the same Worker ("assistant-api"). It serves the page and its files (app/src/worker/generated) and the API.
 // Upload a preview version (live traffic is NOT moved):   npm run preview:app
 // Secrets stay on Cloudflare and every upload keeps them; they are never in this file.
 {
@@ -9,7 +9,7 @@
   "compatibility_date": "2026-11-06",
   "workers_dev": true,
   "preview_urls": true,
-  "assets": { "directory": "dist/public", "binding": "ASSETS" },
+  "rules": [{ "type": "Data", "globs": ["**/*.bin"], "fallthrough": false }],
   "observability": {
     "enabled": true,
     "head_sampling_rate": 1,
