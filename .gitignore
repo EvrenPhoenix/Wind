@@ -1,12 +1,7 @@
 node_modules/
-legacy/dist/
+dist/
 .wrangler/
 .dev.vars
 *.bundle
-design/dist/
 *.png
-!design/**/*.png
-!legacy/src/icons/*.png
-app/dist/
-app/src/worker/manifest.js
-app/src/worker/generated/
+!src/icons/*.png

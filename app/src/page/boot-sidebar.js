@@ -1,1 +1,0 @@
-try{if(localStorage.getItem("lumi-sidebar")==="closed")document.getElementById("app").classList.add("sidebar-hidden")}catch(e){}

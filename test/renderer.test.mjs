@@ -1,9 +1,9 @@
-// Golden tests for Wind's reply renderer (legacy/src/page/js/markdown.js).
+// Golden tests for Wind's reply renderer (src/page/js/markdown.js).
 //
 // golden/renderer.json records what today's renderer produces for every sample, both finished (renderMarkdown, as
 // a saved reply is drawn) and while streaming (mdBlocks(streamSafe(prefix)), as a reply is drawn while it arrives).
 // The rebuilt app's renderer has to produce the same output. To record new golden output deliberately:
-//   UPDATE_GOLDEN=1 node --test legacy/test/renderer.test.mjs
+//   UPDATE_GOLDEN=1 node --test test/renderer.test.mjs
 
 import test from "node:test";
 import assert from "node:assert/strict";

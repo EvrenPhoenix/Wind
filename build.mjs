@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-// Builds the live Wind Worker from legacy/src into legacy/dist, and checks it against legacy/reference.json.
+// Builds the Wind Worker from src/ into dist/, ready for `wrangler deploy`.
 //
-//   node legacy/build.mjs          build, and report whether the output matches the deployed version
-//   node legacy/build.mjs --check  the same, but exit with an error when it doesn't match
+//   node build.mjs
 //
-// legacy/dist/worker.js is the Worker's main module and legacy/dist/stockfish-19-lite-single.bin its one data
-// module, as Cloudflare runs them. "Matches" means the page the Worker serves is byte for byte the page visitors
-// get today, and the Stockfish module is identical (see "deployed" in legacy/reference.json).
+// dist/worker.js is the Worker's main module and dist/stockfish-19-lite-single.bin its one data module, as
+// Cloudflare runs them. The build also says whether the output is still the original recovered site (version 240,
+// see "deployed" in tools/reference.json): the page the Worker serves byte for byte, and the same Stockfish module.
+// That is only information: once the site is changed on purpose, it will say "changed".
 
 import fs from "node:fs";
 import path from "node:path";
@@ -17,6 +17,7 @@ import { EMBEDS, APP_MODULES, PAGE_INLINE, WORKER_SPLIT, MAIN_MODULE, DATA_MODUL
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.join(HERE, "src");
 const DIST = path.join(HERE, "dist");
+const REFERENCE = path.join(HERE, "tools", "reference.json");
 
 const read = (rel, enc = "utf8") => fs.readFileSync(path.join(SRC, rel), enc);
 const sha256 = (buf) => crypto.createHash("sha256").update(buf).digest("hex");
@@ -72,7 +73,7 @@ export function build() {
   fs.writeFileSync(path.join(DIST, MAIN_MODULE), main);
   fs.writeFileSync(path.join(DIST, DATA_MODULE.name), data);
 
-  const ref = JSON.parse(fs.readFileSync(path.join(HERE, "reference.json"), "utf8"));
+  const ref = JSON.parse(fs.readFileSync(REFERENCE, "utf8"));
   const served = Buffer.from(page.split("__ORIGIN__").join(ref.deployed.origin), "utf8"); // as the Worker fills it in
   const result = {
     [MAIN_MODULE]: { bytes: main.length, sha256: sha256(main) },
@@ -90,9 +91,6 @@ export function build() {
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const { result, checks, matches } = build();
-  for (const [n, r] of Object.entries(result)) console.log(`${n}  ${r.bytes} bytes  sha256 ${r.sha256.slice(0, 16)}…`);
-  console.log(checks.pageMatchesDeployed ? "page: identical to the page visitors get" : "page: DIFFERENT from the deployed page");
-  console.log(checks.engineMatchesDeployed ? "engine: identical" : "engine: DIFFERENT");
-  console.log(checks.sameAsDownloaded ? "worker.js: identical to the downloaded bundle" : "worker.js: differs from the downloaded bundle (expected: see reference.json)");
-  if (!matches && process.argv.includes("--check")) process.exit(1);
+  for (const [n, r] of Object.entries(result)) console.log(`dist/${n === "page as served" ? "(page as served)" : n}  ${r.bytes} bytes  sha256 ${r.sha256.slice(0, 16)}…`);
+  console.log(matches ? "Same as the original recovered site (version 240)." : "Changed from the original recovered site (version 240).");
 }

@@ -1,4 +1,4 @@
-// Sample AI replies for the renderer's golden tests. Each one exercises rules in legacy/src/page/js/markdown.js:
+// Sample AI replies for the renderer's golden tests. Each one exercises rules in src/page/js/markdown.js:
 // Bengali digits and letters, maths, chemistry, tables, code, citations, sources and unsafe input.
 // The golden output (golden/renderer.json) is what today's live renderer produces for them; the rebuilt renderer
 // must produce the same.

@@ -1,5 +1,5 @@
-// The recovered Worker, run locally with Miniflare: it must rebuild byte for byte, serve the page and its files,
-// and answer the API's checks the way the live Worker does. No request here reaches an AI provider.
+// The Worker, built from src/ and run locally with Miniflare: it must serve the page and its files, and answer the
+// API's checks the way the live Worker does. No request here reaches an AI provider.
 
 import test, { before, after } from "node:test";
 import assert from "node:assert/strict";
@@ -34,9 +34,7 @@ const worker = (bindings) => new Miniflare({
 });
 
 before(async () => {
-  const b = build();
-  assert.ok(b.matches, "legacy/build.mjs output differs from the deployed version");
-  dist = b.dist;
+  dist = build().dist;
   bare = worker({});
   keyed = worker({ NVIDIA_API_KEY: "test-key-not-real" });
   await Promise.all([bare.ready, keyed.ready]);
@@ -46,12 +44,6 @@ after(async () => { await Promise.all([bare?.dispose(), keyed?.dispose()]); });
 const get = (mf, p, init) => mf.dispatchFetch(ORIGIN + p, init);
 const postJson = (mf, p, body, headers = {}) =>
   get(mf, p, { method: "POST", headers: { "Content-Type": "application/json", Origin: ORIGIN, ...headers }, body: JSON.stringify(body) });
-
-test("the rebuilt Worker serves the deployed page byte for byte, with the same engine", () => {
-  const { checks } = build();
-  assert.ok(checks.pageMatchesDeployed, "page differs from the one visitors get");
-  assert.ok(checks.engineMatchesDeployed, "Stockfish module differs");
-});
 
 test("serves the chat page with this origin filled in", async () => {
   const r = await get(bare, "/");

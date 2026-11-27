@@ -2,8 +2,8 @@
 // Recovers Wind's source files from the live Worker bundle.
 //
 // Wind's original sources were lost. The only complete copy is the bundle running on Cloudflare (Worker
-// "assistant-api"). This tool splits that bundle back into ordinary files under legacy/src and records the bundle's
-// checksums in legacy/reference.json. legacy/build.mjs puts the files back together; when its output matches those
+// "assistant-api"). This tool splits that bundle back into ordinary files under src/ and records the bundle's
+// checksums in tools/reference.json. build.mjs puts the files back together; when its output matches those
 // checksums byte for byte, nothing was lost.
 //
 // Usage:
@@ -20,10 +20,10 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import * as acorn from "acorn";
-import { EMBEDS, APP_MODULES, PAGE_INLINE, WORKER_SPLIT, MAIN_MODULE, DATA_MODULE, embedCall, pageMarker } from "../legacy/layout.mjs";
+import { EMBEDS, APP_MODULES, PAGE_INLINE, WORKER_SPLIT, MAIN_MODULE, DATA_MODULE, embedCall, pageMarker } from "../layout.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const SRC = path.join(ROOT, "legacy", "src");
+const SRC = path.join(ROOT, "src");
 const sha256 = (buf) => crypto.createHash("sha256").update(buf).digest("hex");
 const fail = (msg) => { console.error("recover: " + msg); process.exit(1); };
 
@@ -159,8 +159,8 @@ function recover(bundleFile) {
       },
     },
   };
-  fs.writeFileSync(path.join(ROOT, "legacy", "reference.json"), JSON.stringify(reference, null, 2) + "\n");
-  console.log(`recovered ${Object.keys(parts).length} modules into legacy/src`);
+  fs.writeFileSync(path.join(ROOT, "tools", "reference.json"), JSON.stringify(reference, null, 2) + "\n");
+  console.log(`recovered ${Object.keys(parts).length} modules into src/`);
   for (const [n, m] of Object.entries(reference.downloaded.modules)) console.log(`  ${n}  ${m.bytes} bytes  sha256 ${m.sha256.slice(0, 16)}…`);
 }
 

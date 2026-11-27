@@ -2,15 +2,12 @@
   "name": "wind",
   "private": true,
   "type": "module",
-  "description": "Wind, a friendly AI assistant. Recovered source of the live app, and its rebuild.",
+  "description": "Wind, a friendly AI assistant: the source of the live site (Cloudflare Worker assistant-api).",
   "scripts": {
-    "recover": "node tools/recover.mjs",
-    "build:legacy": "node legacy/build.mjs --check",
-    "preview:legacy": "node legacy/build.mjs --check && wrangler versions upload -c legacy/wrangler.jsonc",
-    "test": "node --test legacy/test/*.test.mjs app/test/*.test.mjs",
-    "build:mockup": "node design/build-mockup.mjs",
-    "build:app": "node app/build.mjs",
-    "preview:app": "node app/build.mjs && wrangler versions upload -c app/wrangler.jsonc"
+    "build": "node build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "deploy": "node build.mjs && wrangler deploy",
+    "recover": "node tools/recover.mjs"
   },
   "engines": {
     "node": ">=20"

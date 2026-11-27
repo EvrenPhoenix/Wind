@@ -1,5 +1,5 @@
 // Where each part of the live Worker bundle lives as a source file.
-// Shared by tools/recover.mjs (bundle -> files) and legacy/build.mjs (files -> bundle).
+// Shared by tools/recover.mjs (bundle -> files) and build.mjs (files -> bundle).
 
 // Large values the Worker embeds as literals. In src/worker/*.js each one is written as __embed("NAME"); the build
 // swaps that call for the value, serialised with JSON.stringify exactly as the original build did.

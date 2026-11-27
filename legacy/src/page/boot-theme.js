@@ -1,1 +1,0 @@
-try{var t=localStorage.getItem("my-creation-theme");document.documentElement.dataset.theme=t==="light"||t==="dark"?t:(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");if(t==="light"||t==="dark")document.querySelector('link[rel="manifest"]').setAttribute("href","/manifest.webmanifest?v=6&t="+t)}catch(e){document.documentElement.dataset.theme="dark"}
