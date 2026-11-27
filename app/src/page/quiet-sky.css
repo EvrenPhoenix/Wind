@@ -179,13 +179,37 @@
 }
 .topbar .wisp-corner .wc-face{filter:drop-shadow(0 1px 1.5px rgba(18,22,28,.28))}
 
-/* ---------------------------------------------------------------- home: the mark and greeting sit in the middle; the box rests at the bottom */
-.welcome{margin:auto!important;padding:0!important}
-@media(min-width:821px){ .main:not(.chatting) .composer-wrap{padding-bottom:18px!important} }
-/* The bar above (64px, 56px on phones) and the box below (74px, 73px on phones) aren't the same height, so the space
-   around the greeting is evened out to put its middle at the window's middle. A long message grows the box and lifts it. */
-.main:not(.chatting) .inner{padding-top:24px;padding-bottom:14px}
-@media(max-width:820px){ .main:not(.chatting) .inner{padding-top:31px} }
+/* ---------------------------------------------------------------- home
+   Computers: the mark, the greeting and the box are one group in the middle of the window, the box just under the
+   greeting; when the chat starts, the box glides down to the bottom (today's animation).
+   Phones: the greeting sits in the middle and the box stays at the bottom, by the keyboard. */
+@media(min-width:821px){
+  :root{--lift:clamp(16px,calc(50vh - 168px),420px)}
+  .main:not(.chatting) .composer-wrap{padding-bottom:calc(var(--lift) + 12px)!important}
+  .main:not(.chatting) .welcome{margin:auto auto 0!important;padding:0 0 40px!important}
+  .main:not(.chatting) .inner{padding-bottom:0}
+  /* a lighter mark above the greeting */
+  .home-mark{width:1.38em;height:1.38em;border-radius:.4em;margin-bottom:.44em}
+  .welcome .home-mark .mark{height:.54em;width:calc(.54em * 1.637)}
+}
+/* the menu's name sits on the same line as the buttons beside it (it was 7px high) */
+.brand{flex-wrap:wrap;align-content:center}
+/* Wisp's face in the corner: a little smaller, so it doesn't outweigh the icons beside it */
+.wisp-corner .wc-face{width:28px;height:26px}
+@media(max-width:820px){
+  .welcome{margin:auto!important;padding:0!important}
+  /* the bar above (56px) and the box below (73px) differ in height: even out the space so the greeting's middle is the window's */
+  .main:not(.chatting) .inner{padding-top:31px;padding-bottom:14px}
+}
+
+/* ---------------------------------------------------------------- top bar on computers: with the menu closed, its button and the name sit top left */
+.top-brand,.rb-panel{display:none}
+@media(min-width:821px){
+  #menu .rb-lines{display:none}
+  #menu .rb-panel{display:block;width:22px;height:22px;stroke-width:1.85}
+  #app.sidebar-hidden .main:is(.tab-chat,.tab-games):not(.chess-mode) .top-brand{display:inline-flex;align-items:baseline;gap:9px;margin-left:4px;color:var(--text);font:500 21px/1 var(--f-display);letter-spacing:-.01em;white-space:nowrap}
+  .top-brand .mark{height:14px;width:23px;transform:translateY(1px)}
+}
 
 /* ---------------------------------------------------------------- the box on computers: one slim line, like on phones; taller only for long text */
 @media(min-width:821px){
