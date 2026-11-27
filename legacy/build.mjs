@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 // Builds the live Wind Worker from legacy/src into legacy/dist, and checks it against legacy/reference.json.
 //
-//   node legacy/build.mjs          build, and report whether the output matches the live bundle
+//   node legacy/build.mjs          build, and report whether the output matches the deployed version
 //   node legacy/build.mjs --check  the same, but exit with an error when it doesn't match
 //
 // legacy/dist/worker.js is the Worker's main module and legacy/dist/stockfish-19-lite-single.bin its one data
-// module, exactly as Cloudflare runs them.
+// module, as Cloudflare runs them. "Matches" means the page the Worker serves is byte for byte the page visitors
+// get today, and the Stockfish module is identical (see "deployed" in legacy/reference.json).
 
 import fs from "node:fs";
 import path from "node:path";
@@ -59,25 +60,39 @@ function embedValue(e) {
 
 export function build() {
   let code = read(WORKER_SPLIT.shell) + read(WORKER_SPLIT.api);
-  for (const e of EMBEDS) code = put(code, embedCall(e.name), JSON.stringify(embedValue(e)), "worker");
+  let page = "";
+  for (const e of EMBEDS) {
+    const value = embedValue(e);
+    if (e.kind === "page") page = value;
+    code = put(code, embedCall(e.name), JSON.stringify(value), "worker");
+  }
   const main = Buffer.from(code, "utf8");
   const data = read(DATA_MODULE.file, null);
   fs.mkdirSync(DIST, { recursive: true });
   fs.writeFileSync(path.join(DIST, MAIN_MODULE), main);
   fs.writeFileSync(path.join(DIST, DATA_MODULE.name), data);
 
-  const ref = JSON.parse(fs.readFileSync(path.join(HERE, "reference.json"), "utf8")).modules;
+  const ref = JSON.parse(fs.readFileSync(path.join(HERE, "reference.json"), "utf8"));
+  const served = Buffer.from(page.split("__ORIGIN__").join(ref.deployed.origin), "utf8"); // as the Worker fills it in
   const result = {
     [MAIN_MODULE]: { bytes: main.length, sha256: sha256(main) },
     [DATA_MODULE.name]: { bytes: data.length, sha256: sha256(data) },
+    "page as served": { bytes: served.length, sha256: sha256(served) },
   };
-  const matches = Object.entries(result).every(([n, r]) => ref[n] && ref[n].sha256 === r.sha256);
-  return { dist: DIST, result, matches };
+  const checks = {
+    pageMatchesDeployed: result["page as served"].sha256 === ref.deployed.page.sha256,
+    engineMatchesDeployed: result[DATA_MODULE.name].sha256 === ref.deployed.modules[DATA_MODULE.name].sha256,
+    sameAsDownloaded: result[MAIN_MODULE].sha256 === ref.downloaded.modules[MAIN_MODULE].sha256,
+  };
+  const matches = checks.pageMatchesDeployed && checks.engineMatchesDeployed;
+  return { dist: DIST, result, checks, matches };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const { result, matches } = build();
+  const { result, checks, matches } = build();
   for (const [n, r] of Object.entries(result)) console.log(`${n}  ${r.bytes} bytes  sha256 ${r.sha256.slice(0, 16)}…`);
-  console.log(matches ? "identical to the live bundle" : "DIFFERENT from the live bundle (see legacy/reference.json)");
+  console.log(checks.pageMatchesDeployed ? "page: identical to the page visitors get" : "page: DIFFERENT from the deployed page");
+  console.log(checks.engineMatchesDeployed ? "engine: identical" : "engine: DIFFERENT");
+  console.log(checks.sameAsDownloaded ? "worker.js: identical to the downloaded bundle" : "worker.js: differs from the downloaded bundle (expected: see reference.json)");
   if (!matches && process.argv.includes("--check")) process.exit(1);
 }

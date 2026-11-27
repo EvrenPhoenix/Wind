@@ -529,7 +529,7 @@ function exportChat(id) {
 function greeting() { const h = new Date().getHours(); return h < 5 ? "Hello, night owl" : h < 12 ? "Good morning" : h < 18 ? "Good afternoon" : "Good evening"; }
 function welcome(root, temp) {
   const w = document.createElement("div"); w.className = "welcome"; w.dataset.temp = String(!!temp);
-  w.innerHTML = '<div class="hero">' + (temp ? '<svg class="temp-mark" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-temp"/></svg>' : '<div style="font-size:.3em;font-weight:600;letter-spacing:.06em;opacity:.75;margin-bottom:.35em">Rupam</div>' + '<div class="home-mark">' + markSvg() + '</div>') + '<h1 class="greet"></h1>' + (temp ? '<p class="temp-note">This chat won\'t be saved in this browser or listed in your chats. It\'s gone when you leave or reload.</p>' : '<p class="greet-sub"></p>' + HOME_BREEZE) + "</div>";
+  w.innerHTML = '<div class="hero">' + (temp ? '<svg class="temp-mark" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-temp"/></svg>' : '<div class="home-mark">' + markSvg() + '</div>') + '<h1 class="greet"></h1>' + (temp ? '<p class="temp-note">This chat won\'t be saved in this browser or listed in your chats. It\'s gone when you leave or reload.</p>' : '<p class="greet-sub"></p>' + HOME_BREEZE) + "</div>";
   w.querySelector(".greet").textContent = temp ? "Temporary chat" : greeting();
   if (!temp) w.querySelector(".greet-sub").textContent = greetSub(true);
   root.append(w);

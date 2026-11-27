@@ -149,17 +149,19 @@ function recover(bundleFile) {
 
   const reference = {
     script: "assistant-api",
-    version: VERSION || undefined,
     recovered: new Date().toISOString(),
-    note: "Checksums of the live bundle these sources were recovered from. legacy/build.mjs must reproduce them.",
-    modules: {
-      [MAIN_MODULE]: { type: main.type, bytes: main.body.length, sha256: sha256(main.body) },
-      [DATA_MODULE.name]: { type: data.type, bytes: data.body.length, sha256: sha256(data.body) },
+    downloaded: {
+      version: VERSION || undefined,
+      note: "Checksums of the bundle these sources were recovered from.",
+      modules: {
+        [MAIN_MODULE]: { type: main.type, bytes: main.body.length, sha256: sha256(main.body) },
+        [DATA_MODULE.name]: { type: data.type, bytes: data.body.length, sha256: sha256(data.body) },
+      },
     },
   };
   fs.writeFileSync(path.join(ROOT, "legacy", "reference.json"), JSON.stringify(reference, null, 2) + "\n");
   console.log(`recovered ${Object.keys(parts).length} modules into legacy/src`);
-  for (const [n, m] of Object.entries(reference.modules)) console.log(`  ${n}  ${m.bytes} bytes  sha256 ${m.sha256.slice(0, 16)}…`);
+  for (const [n, m] of Object.entries(reference.downloaded.modules)) console.log(`  ${n}  ${m.bytes} bytes  sha256 ${m.sha256.slice(0, 16)}…`);
 }
 
 const args = process.argv.slice(2);

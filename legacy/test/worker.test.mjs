@@ -35,7 +35,7 @@ const worker = (bindings) => new Miniflare({
 
 before(async () => {
   const b = build();
-  assert.ok(b.matches, "legacy/build.mjs output differs from the live bundle");
+  assert.ok(b.matches, "legacy/build.mjs output differs from the deployed version");
   dist = b.dist;
   bare = worker({});
   keyed = worker({ NVIDIA_API_KEY: "test-key-not-real" });
@@ -47,8 +47,10 @@ const get = (mf, p, init) => mf.dispatchFetch(ORIGIN + p, init);
 const postJson = (mf, p, body, headers = {}) =>
   get(mf, p, { method: "POST", headers: { "Content-Type": "application/json", Origin: ORIGIN, ...headers }, body: JSON.stringify(body) });
 
-test("the rebuilt bundle is identical to the live one", () => {
-  assert.ok(build().matches);
+test("the rebuilt Worker serves the deployed page byte for byte, with the same engine", () => {
+  const { checks } = build();
+  assert.ok(checks.pageMatchesDeployed, "page differs from the one visitors get");
+  assert.ok(checks.engineMatchesDeployed, "Stockfish module differs");
 });
 
 test("serves the chat page with this origin filled in", async () => {
