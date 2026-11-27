@@ -3,3 +3,4 @@ legacy/dist/
 .wrangler/
 .dev.vars
 *.bundle
+design/dist/

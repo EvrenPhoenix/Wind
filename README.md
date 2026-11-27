@@ -12,6 +12,7 @@ The rebuild plan (private): https://claude.ai/artifact/71jfYzrxKywDnmdkzkDBFS
 |---|---|
 | `legacy/` | Wind as it runs today, recovered from the live Worker on 27 November 2026, because the original source was lost. See [legacy/README.md](legacy/README.md). |
 | `tools/recover.mjs` | Splits a downloaded Worker bundle back into the files under `legacy/src`. |
+| `design/mockup/` | The clickable phase 1 mockup ("Quiet Sky"). `node design/build-mockup.mjs` builds it into one page, `design/dist/wind-mockup.html`, with Wind's real reply renderer inside. |
 
 The rebuilt app will live next to `legacy/` and reuse its tested parts (the reply renderer, streaming, Wisp, chess).
 
