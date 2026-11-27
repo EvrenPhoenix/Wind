@@ -134,3 +134,4 @@
 .sidebar::before{display:none!important}
 .main.tab-wisp .topbar .icon-btn.round{color:#FFFFFF!important}
 .main.tab-wisp .topbar .icon-btn.round:hover{background:rgba(255,255,255,.16)!important}
+.main:not(.tab-chat) .top-chat,.main.chess-mode .top-chat{display:none}
