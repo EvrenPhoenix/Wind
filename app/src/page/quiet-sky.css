@@ -14,7 +14,9 @@
   --g1:#6DB2F2;--g2:#6DB2F2;--g3:#6DB2F2;--bubble:#1C222B;--bubble-text:#E6EAF0;
   --danger:#F2867A;--danger-soft:rgba(242,134,122,.1);--danger-line:rgba(242,134,122,.3);
   --warn:#F0B35A;--warn-soft:rgba(240,179,90,.09);--warn-line:rgba(240,179,90,.28);
-  --overlay:rgba(0,0,0,.55);--sky-soft:#0D1015;--sky-home:#0D1015;
+  --overlay:rgba(0,0,0,.55);--sky-soft:#0D1015;
+  --sky-home:radial-gradient(ellipse 90% 62% at 50% -8%,rgba(64,120,205,.36) 0%,rgba(40,82,150,.14) 44%,rgba(13,16,21,0) 74%),#0D1015;
+  
   --sky-vivid:radial-gradient(ellipse 130% 62% at 50% 74%,#08090c 0%,rgba(8,9,12,.4) 38%,rgba(8,9,12,0) 72%),linear-gradient(180deg,#14408a 0%,#0d2858 46%,#090b10 100%); /* Wisp's space keeps its sky */
   --star-o:0;
   --tab:#151A21;--tab-line:rgba(255,255,255,.06);--tab-active:#1C222B;--tab-ink:#808B99;--tab-ink-on:#E6EAF0;
@@ -27,7 +29,7 @@
   --paper:var(--bg);--surface:var(--panel);--sunk:var(--hover);--ink:var(--text);--ink-2:var(--muted);--ink-3:var(--faint);--line-2:var(--line2);
   --sky:var(--accent);--qs-soft:rgba(109,178,242,.14);--qs-line:#25486F;--btn:#E6EAF0;--btn-ink:#0D1015;
   --shadow-1:0 1px 2px rgba(0,0,0,.3),0 8px 20px -12px rgba(0,0,0,.6);--shadow-2:0 30px 70px -30px rgba(0,0,0,.8);
-  --brand:var(--line2);--brand-deep:var(--bubble);--brand-glow:transparent;--gl:var(--panel);--gl-strong:var(--panel);--gl-line:var(--line);--gl-hi:transparent;--frost:none;--menu-bg:var(--panel);--focus-glow:var(--qs-soft);--halo:transparent;--halo2:transparent;--gust:transparent;--home-glow:transparent;--a1:transparent;--a2:transparent;--a3:transparent;--grain-o:0;--bar-ground:var(--bg);--mp-instant:var(--accent);
+  --brand:var(--line2);--brand-deep:var(--bubble);--brand-glow:transparent;--gl:var(--panel);--gl-strong:var(--panel);--gl-line:var(--line);--gl-hi:transparent;--frost:none;--menu-bg:var(--panel);--focus-glow:var(--qs-soft);--halo:rgba(80,140,230,.32);--halo2:rgba(80,140,230,.08);--gust:transparent;--home-glow:transparent;--a1:transparent;--a2:transparent;--a3:transparent;--grain-o:0;--bar-ground:var(--bg);--mp-instant:var(--accent);
   --f-display:"Newsreader","Wind Bengali","Iowan Old Style",Georgia,serif;
 }
 :root[data-theme=light]{
@@ -40,7 +42,9 @@
   --g1:#1D6FC4;--g2:#1D6FC4;--g3:#1D6FC4;--bubble:#EBEFF3;--bubble-text:#12161C;
   --danger:#B3261E;--danger-soft:rgba(179,38,30,.06);--danger-line:rgba(179,38,30,.25);
   --warn:#8A5300;--warn-soft:rgba(138,83,0,.07);--warn-line:rgba(138,83,0,.28);
-  --overlay:rgba(12,16,22,.34);--sky-soft:#F4F6F8;--sky-home:#F4F6F8;
+  --overlay:rgba(12,16,22,.34);--sky-soft:#F4F6F8;
+  --sky-home:radial-gradient(ellipse 90% 62% at 50% -8%,rgba(110,170,235,.42) 0%,rgba(150,195,240,.18) 44%,rgba(244,246,248,0) 74%),#F4F6F8;
+  
   --sky-vivid:radial-gradient(ellipse 130% 62% at 50% 74%,#eef6fd 0%,rgba(238,246,253,.4) 38%,rgba(238,246,253,0) 72%),linear-gradient(180deg,#2d7ad3 0%,#68abea 46%,#dcebf8 100%);
   --star-o:0;
   --tab:#FFFFFF;--tab-line:rgba(18,22,28,.06);--tab-active:#EBEFF3;--tab-ink:#6C7783;--tab-ink-on:#12161C;
@@ -54,7 +58,7 @@
 }
 
 /* ---------------------------------------------------------------- left out of the new design */
-.aurora,#starters,#tabbar,.fups,.fup,.wx,.home-mark,.temp-mark{display:none!important}
+.aurora,#starters,#tabbar,.fups,.fup,.wx{display:none!important}
 
 /* ---------------------------------------------------------------- chess and Wind Bot: colours only */
 
@@ -135,3 +139,20 @@
 .main.tab-wisp .topbar .icon-btn.round{color:#FFFFFF!important}
 .main.tab-wisp .topbar .icon-btn.round:hover{background:rgba(255,255,255,.16)!important}
 .main:not(.tab-chat) .top-chat,.main.chess-mode .top-chat{display:none}
+
+:root[data-theme=light]{--halo:rgba(120,175,235,.4);--halo2:rgba(120,175,235,.1)}
+.main.tab-chat:not(.chatting)::before{opacity:1}
+
+/* ---------------------------------------------------------------- the message box: glass over the sky */
+.composer{background:color-mix(in srgb,var(--composer) 84%,transparent)!important;-webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%)}
+:root:not([data-theme=light]) .composer{border-color:rgba(255,255,255,.09)!important}
+@media(min-width:821px){ :root{--col:720px} }
+
+/* the box stays calm when focused (it is focused as the page opens), and compact on computers */
+.composer:focus-within,.composer.listening{border-color:var(--qs-line)!important;box-shadow:var(--composer-shadow)!important}
+@media(min-width:821px){
+  .composer,.composer.tall{padding:12px 12px 8px 14px!important;border-radius:24px!important}
+  .composer textarea{min-height:26px!important;font-size:16px!important}
+  .composer .bar-left,.composer .bar-right{margin-top:6px!important}
+}
+.topbar .wisp-corner .wc-face{filter:drop-shadow(0 1px 1.5px rgba(18,22,28,.28))}

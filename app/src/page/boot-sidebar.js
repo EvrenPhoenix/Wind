@@ -1,1 +1,1 @@
-try{if(localStorage.getItem("lumi-sidebar")!=="open")document.getElementById("app").classList.add("sidebar-hidden")}catch(e){document.getElementById("app").classList.add("sidebar-hidden")}
+try{if(localStorage.getItem("lumi-sidebar")==="closed")document.getElementById("app").classList.add("sidebar-hidden")}catch(e){}
