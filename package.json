@@ -1,0 +1,19 @@
+{
+  "name": "wind",
+  "private": true,
+  "type": "module",
+  "description": "Wind, a friendly AI assistant. Recovered source of the live app, and its rebuild.",
+  "scripts": {
+    "recover": "node tools/recover.mjs",
+    "build:legacy": "node legacy/build.mjs",
+    "test": "node --test legacy/test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "acorn": "^8.19.0",
+    "miniflare": "^4.20260730.0",
+    "wrangler": "^4.168.0"
+  }
+}

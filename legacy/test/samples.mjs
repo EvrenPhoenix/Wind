@@ -1,0 +1,68 @@
+// Sample AI replies for the renderer's golden tests. Each one exercises rules in legacy/src/page/js/markdown.js:
+// Bengali digits and letters, maths, chemistry, tables, code, citations, sources and unsafe input.
+// The golden output (golden/renderer.json) is what today's live renderer produces for them; the rebuilt renderer
+// must produce the same.
+
+export const SAMPLES = [
+  { id: "plain-paragraphs", text: "Hello! I'm Wind.\n\nHow can I help you today?" },
+  { id: "emphasis-mix", text: "This is **bold**, *italic*, ***both***, ~~struck~~ and `inline code`.\nA second line in the same paragraph." },
+  { id: "headings", text: "# Title\n\n## Section\n\n### Subsection\n\nText under it.\n\n#### Small heading\nMore text." },
+  { id: "lists-nested", text: "Steps:\n\n1. Open the app\n2. Tap **New chat**\n   - choose a mode\n   - type a question\n3. Send it\n\n- Apples\n- Oranges\n  1. Navel\n  2. Blood" },
+  { id: "task-list-ish", text: "- [x] Done item\n- [ ] Open item\n- plain item" },
+  { id: "blockquote", text: "> A quote across\n> two lines.\n>\n> And a second paragraph.\n\nAfter the quote." },
+  { id: "callout", text: "> [!NOTE]\n> Water boils at 100 °C at sea level.\n\n> [!WARNING]\n> Never mix bleach and ammonia." },
+  { id: "hr", text: "Above\n\n---\n\nBelow" },
+  { id: "table-basic", text: "| Planet | Moons | Ring |\n|---|---:|:---:|\n| Earth | 1 | No |\n| Saturn | 146 | Yes |\n| Mars | 2 | No |" },
+  { id: "table-long-cells", text: "| Term | Meaning |\n|---|---|\n| Photosynthesis | The process by which green plants use sunlight to make food from carbon dioxide and water |\n| Respiration | Breaking down food to release energy |" },
+  { id: "code-python", text: "Here is a function:\n\n```python\ndef add(a, b):\n    # add two numbers\n    return a + b  # result\n\nprint(add(2, 3))\n```" },
+  { id: "code-js", text: "```js\nconst url = \"https://example.com/a//b\"; // not a comment inside the string\nfunction f(x) { return x * 2 }\n```" },
+  { id: "code-json-yaml", text: "```json\n{\"name\": \"Wind\", \"ok\": true, \"n\": 3}\n```\n\n```yaml\nname: Wind\nitems:\n  - one # comment\n```" },
+  { id: "code-shell-diff", text: "```bash\n# install\nnpm i wind && echo \"#not a comment\"\n```\n\n```diff\n- old line\n+ new line\n  same line\n```" },
+  { id: "code-html-css", text: "```html\n<div class=\"x\">Hi &amp; bye</div>\n```\n\n```css\n.x { color: #fff; /* white */ }\n```" },
+  { id: "code-unknown-lang", text: "```brainfuck\n++++[>++++<-]>.\n```" },
+  { id: "code-indented", text: "Paragraph.\n\n    indented code line\n    another line\n\nEnd." },
+  { id: "inline-math", text: "The area is $A = \\pi r^2$ and the root is \\(x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}\\)." },
+  { id: "display-math", text: "Solve:\n\n$$\\int_0^1 x^2\\,dx = \\frac{1}{3}$$\n\nand\n\n\\[\\sum_{k=1}^{n} k = \\frac{n(n+1)}{2}\\]" },
+  { id: "greek-and-symbols", text: "Angles: $\\alpha + \\beta = 90^\\circ$, and $\\Delta x \\to 0$, $a \\leq b \\neq c$." },
+  { id: "money-not-math", text: "It costs $5 and the deluxe one is $10, so $15 total." },
+  { id: "chem-plain", text: "Photosynthesis: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂. Water is H₂O, not H₂0." },
+  { id: "chem-tex", text: "In TeX: $6CO_2 + 6H_2O \\xrightarrow{\\text{light}} C_6H_{12}O_6 + 6O_2$ and $\\ce{2H2 + O2 -> 2H2O}$, ions like $SO_4^{2-}$." },
+  { id: "chem-in-backticks", text: "The model wrote `6CO_2 \\xrightarrow{\\text{light}} C_6H_{12}O_6` in backticks." },
+  { id: "tex-fallback", text: "Odd TeX: $\\weirdcommand{x}_{y}^{z}$ and $\\text{speed} = \\frac{d}{t}$." },
+  { id: "links-and-citations", text: "See [the BBC](https://www.bbc.com/news/article-1) and [formula1.com](https://www.formula1.com/en/latest) for more, or https://example.org/page?x=1." },
+  { id: "numbered-refs", text: "Prices rose last month [1] and again this week [2]." },
+  { id: "sources-line", text: "The match ended 2–1.\n\n**Sources:** [BBC Sport](https://www.bbc.com/sport/football/1) · [ESPN](https://www.espn.com/soccer/report) · [Reuters](https://www.reuters.com/sports/x)" },
+  { id: "unsafe-html", text: "<script>alert(1)</script> <img src=x onerror=alert(2)> [click](javascript:alert(3)) **<b>bold?</b>**" },
+  { id: "unsafe-urls", text: "[data](data:text/html,<b>x</b>) [vb](vbscript:msgbox) [ok](https://ok.example/a_(b)) <https://auto.example>" },
+  { id: "escapes", text: "Literal \\*stars\\*, a \\`tick\\`, 5 \\* 3 = 15 and a_b_c stays." },
+  { id: "bn-paragraph", text: "সালোকসংশ্লেষণে উদ্ভিদ সূর্যের আলো ব্যবহার করে নিজের খাদ্য তৈরি করে। এটি ২০২৬ সালেও একই রকম।" },
+  { id: "bn-digits-in-formulas", text: "সমীকরণ: ৬CO₂ + ৬H₂O → C₆H₁₂O₆ + ৬O₂। গতি ৫০ km/h, তাপমাত্রা ২৫ °C, iPhone ১৫, COVID-১৯, সময় ৬:৩০ AM।" },
+  { id: "bn-maths", text: "x² + ৫x + ৬ = ০ সমাধান করো। আলোর বেগ ৩×১০⁸ m/s। ২ + ২ = ৪ ঠিক আছে।" },
+  { id: "bn-money-and-counts", text: "দাম ৳৫০০, ৫টি বই, সময় ১০:৩০, ২০২৬ সালে।" },
+  { id: "bn-devanagari-slip", text: "শব্দটি হলো সैকড়া এবং বাকি অংশ ঠিক। দাঁড়ি । ও ॥ থাকবে।" },
+  { id: "bn-lone-signs", text: "কার চিহ্ন: া ি ী ু ূ। অন্যান্য: ং ঃ ঁ" },
+  { id: "bn-emphasis-inside-words", text: "**গুরুত্বপূর্ণ** কথা: শব্দ_ভেতরে_আন্ডারস্কোর আর *তারকা* থাকবে।" },
+  { id: "bn-table", text: "| বিষয় | নম্বর |\n|---|---|\n| বাংলা | ৮৫ |\n| গণিত | 92 |" },
+  { id: "bn-list", text: "১. প্রথম কাজ\n২. দ্বিতীয় কাজ\n\n- এক\n- দুই" },
+  { id: "mixed-scripts", text: "English, বাংলা, 中文, العربية and emoji 👋🏽 🇧🇩 in one line." },
+  { id: "long-word", text: "A very long link: https://example.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" },
+  { id: "nbsp-and-hyphens", text: "Non\u2011breaking\u00A0space and AI\u202FMode, en\u2010dash style." },
+  { id: "headings-with-code", text: "## Using `fetch()` in **JS**\n\nCall `fetch(url)`." },
+  { id: "everything", text: "# Weekly plan\n\nHere's your plan for **SSC** prep:\n\n| Day | Subject | Hours |\n|---|---|---:|\n| Sat | Physics | 2 |\n| Sun | Chemistry | 1.5 |\n\n1. Revise $F = ma$\n2. Balance $\\ce{CH4 + 2O2 -> CO2 + 2H2O}$\n\n```python\nhours = [2, 1.5]\nprint(sum(hours))\n```\n\n> [!TIP]\n> Short breaks help.\n\n**Sources:** [Khan Academy](https://www.khanacademy.org/science)" },
+];
+
+// Points at which a streaming reply is cut, as fractions of its length, plus a few hand-picked tricky prefixes.
+export const STREAM_CUTS = [0.15, 0.35, 0.5, 0.65, 0.85];
+export const STREAM_PREFIXES = [
+  "Here is **bold",
+  "Use `code",
+  "| A | B |\n|---|---|\n| 1 | ",
+  "| A | B |\n|---",
+  "```python\ndef f():\n    return 1",
+  "The formula $x^2 + ",
+  "$$\\frac{1}{",
+  "See [the docs](https://exa",
+  "1. First\n2. Sec",
+  "> [!NOTE]\n> Half a callo",
+  "সমীকরণ: ৬CO₂ + ৬H",
+];

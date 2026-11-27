@@ -1,0 +1,18 @@
+{
+  "script": "assistant-api",
+  "version": "64afd1e4-cbab-401b-9112-9a7a439071b4",
+  "recovered": "2026-11-27T08:06:40.184Z",
+  "note": "Checksums of the live bundle these sources were recovered from. legacy/build.mjs must reproduce them.",
+  "modules": {
+    "worker.js": {
+      "type": "application/javascript+module",
+      "bytes": 1346994,
+      "sha256": "cb3737e9da9b40bcd507b237f66c92dd0e805af6363a46703c8b779c00894362"
+    },
+    "stockfish-19-lite-single.bin": {
+      "type": "application/octet-stream",
+      "bytes": 1845971,
+      "sha256": "ee4f115bdb2d32cadf96cada104a05b5ec257d7ad6f57582190b49bc71f096de"
+    }
+  }
+}

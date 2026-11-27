@@ -1,0 +1,996 @@
+{
+ "plain-paragraphs": {
+  "final": "<p>Hello! I&#39;m Wind.</p><p>How can I help you today?</p>",
+  "stream": {
+   "6": [
+    "<p>Hello!</p>"
+   ],
+   "15": [
+    "<p>Hello! I&#39;m Wind</p>"
+   ],
+   "22": [
+    "<p>Hello! I&#39;m Wind.</p>",
+    "<p>How</p>"
+   ],
+   "28": [
+    "<p>Hello! I&#39;m Wind.</p>",
+    "<p>How can I</p>"
+   ],
+   "37": [
+    "<p>Hello! I&#39;m Wind.</p>",
+    "<p>How can I help you</p>"
+   ]
+  }
+ },
+ "emphasis-mix": {
+  "final": "<p>This is <strong>bold</strong>, <em>italic</em>, <strong><em>both</em></strong>, <del>struck</del> and <code>inline code</code>.<br>A second line in the same paragraph.</p>",
+  "stream": {
+   "16": [
+    "<p>This is <strong>bold</strong></p>"
+   ],
+   "37": [
+    "<p>This is <strong>bold</strong>, <em>italic</em>, <strong>*both</strong></p>"
+   ],
+   "53": [
+    "<p>This is <strong>bold</strong>, <em>italic</em>, <strong><em>both</em></strong>, <del>struck</del> an</p>"
+   ],
+   "69": [
+    "<p>This is <strong>bold</strong>, <em>italic</em>, <strong><em>both</em></strong>, <del>struck</del> and <code>inline code</code>.</p>"
+   ],
+   "90": [
+    "<p>This is <strong>bold</strong>, <em>italic</em>, <strong><em>both</em></strong>, <del>struck</del> and <code>inline code</code>.<br>A second line in the</p>"
+   ]
+  }
+ },
+ "headings": {
+  "final": "<h1>Title</h1><h2>Section</h2><h3>Subsection</h3><p>Text under it.</p><h4>Small heading</h4><p>More text.</p>",
+  "stream": {
+   "12": [
+    "<h1>Title</h1>"
+   ],
+   "29": [
+    "<h1>Title</h1>",
+    "<h2>Section</h2>",
+    "<h3>Subs</h3>"
+   ],
+   "41": [
+    "<h1>Title</h1>",
+    "<h2>Section</h2>",
+    "<h3>Subsection</h3>",
+    "<p>Text</p>"
+   ],
+   "53": [
+    "<h1>Title</h1>",
+    "<h2>Section</h2>",
+    "<h3>Subsection</h3>",
+    "<p>Text under it.</p>"
+   ],
+   "70": [
+    "<h1>Title</h1>",
+    "<h2>Section</h2>",
+    "<h3>Subsection</h3>",
+    "<p>Text under it.</p>",
+    "<h4>Small headin</h4>"
+   ]
+  }
+ },
+ "lists-nested": {
+  "final": "<p>Steps:</p><ol><li><p>Open the app</p></li><li><p>Tap <strong>New chat</strong></p><ul><li>choose a mode</li><li>type a question</li></ul></li><li><p>Send it</p></li></ol><ul><li>Apples</li><li>Oranges<ol><li>Navel</li><li>Blood</li></ol></li></ul>",
+  "stream": {
+   "20": [
+    "<p>Steps:</p>",
+    "<ol><li>Open the</li></ol>"
+   ],
+   "48": [
+    "<p>Steps:</p>",
+    "<ol><li>Open the app</li><li>Tap <strong>New chat</strong></li></ol>"
+   ],
+   "68": [
+    "<p>Steps:</p>",
+    "<ol><li>Open the app</li><li>Tap <strong>New chat</strong><ul><li>choose a mode</li></ul></li></ol>"
+   ],
+   "88": [
+    "<p>Steps:</p>",
+    "<ol><li>Open the app</li><li>Tap <strong>New chat</strong><ul><li>choose a mode</li><li>type a question</li></ul></li><li>S</li></ol>"
+   ],
+   "116": [
+    "<p>Steps:</p>",
+    "<ol><li><p>Open the app</p></li><li><p>Tap <strong>New chat</strong></p><ul><li>choose a mode</li><li>type a question</li></ul></li><li><p>Send it</p></li></ol>",
+    "<ul><li>Apples</li><li>Oranges</li></ul>"
+   ]
+  }
+ },
+ "task-list-ish": {
+  "final": "<ul><li class=\"task\"><input type=\"checkbox\" disabled checked aria-label=\"Done\">Done item</li><li class=\"task\"><input type=\"checkbox\" disabled aria-label=\"To do\">Open item</li><li>plain item</li></ul>",
+  "stream": {
+   "7": [
+    "<ul><li class=\"task\"><input type=\"checkbox\" disabled checked aria-label=\"Done\">D</li></ul>"
+   ],
+   "15": [
+    "<ul><li class=\"task\"><input type=\"checkbox\" disabled checked aria-label=\"Done\">Done item</li></ul>"
+   ],
+   "22": [
+    "<ul><li class=\"task\"><input type=\"checkbox\" disabled checked aria-label=\"Done\">Done item</li><li class=\"task\"><input type=\"checkbox\" disabled aria-label=\"To do\"></li></ul>"
+   ],
+   "29": [
+    "<ul><li class=\"task\"><input type=\"checkbox\" disabled checked aria-label=\"Done\">Done item</li><li class=\"task\"><input type=\"checkbox\" disabled aria-label=\"To do\">Open it</li></ul>"
+   ],
+   "37": [
+    "<ul><li class=\"task\"><input type=\"checkbox\" disabled checked aria-label=\"Done\">Done item</li><li class=\"task\"><input type=\"checkbox\" disabled aria-label=\"To do\">Open item</li><li>pla</li></ul>"
+   ]
+  }
+ },
+ "blockquote": {
+  "final": "<blockquote><p>A quote across<br>two lines.</p><p>And a second paragraph.</p></blockquote><p>After the quote.</p>",
+  "stream": {
+   "11": [
+    "<blockquote><p>A quote a</p></blockquote>"
+   ],
+   "26": [
+    "<blockquote><p>A quote across<br>two lin</p></blockquote>"
+   ],
+   "38": [
+    "<blockquote><p>A quote across<br>two lines.</p><p>And</p></blockquote>"
+   ],
+   "49": [
+    "<blockquote><p>A quote across<br>two lines.</p><p>And a second pa</p></blockquote>"
+   ],
+   "64": [
+    "<blockquote><p>A quote across<br>two lines.</p><p>And a second paragraph.</p></blockquote>",
+    "<p>After</p>"
+   ]
+  }
+ },
+ "callout": {
+  "final": "<blockquote class=\"callout note\"><p class=\"callout-title\">Note</p><p>Water boils at 100 °C at sea level.</p></blockquote><blockquote class=\"callout warning\"><p class=\"callout-title\">Warning</p><p>Never mix bleach and ammonia.</p></blockquote>",
+  "stream": {
+   "14": [
+    "<blockquote class=\"callout note\"><p class=\"callout-title\">Note</p><p>Wa</p></blockquote>"
+   ],
+   "33": [
+    "<blockquote class=\"callout note\"><p class=\"callout-title\">Note</p><p>Water boils at 100 °C</p></blockquote>"
+   ],
+   "47": [
+    "<blockquote class=\"callout note\"><p class=\"callout-title\">Note</p><p>Water boils at 100 °C at sea level.</p></blockquote>"
+   ],
+   "60": [
+    "<blockquote class=\"callout note\"><p class=\"callout-title\">Note</p><p>Water boils at 100 °C at sea level.</p></blockquote>",
+    "<blockquote></blockquote>"
+   ],
+   "79": [
+    "<blockquote class=\"callout note\"><p class=\"callout-title\">Note</p><p>Water boils at 100 °C at sea level.</p></blockquote>",
+    "<blockquote class=\"callout warning\"><p class=\"callout-title\">Warning</p><p>Never mix bleac</p></blockquote>"
+   ]
+  }
+ },
+ "hr": {
+  "final": "<p>Above</p><hr><p>Below</p>",
+  "stream": {
+   "3": [
+    "<p>Abo</p>"
+   ],
+   "6": [
+    "<p>Above</p>"
+   ],
+   "9": [
+    "<p>Above</p>",
+    "<p>--</p>"
+   ],
+   "11": [
+    "<p>Above</p>",
+    "<hr>"
+   ],
+   "14": [
+    "<p>Above</p>",
+    "<hr>",
+    "<p>Be</p>"
+   ]
+  }
+ },
+ "table-basic": {
+  "final": "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">Planet</th><th class=\"ta-r nw\">Moons</th><th class=\"ta-c nw\">Ring</th></tr></thead><tbody><tr><td class=\"nw\">Earth</td><td class=\"ta-r nw\">1</td><td class=\"ta-c nw\">No</td></tr><tr><td class=\"nw\">Saturn</td><td class=\"ta-r nw\">146</td><td class=\"ta-c nw\">Yes</td></tr><tr><td class=\"nw\">Mars</td><td class=\"ta-r nw\">2</td><td class=\"ta-c nw\">No</td></tr></tbody></table></div>",
+  "stream": {
+   "15": [],
+   "36": [],
+   "51": [
+    "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">Planet</th><th class=\"ta-r\">Moons</th><th class=\"ta-c\">Ring</th></tr></thead><tbody><tr><td class=\"nw\">Earth</td><td class=\"ta-r\"></td><td class=\"ta-c\"></td></tr></tbody></table></div>"
+   ],
+   "66": [
+    "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">Planet</th><th class=\"ta-r nw\">Moons</th><th class=\"ta-c nw\">Ring</th></tr></thead><tbody><tr><td class=\"nw\">Earth</td><td class=\"ta-r nw\">1</td><td class=\"ta-c nw\">No</td></tr><tr><td class=\"nw\">Sa</td><td class=\"ta-r nw\"></td><td class=\"ta-c nw\"></td></tr></tbody></table></div>"
+   ],
+   "87": [
+    "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">Planet</th><th class=\"ta-r nw\">Moons</th><th class=\"ta-c nw\">Ring</th></tr></thead><tbody><tr><td class=\"nw\">Earth</td><td class=\"ta-r nw\">1</td><td class=\"ta-c nw\">No</td></tr><tr><td class=\"nw\">Saturn</td><td class=\"ta-r nw\">146</td><td class=\"ta-c nw\">Yes</td></tr><tr><td class=\"nw\"></td><td class=\"ta-r nw\"></td><td class=\"ta-c nw\"></td></tr></tbody></table></div>"
+   ]
+  }
+ },
+ "table-long-cells": {
+  "final": "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">Term</th><th class=\"wide\">Meaning</th></tr></thead><tbody><tr><td class=\"nw\">Photosynthesis</td><td class=\"wide\">The process by which green plants use sunlight to make food from carbon dioxide and water</td></tr><tr><td class=\"nw\">Respiration</td><td class=\"wide\">Breaking down food to release energy</td></tr></tbody></table></div>",
+  "stream": {
+   "29": [
+    "<div class=\"table-wrap\"><table><thead><tr><th>Term</th><th>Meaning</th></tr></thead><tbody></tbody></table></div>"
+   ],
+   "68": [
+    "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">Term</th><th>Meaning</th></tr></thead><tbody><tr><td class=\"nw\">Photosynthesis</td><td>The process by which</td></tr></tbody></table></div>"
+   ],
+   "97": [
+    "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">Term</th><th>Meaning</th></tr></thead><tbody><tr><td class=\"nw\">Photosynthesis</td><td>The process by which green plants use sunlight to</td></tr></tbody></table></div>"
+   ],
+   "126": [
+    "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">Term</th><th class=\"wide\">Meaning</th></tr></thead><tbody><tr><td class=\"nw\">Photosynthesis</td><td class=\"wide\">The process by which green plants use sunlight to make food from carbon dioxid</td></tr></tbody></table></div>"
+   ],
+   "165": [
+    "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">Term</th><th class=\"wide\">Meaning</th></tr></thead><tbody><tr><td class=\"nw\">Photosynthesis</td><td class=\"wide\">The process by which green plants use sunlight to make food from carbon dioxide and water</td></tr><tr><td class=\"nw\">Respiration</td><td class=\"wide\">Breaking</td></tr></tbody></table></div>"
+   ]
+  }
+ },
+ "code-python": {
+  "final": "<p>Here is a function:</p><div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Python</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tk\">def</span> <span class=\"tf\">add</span>(a, b):\n    <span class=\"tc\"># add two numbers</span>\n    <span class=\"tk\">return</span> a + b  <span class=\"tc\"># result</span>\n\n<span class=\"tf\">print</span>(<span class=\"tf\">add</span>(<span class=\"tn\">2</span>, <span class=\"tn\">3</span>))</code></pre></div>",
+  "stream": {
+   "17": [
+    "<p>Here is a functio</p>"
+   ],
+   "41": [
+    "<p>Here is a function:</p>",
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Python</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tk\">def</span> <span class=\"tf\">add</span>(a,</code></pre></div>"
+   ],
+   "58": [
+    "<p>Here is a function:</p>",
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Python</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tk\">def</span> <span class=\"tf\">add</span>(a, b):\n    <span class=\"tc\"># add tw</span></code></pre></div>"
+   ],
+   "75": [
+    "<p>Here is a function:</p>",
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Python</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tk\">def</span> <span class=\"tf\">add</span>(a, b):\n    <span class=\"tc\"># add two numbers</span>\n    ret</code></pre></div>"
+   ],
+   "99": [
+    "<p>Here is a function:</p>",
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Python</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tk\">def</span> <span class=\"tf\">add</span>(a, b):\n    <span class=\"tc\"># add two numbers</span>\n    <span class=\"tk\">return</span> a + b  <span class=\"tc\"># result</span>\n\npri</code></pre></div>"
+   ]
+  }
+ },
+ "code-js": {
+  "final": "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">JavaScript</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tk\">const</span> url = <span class=\"ts\">&quot;https://example.com/a//b&quot;</span>; <span class=\"tc\">// not a comment inside the string</span>\n<span class=\"tk\">function</span> <span class=\"tf\">f</span>(x) { <span class=\"tk\">return</span> x * <span class=\"tn\">2</span> }</code></pre></div>",
+  "stream": {
+   "17": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">JavaScript</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tk\">const</span> url =</code></pre></div>"
+   ],
+   "40": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">JavaScript</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tk\">const</span> url = <span class=\"ts\">&quot;https://example.com/a</span></code></pre></div>"
+   ],
+   "58": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">JavaScript</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tk\">const</span> url = <span class=\"ts\">&quot;https://example.com/a//b&quot;</span>; <span class=\"tc\">// not a com</span></code></pre></div>"
+   ],
+   "75": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">JavaScript</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tk\">const</span> url = <span class=\"ts\">&quot;https://example.com/a//b&quot;</span>; <span class=\"tc\">// not a comment inside the s</span></code></pre></div>"
+   ],
+   "98": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">JavaScript</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tk\">const</span> url = <span class=\"ts\">&quot;https://example.com/a//b&quot;</span>; <span class=\"tc\">// not a comment inside the string</span>\n<span class=\"tk\">function</span> <span class=\"tf\">f</span>(x) { r</code></pre></div>"
+   ]
+  }
+ },
+ "code-json-yaml": {
+  "final": "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">JSON</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>{<span class=\"tp\">&quot;name&quot;</span>: <span class=\"ts\">&quot;Wind&quot;</span>, <span class=\"tp\">&quot;ok&quot;</span>: <span class=\"tb\">true</span>, <span class=\"tp\">&quot;n&quot;</span>: <span class=\"tn\">3</span>}</code></pre></div><div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">YAML</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tp\">name</span>: Wind\n<span class=\"tp\">items</span>:\n  - one<span class=\"tc\"> # comment</span></code></pre></div>",
+  "stream": {
+   "15": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">JSON</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>{<span class=\"ts\">&quot;name&quot;</span></code></pre></div>"
+   ],
+   "34": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">JSON</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>{<span class=\"tp\">&quot;name&quot;</span>: <span class=\"ts\">&quot;Wind&quot;</span>, <span class=\"tp\">&quot;ok&quot;</span>: tru</code></pre></div>"
+   ],
+   "49": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">JSON</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>{<span class=\"tp\">&quot;name&quot;</span>: <span class=\"ts\">&quot;Wind&quot;</span>, <span class=\"tp\">&quot;ok&quot;</span>: <span class=\"tb\">true</span>, <span class=\"tp\">&quot;n&quot;</span>: <span class=\"tn\">3</span>}</code></pre></div>"
+   ],
+   "63": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">JSON</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>{<span class=\"tp\">&quot;name&quot;</span>: <span class=\"ts\">&quot;Wind&quot;</span>, <span class=\"tp\">&quot;ok&quot;</span>: <span class=\"tb\">true</span>, <span class=\"tp\">&quot;n&quot;</span>: <span class=\"tn\">3</span>}</code></pre></div>",
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">YAML</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tp\">name</span>:</code></pre></div>"
+   ],
+   "82": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">JSON</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>{<span class=\"tp\">&quot;name&quot;</span>: <span class=\"ts\">&quot;Wind&quot;</span>, <span class=\"tp\">&quot;ok&quot;</span>: <span class=\"tb\">true</span>, <span class=\"tp\">&quot;n&quot;</span>: <span class=\"tn\">3</span>}</code></pre></div>",
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">YAML</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tp\">name</span>: Wind\n<span class=\"tp\">items</span>:\n  - <span class=\"tb\">on</span></code></pre></div>"
+   ]
+  }
+ },
+ "code-shell-diff": {
+  "final": "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Bash</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tc\"># install</span>\nnpm i wind &amp;&amp; echo <span class=\"ts\">&quot;#not a comment&quot;</span></code></pre></div><div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Diff</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"td\">- old line</span>\n<span class=\"ti\">+ new line</span>\n  same line</code></pre></div>",
+  "stream": {
+   "16": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Bash</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tc\"># instal</span></code></pre></div>"
+   ],
+   "36": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Bash</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tc\"># install</span>\nnpm i wind &amp;&amp; echo</code></pre></div>"
+   ],
+   "52": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Bash</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tc\"># install</span>\nnpm i wind &amp;&amp; echo <span class=\"ts\">&quot;#not a comment</span></code></pre></div>"
+   ],
+   "68": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Bash</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tc\"># install</span>\nnpm i wind &amp;&amp; echo <span class=\"ts\">&quot;#not a comment&quot;</span></code></pre></div>",
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Diff</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code></code></pre></div>"
+   ],
+   "88": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Bash</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tc\"># install</span>\nnpm i wind &amp;&amp; echo <span class=\"ts\">&quot;#not a comment&quot;</span></code></pre></div>",
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Diff</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"td\">- old line</span>\n<span class=\"ti\">+ new line</span></code></pre></div>"
+   ]
+  }
+ },
+ "code-html-css": {
+  "final": "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">HTML</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>&lt;<span class=\"tg\">div</span> <span class=\"ta\">class</span>=<span class=\"ts\">&quot;x&quot;</span>&gt;Hi <span class=\"tb\">&amp;amp;</span> bye&lt;/<span class=\"tg\">div</span>&gt;</code></pre></div><div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">CSS</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tt\">.x</span> { <span class=\"tp\">color</span>: <span class=\"tn\">#fff</span>; <span class=\"tc\">/* white */</span> }</code></pre></div>",
+  "stream": {
+   "13": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">HTML</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>&lt;<span class=\"tg\">div</span> </code></pre></div>"
+   ],
+   "31": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">HTML</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>&lt;<span class=\"tg\">div</span> <span class=\"ta\">class</span>=<span class=\"ts\">&quot;x&quot;</span>&gt;Hi <span class=\"tb\">&amp;amp;</span></code></pre></div>"
+   ],
+   "45": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">HTML</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>&lt;<span class=\"tg\">div</span> <span class=\"ta\">class</span>=<span class=\"ts\">&quot;x&quot;</span>&gt;Hi <span class=\"tb\">&amp;amp;</span> bye&lt;/<span class=\"tg\">div</span>&gt;</code></pre></div>"
+   ],
+   "58": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">HTML</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>&lt;<span class=\"tg\">div</span> <span class=\"ta\">class</span>=<span class=\"ts\">&quot;x&quot;</span>&gt;Hi <span class=\"tb\">&amp;amp;</span> bye&lt;/<span class=\"tg\">div</span>&gt;</code></pre></div>",
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">CSS</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tt\">.x</span> {</code></pre></div>"
+   ],
+   "76": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">HTML</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>&lt;<span class=\"tg\">div</span> <span class=\"ta\">class</span>=<span class=\"ts\">&quot;x&quot;</span>&gt;Hi <span class=\"tb\">&amp;amp;</span> bye&lt;/<span class=\"tg\">div</span>&gt;</code></pre></div>",
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">CSS</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tt\">.x</span> { <span class=\"tp\">color</span>: <span class=\"tn\">#fff</span>; <span class=\"tc\">/* w</span></code></pre></div>"
+   ]
+  }
+ },
+ "code-unknown-lang": {
+  "final": "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">brainfuck</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>++++[&gt;++++&lt;-]&gt;.</code></pre></div>",
+  "stream": {
+   "5": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">br</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code></code></pre></div>"
+   ],
+   "11": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">brainfuc</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code></code></pre></div>"
+   ],
+   "16": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">brainfuck</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>+++</code></pre></div>"
+   ],
+   "21": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">brainfuck</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>++++[&gt;++</code></pre></div>"
+   ],
+   "27": [
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">brainfuck</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>++++[&gt;++++&lt;-]&gt;</code></pre></div>"
+   ]
+  }
+ },
+ "code-indented": {
+  "final": "<p>Paragraph.</p><p>indented code line<br>another line</p><p>End.</p>",
+  "stream": {
+   "9": [
+    "<p>Paragraph</p>"
+   ],
+   "20": [
+    "<p>Paragraph.</p>",
+    "<p>inde</p>"
+   ],
+   "29": [
+    "<p>Paragraph.</p>",
+    "<p>indented code</p>"
+   ],
+   "37": [
+    "<p>Paragraph.</p>",
+    "<p>indented code line</p>"
+   ],
+   "48": [
+    "<p>Paragraph.</p>",
+    "<p>indented code line<br>another l</p>"
+   ]
+  }
+ },
+ "inline-math": {
+  "final": "<p>The area is <span class=\"math\"><span class=\"mi\">A</span> = π<span class=\"mi\">r</span><sup>2</sup></span> and the root is <span class=\"math\"><span class=\"mi\">x</span> = <span class=\"mfrac\"><span class=\"mnum\">−<span class=\"mi\">b</span> ± <span class=\"msqrt\">√<span class=\"mrad\"><span class=\"mi\">b</span><sup>2</sup> − 4<span class=\"mi\">a</span><span class=\"mi\">c</span></span></span></span><span class=\"mden\">2<span class=\"mi\">a</span></span></span></span>.</p>",
+  "stream": {
+   "12": [
+    "<p>The area is</p>"
+   ],
+   "29": [
+    "<p>The area is <span class=\"math\"><span class=\"mi\">A</span> = π<span class=\"mi\">r</span><sup>2</sup></span> and</p>"
+   ],
+   "42": [
+    "<p>The area is <span class=\"math\"><span class=\"mi\">A</span> = π<span class=\"mi\">r</span><sup>2</sup></span> and the root is</p>"
+   ],
+   "54": [
+    "<p>The area is <span class=\"math\"><span class=\"mi\">A</span> = π<span class=\"mi\">r</span><sup>2</sup></span> and the root is</p>"
+   ],
+   "71": [
+    "<p>The area is <span class=\"math\"><span class=\"mi\">A</span> = π<span class=\"mi\">r</span><sup>2</sup></span> and the root is</p>"
+   ]
+  }
+ },
+ "display-math": {
+  "final": "<p>Solve:</p><div class=\"math-block\"><span class=\"math\"><span class=\"mbig mint\">∫</span><span class=\"mss\"><sup>1</sup><sub>0</sub></span> <span class=\"mi\">x</span><sup>2</sup> <span class=\"mi\">d</span><span class=\"mi\">x</span> = <span class=\"mfrac\"><span class=\"mnum\">1</span><span class=\"mden\">3</span></span></span></div><p>and</p><div class=\"math-block\"><span class=\"math\"><span class=\"mop\"><span class=\"mlim\"><span class=\"mi\">n</span></span><span class=\"mbig\">∑</span><span class=\"mlim\"><span class=\"mi\">k</span> = 1</span></span> <span class=\"mi\">k</span> = <span class=\"mfrac\"><span class=\"mnum\"><span class=\"mi\">n</span>(<span class=\"mi\">n</span> + 1)</span><span class=\"mden\">2</span></span></span></div>",
+  "stream": {
+   "13": [
+    "<p>Solve:</p>"
+   ],
+   "31": [
+    "<p>Solve:</p>"
+   ],
+   "44": [
+    "<p>Solve:</p>",
+    "<div class=\"math-block\"><span class=\"math\"><span class=\"mbig mint\">∫</span><span class=\"mss\"><sup>1</sup><sub>0</sub></span> <span class=\"mi\">x</span><sup>2</sup> <span class=\"mi\">d</span><span class=\"mi\">x</span> = <span class=\"mfrac\"><span class=\"mnum\">1</span><span class=\"mden\">3</span></span></span></div>"
+   ],
+   "57": [
+    "<p>Solve:</p>",
+    "<div class=\"math-block\"><span class=\"math\"><span class=\"mbig mint\">∫</span><span class=\"mss\"><sup>1</sup><sub>0</sub></span> <span class=\"mi\">x</span><sup>2</sup> <span class=\"mi\">d</span><span class=\"mi\">x</span> = <span class=\"mfrac\"><span class=\"mnum\">1</span><span class=\"mden\">3</span></span></span></div>",
+    "<p>and</p>",
+    "<p>\\</p>"
+   ],
+   "75": [
+    "<p>Solve:</p>",
+    "<div class=\"math-block\"><span class=\"math\"><span class=\"mbig mint\">∫</span><span class=\"mss\"><sup>1</sup><sub>0</sub></span> <span class=\"mi\">x</span><sup>2</sup> <span class=\"mi\">d</span><span class=\"mi\">x</span> = <span class=\"mfrac\"><span class=\"mnum\">1</span><span class=\"mden\">3</span></span></span></div>",
+    "<p>and</p>",
+    "<p>\\</p>"
+   ]
+  }
+ },
+ "greek-and-symbols": {
+  "final": "<p>Angles: <span class=\"math\">α + β = 90<sup>∘</sup></span>, and <span class=\"math\">Δ<span class=\"mi\">x</span> → 0</span>, <span class=\"math\"><span class=\"mi\">a</span> ≤ <span class=\"mi\">b</span> ≠ <span class=\"mi\">c</span></span>.</p>",
+  "stream": {
+   "12": [
+    "<p>Angles: $\\al</p>"
+   ],
+   "27": [
+    "<p>Angles: $\\alpha + \\beta = 9</p>"
+   ],
+   "39": [
+    "<p>Angles: <span class=\"math\">α + β = 90<sup>∘</sup></span>, an</p>"
+   ],
+   "50": [
+    "<p>Angles: <span class=\"math\">α + β = 90<sup>∘</sup></span>, and $\\Delta x</p>"
+   ],
+   "65": [
+    "<p>Angles: <span class=\"math\">α + β = 90<sup>∘</sup></span>, and <span class=\"math\">Δ<span class=\"mi\">x</span> → 0</span>, $a \\le</p>"
+   ]
+  }
+ },
+ "money-not-math": {
+  "final": "<p>It costs $5 and the deluxe one is $10, so $15 total.</p>",
+  "stream": {
+   "8": [
+    "<p>It costs</p>"
+   ],
+   "18": [
+    "<p>It costs $5 and th</p>"
+   ],
+   "26": [
+    "<p>It costs $5 and the deluxe</p>"
+   ],
+   "34": [
+    "<p>It costs $5 and the deluxe one is</p>"
+   ],
+   "44": [
+    "<p>It costs $5 and the deluxe one is $10, so $1</p>"
+   ]
+  }
+ },
+ "chem-plain": {
+  "final": "<p>Photosynthesis: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂. Water is H₂O, not H₂0.</p>",
+  "stream": {
+   "10": [
+    "<p>Photosynth</p>"
+   ],
+   "23": [
+    "<p>Photosynthesis: 6CO₂ +</p>"
+   ],
+   "34": [
+    "<p>Photosynthesis: 6CO₂ + 6H₂O → C₆H₁</p>"
+   ],
+   "44": [
+    "<p>Photosynthesis: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂.</p>"
+   ],
+   "57": [
+    "<p>Photosynthesis: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂. Water is H₂O</p>"
+   ]
+  }
+ },
+ "chem-tex": {
+  "final": "<p>In TeX: <span class=\"math chem\">6<span class=\"mi\">C</span><span class=\"mi\">O</span><sub>2</sub> + 6<span class=\"mi\">H</span><sub>2</sub><span class=\"mi\">O</span><span class=\"mxarrow\"><span class=\"mxlab\"><span class=\"mt\">light</span></span><span class=\"mxarr\">⟶</span></span><span class=\"mi\">C</span><sub>6</sub><span class=\"mi\">H</span><sub>12</sub><span class=\"mi\">O</span><sub>6</sub> + 6<span class=\"mi\">O</span><sub>2</sub></span> and <span class=\"math chem\"><span class=\"mchem\">2H<sub>2</sub> + O<sub>2</sub>  ⟶  2H<sub>2</sub>O</span></span>, ions like <span class=\"math chem\"><span class=\"mi\">S</span><span class=\"mi\">O</span><span class=\"mss\"><sup>2 − </sup><sub>4</sub></span></span>.</p>",
+  "stream": {
+   "18": [
+    "<p>In TeX: $6CO_2 + 6</p>"
+   ],
+   "43": [
+    "<p>In TeX: $6CO_2 + 6H_2O \\xrightarrow{\\text{l</p>"
+   ],
+   "61": [
+    "<p>In TeX: $6CO_2 + 6H_2O \\xrightarrow{\\text{light}} C_6H_{12}O_</p>"
+   ],
+   "79": [
+    "<p>In TeX: <span class=\"math chem\">6<span class=\"mi\">C</span><span class=\"mi\">O</span><sub>2</sub> + 6<span class=\"mi\">H</span><sub>2</sub><span class=\"mi\">O</span><span class=\"mxarrow\"><span class=\"mxlab\"><span class=\"mt\">light</span></span><span class=\"mxarr\">⟶</span></span><span class=\"mi\">C</span><sub>6</sub><span class=\"mi\">H</span><sub>12</sub><span class=\"mi\">O</span><sub>6</sub> + 6<span class=\"mi\">O</span><sub>2</sub></span> and $\\ce</p>"
+   ],
+   "104": [
+    "<p>In TeX: <span class=\"math chem\">6<span class=\"mi\">C</span><span class=\"mi\">O</span><sub>2</sub> + 6<span class=\"mi\">H</span><sub>2</sub><span class=\"mi\">O</span><span class=\"mxarrow\"><span class=\"mxlab\"><span class=\"mt\">light</span></span><span class=\"mxarr\">⟶</span></span><span class=\"mi\">C</span><sub>6</sub><span class=\"mi\">H</span><sub>12</sub><span class=\"mi\">O</span><sub>6</sub> + 6<span class=\"mi\">O</span><sub>2</sub></span> and <span class=\"math chem\"><span class=\"mchem\">2H<sub>2</sub> + O<sub>2</sub>  ⟶  2H<sub>2</sub>O</span></span>, ions</p>"
+   ]
+  }
+ },
+ "chem-in-backticks": {
+  "final": "<p>The model wrote <span class=\"math chem\">6<span class=\"mi\">C</span><span class=\"mi\">O</span><sub>2</sub><span class=\"mxarrow\"><span class=\"mxlab\"><span class=\"mt\">light</span></span><span class=\"mxarr\">⟶</span></span><span class=\"mi\">C</span><sub>6</sub><span class=\"mi\">H</span><sub>12</sub><span class=\"mi\">O</span><sub>6</sub></span> in backticks.</p>",
+  "stream": {
+   "12": [
+    "<p>The model wr</p>"
+   ],
+   "27": [
+    "<p>The model wrote <code>6CO_2 \\xri</code></p>"
+   ],
+   "39": [
+    "<p>The model wrote <span class=\"math\">6CO<sub>2</sub></span></p>"
+   ],
+   "50": [
+    "<p>The model wrote <span class=\"math chem\">6<span class=\"mi\">C</span><span class=\"mi\">O</span><sub>2</sub><span class=\"mxarrow\"><span class=\"mxlab\"><span class=\"mt\">light</span></span><span class=\"mxarr\">⟶</span></span></span></p>"
+   ],
+   "65": [
+    "<p>The model wrote <span class=\"math chem\">6<span class=\"mi\">C</span><span class=\"mi\">O</span><sub>2</sub><span class=\"mxarrow\"><span class=\"mxlab\"><span class=\"mt\">light</span></span><span class=\"mxarr\">⟶</span></span><span class=\"mi\">C</span><sub>6</sub><span class=\"mi\">H</span><sub>12</sub><span class=\"mi\">O</span><sub>6</sub></span> i</p>"
+   ]
+  }
+ },
+ "tex-fallback": {
+  "final": "<p>Odd TeX: <span class=\"math\">x<sub>y</sub><sup>z</sup></span> and <span class=\"math\"><span class=\"mt\">speed</span> = <span class=\"mfrac\"><span class=\"mnum\"><span class=\"mi\">d</span></span><span class=\"mden\"><span class=\"mi\">t</span></span></span></span>.</p>",
+  "stream": {
+   "10": [
+    "<p>Odd TeX: $</p>"
+   ],
+   "24": [
+    "<p>Odd TeX: $\\weirdcommand{</p>"
+   ],
+   "35": [
+    "<p>Odd TeX: <span class=\"math\">x<sub>y</sub><sup>z</sup></span></p>"
+   ],
+   "45": [
+    "<p>Odd TeX: <span class=\"math\">x<sub>y</sub><sup>z</sup></span> and $\\tex</p>"
+   ],
+   "59": [
+    "<p>Odd TeX: <span class=\"math\">x<sub>y</sub><sup>z</sup></span> and $\\text{speed} = \\fr</p>"
+   ]
+  }
+ },
+ "links-and-citations": {
+  "final": "<p>See <a href=\"https://www.bbc.com/news/article-1\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">the BBC</a> and <a href=\"https://www.formula1.com/en/latest\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">formula1.com</a> for more, or <a href=\"https://example.org/page?x=1\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">https://example.org/page?x=1</a>.</p>",
+  "stream": {
+   "22": [
+    "<p>See</p>"
+   ],
+   "51": [
+    "<p>See <a href=\"https://www.bbc.com/news/article-1\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">the BBC</a> a</p>"
+   ],
+   "74": [
+    "<p>See <a href=\"https://www.bbc.com/news/article-1\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">the BBC</a> and</p>"
+   ],
+   "96": [
+    "<p>See <a href=\"https://www.bbc.com/news/article-1\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">the BBC</a> and</p>"
+   ],
+   "125": [
+    "<p>See <a href=\"https://www.bbc.com/news/article-1\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">the BBC</a> and <a href=\"https://www.formula1.com/en/latest\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">formula1.com</a> for more, or https:/</p>"
+   ]
+  }
+ },
+ "numbered-refs": {
+  "final": "<p>Prices rose last month [1] and again this week [2].</p>",
+  "stream": {
+   "8": [
+    "<p>Prices r</p>"
+   ],
+   "18": [
+    "<p>Prices rose last m</p>"
+   ],
+   "26": [
+    "<p>Prices rose last month [1]</p>"
+   ],
+   "33": [
+    "<p>Prices rose last month [1] and ag</p>"
+   ],
+   "43": [
+    "<p>Prices rose last month [1] and again this w</p>"
+   ]
+  }
+ },
+ "sources-line": {
+  "final": "<p>The match ended 2–1.</p><p><strong>Sources:</strong> <a href=\"https://www.bbc.com/sport/football/1\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">BBC Sport</a> · <a href=\"https://www.espn.com/soccer/report\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">ESPN</a> · <a href=\"https://www.reuters.com/sports/x\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">Reuters</a></p>",
+  "stream": {
+   "26": [
+    "<p>The match ended 2–1.</p>",
+    "<p><strong>So</strong></p>"
+   ],
+   "61": [
+    "<p>The match ended 2–1.</p>",
+    "<p><strong>Sources:</strong></p>"
+   ],
+   "88": [
+    "<p>The match ended 2–1.</p>",
+    "<p><strong>Sources:</strong> <a href=\"https://www.bbc.com/sport/football/1\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">BBC Sport</a> ·</p>"
+   ],
+   "114": [
+    "<p>The match ended 2–1.</p>",
+    "<p><strong>Sources:</strong> <a href=\"https://www.bbc.com/sport/football/1\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">BBC Sport</a> ·</p>"
+   ],
+   "149": [
+    "<p>The match ended 2–1.</p>",
+    "<p><strong>Sources:</strong> <a href=\"https://www.bbc.com/sport/football/1\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">BBC Sport</a> · <a href=\"https://www.espn.com/soccer/report\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">ESPN</a> ·</p>"
+   ]
+  }
+ },
+ "unsafe-html": {
+  "final": "<p>&lt;script&gt;alert(1)&lt;/script&gt; &lt;img src=x onerror=alert(2)&gt; click <strong>&lt;b&gt;bold?&lt;/b&gt;</strong></p>",
+  "stream": {
+   "15": [
+    "<p>&lt;script&gt;alert(1</p>"
+   ],
+   "35": [
+    "<p>&lt;script&gt;alert(1)&lt;/script&gt; &lt;img src=</p>"
+   ],
+   "50": [
+    "<p>&lt;script&gt;alert(1)&lt;/script&gt; &lt;img src=x onerror=alert</p>"
+   ],
+   "65": [
+    "<p>&lt;script&gt;alert(1)&lt;/script&gt; &lt;img src=x onerror=alert(2)&gt;</p>"
+   ],
+   "85": [
+    "<p>&lt;script&gt;alert(1)&lt;/script&gt; &lt;img src=x onerror=alert(2)&gt; click *</p>"
+   ]
+  }
+ },
+ "unsafe-urls": {
+  "final": "<p>data vb <a href=\"https://ok.example/a_(b)\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">ok</a> <a href=\"https://auto.example\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">https://auto.example</a></p>",
+  "stream": {
+   "16": [],
+   "37": [
+    "<p>data</p>"
+   ],
+   "54": [
+    "<p>data vb</p>"
+   ],
+   "70": [
+    "<p>data vb</p>"
+   ],
+   "91": [
+    "<p>data vb <a href=\"https://ok.example/a_(b)\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">ok</a> &lt;https</p>"
+   ]
+  }
+ },
+ "escapes": {
+  "final": "<p>Literal *stars*, a `tick`, 5 * 3 = 15 and a_b_c stays.</p>",
+  "stream": {
+   "9": [
+    "<p>Literal </p>"
+   ],
+   "21": [
+    "<p>Literal *stars*, a</p>"
+   ],
+   "30": [
+    "<p>Literal *stars*, a `tick`,</p>"
+   ],
+   "38": [
+    "<p>Literal *stars*, a `tick`, 5 * 3</p>"
+   ],
+   "50": [
+    "<p>Literal *stars*, a `tick`, 5 * 3 = 15 and a_b</p>"
+   ]
+  }
+ },
+ "bn-paragraph": {
+  "final": "<p>সালোকসংশ্লেষণে উদ্ভিদ সূর্যের আলো ব্যবহার করে নিজের খাদ্য তৈরি করে। এটি ২০২৬ সালেও একই রকম।</p>",
+  "stream": {
+   "14": [
+    "<p>সালোকসংশ্লেষণে</p>"
+   ],
+   "32": [
+    "<p>সালোকসংশ্লেষণে উদ্ভিদ সূর্যের আল</p>"
+   ],
+   "46": [
+    "<p>সালোকসংশ্লেষণে উদ্ভিদ সূর্যের আলো ব্যবহার করে</p>"
+   ],
+   "59": [
+    "<p>সালোকসংশ্লেষণে উদ্ভিদ সূর্যের আলো ব্যবহার করে নিজের খাদ্য ত</p>"
+   ],
+   "77": [
+    "<p>সালোকসংশ্লেষণে উদ্ভিদ সূর্যের আলো ব্যবহার করে নিজের খাদ্য তৈরি করে। এটি ২০২৬</p>"
+   ]
+  }
+ },
+ "bn-digits-in-formulas": {
+  "final": "<p>সমীকরণ: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂। গতি 50 km/h, তাপমাত্রা 25 °C, iPhone 15, COVID-19, সময় 6:30 AM।</p>",
+  "stream": {
+   "15": [
+    "<p>সমীকরণ: 6CO₂ +</p>"
+   ],
+   "35": [
+    "<p>সমীকরণ: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂</p>"
+   ],
+   "51": [
+    "<p>সমীকরণ: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂। গতি 50 km/h, ত</p>"
+   ],
+   "66": [
+    "<p>সমীকরণ: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂। গতি 50 km/h, তাপমাত্রা 25 °C,</p>"
+   ],
+   "86": [
+    "<p>সমীকরণ: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂। গতি 50 km/h, তাপমাত্রা 25 °C, iPhone 15, COVID-19</p>"
+   ]
+  }
+ },
+ "bn-maths": {
+  "final": "<p>x² + 5x + 6 = 0 সমাধান করো। আলোর বেগ 3×10⁸ m/s। ২ + ২ = ৪ ঠিক আছে।</p>",
+  "stream": {
+   "10": [
+    "<p>x² + 5x +</p>"
+   ],
+   "23": [
+    "<p>x² + 5x + 6 = 0 সমাধান</p>"
+   ],
+   "33": [
+    "<p>x² + 5x + 6 = 0 সমাধান করো। আলোর</p>"
+   ],
+   "43": [
+    "<p>x² + 5x + 6 = 0 সমাধান করো। আলোর বেগ 3×10⁸</p>"
+   ],
+   "56": [
+    "<p>x² + 5x + 6 = 0 সমাধান করো। আলোর বেগ 3×10⁸ m/s। ২ + ২ =</p>"
+   ]
+  }
+ },
+ "bn-money-and-counts": {
+  "final": "<p>দাম ৳৫০০, ৫টি বই, সময় ১০:৩০, ২০২৬ সালে।</p>",
+  "stream": {
+   "6": [
+    "<p>দাম ৳৫</p>"
+   ],
+   "14": [
+    "<p>দাম ৳৫০০, ৫টি</p>"
+   ],
+   "20": [
+    "<p>দাম ৳৫০০, ৫টি বই, সম</p>"
+   ],
+   "26": [
+    "<p>দাম ৳৫০০, ৫টি বই, সময় ১০:</p>"
+   ],
+   "34": [
+    "<p>দাম ৳৫০০, ৫টি বই, সময় ১০:৩০, ২০২৬</p>"
+   ]
+  }
+ },
+ "bn-devanagari-slip": {
+  "final": "<p>শব্দটি হলো সৈকড়া এবং বাকি অংশ ঠিক। দাঁড়ি । ও ॥ থাকবে।</p>",
+  "stream": {
+   "8": [
+    "<p>শব্দটি হ</p>"
+   ],
+   "19": [
+    "<p>শব্দটি হলো সৈকড়া এ</p>"
+   ],
+   "28": [
+    "<p>শব্দটি হলো সৈকড়া এবং বাকি অ</p>"
+   ],
+   "36": [
+    "<p>শব্দটি হলো সৈকড়া এবং বাকি অংশ ঠিক।</p>"
+   ],
+   "47": [
+    "<p>শব্দটি হলো সৈকড়া এবং বাকি অংশ ঠিক। দাঁড়ি । ও</p>"
+   ]
+  }
+ },
+ "bn-lone-signs": {
+  "final": "<p>কার চিহ্ন: ◌া ◌ি ◌ী ◌ু ◌ূ। অন্যান্য: ◌ং ◌ঃ ◌ঁ</p>",
+  "stream": {
+   "6": [
+    "<p>কার চি</p>"
+   ],
+   "13": [
+    "<p>কার চিহ্ন: ◌া</p>"
+   ],
+   "19": [
+    "<p>কার চিহ্ন: ◌া ◌ি ◌ী ◌ু</p>"
+   ],
+   "24": [
+    "<p>কার চিহ্ন: ◌া ◌ি ◌ী ◌ু ◌ূ। অন</p>"
+   ],
+   "31": [
+    "<p>কার চিহ্ন: ◌া ◌ি ◌ী ◌ু ◌ূ। অন্যান্য:</p>"
+   ]
+  }
+ },
+ "bn-emphasis-inside-words": {
+  "final": "<p><strong>গুরুত্বপূর্ণ</strong> কথা: শব্দ_ভেতরে_আন্ডারস্কোর আর <em>তারকা</em> থাকবে।</p>",
+  "stream": {
+   "9": [
+    "<p><strong>গুরুত্ব</strong></p>"
+   ],
+   "22": [
+    "<p><strong>গুরুত্বপূর্ণ</strong> কথা:</p>"
+   ],
+   "31": [
+    "<p><strong>গুরুত্বপূর্ণ</strong> কথা: শব্দ_ভেতর</p>"
+   ],
+   "40": [
+    "<p><strong>গুরুত্বপূর্ণ</strong> কথা: শব্দ_ভেতরে_আন্ডারস</p>"
+   ],
+   "53": [
+    "<p><strong>গুরুত্বপূর্ণ</strong> কথা: শব্দ_ভেতরে_আন্ডারস্কোর আর *তারক</p>"
+   ]
+  }
+ },
+ "bn-table": {
+  "final": "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">বিষয়</th><th class=\"nw\">নম্বর</th></tr></thead><tbody><tr><td class=\"nw\">বাংলা</td><td class=\"nw\">৮৫</td></tr><tr><td class=\"nw\">গণিত</td><td class=\"nw\">92</td></tr></tbody></table></div>",
+  "stream": {
+   "8": [],
+   "20": [],
+   "28": [
+    "<div class=\"table-wrap\"><table><thead><tr><th>বিষয়</th><th>নম্বর</th></tr></thead><tbody></tbody></table></div>"
+   ],
+   "36": [
+    "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">বিষয়</th><th>নম্বর</th></tr></thead><tbody><tr><td class=\"nw\">বাংলা</td><td></td></tr></tbody></table></div>"
+   ],
+   "48": [
+    "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">বিষয়</th><th class=\"nw\">নম্বর</th></tr></thead><tbody><tr><td class=\"nw\">বাংলা</td><td class=\"nw\">৮৫</td></tr><tr><td class=\"nw\">গণি</td><td class=\"nw\"></td></tr></tbody></table></div>"
+   ]
+  }
+ },
+ "bn-list": {
+  "final": "<ol class=\"bn\"><li><p>প্রথম কাজ</p></li><li><p>দ্বিতীয় কাজ</p></li></ol><ul><li>এক</li><li>দুই</li></ul>",
+  "stream": {
+   "6": [
+    "<ol class=\"bn\"><li>প্র</li></ol>"
+   ],
+   "14": [
+    "<ol class=\"bn\"><li>প্রথম কাজ<br>২</li></ol>"
+   ],
+   "20": [
+    "<ol class=\"bn\"><li>প্রথম কাজ</li><li>দ্বি</li></ol>"
+   ],
+   "26": [
+    "<ol class=\"bn\"><li>প্রথম কাজ</li><li>দ্বিতীয় ক</li></ol>"
+   ],
+   "34": [
+    "<ol class=\"bn\"><li><p>প্রথম কাজ</p></li><li><p>দ্বিতীয় কাজ</p></li></ol>",
+    "<ul><li>এক</li></ul>"
+   ]
+  }
+ },
+ "mixed-scripts": {
+  "final": "<p>English, বাংলা, 中文, العربية and emoji 👋🏽 🇧🇩 in one line.</p>",
+  "stream": {
+   "9": [
+    "<p>English,</p>"
+   ],
+   "21": [
+    "<p>English, বাংলা, 中文, ا</p>"
+   ],
+   "30": [
+    "<p>English, বাংলা, 中文, العربية an</p>"
+   ],
+   "38": [
+    "<p>English, বাংলা, 中文, العربية and emoji</p>"
+   ],
+   "51": [
+    "<p>English, বাংলা, 中文, العربية and emoji 👋🏽 🇧🇩 in</p>"
+   ]
+  }
+ },
+ "long-word": {
+  "final": "<p>A very long link: <a href=\"https://example.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">https://example.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</a></p>",
+  "stream": {
+   "23": [
+    "<p>A very long link: https</p>"
+   ],
+   "55": [
+    "<p>A very long link: <a href=\"https://example.com/aaaaaaaaaaaaaaaaa\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">https://example.com/aaaaaaaaaaaaaaaaa</a></p>"
+   ],
+   "78": [
+    "<p>A very long link: <a href=\"https://example.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">https://example.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></p>"
+   ],
+   "101": [
+    "<p>A very long link: <a href=\"https://example.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">https://example.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></p>"
+   ],
+   "133": [
+    "<p>A very long link: <a href=\"https://example.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbb\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">https://example.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbb</a></p>"
+   ]
+  }
+ },
+ "nbsp-and-hyphens": {
+  "final": "<p>Non-breaking space and AI Mode, en-dash style.</p>",
+  "stream": {
+   "7": [
+    "<p>Non‑bre</p>"
+   ],
+   "16": [
+    "<p>Non‑breaking spa</p>"
+   ],
+   "23": [
+    "<p>Non‑breaking space and</p>"
+   ],
+   "30": [
+    "<p>Non‑breaking space and AI Mode</p>"
+   ],
+   "39": [
+    "<p>Non‑breaking space and AI Mode, en‐dash</p>"
+   ]
+  }
+ },
+ "headings-with-code": {
+  "final": "<h2>Using <code>fetch()</code> in <strong>JS</strong></h2><p>Call <code>fetch(url)</code>.</p>",
+  "stream": {
+   "7": [
+    "<h2>Usin</h2>"
+   ],
+   "17": [
+    "<h2>Using <code>fetch()</code></h2>"
+   ],
+   "24": [
+    "<h2>Using <code>fetch()</code> in</h2>"
+   ],
+   "31": [
+    "<h2>Using <code>fetch()</code> in <strong>JS</strong></h2>",
+    "<p>C</p>"
+   ],
+   "41": [
+    "<h2>Using <code>fetch()</code> in <strong>JS</strong></h2>",
+    "<p>Call <code>fetch</code></p>"
+   ]
+  }
+ },
+ "everything": {
+  "final": "<h1>Weekly plan</h1><p>Here&#39;s your plan for <strong>SSC</strong> prep:</p><div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">Day</th><th class=\"nw\">Subject</th><th class=\"ta-r nw\">Hours</th></tr></thead><tbody><tr><td class=\"nw\">Sat</td><td class=\"nw\">Physics</td><td class=\"ta-r nw\">2</td></tr><tr><td class=\"nw\">Sun</td><td class=\"nw\">Chemistry</td><td class=\"ta-r nw\">1.5</td></tr></tbody></table></div><ol><li>Revise <span class=\"math\"><span class=\"mi\">F</span> = <span class=\"mi\">m</span><span class=\"mi\">a</span></span></li><li>Balance <span class=\"math chem\"><span class=\"mchem\">CH<sub>4</sub> + 2O<sub>2</sub>  ⟶  CO<sub>2</sub> + 2H<sub>2</sub>O</span></span></li></ol><div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Python</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>hours = [<span class=\"tn\">2</span>, <span class=\"tn\">1.5</span>]\n<span class=\"tf\">print</span>(<span class=\"tf\">sum</span>(hours))</code></pre></div><blockquote class=\"callout tip\"><p class=\"callout-title\">Tip</p><p>Short breaks help.</p></blockquote><p><strong>Sources:</strong> <a href=\"https://www.khanacademy.org/science\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">Khan Academy</a></p>",
+  "stream": {
+   "52": [
+    "<h1>Weekly plan</h1>",
+    "<p>Here&#39;s your plan for <strong>SSC</strong> prep:</p>"
+   ],
+   "122": [
+    "<h1>Weekly plan</h1>",
+    "<p>Here&#39;s your plan for <strong>SSC</strong> prep:</p>",
+    "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">Day</th><th class=\"nw\">Subject</th><th class=\"ta-r nw\">Hours</th></tr></thead><tbody><tr><td class=\"nw\">Sat</td><td class=\"nw\">Physics</td><td class=\"ta-r nw\">2</td></tr><tr><td class=\"nw\">Sun</td><td class=\"nw\"></td><td class=\"ta-r nw\"></td></tr></tbody></table></div>"
+   ],
+   "174": [
+    "<h1>Weekly plan</h1>",
+    "<p>Here&#39;s your plan for <strong>SSC</strong> prep:</p>",
+    "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">Day</th><th class=\"nw\">Subject</th><th class=\"ta-r nw\">Hours</th></tr></thead><tbody><tr><td class=\"nw\">Sat</td><td class=\"nw\">Physics</td><td class=\"ta-r nw\">2</td></tr><tr><td class=\"nw\">Sun</td><td class=\"nw\">Chemistry</td><td class=\"ta-r nw\">1.5</td></tr></tbody></table></div>",
+    "<ol><li>Revise <span class=\"math\"><span class=\"mi\">F</span> = <span class=\"mi\">m</span><span class=\"mi\">a</span></span></li><li>Balance $\\c</li></ol>"
+   ],
+   "226": [
+    "<h1>Weekly plan</h1>",
+    "<p>Here&#39;s your plan for <strong>SSC</strong> prep:</p>",
+    "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">Day</th><th class=\"nw\">Subject</th><th class=\"ta-r nw\">Hours</th></tr></thead><tbody><tr><td class=\"nw\">Sat</td><td class=\"nw\">Physics</td><td class=\"ta-r nw\">2</td></tr><tr><td class=\"nw\">Sun</td><td class=\"nw\">Chemistry</td><td class=\"ta-r nw\">1.5</td></tr></tbody></table></div>",
+    "<ol><li>Revise <span class=\"math\"><span class=\"mi\">F</span> = <span class=\"mi\">m</span><span class=\"mi\">a</span></span></li><li>Balance <span class=\"math chem\"><span class=\"mchem\">CH<sub>4</sub> + 2O<sub>2</sub>  ⟶  CO<sub>2</sub> + 2H<sub>2</sub>O</span></span></li></ol>",
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Python</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>hours = [<span class=\"tn\">2</span>, <span class=\"tn\">1</span></code></pre></div>"
+   ],
+   "296": [
+    "<h1>Weekly plan</h1>",
+    "<p>Here&#39;s your plan for <strong>SSC</strong> prep:</p>",
+    "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">Day</th><th class=\"nw\">Subject</th><th class=\"ta-r nw\">Hours</th></tr></thead><tbody><tr><td class=\"nw\">Sat</td><td class=\"nw\">Physics</td><td class=\"ta-r nw\">2</td></tr><tr><td class=\"nw\">Sun</td><td class=\"nw\">Chemistry</td><td class=\"ta-r nw\">1.5</td></tr></tbody></table></div>",
+    "<ol><li>Revise <span class=\"math\"><span class=\"mi\">F</span> = <span class=\"mi\">m</span><span class=\"mi\">a</span></span></li><li>Balance <span class=\"math chem\"><span class=\"mchem\">CH<sub>4</sub> + 2O<sub>2</sub>  ⟶  CO<sub>2</sub> + 2H<sub>2</sub>O</span></span></li></ol>",
+    "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Python</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code>hours = [<span class=\"tn\">2</span>, <span class=\"tn\">1.5</span>]\n<span class=\"tf\">print</span>(<span class=\"tf\">sum</span>(hours))</code></pre></div>",
+    "<blockquote class=\"callout tip\"><p class=\"callout-title\">Tip</p><p>Short breaks help.</p></blockquote>",
+    "<p><strong>Sources:</strong></p>"
+   ]
+  }
+ },
+ "@prefixes": {
+  "Here is **bold": [
+   "<p>Here is <strong>bold</strong></p>"
+  ],
+  "Use `code": [
+   "<p>Use <code>code</code></p>"
+  ],
+  "| A | B |\n|---|---|\n| 1 | ": [
+   "<div class=\"table-wrap\"><table><thead><tr><th class=\"nw\">A</th><th>B</th></tr></thead><tbody><tr><td class=\"nw\">1</td><td></td></tr></tbody></table></div>"
+  ],
+  "| A | B |\n|---": [],
+  "```python\ndef f():\n    return 1": [
+   "<div class=\"codeblock\"><div class=\"code-head\"><span class=\"lang\">Python</span><button type=\"button\" class=\"wrap-code\" aria-label=\"Wrap long lines\" aria-pressed=\"false\" title=\"Wrap long lines\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-wrap\"/></svg></button><button type=\"button\" class=\"copy-code\" aria-label=\"Copy code\"><svg class=\"ic\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg><span>Copy</span></button></div><pre><code><span class=\"tk\">def</span> <span class=\"tf\">f</span>():\n    <span class=\"tk\">return</span> <span class=\"tn\">1</span></code></pre></div>"
+  ],
+  "The formula $x^2 + ": [
+   "<p>The formula $x^2 +</p>"
+  ],
+  "$$\\frac{1}{": [],
+  "See [the docs](https://exa": [
+   "<p>See</p>"
+  ],
+  "1. First\n2. Sec": [
+   "<ol><li>First</li><li>Sec</li></ol>"
+  ],
+  "> [!NOTE]\n> Half a callo": [
+   "<blockquote class=\"callout note\"><p class=\"callout-title\">Note</p><p>Half a callo</p></blockquote>"
+  ],
+  "সমীকরণ: ৬CO₂ + ৬H": [
+   "<p>সমীকরণ: 6CO₂ + 6H</p>"
+  ]
+ }
+}

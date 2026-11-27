@@ -1,0 +1,37 @@
+[
+  {
+    "key": "/favicon.ico",
+    "file": "favicon.ico",
+    "encoding": "base64"
+  },
+  {
+    "key": "/favicon-48.png",
+    "file": "favicon-48.png",
+    "encoding": "base64"
+  },
+  {
+    "key": "/apple-touch-icon.png",
+    "file": "apple-touch-icon.png",
+    "encoding": "base64"
+  },
+  {
+    "key": "/icon-192.png",
+    "file": "icon-192.png",
+    "encoding": "base64"
+  },
+  {
+    "key": "/icon-512.png",
+    "file": "icon-512.png",
+    "encoding": "base64"
+  },
+  {
+    "key": "/icon-maskable-512.png",
+    "file": "icon-maskable-512.png",
+    "encoding": "base64"
+  },
+  {
+    "key": "/og.jpg",
+    "file": "og.jpg",
+    "encoding": "base64"
+  }
+]

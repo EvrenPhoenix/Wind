@@ -1,0 +1,1859 @@
+
+/* ============================================================================
+   Wind — design tokens
+   Day sky and night sky: airy blues by day, deep navy and stars by night. The brand gradient (cyan → blue → periwinkle)
+   appears only in the Wind mark; everything else is flat.
+   ============================================================================ */
+/* Bengali: Noto Sans Bengali, served by Wind itself (src/fonts.js). The unicode-range means a browser only fetches it
+   when the page shows Bengali, and every device draws Bengali the same way, conjuncts included. */
+@font-face{font-family:"Wind Bengali";font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/noto-sans-bengali-3011.woff2) format("woff2");unicode-range:U+0951-0952,U+0964-0965,U+0980-09FE,U+1CD0-1CF9,U+200C-200D,U+20B9,U+25CC,U+A8F1}
+:root{
+  color-scheme:dark;
+  /* night sky: the day's blue sky, deepened, fading into smooth black; black surfaces where the day has white */
+  --bg:#08090c; --side:#0c0d11; --panel:#131419; --raised:#17191f; --hover:#1c1e25; --active:#252831;
+  --line:#1b1d23; --line2:#2a2d36;
+  --text:#eef0f5; --muted:#a8aebb; --faint:#848a98; --placeholder:#8c93a2;
+  --rb-bg:#16181e; --rb-line:#2c2f39; --rb-hover:#1d2027; --rb-ic:#ffffff;
+  --composer:#15171c; --composer-line:#2d3039; --composer-ph:#9aa0ad; --voice:linear-gradient(90deg,#3b82f6 0%,#3b82f6 58%,#6d6af6 82%,#8b5cf6 100%); --voice-glow:rgba(59,130,246,.5); --high:#b79dff; --slide-thumb:#2a2d36;
+  --accent:#8cc2ff; --accent-soft:rgba(109,180,255,.13); --accent-ring:rgba(109,180,255,.42); --focus-line:#3a3f4c;
+  --g1:#7dd3fc; --g2:#3b82f6; --g3:#8b5cf6;
+  --bubble:#172238; --bubble-text:#eef0f5;
+  --code:#07080b; --code-head:#101217; --code-line:#1e2028; --inline-code:#1b1d24;
+  --danger:#ff8f8f; --danger-soft:rgba(255,110,110,.1); --danger-line:rgba(255,110,110,.28);
+  --warn:#f2c26b; --warn-soft:rgba(242,194,107,.09); --warn-line:rgba(242,194,107,.28);
+  --tk:#c4a7ff; --ts:#a5dba0; --tn:#f5b37e; --tc:#7f8594; --tf:#7fc4ff; --tt:#6fdacb; --tb:#f59fb5; --tp:#9fd0ff; --tv:#f0d08a; --tg:#7fc4ff; --ta:#c4a7ff;
+  --ti:#8fdf9f; --ti-bg:rgba(80,200,120,.12); --td:#ff9a9a; --td-bg:rgba(255,100,100,.12);
+  --shadow-s:0 1px 2px rgba(0,0,0,.4);
+  --shadow-m:0 14px 36px -14px rgba(0,0,0,.75),0 2px 8px rgba(0,0,0,.3);
+  --shadow-l:0 28px 70px -22px rgba(0,0,0,.85),0 6px 16px rgba(0,0,0,.35);
+  --composer-shadow:0 12px 32px -18px rgba(0,0,0,.7);
+  --overlay:rgba(0,0,0,.6);
+  /* skies: the same shapes as the day's, night blue on top and smooth black below */
+  --sky-soft:linear-gradient(180deg,#0b1830 0%,#090c13 30%,#08090c 100%);
+  --sky-home:radial-gradient(ellipse 130% 60% at 50% 80%,#07080b 0%,rgba(7,8,11,0) 70%),linear-gradient(180deg,#123268 0%,#0b1a38 44%,#08090d 100%);
+  --sky-vivid:radial-gradient(ellipse 130% 62% at 50% 74%,#08090c 0%,rgba(8,9,12,.4) 38%,rgba(8,9,12,0) 72%),linear-gradient(180deg,#14408a 0%,#0d2858 46%,#090b10 100%);
+  --star-o:0;
+  /* tab bar, glass buttons, Wisp */
+  --tab:#14161b; --tab-line:rgba(255,255,255,.06); --tab-active:#23262e; --tab-ink:#858b98; --tab-ink-on:#f2f4f8;
+  --glass:rgba(255,255,255,.1); --glass-line:rgba(255,255,255,.18); --glass-ink:#f1f4ff; --glass-solid:rgba(255,255,255,.12);
+  --cta:#f1f3f7; --cta-ink:#0e1014; --field:rgba(255,255,255,.07); --field-line:rgba(255,255,255,.16);
+  --wp-ink:#f1f4ff; --wp-ink-soft:#aeb5c3;
+  --wp-msg:rgba(26,28,35,.92); --wp-msg-ink:#eef0f5; --wp-you:#1f5fc4; --wp-you-ink:#ffffff;
+  --wp-puff:#eef1fb; --wp-eye:#141927; --wp-mark:#eef1ff; --wp-spark:#ffe7a3; --wp-ground:rgba(0,0,0,.55); --wp-halo:rgba(120,160,255,.18);
+  --card:#131419; --card-line:rgba(255,255,255,.06); --board-a:#1d3566; --board-b:#142447;
+  --ease:cubic-bezier(.22,.61,.36,1); --glide:cubic-bezier(.16,1,.3,1); --spring:cubic-bezier(.34,1.5,.64,1);
+  --sans:"Inter","Wind Bengali",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:"Newsreader","Wind Bengali","Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono","Wind Bengali",ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  --side-w:272px; --col:768px; --lift:0px;
+}
+:root[data-theme=light]{
+  color-scheme:light;
+  /* day sky: airy whites with a blue tint */
+  --bg:#f3f8fd; --side:#edf4fc; --panel:#ffffff; --raised:#ffffff; --hover:#e3edf8; --active:#d7e4f3;
+  --line:#e0e9f4; --line2:#cddbec;
+  --text:#141922; --muted:#4e596b; --faint:#667286; --placeholder:#6c788b;
+  --rb-bg:#ffffff; --rb-line:#d5e1ef; --rb-hover:#f1f6fc; --rb-ic:#15181e;
+  --composer:#ffffff; --composer-line:#d3dfee; --composer-ph:#6c788b; --voice:linear-gradient(90deg,#2563eb 0%,#2563eb 58%,#5b4be8 82%,#7c3aed 100%); --voice-glow:rgba(37,99,235,.4); --high:#7c3aed; --slide-thumb:#e3edf8;
+  --accent:#2463d6; --accent-soft:rgba(47,125,242,.1); --accent-ring:rgba(47,125,242,.4); --focus-line:#b3c4da;
+  --g1:#38bdf8; --g2:#2563eb; --g3:#7c3aed;
+  --bubble:#e2edf9; --bubble-text:#141922;
+  --code:#f6f9fd; --code-head:#eaf1f9; --code-line:#dbe5f1; --inline-code:#e6eef8;
+  --danger:#c4303a; --danger-soft:rgba(214,48,58,.06); --danger-line:rgba(214,48,58,.26);
+  --warn:#8a5a00; --warn-soft:rgba(190,130,0,.07); --warn-line:rgba(190,130,0,.3);
+  --tk:#7c3aed; --ts:#1b7a3d; --tn:#b45309; --tc:#667286; --tf:#1d5fd0; --tt:#0b7a75; --tb:#c0266b; --tp:#1d5fd0; --tv:#8a5a00; --tg:#1d5fd0; --ta:#7c3aed;
+  --ti:#17703a; --ti-bg:rgba(30,160,80,.12); --td:#b3262f; --td-bg:rgba(220,60,60,.1);
+  --shadow-s:0 1px 2px rgba(20,50,90,.07);
+  --shadow-m:0 14px 36px -16px rgba(20,50,90,.22),0 2px 8px rgba(20,50,90,.06);
+  --shadow-l:0 28px 70px -24px rgba(20,50,90,.3),0 6px 16px rgba(20,50,90,.08);
+  --composer-shadow:0 12px 32px -20px rgba(20,50,90,.25),0 1px 2px rgba(20,50,90,.05);
+  --overlay:rgba(10,30,60,.3);
+  --sky-soft:linear-gradient(180deg,#dcecfb 0%,#eef5fd 30%,#f5f9fd 100%);
+  --sky-home:radial-gradient(ellipse 130% 60% at 50% 80%,#f5faff 0%,rgba(245,250,255,0) 70%),linear-gradient(180deg,#8fc1f0 0%,#c4dff8 44%,#eef5fd 100%);
+  --sky-vivid:radial-gradient(ellipse 130% 62% at 50% 74%,#eef6fd 0%,rgba(238,246,253,.4) 38%,rgba(238,246,253,0) 72%),linear-gradient(180deg,#2d7ad3 0%,#68abea 46%,#dcebf8 100%);
+  --star-o:0;
+  --tab:#ffffff; --tab-line:rgba(20,50,90,.06); --tab-active:#eceef2; --tab-ink:#8b94a3; --tab-ink-on:#15181e;
+  --glass:rgba(255,255,255,.24); --glass-line:rgba(255,255,255,.5); --glass-ink:#ffffff; --glass-solid:rgba(255,255,255,.3);
+  --cta:#15181e; --cta-ink:#ffffff; --field:#ffffff; --field-line:rgba(20,40,70,.14);
+  --wp-ink:#141922; --wp-ink-soft:#4b5565;
+  --wp-msg:rgba(255,255,255,.86); --wp-msg-ink:#141922; --wp-you:#2a74d0; --wp-you-ink:#ffffff;
+  --wp-puff:#f6f7f9; --wp-eye:#1b2130; --wp-mark:#1b2130; --wp-spark:#ffffff; --wp-ground:rgba(24,70,135,.26); --wp-halo:rgba(255,255,255,.55);
+  --card:#ffffff; --card-line:rgba(20,50,90,.06); --board-a:#a9cbef; --board-b:#e4f0fb;
+}
+
+/* ---------- base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font:15px/1.5 var(--sans);font-kerning:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-optical-sizing:auto;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow:hidden}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none;padding:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+h1,h2,h3,h4,p{margin:0}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--accent-ring);outline-offset:2px}
+::selection{background:rgba(109,180,255,.3)}
+svg{flex-shrink:0}
+.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.ic.sm{width:14px;height:14px;stroke-width:2}
+.mark{display:block}
+.wg-a{stop-color:var(--g1)}.wg-b{stop-color:var(--g2)}.wg-c{stop-color:var(--g3)}
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:fixed;left:12px;top:-60px;z-index:100;background:var(--panel);color:var(--text);border:1px solid var(--line2);padding:9px 14px;border-radius:10px;font-size:14px;font-weight:550;text-decoration:none;transition:top .15s}
+.skip:focus{top:12px}
+*{scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:var(--line2);border-radius:10px;border:3px solid transparent;background-clip:padding-box}
+::-webkit-scrollbar-thumb:hover{background:var(--faint);border:3px solid transparent;background-clip:padding-box}
+::-webkit-scrollbar-track,::-webkit-scrollbar-corner{background:transparent}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+.kbd{font:500 11.5px/1 var(--sans);color:var(--faint);letter-spacing:.02em;white-space:nowrap}
+
+#app{height:100vh;height:100dvh;display:flex;overflow:hidden;padding-top:env(safe-area-inset-top)}
+
+/* ---------- buttons ---------- */
+.icon-btn{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:var(--muted);transition:background .15s,color .15s,transform .15s}
+.icon-btn:hover{background:var(--hover);color:var(--text)}
+.icon-btn:active{transform:scale(.94)}
+.icon-btn.sm{width:30px;height:30px;border-radius:8px}
+.btn{height:36px;padding:0 16px;border-radius:10px;font-size:14px;font-weight:550;background:var(--hover);color:var(--text);transition:background .15s,transform .15s}
+.btn:hover{background:var(--active)}
+.btn:active{transform:scale(.97)}
+.btn.danger{background:#d93843;color:#fff}
+.btn.danger:hover{background:#c22f3a}
+
+/* ---------- sidebar ---------- */
+.sidebar{width:var(--side-w);flex:0 0 var(--side-w);background:var(--side);border-right:1px solid var(--line);display:flex;flex-direction:column;position:relative;z-index:4;transition:margin-left .34s var(--ease)}
+#app.sidebar-hidden .sidebar{margin-left:calc(-1 * var(--side-w));visibility:hidden;transition:margin-left .34s var(--ease),visibility 0s .34s}
+.side-head{display:flex;align-items:center;justify-content:space-between;height:64px;flex-shrink:0;padding:0 10px 0 12px}
+.brand{display:flex;align-items:center;gap:10px;height:36px;padding:0 8px 0 6px;border-radius:10px;font-size:17px;font-weight:620;letter-spacing:-.022em}
+.brand{align-items:baseline!important}
+.brand .mark{height:14px;width:23px;transform:translateY(1px)}
+.brand span{font:500 21px/1 var(--serif);font-optical-sizing:auto;letter-spacing:-.01em}
+.side-actions{padding:2px 10px 6px;display:flex;flex-direction:column;gap:2px;flex-shrink:0}
+.side-row{display:flex;align-items:center;gap:11px;width:100%;height:38px;padding:0 10px;border-radius:10px;font-size:14px;font-weight:500;text-align:left;color:var(--text);transition:background .15s}
+.side-row:hover{background:var(--hover)}
+.side-row .ic{color:var(--muted)}
+.side-row>span{flex:1;min-width:0}
+.side-row .kbd{opacity:0;transition:opacity .15s}
+.side-row:hover .kbd,.side-row:focus-within .kbd{opacity:1}
+.side-search{cursor:text}
+.side-search:focus-within{background:var(--hover);box-shadow:inset 0 0 0 1px var(--line2)}
+.side-search input{flex:1;min-width:0;height:100%;background:none;border:0;outline:0;padding:0;font-size:14px;font-weight:500}
+.side-search input::placeholder{color:var(--text);opacity:1;font-weight:500}
+.side-search:focus-within input::placeholder{color:var(--faint);font-weight:400}
+.side-search input::-webkit-search-cancel-button{display:none}
+.history{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:0 10px 14px}
+.group{padding:18px 10px 6px;font-size:12px;font-weight:600;color:var(--faint);letter-spacing:.01em;position:sticky;top:0;background:var(--side);z-index:1}
+.group:first-child{padding-top:10px}
+.hitem{position:relative;display:flex;align-items:center;height:36px;border-radius:10px;color:var(--muted);transition:background .15s,color .15s}
+.hitem:hover,.hitem.menu-open{background:var(--hover);color:var(--text)}
+.hitem.active{background:var(--active);color:var(--text)}
+.hopen{flex:1;min-width:0;height:100%;padding:0 4px 0 10px;text-align:left;font-size:14px;display:flex;align-items:center;gap:8px;border-radius:10px}
+.hopen .t{flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.hitem.active .hopen{font-weight:550}
+.hitem .more{width:28px;height:28px;margin-right:4px;border-radius:8px;display:grid;place-items:center;color:var(--muted);opacity:0;transition:opacity .15s,background .15s,color .15s;flex-shrink:0}
+.hitem:hover .more,.hitem:focus-within .more,.hitem.menu-open .more,.hitem.active .more{opacity:1}
+.hitem .more:hover{background:var(--line2);color:var(--text)}
+.hitem .live{width:17px;height:10.5px;flex-shrink:0}
+.hitem input.rename{flex:1;min-width:0;height:28px;margin:0 6px;padding:0 8px;border-radius:7px;border:1px solid var(--accent-ring);background:var(--bg);outline:0;font-size:14px}
+.empty{padding:28px 14px;color:var(--faint);font-size:13.5px;line-height:1.55;text-align:center}
+.empty strong{display:block;color:var(--muted);font-weight:550;margin-bottom:2px}
+.side-foot{flex-shrink:0;padding:8px 10px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+.overlay{display:none}
+
+/* ---------- main ---------- */
+.main{flex:1;min-width:0;display:flex;flex-direction:column;position:relative;isolation:isolate}
+.topbar{height:64px;flex-shrink:0;display:flex;align-items:center;gap:8px;padding:0 15px;position:relative;z-index:3}
+.top-side{display:flex;align-items:center;gap:2px;flex:0 0 auto}
+.top-side.end{justify-content:flex-end}
+.top-title{flex:1;min-width:0;display:flex;align-items:center}
+#app:not(.sidebar-hidden) #menu{display:none}
+.main:not(.chatting) #chatPill{display:none}
+/* temporary chat: its button sits top right on a new chat, and stays (lit) while a temporary chat is open */
+.main.chatting:not(.temp) #tempBtn{display:none}
+.main.temp #chatPill{display:none!important}
+/* the round top-bar buttons (sidebar, temporary chat) */
+.icon-btn.round{width:47px;height:47px;border-radius:50%;background:var(--rb-bg);border:1px solid var(--rb-line);color:var(--rb-ic)}
+.icon-btn.round:hover{background:var(--rb-hover);color:var(--rb-ic)}
+.icon-btn.round svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+.rb-lines{width:45px;height:45px;stroke-width:1.9}
+.rb-bubble{width:26.6px;height:26.6px;stroke-width:2.06}
+#tempBtn[aria-pressed=true]{border-color:var(--rb-ic)}
+/* the pill in a chat: new chat on the left, the chat's options (three dots) on the right */
+.top-pill{display:flex;align-items:center;justify-content:space-between;width:96px;height:47px;flex-shrink:0;border-radius:23.5px;background:var(--rb-bg);border:1px solid var(--rb-line);color:var(--rb-ic)}
+.tp-btn{width:44.5px;height:45px;border-radius:22.5px;display:grid;place-items:center;color:inherit;transition:background .15s}
+.tp-btn:hover,.tp-btn[aria-expanded=true]{background:var(--rb-hover)}
+.tp-btn:active svg{transform:scale(.92)}
+.tp-btn svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+.tp-pen{width:22.8px;height:22.8px;stroke-width:2.2}
+.tp-dots{width:4.5px;height:19.1px}
+.hero .temp-mark{width:1.25em;height:1.25em;fill:none;stroke:var(--text);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.temp-note{margin:0;font:400 15px/1.5 var(--sans);color:var(--muted);text-align:center;max-width:320px}
+.scroll{flex:1;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;position:relative;z-index:1;outline:0}
+.main.chatting .scroll{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18px,#000 calc(100% - 22px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 18px,#000 calc(100% - 22px),transparent 100%)}
+.inner{width:min(var(--col),100% - 48px);min-height:100%;margin:0 auto;display:flex;flex-direction:column;padding:14px 0 34px}
+
+/* ---------- welcome ---------- */
+.welcome{margin:auto auto 0;width:100%;display:flex;justify-content:center;padding:0 0 30px}
+.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.42em;text-align:center;font-size:clamp(32px,2.9vw,38px)}
+/* the W on top, the greeting under it */
+.hero .mark{height:1.3em;width:calc(1.3em * 1.637);flex-shrink:0;animation:rise .6s var(--glide) both}
+.greet{font:400 1em/1.15 var(--serif);font-optical-sizing:auto;letter-spacing:-.012em;animation:rise .6s var(--glide) .05s both;text-wrap:balance}
+
+/* ---------- messages ---------- */
+.msg{position:relative;margin:0 0 36px;scroll-margin-top:12px}
+.msg.fresh{animation:rise .42s var(--glide) var(--age,0s) both}
+.msg.user{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.bubble{max-width:min(78%,620px);background:var(--bubble);color:var(--bubble-text);padding:10px 16px;border-radius:20px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:16px;line-height:1.55}
+.bubble.long{max-height:15.5em;overflow:hidden;-webkit-mask-image:linear-gradient(#000 calc(100% - 3.2em),transparent);mask-image:linear-gradient(#000 calc(100% - 3.2em),transparent)}
+.more-btn{font-size:13px;font-weight:550;color:var(--muted);padding:2px 6px;border-radius:6px;margin:-4px 44px 0 0}
+.more-btn:hover{color:var(--text);background:var(--hover)}
+.ufile{display:inline-flex;align-items:center;gap:10px;max-width:min(78%,420px);padding:6px 14px 6px 6px;border-radius:14px;background:var(--panel);border:1px solid var(--line2);font-size:13.5px;font-weight:550}
+.ufile .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fi{width:32px;height:32px;flex-shrink:0;border-radius:9px;display:grid;place-items:center;color:var(--accent);background:var(--accent-soft);font:600 9.5px/1 var(--mono);letter-spacing:.3px;text-transform:uppercase}
+.uimgs{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;max-width:78%}
+.uimg{width:150px;height:150px;border-radius:16px;overflow:hidden;border:1px solid var(--line2);background:var(--hover);display:grid;place-items:center;color:var(--muted);cursor:zoom-in;transition:transform .25s var(--glide),box-shadow .25s}
+.uimg:hover:not(:disabled){transform:translateY(-2px);box-shadow:var(--shadow-m)}
+.uimg img{width:100%;height:100%;object-fit:cover;display:block}
+.uimg.solo{width:auto;height:auto;max-width:320px}
+.uimg.solo img{width:auto;height:auto;max-width:320px;max-height:340px}
+.uimg:disabled{cursor:default;width:150px;height:110px}
+.acts{position:absolute;top:100%;margin-top:2px;display:flex;align-items:center;gap:2px;transition:opacity .2s;z-index:1}
+.acts .icon-btn{width:32px;height:32px;border-radius:9px;color:var(--faint)}
+.acts .icon-btn:hover{color:var(--text)}
+.acts .ic{width:16px;height:16px}
+.msg.user .acts{right:-4px;opacity:0}
+.msg.user:hover .acts,.msg.user:focus-within .acts{opacity:1}
+.msg.assistant .acts{left:-8px;opacity:0}
+.msg.assistant:hover .acts,.msg.assistant:focus-within .acts,.msg.assistant.last .acts{opacity:1}
+.model-tag{margin-left:8px;font-size:12.5px;font-weight:500;color:var(--faint);cursor:default}
+.thinking{display:flex;align-items:center;gap:10px;height:28px;color:var(--muted);font-size:15px}
+.thinking .mark{width:24px;height:15px}
+/* while Wind works, light flows along the W (a faint full W stays underneath) */
+.mark.spin{--wtrack:.22;stroke-dasharray:46 54;animation:windflow 1.25s linear infinite}
+@keyframes windflow{to{stroke-dashoffset:-100}}
+.msg.writing::after{content:"";position:absolute;left:2px;bottom:-20px;width:7px;height:7px;border-radius:50%;background:var(--muted);animation:glow 1.4s ease-in-out infinite;pointer-events:none}
+.shimmer{background:linear-gradient(90deg,var(--faint) 0%,var(--faint) 35%,var(--text) 50%,var(--faint) 65%,var(--faint) 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 2.2s linear infinite}
+
+/* ---------- reply typography ---------- */
+.answer{font-size:16px;line-height:1.7;overflow-wrap:anywhere;min-width:0}
+.answer>:first-child{margin-top:0}
+.answer>:last-child{margin-bottom:0}
+.answer p{margin:0 0 1em}
+.answer p,.answer li{text-wrap:pretty}   /* no one-word last lines where it can be helped */
+.answer h1,.answer h2,.answer h3,.answer h4,.answer h5,.answer h6{line-height:1.3;font-weight:650;letter-spacing:-.015em;margin:1.6em 0 .55em}
+.answer h1{font-size:1.5em;letter-spacing:-.022em}.answer h2{font-size:1.3em;letter-spacing:-.018em}.answer h3{font-size:1.12em}.answer h4,.answer h5,.answer h6{font-size:1em}
+.answer strong{font-weight:650}
+/* Bengali (lang="bn", set by the page when a message is mostly Bengali): a little more room between lines for stacked
+   conjuncts and vowel signs above and below, and no tightened heading tracking, which would break the headline that
+   joins a word's letters. Lists numbered in Bengali keep Bengali numerals. */
+.answer:lang(bn){line-height:1.8}
+.answer:lang(bn) :is(h1,h2,h3,h4,h5,h6){letter-spacing:0;line-height:1.45}
+.bubble:lang(bn){line-height:1.7}
+.answer ol.bn{list-style-type:bengali}
+.answer a{color:var(--accent);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;text-decoration-thickness:1px;transition:text-decoration-color .15s}
+.answer a:hover{text-decoration-color:currentColor}
+.answer ul,.answer ol{margin:0 0 1em;padding-left:1.55em}
+.answer li{margin:.3em 0;padding-left:.2em}
+.answer li>ul,.answer li>ol{margin:.3em 0 .3em}
+.answer li>p{margin:0 0 .6em}
+.answer li>p:last-child{margin-bottom:0}
+.answer li::marker{color:var(--faint)}
+.answer ol>li::marker{font-variant-numeric:tabular-nums;font-weight:550;font-size:.94em}
+.answer li.task{list-style:none;margin-left:-1.45em;display:flex;gap:.6em;align-items:baseline}
+.answer li.task input{appearance:none;-webkit-appearance:none;width:1.05em;height:1.05em;flex-shrink:0;margin:0;border:1.5px solid var(--line2);border-radius:.3em;position:relative;top:.16em;background:var(--panel)}
+.answer li.task input:checked{background:var(--accent);border-color:var(--accent)}
+.answer li.task input:checked::after{content:"";position:absolute;left:28%;top:8%;width:30%;height:58%;border:solid var(--bg);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.answer code{font:.875em var(--mono);font-variant-ligatures:none;background:var(--inline-code);border-radius:6px;padding:.14em .4em}
+.answer blockquote{margin:0 0 1em;padding:.1em 0 .1em 1em;border-left:3px solid var(--line2);color:var(--muted)}
+.answer blockquote>:last-child{margin-bottom:0}
+.answer blockquote.callout{border-left-color:var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:.7em 1em;color:var(--text)}
+.answer blockquote.callout.warning,.answer blockquote.callout.caution{border-left-color:var(--warn);background:var(--warn-soft)}
+.callout-title{font-weight:650;font-size:.9em;margin:0 0 .25em!important;color:var(--accent)}
+.callout.warning .callout-title,.callout.caution .callout-title{color:var(--warn)}
+.answer hr{border:0;height:1px;margin:1.7em 0;background:var(--line2)}
+.answer kbd{font:.82em var(--mono);padding:.12em .42em;border-radius:5px;border:1px solid var(--line2);border-bottom-width:2px;background:var(--panel)}
+.answer mark{background:rgba(242,194,107,.3);color:inherit;border-radius:3px;padding:0 .15em}
+.answer del{color:var(--faint)}
+.table-wrap{overflow-x:auto;margin:0 0 1.1em;border:1px solid var(--line);border-radius:12px}
+.answer table{border-collapse:collapse;width:100%;font-size:.9em;line-height:1.55}
+.answer th,.answer td{padding:9px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;overflow-wrap:break-word;word-break:normal}
+.answer td a{overflow-wrap:anywhere}
+.answer td.nw{white-space:nowrap}
+@media (max-width:640px){.answer .wide{min-width:11em}}
+.answer th{font-weight:600;font-size:.94em;background:var(--code-head)}
+.answer tbody tr:last-child td{border-bottom:0}
+.answer .ta-c{text-align:center}.answer .ta-r{text-align:right}
+.answer.streaming .caret::after{content:"";display:inline-block;width:.6em;height:.6em;margin-left:.3em;border-radius:50%;vertical-align:.02em;background:var(--text);animation:glow 1.4s ease-in-out calc(var(--t,0) * -1ms) infinite}
+.answer.notice,.answer.failed{display:flex;gap:10px;align-items:flex-start;padding:11px 14px;border-radius:12px;font-size:15px;line-height:1.55}
+.answer.notice{border:1px solid var(--warn-line);background:var(--warn-soft)}
+.answer.failed{border:1px solid var(--danger-line);background:var(--danger-soft)}
+.answer.notice>.ic,.answer.failed>.ic{margin-top:3px}
+.answer.notice>.ic{color:var(--warn)}.answer.failed>.ic{color:var(--danger)}
+.answer.notice p,.answer.failed p{margin:0}
+.answer.notice strong{color:var(--warn)}.answer.failed strong{color:var(--danger)}
+
+/* ---------- citations and sources ---------- */
+.answer a.cite{display:inline-block;white-space:nowrap;vertical-align:baseline;margin:0 .08em;padding:.05em .6em;border-radius:999px;background:var(--hover);color:var(--muted);font-size:.72em;font-weight:600;line-height:1.45;letter-spacing:.005em;text-decoration:none;transition:background .15s,color .15s}
+.answer a.cite:hover{background:var(--active);color:var(--text)}
+.answer .sources{margin:1.25em 0 0}
+.answer .src-head{margin:0 0 8px;font-size:12.5px;font-weight:600;line-height:1.3;color:var(--faint);letter-spacing:.01em}
+.src-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:8px}
+.answer a.src{display:flex;flex-direction:column;justify-content:space-between;gap:8px;min-width:0;padding:9px 11px 8px;border:1px solid var(--line2);border-radius:12px;background:var(--panel);color:var(--text);text-decoration:none;transition:background .15s,border-color .15s}
+.answer a.src:hover{background:var(--hover);border-color:var(--focus-line)}
+.src-t{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13px;font-weight:550;line-height:1.38;overflow-wrap:anywhere}
+.src-d{display:flex;align-items:center;gap:6px;min-width:0;font-size:12px;line-height:1.2;color:var(--faint)}
+.src-h{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.src-ic{width:16px;height:16px;flex-shrink:0;display:grid;place-items:center;border-radius:5px;background:var(--hover);color:var(--muted);font-size:9.5px;font-weight:700;line-height:1}
+/* while a reply plays back, a pill or card appears with its own text, not as an empty shape ahead of it */
+.answer a.cite:has(> .rv-w:first-child:not(.rv-on)),.answer a.src:has(> .src-t > .rv-w:first-child:not(.rv-on)),.answer :not(pre)>code:has(> .rv-w:first-child:not(.rv-on)){visibility:hidden}
+@media(max-width:820px){
+  .src-list{display:flex;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;padding-bottom:2px}
+  .src-list::-webkit-scrollbar{display:none}
+  .answer a.src{flex:0 0 min(200px,62vw);scroll-snap-align:start}
+}
+
+/* ---------- reply versions and read aloud ---------- */
+.vers{display:inline-flex;align-items:center;margin-right:2px}
+.acts .vers .icon-btn{width:26px}
+.vers .prev .ic{transform:rotate(90deg)}
+.vers .next .ic{transform:rotate(-90deg)}
+.vers .icon-btn:disabled{opacity:.32;cursor:default;background:none}
+.vn{min-width:34px;text-align:center;font-size:12.5px;font-weight:550;color:var(--faint);font-variant-numeric:tabular-nums}
+/* read aloud: a speaker; while it reads, a soft accent pill with live sound bars, and a stop square under the pointer */
+.acts .speak{transition:background .2s,color .2s}
+.speak .eq,.speak .stopi{display:none}
+.acts .speak.on,.acts .speak.on:hover{color:var(--accent);background:var(--accent-soft)}
+.speak.on > .ic:first-child{display:none}
+.speak.on .eq{display:flex}
+.speak.on:focus-visible .eq{display:none}
+.speak.on:focus-visible .stopi{display:block}
+@media(hover:hover){.speak.on:hover .eq{display:none}.speak.on:hover .stopi{display:block}}   /* touch screens keep a tapped button "hovered": they show the bars */
+.speak .eq{align-items:center;gap:2px;height:13px}
+.speak .eq i{width:2.4px;height:100%;border-radius:2px;background:currentColor;animation:eq .9s ease-in-out infinite}
+.speak .eq i:nth-child(2){animation-delay:-.35s}.speak .eq i:nth-child(3){animation-delay:-.6s}.speak .eq i:nth-child(4){animation-delay:-.15s}
+.acts .speak .stopi{width:12px;height:12px}
+
+/* ---------- weather card ---------- */
+.wx{margin:0 0 18px;padding:14px 16px 10px;border:1px solid var(--line2);border-radius:16px;background:var(--panel);font-size:14px;line-height:1.4}
+.wx.wx-in{animation:rise .42s var(--glide) both}
+.wx-head{display:flex;align-items:center;gap:12px;min-width:0}
+.wx-head .wx-ic{width:34px;height:34px;color:var(--text);stroke-width:1.5}
+.wx-now{display:flex;align-items:baseline;gap:10px;flex:1;min-width:0}
+.wx-temp{font-size:30px;font-weight:600;letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wx-cond{color:var(--muted);font-size:13.5px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wx-place{display:flex;flex-direction:column;align-items:flex-end;text-align:right;min-width:0;max-width:46%}
+.wx-name{max-width:100%;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wx-sub{font-size:12px;color:var(--faint);white-space:nowrap}
+.wx-sub a{color:inherit;text-decoration:none}
+.wx-sub a:hover{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+.wx-days{list-style:none;margin:12px 0 0;padding:8px 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(var(--n,7),minmax(42px,1fr));gap:2px;overflow-x:auto;scrollbar-width:none}
+.wx-days::-webkit-scrollbar{display:none}
+.wx-day{display:flex;flex-direction:column;align-items:center;gap:4px;padding:4px 0 2px;text-align:center}
+.wx-dl{font-size:12.5px;font-weight:550;color:var(--muted)}
+.wx-day:first-child .wx-dl{color:var(--text)}
+.wx-day .wx-ic{width:22px;height:22px;color:var(--muted)}
+.wx-hl{font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wx-hl b{font-weight:600}
+.wx-hl span{margin-left:4px;color:var(--faint)}
+.wx-pop{min-height:1.3em;font-size:11.5px;font-weight:600;color:var(--accent);font-variant-numeric:tabular-nums}
+@media(max-width:820px){
+  .wx{padding:12px 12px 8px}
+  .wx-head{flex-wrap:wrap;row-gap:6px}
+  .wx-place{order:-1;flex-basis:100%;max-width:100%;flex-direction:row;align-items:baseline;gap:8px;text-align:left}
+  .wx-name{flex:0 1 auto}
+  .wx-head .wx-ic{width:30px;height:30px}
+  .wx-temp{font-size:26px}
+  .wx-cond{white-space:normal}
+  .wx-days{grid-template-columns:repeat(var(--n,7),minmax(38px,1fr))}
+  .wx-hl{display:flex;flex-direction:column;align-items:center;line-height:1.3;font-size:12.5px}
+  .wx-hl span{margin-left:0}
+}
+
+/* ---------- code ---------- */
+.codeblock{border:1px solid var(--code-line);border-radius:12px;overflow:hidden;margin:0 0 1.1em;background:var(--code);direction:ltr;text-align:left}
+.answer li>.codeblock{margin:.5em 0 .7em}
+.code-head{display:flex;align-items:center;gap:10px;height:38px;padding:0 6px 0 14px;color:var(--faint);background:var(--code-head);border-bottom:1px solid var(--code-line)}
+.code-head .lang{flex:1;font:500 12.5px/1 var(--sans);letter-spacing:.01em}
+.copy-code{display:flex;align-items:center;gap:6px;height:28px;padding:0 9px;border-radius:7px;font-size:12.5px;font-weight:500;color:var(--muted);transition:background .15s,color .15s}
+.copy-code:hover{background:var(--hover);color:var(--text)}
+.copy-code .ic{width:14px;height:14px}
+.copy-code.done{color:var(--accent)}
+.wrap-code{width:28px;height:28px;display:grid;place-items:center;border-radius:7px;color:var(--faint);transition:background .15s,color .15s}
+.wrap-code:hover{background:var(--hover);color:var(--text)}
+.wrap-code .ic{width:15px;height:15px}
+.wrap-code[aria-pressed=true]{color:var(--accent)}
+.codeblock.wrap pre code{width:auto;white-space:pre-wrap;overflow-wrap:anywhere}
+.codeblock pre{margin:0;padding:14px 16px 15px;overflow-x:auto}
+.codeblock pre code{display:block;width:max-content;min-width:100%;padding:0;background:none;border-radius:0;color:var(--text);font:13.5px/1.62 var(--mono);font-variant-ligatures:none;tab-size:2;white-space:pre}
+.tk{color:var(--tk)}.ts{color:var(--ts)}.tn{color:var(--tn)}.tc{color:var(--tc);font-style:italic}.tf{color:var(--tf)}.tt{color:var(--tt)}.tb{color:var(--tb)}.tp{color:var(--tp)}.tv{color:var(--tv)}.tg{color:var(--tg)}.ta{color:var(--ta)}
+.ti{color:var(--ti);background:var(--ti-bg)}.td{color:var(--td);background:var(--td-bg)}
+
+/* ---------- maths ---------- */
+.math{direction:ltr;unicode-bidi:isolate;font-family:"Cambria Math","STIX Two Math","Latin Modern Math",Georgia,"Times New Roman",serif;font-size:1.08em;line-height:1.3;white-space:nowrap}
+.math .mi{font-style:italic}
+.math.chem .mi,.math .mchem{font-style:normal}   /* chemistry is upright: CO₂, not 𝐶𝑂₂ */
+.math.chem,.math .mchem{font-family:inherit;font-size:1em}   /* and in the text's own font */
+.math .mxarrow{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 .3em;line-height:1.1}
+.math .mxlab{font-size:.68em;font-style:normal;padding:0 .3em;white-space:nowrap}
+.math .mxlab .mi{font-style:normal}
+.math .mxarr{line-height:.9;font-size:1.25em;transform:scaleX(1.6)}
+.math .mt{font-style:normal}
+.math sup,.math sub{font-size:.72em;line-height:0}
+.math .mss{display:inline-flex;flex-direction:column;vertical-align:middle;line-height:1.05;margin-left:.05em}
+.math .mss sup,.math .mss sub{position:static;line-height:1.05;vertical-align:baseline}
+.math .mfrac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 .18em;line-height:1.25}
+.math .mnum{padding:0 .25em .08em;border-bottom:1px solid currentColor}
+.math .mden{padding:.08em .25em 0}
+.math .mbinom .mnum{border-bottom:0}
+.math .msqrt{white-space:nowrap}
+.math .mrad{border-top:1px solid currentColor;padding:.05em .12em 0 .1em;margin-left:-.04em}
+.math .mover{border-top:1px solid currentColor}
+.math .mbig{font-size:1.4em;line-height:1;vertical-align:-.12em}
+.math .mint{font-size:1.5em;vertical-align:-.2em}
+.math .mop{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.1;margin:0 .12em}
+.math .mlim{font-size:.7em;min-height:.2em}
+.math .mbox{border:1px solid currentColor;border-radius:4px;padding:.12em .4em}
+.math .mfenced{display:inline-flex;align-items:stretch;vertical-align:middle}
+.math .mfence{display:flex;align-items:center;font-size:1.9em;font-weight:200;line-height:1;transform:scaleX(.7)}
+.math .mtable{display:inline-table;vertical-align:middle;border-spacing:0}
+.math .mrow{display:table-row}
+.math .mcell{display:table-cell;padding:.16em .3em;text-align:left}
+.math .mmatrix .mcell{text-align:center;padding:.16em .5em}
+.math .malign .mcell:nth-child(odd){text-align:right;padding-right:0}
+.math .malign .mcell:nth-child(even){padding-left:0}
+.math-block{margin:0 0 1em;padding:.4em 0;overflow-x:auto;text-align:center}
+.math-block .math{font-size:1.2em}
+
+/* ---------- composer ---------- */
+.composer-wrap{flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:0 24px 12px;position:relative;z-index:2;transition:padding-bottom .7s var(--glide)}
+.main:not(.chatting) .composer-wrap{padding-bottom:calc(var(--lift) + 12px)}
+.composer-slot{position:relative;width:100%;max-width:var(--col);display:flex;flex-direction:column}
+/* A slim pill while the message fits on one line beside the buttons; longer text, attachments or an edit open it into a
+   box with the buttons underneath (the .tall class, set by resize()). */
+.composer{position:relative;width:100%;display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"banner banner banner" "chips chips chips" "left text right";align-items:center;align-content:center;column-gap:2px;min-height:51px;padding:0 10px 0 4.7px;border-radius:25.5px;background:var(--composer);border:1px solid var(--composer-line);box-shadow:var(--composer-shadow);transition:border-color .2s,box-shadow .25s,border-radius .3s var(--glide)}
+.composer.tall{grid-template-areas:"banner banner banner" "chips chips chips" "text text text" "left . right";padding:11px 10px 7px 4.7px}
+.composer.tall .bar-left,.composer.tall .bar-right{margin-top:6px}
+.composer.tall.drop::after{border-radius:19px}
+.composer.listening{border-color:#3b82f6;box-shadow:0 0 0 4px rgba(59,130,246,.14),var(--composer-shadow)}
+.composer.drop{border-color:var(--accent);box-shadow:0 0 0 6px var(--accent-soft),var(--composer-shadow)}
+.composer.drop::after{content:"Drop to attach";position:absolute;inset:5px;border-radius:24px;border:1.5px dashed var(--accent-ring);display:grid;place-items:center;font-size:14.5px;font-weight:550;color:var(--accent);background:var(--panel);opacity:.96;pointer-events:none;z-index:2}
+.edit-banner{grid-area:banner;display:flex;align-items:center;gap:8px;margin:0 4px 8px 8px;padding:0 0 8px;border-bottom:1px solid var(--line);font-size:13px;font-weight:500;color:var(--muted)}
+.edit-banner span{flex:1}
+.edit-banner button{height:26px;padding:0 10px;border-radius:7px;font-size:12.5px;font-weight:550;color:var(--text);background:var(--hover)}
+.edit-banner button:hover{background:var(--active)}
+.chips{grid-area:chips;display:flex;flex-wrap:wrap;gap:8px}
+.chips:not(:empty){padding:2px 4px 10px 8px}
+.chip{display:inline-flex;align-items:center;gap:9px;max-width:100%;padding:5px;border-radius:13px;background:var(--hover);border:1px solid var(--line2);font-size:13px;animation:pop .28s var(--glide)}
+.chip .nm{min-width:0;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:550}
+.chip button{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;color:var(--muted);transition:background .15s,color .15s}
+.chip button:hover{background:var(--line2);color:var(--text)}
+.chip button .ic{width:14px;height:14px;stroke-width:2.2}
+.chip.img{position:relative;width:64px;height:64px;padding:0;gap:0;overflow:hidden}
+.chip.img img{width:100%;height:100%;object-fit:cover;display:block}
+.chip.img button{position:absolute;top:4px;right:4px;width:22px;height:22px;background:rgba(0,0,0,.6);color:#fff}
+.chip.img button:hover{background:rgba(0,0,0,.82);color:#fff}
+.composer textarea{grid-area:text;display:block;width:100%;min-height:28px;max-height:220px;background:transparent;border:0;outline:0;resize:none;padding:2px 5.6px;font-size:17px;line-height:1.45;overflow-y:auto;transition:height .16s ease}
+.composer textarea::placeholder{color:var(--composer-ph)}
+.bar{display:contents}
+.bar-left,.bar-right{display:flex;align-items:center;gap:4px;min-width:0}
+.bar-left{grid-area:left}.bar-right{grid-area:right}
+.cbtn{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--text);transition:background .15s,color .15s,transform .2s var(--glide)}
+@media(hover:hover){.cbtn:hover{background:var(--hover);color:var(--text)}}   /* a touch screen would keep it lit after a tap */
+.cbtn:active{transform:scale(.92)}
+.cbtn .pl{width:21.6px;height:21.6px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round}
+/* voice typing: a blue circle with a sound wave, shading to violet on its right like the W; its bars dance while it listens */
+.voice{width:34.3px;height:34.3px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;color:#fff;background:var(--voice);transition:transform .2s var(--glide),filter .15s}
+.voice[hidden]{display:none}
+@media(hover:hover){.voice:hover{filter:brightness(1.1)}}
+.voice:active{transform:scale(.93)}
+.voice svg{width:18.3px;height:18.3px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
+.voice path{transform-box:fill-box;transform-origin:center}
+.composer.listening .voice{animation:voicepulse 1.6s ease-out infinite}
+.composer.listening .voice path{animation:eq 1s ease-in-out infinite}
+.composer.listening .voice path:nth-child(2){animation-delay:-.3s}.composer.listening .voice path:nth-child(3){animation-delay:-.6s}.composer.listening .voice path:nth-child(4){animation-delay:-.15s}
+@keyframes voicepulse{0%{box-shadow:0 0 0 0 var(--voice-glow)}100%{box-shadow:0 0 0 12px transparent}}
+.count{display:none;font-size:12px;font-weight:550;color:var(--faint);font-variant-numeric:tabular-nums;white-space:nowrap}
+.count.show{display:inline}.count.over{color:var(--danger)}
+/* send sits beside the voice button, so voice typing is always one tap away */
+.send,.stop{position:relative;width:34.3px;height:34.3px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;margin-left:2px;color:var(--bg);background:var(--text);transition:transform .2s var(--glide),opacity .15s,background .15s,color .15s}
+.send .ic{width:20px;height:20px;stroke-width:2.1}
+.send:hover:not(:disabled),.stop:hover{opacity:.84}
+.send:active:not(:disabled){transform:scale(.93)}
+.send:disabled{cursor:default;background:var(--hover);color:var(--faint)}
+.stop,.send{animation:popIn .3s var(--glide)}
+.disclaimer{color:var(--faint);font-size:12px;text-align:center;margin-top:8px;max-height:30px;transition:opacity .4s .25s,max-height .5s,margin .5s}
+.main:not(.chatting) .disclaimer{opacity:0;max-height:0;margin-top:0;overflow:hidden;transition-delay:0s}
+.to-bottom{position:absolute;left:50%;top:-59px;transform:translate(-50%,8px) scale(.92);width:47px;height:47px;border-radius:50%;display:grid;place-items:center;color:var(--rb-ic);background:var(--rb-bg);border:1px solid var(--rb-line);box-shadow:var(--shadow-m);opacity:0;pointer-events:none;transition:opacity .2s,transform .3s var(--glide);z-index:2}
+.to-bottom.show{opacity:1;pointer-events:auto;transform:translate(-50%,0) scale(1)}
+.to-bottom .ic{width:22px;height:22px;stroke-width:2.2}
+.to-bottom:hover{background:var(--hover)}
+.notebar{width:100%;max-width:var(--col);display:flex;align-items:center;gap:10px;margin:0 0 10px;padding:8px 8px 8px 14px;border-radius:14px;border:1px solid var(--line2);background:var(--panel);font-size:14px;animation:rise .35s var(--glide) both}
+.notebar>span{flex:1;min-width:0}
+.notebar .mark{width:21px;height:13px}
+.notebar button{flex-shrink:0;height:30px;padding:0 13px;border-radius:999px;font-size:13px;font-weight:600;color:var(--text);background:var(--hover);transition:background .15s}
+.notebar button:hover{background:var(--active)}
+
+/* ---------- Instant / High: a mode picker centred in the top bar; tap it for a small menu ---------- */
+.mode-pick{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px;height:40px;padding:0 10px 0 13px;border-radius:12px;font-size:16.5px;font-weight:600;color:var(--text);white-space:nowrap;transition:background .15s}
+.mode-pick:hover,.mode-pick[aria-expanded=true]{background:var(--hover)}
+.mode-pick:focus-visible{outline:2px solid var(--accent-ring);outline-offset:1px}
+.mode-pick .mp-mode{display:flex;align-items:center;gap:4px;font-weight:500;color:var(--faint);transition:color .2s}
+.mode-pick .mp-ic{width:14px;height:14px;stroke-width:1.9}
+.mode-pick.high .mp-mode{color:var(--high)}
+.mode-pick .mp-chev{width:15px;height:15px;color:var(--faint);stroke-width:2;margin-left:-2px;transition:transform .2s var(--glide)}
+.mode-pick[aria-expanded=true] .mp-chev{transform:rotate(180deg)}
+.mode-pick.moved .mp-ic{animation:zap .45s var(--glide)}
+.mode-pick.moved.high .mp-ic{animation:gleam .75s var(--glide)}
+.main.chess-mode .mode-pick{display:none}
+@media(max-width:400px){.main.chatting .mode-pick .mp-name{display:none}.main.chatting .mode-pick{padding:0 8px 0 11px}}
+@media(max-width:340px){.main.chatting .mode-pick{font-size:15px;gap:4px}.main.chatting .mode-pick .mp-ic{display:none}}
+@keyframes zap{35%{transform:scale(1.18) rotate(-10deg)}70%{transform:scale(.96) rotate(3deg)}}
+@keyframes gleam{0%{transform:scale(.82) rotate(-10deg)}45%{transform:scale(1.18) rotate(5deg);filter:drop-shadow(0 0 4px var(--high))}100%{transform:none;filter:none}}
+/* ---------- the High tag under a reply ---------- */
+.model-tag .ic{width:12px;height:12px;margin:0 4px 0 0;vertical-align:-1.5px;stroke-width:2}
+
+/* ---------- menus ---------- */
+@media (max-width:420px){.bar-right{gap:4px}}
+.menu{position:fixed;z-index:40;min-width:220px;max-width:calc(100vw - 16px);padding:6px;border-radius:16px;background:var(--raised);border:1px solid var(--line2);box-shadow:var(--shadow-l);transform-origin:var(--origin,top left);animation:menuIn .18s var(--glide) both;max-height:calc(100dvh - 16px);overflow-y:auto}
+.menu-label{padding:8px 10px 6px;font-size:12px;font-weight:600;color:var(--faint)}
+.menu-foot{padding:8px 10px 6px;margin-top:4px;border-top:1px solid var(--line);font-size:12px;line-height:1.45;color:var(--faint)}
+.menu-sep{height:1px;margin:6px 4px;background:var(--line)}
+.menu-item{display:flex;align-items:center;gap:11px;width:100%;min-height:38px;padding:0 10px;border-radius:10px;font-size:14px;font-weight:500;text-align:left;transition:background .12s}
+.menu-item:hover,.menu-item:focus-visible{background:var(--hover);outline:0}
+.menu-item>span{flex:1}
+.menu-item .ic{color:var(--muted)}
+.menu-item small{display:block;margin-top:1px;font-size:12px;font-weight:400;color:var(--faint)}
+.menu-item .ck{color:#8b5cf6}
+.menu-item.danger,.menu-item.danger .ic{color:var(--danger)}
+/* playback: every word is laid out from the start, hidden; revealing one makes it visible and fades its colour in.
+   (A colour fade, not an opacity fade: fading opacity gives every fading word a layer of its own, and on phones creating
+   and dropping those layers each frame cost more than the frame had.) */
+.rv-w{visibility:hidden}
+.rv-w.rv-on{visibility:visible;animation:rvFade .32s cubic-bezier(.3,.6,.35,1)}
+.rv-w.rv-now{animation:none}
+@keyframes rvFade{from{color:transparent}}
+.settings-menu{width:284px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:0 4px 4px;padding:3px;border-radius:11px;background:var(--bg);border:1px solid var(--line)}
+.seg button{display:flex;align-items:center;justify-content:center;gap:6px;height:32px;border-radius:8px;font-size:13px;font-weight:550;color:var(--muted);transition:background .15s,color .15s}
+.seg button:hover{color:var(--text)}
+.seg button[aria-checked=true]{background:var(--active);color:var(--text);box-shadow:var(--shadow-s)}
+
+
+/* ---------- toasts, dialogs, lightbox ---------- */
+.toasts{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top));transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;width:max-content;max-width:calc(100vw - 24px)}
+.toast{display:flex;align-items:center;gap:12px;min-height:40px;padding:8px 16px;border-radius:13px;background:var(--raised);color:var(--text);border:1px solid var(--line2);box-shadow:var(--shadow-m);font-size:13.5px;font-weight:550;pointer-events:auto;animation:toastIn .3s var(--glide) both;max-width:100%}
+.toast.out{animation:toastOut .2s ease forwards}
+.toast button{height:28px;padding:0 10px;margin-right:-8px;border-radius:8px;font-size:13px;font-weight:650;color:var(--accent)}
+.toast button:hover{background:var(--accent-soft)}
+.dialog{border:1px solid var(--line2);border-radius:20px;background:var(--raised);color:var(--text);padding:0;width:min(460px,calc(100vw - 32px));max-height:min(640px,calc(100dvh - 32px));box-shadow:var(--shadow-l);overflow:hidden}
+.dialog[open]{display:flex;flex-direction:column;animation:dialogIn .26s var(--glide) both}
+.dialog::backdrop{background:var(--overlay);animation:fade .2s ease both}
+.dialog-head{display:flex;align-items:center;justify-content:space-between;padding:14px 12px 10px 20px;flex-shrink:0}
+.dialog h2{font-size:17px;font-weight:650;letter-spacing:-.015em}
+.sc-list{overflow-y:auto;padding:0 20px 18px}
+.sc-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.sc-row:last-child{border-bottom:0}
+.sc-keys{display:flex;gap:4px;flex-shrink:0}
+.sc-keys kbd{min-width:26px;height:26px;padding:0 7px;display:grid;place-items:center;border-radius:7px;border:1px solid var(--line2);border-bottom-width:2px;background:var(--panel);font:550 12px/1 var(--sans);color:var(--muted)}
+.dialog.confirm{padding:22px 22px 18px;width:min(400px,calc(100vw - 32px))}
+.dialog.confirm p{margin:8px 0 20px;color:var(--muted);font-size:14.5px;line-height:1.55}
+.dialog-actions{display:flex;justify-content:flex-end;gap:8px}
+.lightbox{position:fixed;inset:0;z-index:70;display:grid;place-items:center;background:rgba(6,8,12,.88);cursor:zoom-out;animation:fade .2s ease both}
+.lightbox img{max-width:92vw;max-height:88vh;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:dialogIn .3s var(--glide) both}
+.lb-close{position:absolute;top:calc(14px + env(safe-area-inset-top));right:14px;color:#fff;background:rgba(255,255,255,.12)}
+.lb-close:hover{background:rgba(255,255,255,.2);color:#fff}
+
+/* ---------- keyframes ---------- */
+@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+@keyframes fade{from{opacity:0}}
+@keyframes pop{from{transform:scale(.94);opacity:0}}
+@keyframes popIn{from{transform:scale(.6);opacity:0}}
+@keyframes menuIn{from{opacity:0;transform:scale(.96) translateY(var(--from,-4px))}}
+@keyframes dialogIn{from{opacity:0;transform:scale(.96) translateY(6px)}}
+@keyframes toastIn{from{opacity:0;transform:translateY(-10px) scale(.97)}}
+@keyframes toastOut{to{opacity:0;transform:translateY(-6px) scale(.98)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes glow{50%{opacity:.4;transform:scale(.7)}}
+@keyframes shimmer{from{background-position:100% 0}to{background-position:-120% 0}}
+@keyframes eq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+
+/* ---------- desktop: the message box sits mid-screen on a new chat ---------- */
+@media(min-width:821px){
+  :root{--lift:clamp(24px,calc(50vh - 128px),440px)}
+}
+@media(min-width:821px) and (max-height:640px){
+  .hero{font-size:30px}
+}
+@media(hover:none){
+  .msg.user .acts,.msg.assistant .acts{opacity:1}
+  .hitem .more{opacity:.7}
+  .side-row .kbd{display:none}
+}
+
+/* ---------- phones and small tablets ---------- */
+@media(max-width:820px){
+  .sidebar{position:fixed;inset:0 auto 0 0;z-index:30;width:min(300px,86vw);flex-basis:auto;transform:translateX(-102%);transition:transform .32s var(--ease),visibility 0s .32s;visibility:hidden;box-shadow:var(--shadow-l);padding-top:env(safe-area-inset-top);border-right:0}
+  #app.sidebar-hidden .sidebar{margin-left:0;transition:transform .32s var(--ease),visibility 0s .32s}
+  .sidebar.open,#app.sidebar-hidden .sidebar.open{transform:none;visibility:visible;transition:transform .32s var(--ease)}
+  .overlay.show{display:block;position:fixed;inset:0;background:var(--overlay);z-index:29;animation:fade .2s ease both}
+  #app:not(.sidebar-hidden) #menu{display:grid}
+  .main:not(.chatting) #chatPill{display:none!important}
+  .topbar{padding:0 15px}
+  .top-side{min-width:96px}   /* both sides as wide as the chat pill, so the Chess title stays centred */
+  .top-side:not(.end){justify-content:flex-start}
+  .top-title{justify-content:center}
+  .icon-btn{width:40px;height:40px}.icon-btn.round{width:47px;height:47px}
+  .acts .icon-btn{width:34px;height:34px}
+  .msg{margin-bottom:40px}
+  .inner{width:calc(100% - 32px);padding-top:8px}
+  .welcome{margin:auto;padding:0 0 8px}
+  .hero{font-size:30px}
+  .composer-wrap,.main:not(.chatting) .composer-wrap{padding:0 clamp(16px,8.9vw,37px) max(22px,calc(env(safe-area-inset-bottom) + 12px))}
+  .disclaimer{display:none}
+  .bubble,.ufile{max-width:86%}
+  .uimgs{max-width:88%}.uimg{width:112px;height:112px}.uimg.solo,.uimg.solo img{max-width:230px}.uimg.solo img{max-height:250px}
+  .chip .nm{max-width:170px}
+  .codeblock pre code{font-size:13px}
+  .toasts{top:calc(62px + env(safe-area-inset-top))}
+  .side-row{height:42px}.hitem{height:40px}
+  .side-search input,.hitem input.rename{font-size:16px}
+}
+@media(max-width:820px) and (max-height:520px){.hero .mark{display:none}}
+
+/* calm mode: keep the light, drop the movement */
+
+/* ---------- chess: you against the Wind team ---------- */
+.chess-view{display:none}
+.main.chess-mode .scroll,.main.chess-mode .composer-wrap{display:none}
+.main.chess-mode .chess-view{display:block;flex:1;min-height:0;overflow-y:auto;overflow-x:hidden}
+.chess-title{display:none;font-size:15px;font-weight:600}
+.main.chess-mode .chess-title{display:inline}
+.main.chess-mode #tempBtn,.main.chess-mode #chatPill{display:none!important}
+.main.chess-mode .topbar{height:56px}   /* the chess screen's sizes are built around a 56 px top bar (the 47 px buttons still fit) */
+.side-row.active{background:var(--active);color:var(--text)}
+.side-tag{margin-left:auto;font-size:10.5px;font-weight:650;letter-spacing:.02em;color:var(--high);background:color-mix(in srgb,var(--high) 15%,transparent);padding:2px 7px;border-radius:999px;flex:0 0 auto}
+/* chess: the arena. The layout follows the space the chess view has (a container query), not the window. */
+.main.chess-mode .chess-view{container-type:size}
+.cv{--light:#ece7f6;--dark:#7f70b8;--face:66px;--side:352px;--spring:cubic-bezier(.34,1.56,.64,1);
+  --glass:radial-gradient(130% 160% at 0% 0%,rgba(124,58,237,.34),rgba(124,58,237,0) 58%) padding-box,radial-gradient(90% 120% at 100% 100%,rgba(59,130,246,.16),rgba(59,130,246,0) 60%) padding-box,linear-gradient(160deg,#1b1631,#110e20) padding-box,linear-gradient(135deg,rgba(96,165,250,.8),rgba(124,58,237,.85) 50%,rgba(236,72,153,.6)) border-box;--glass-ink:#efedff;--glass-shadow:0 16px 36px -20px rgba(124,58,237,.85),inset 0 1px 0 rgba(255,255,255,.07);
+  --sp-fs:14.5px;--sp-lines:3;--sp-pad:11px;--name-h:22px;--stage-gap:8px;--sp-h:calc(var(--sp-lines) * var(--sp-fs) * 1.45 + 2 * var(--sp-pad) + 2px);--stage-h:calc(var(--sp-h) + var(--name-h) + var(--stage-gap));
+  --sz:min(calc(100vh - 158px - var(--stage-h)),640px,calc(100cqw - var(--side) - 92px));
+  position:relative;isolation:isolate;display:grid;grid-template-columns:var(--sz) var(--side);gap:40px;justify-content:center;align-items:stretch;padding:16px 26px 18px}
+.cv-arena{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.cv-glow{position:absolute;width:62%;aspect-ratio:1;border-radius:50%}   /* drifts slowly: chessGlow() moves it */
+.cv-glow.a{left:2%;top:4%;background:radial-gradient(closest-side,rgba(124,58,237,.30),rgba(124,58,237,0))}
+.cv-glow.b{right:-6%;bottom:-20%;background:radial-gradient(closest-side,rgba(59,130,246,.22),rgba(59,130,246,0))}
+:root[data-theme=light] .cv-arena{opacity:.5}
+:root[data-theme=light] .cv{--glass:radial-gradient(130% 160% at 0% 0%,rgba(124,58,237,.13),rgba(124,58,237,0) 58%) padding-box,radial-gradient(90% 120% at 100% 100%,rgba(59,130,246,.10),rgba(59,130,246,0) 60%) padding-box,linear-gradient(160deg,#ffffff,#f5f1ff) padding-box,
+    linear-gradient(135deg,rgba(96,165,250,.75),rgba(124,58,237,.75) 50%,rgba(236,72,153,.55)) border-box;--glass-ink:#1d1830;--glass-shadow:0 14px 30px -20px rgba(90,60,180,.55),inset 0 1px 0 rgba(255,255,255,.8)}
+.cv-play{display:flex;flex-direction:column;gap:12px;min-width:0}
+.cv-bar{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px}
+.cv-bar.top{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:16px;min-height:var(--stage-h)}
+.cv-stage{display:flex;flex-direction:column;gap:var(--stage-gap);min-width:0}
+.cv-stage-row{display:flex;align-items:center;justify-content:space-between;gap:10px;height:var(--name-h);min-height:0}
+.cv-bar.top .cv-id{display:flex;align-items:baseline;gap:9px}
+.cv-bar.top .cv-id small{margin:0}
+.cv-who{display:flex;flex:0 0 auto;max-width:72%;align-items:center;gap:13px;min-width:0}   /* names and status keep their room */
+.cv-stage-row .cv-id{flex:0 0 auto;max-width:72%;min-width:0}
+.cv-id{min-width:0}
+.cv-id b{display:flex;align-items:center;gap:8px;font-size:15px;line-height:1.25;font-weight:650;letter-spacing:-.005em;white-space:nowrap}
+.cv-id small{display:block;margin-top:1px;font-size:12px;line-height:1.3;color:var(--faint)}
+.cv-you-status{display:none!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--muted)!important}
+.cv-actions>.cv-btn{flex-shrink:0}
+.cv-score-mini{display:none;align-items:center;gap:5px;min-width:0;overflow:hidden;margin-left:auto;padding:0 11px;border-radius:999px;font-size:12.5px;color:var(--muted);background:var(--hover);border:1px solid var(--line2);white-space:nowrap}
+.cv-score-mini b{color:var(--text);font-weight:700;font-variant-numeric:tabular-nums}
+.cv-pulse{display:none;position:relative;width:7px;height:7px;border-radius:50%;background:#34d399}
+.cv-bar.turn .cv-pulse{display:block}
+.cv-pulse::before,.cv-live::before{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;opacity:.55;animation:cvRing 1.6s ease-out infinite}
+@keyframes cvRing{80%,100%{transform:scale(var(--r,3));opacity:0}}   /* the same rings the old shadows drew: 7 px around each dot */
+.cv-face{display:block;font-size:var(--face);line-height:0;padding:.14em 0 0 2px}
+.cv-av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font:700 11px/1 var(--sans);flex-shrink:0}
+.cv-av.you{color:var(--text);background:var(--active);box-shadow:inset 0 0 0 1px var(--line2)}
+.cv-taken{display:flex;flex:0 100 auto;align-items:center;justify-content:flex-end;min-width:0;padding-left:6px;overflow:hidden;overflow:clip visible}
+.cv-taken i{flex:none;width:22px;height:22px;margin-left:-7px;background:center/contain no-repeat}
+.cv-taken i.same{margin-left:-14px}
+.cv-stage-row .cv-taken i{width:min(22px,var(--name-h));height:min(22px,var(--name-h))}
+.cv-taken em{flex:none;font-style:normal;font-size:12.5px;font-weight:650;color:var(--muted);margin-left:7px}
+.cv-taken.cut{-webkit-mask-image:linear-gradient(90deg,transparent 2px,#000 26px);mask-image:linear-gradient(90deg,transparent 2px,#000 26px)}
+/* what Wind says: a dark violet glass bubble with the board frame's gradient edge, a tail toward the face, and a
+   light sweep when a new line arrives. Fixed height (--sp-lines lines), so nothing moves when it talks. */
+.cv-speech{position:relative;display:flex;align-items:center;box-sizing:border-box;height:var(--sp-h);margin:0;padding:var(--sp-pad) 16px;border-radius:7px 18px 18px 18px;
+  font-size:var(--sp-fs);line-height:1.45;font-weight:500;color:var(--glass-ink);border:1px solid transparent;background:var(--glass);box-shadow:var(--glass-shadow);transition:opacity .25s}
+.cv-speech::before{content:"";position:absolute;left:-6px;top:15px;width:10px;height:10px;background:#1a1530;border-left:1px solid rgba(96,165,250,.8);border-bottom:1px solid rgba(96,165,250,.8);transform:rotate(45deg)}
+.cv-speech::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.13) 50%,transparent 65%) 0 0/260% 100% no-repeat}
+.cv-speech.pop{animation:cvPop .45s var(--spring)}
+.cv-speech.pop::after{animation:cvShine 1s ease-out .1s}
+@keyframes cvPop{from{transform:scale(.97);opacity:.5}}
+@keyframes cvShine{0%{opacity:1;background-position:120% 0}100%{opacity:1;background-position:-30% 0}}
+.cv-speech-win{display:block;flex:1;min-width:0;height:100%;overflow:hidden}
+.cv-speech-txt{display:block;transition:transform .55s cubic-bezier(.3,.7,.4,1)}
+.cv-speech:lang(bn) .cv-speech-txt{line-height:1.6}
+.cv-speech:lang(bn){padding-top:4px;padding-bottom:4px}   /* Bengali's taller lines: as many lines as English, in the same bubble */
+.cv-speech-dots{display:none;gap:5px;padding-left:2px}
+.cv-speech-dots i{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.55}
+.cv-speech[data-state=idle]{opacity:.5}
+.cv-speech[data-state=idle] .cv-speech-win,.cv-speech[data-state=typing] .cv-speech-win{display:none}
+.cv-speech[data-state=idle] .cv-speech-dots,.cv-speech[data-state=typing] .cv-speech-dots{display:flex}
+.cv-speech[data-state=typing] .cv-speech-dots i{animation:cvType 1s ease-in-out infinite}
+.cv-speech[data-state=typing] .cv-speech-dots i:nth-child(2){animation-delay:.15s}.cv-speech[data-state=typing] .cv-speech-dots i:nth-child(3){animation-delay:.3s}
+:root[data-theme=light] .cv-speech::before{background:#fcfbff}
+:root[data-theme=light] .cv-speech::after{background-image:linear-gradient(105deg,transparent 35%,rgba(124,58,237,.10) 50%,transparent 65%)}
+/* the board, in a glowing frame */
+.cv-board-wrap{position:relative;padding:6px;border-radius:21px;background:linear-gradient(140deg,rgba(96,165,250,.55),rgba(124,58,237,.6) 48%,rgba(236,72,153,.35));
+  box-shadow:0 32px 90px -36px rgba(124,58,237,.75),0 16px 36px -18px rgba(0,0,0,.7)}
+.cv-board{position:relative;width:100%;aspect-ratio:1;border-radius:15px;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;outline:0;cursor:pointer;
+  box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+.cv-sqs{position:absolute;inset:-12.5%;background:repeating-conic-gradient(var(--dark) 0 25%,var(--light) 0 50%) 0 0/20% 20%;pointer-events:none}
+.cv-board.carded>.cv-sqs,.cv-board.carded>.cv-hl,.cv-board.carded>.cv-pcs,.cv-board.carded>.cv-coords{filter:blur(4px)}
+.chess-view,.chess-view *{-webkit-tap-highlight-color:transparent}   /* no blue flash when you tap the board on a phone */
+.cv-board::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,0) 42%,rgba(20,10,40,.10));pointer-events:none}
+@media(pointer:fine){.cv-board:focus-visible{box-shadow:0 0 0 3px var(--accent-ring),0 34px 90px -34px rgba(124,58,237,.55)}}   /* keyboard focus only; never on touch screens */
+.cv-hl,.cv-pcs,.cv-coords{position:absolute;inset:0;pointer-events:none}
+.cv-hl{z-index:1;transition:opacity .16s}.cv-hl.hide{opacity:0}.cv-pcs{z-index:2}.cv-coords{z-index:3}
+.cv-hl i{position:absolute;left:0;top:0;width:12.5%;height:12.5%}
+.cv-hl .last{background:rgba(96,190,255,.42)}
+.cv-hl .sel{background:rgba(96,190,255,.6)}
+.cv-hl .kb{z-index:1;box-shadow:inset 0 0 0 3px #fff,inset 0 0 0 5px rgba(124,58,237,.9);border-radius:3px}   /* the keyboard cursor */
+.cv-hl .dot::after{content:"";position:absolute;inset:37%;border-radius:50%;background:rgba(32,18,70,.30);animation:cvDot .14s ease-out}
+.cv-hl .sel,.cv-hl .cap{animation:cvFade .12s ease-out}
+.cv-hl .cap{background:radial-gradient(transparent 63%,rgba(32,18,70,.34) 64%)}
+.cv-hl .check{background:radial-gradient(circle,rgba(255,72,72,1) 0%,rgba(235,40,40,.65) 30%,rgba(210,0,0,0) 70%)}
+@keyframes cvDot{from{transform:scale(.4);opacity:0}}
+@keyframes cvFade{from{opacity:0}}
+.cv-pc{position:absolute;left:0;top:0;width:12.5%;height:12.5%;background:center/90% no-repeat;transition:transform .22s cubic-bezier(.25,.8,.3,1),opacity .18s ease-out;filter:drop-shadow(0 3px 2px rgba(20,10,40,.30))}
+.cv-pc.moving,.cv-pc.drag,.cv-pc.gone,.cv-pcs.lift .cv-pc{will-change:transform,opacity}
+.cv-pc.moving{z-index:3}
+.cv-pc.drag{transition:none;z-index:4;filter:drop-shadow(0 10px 8px rgba(20,10,40,.35))}
+.cv-pc.now{transition:none}
+.cv-pc.gone{opacity:0}
+.cv-coords span{position:absolute;font:700 10.5px/1 var(--sans);color:var(--light)}
+.cv-coords span.on-light{color:var(--dark)}
+.cv-coords .cf{bottom:4px;width:12.5%;text-align:right;padding-right:5px;box-sizing:border-box}
+.cv-coords .cr{left:5px;margin-top:5px}
+.cv-promo{position:absolute;inset:0;z-index:6;background:rgba(10,6,24,.45)}
+.cv-promo-in{position:absolute;width:12.5%;display:flex;flex-direction:column;background:var(--light);border-radius:12px;box-shadow:0 18px 40px -10px rgba(0,0,0,.6);overflow:hidden}
+.cv-promo-in button{aspect-ratio:1;background:center/82% no-repeat;transition:background-color .15s}
+.cv-promo-in button:hover{background-color:rgba(124,58,237,.18)}
+.cv-side-pick{display:flex;gap:6px;justify-content:center;margin:0 0 18px}
+.cv-side-pick button{display:flex;align-items:center;gap:7px;height:38px;padding:0 13px;border-radius:12px;border:1px solid var(--line2);font-size:14px;font-weight:550;color:var(--muted);transition:background .15s,color .15s,border-color .15s}
+.cv-side-pick button[aria-checked=true]{background:var(--active);color:var(--text);border-color:color-mix(in srgb,var(--high) 55%,var(--line2))}
+.cv-side-pick .sw{width:14px;height:14px;border-radius:50%;border:1px solid rgba(128,128,128,.5)}
+.cv-side-pick .sw.w{background:#f4f1ea}.cv-side-pick .sw.b{background:#26222e}.cv-side-pick .sw.r{background:linear-gradient(90deg,#f4f1ea 50%,#26222e 50%)}
+.cv-go{height:44px;padding:0 26px;border-radius:999px;font-size:15px;font-weight:650;color:#fff;background:linear-gradient(135deg,#3b82f6,#7c3aed);box-shadow:0 10px 26px -10px rgba(124,58,237,.8);transition:transform .15s,filter .15s}
+.cv-go:hover{filter:brightness(1.08)}.cv-go:active{transform:scale(.97)}
+.cv-link{display:block;margin:12px auto 0;font-size:13.5px;color:var(--muted)}.cv-link:hover{color:var(--text)}
+.cv-btn{height:38px;padding:0 15px;border-radius:999px;border:1px solid var(--line2);font-size:14px;font-weight:550;color:var(--text);transition:background .15s}
+.cv-btn:hover:not(:disabled){background:var(--hover)}.cv-btn:disabled{opacity:.45;cursor:default}
+.cv-btn.icon{width:38px;padding:0;display:grid;place-items:center;color:var(--muted)}
+.cv-btn.ask{color:var(--danger);border-color:var(--danger-line);background:var(--danger-soft)}
+.cv-btn.icon.off{color:var(--faint)}
+.cv-card{position:absolute;inset:0;z-index:7;display:grid;place-items:center;container:cvcard/size;background:rgba(10,6,24,.55);animation:fade .25s ease both}
+.cv-card-in{width:min(88%,380px);width:min(88cqw,380px);background:var(--raised);border:1px solid var(--line2);border-radius:22px;padding:20px 22px 20px;text-align:center;box-shadow:var(--shadow-l),0 0 60px -20px rgba(124,58,237,.5)}
+.cv-card-face{display:flex;justify-content:center;margin:0 0 12px;padding-top:.16em;font-size:clamp(54px,13vw,86px);font-size:clamp(54px,15cqmin,86px);line-height:0}
+.cv-card-in h2{margin:0 0 8px;font:500 27px/1.15 var(--serif);letter-spacing:-.01em}
+.cv-card-in p{margin:0 0 18px;font-size:14.5px;line-height:1.5;color:var(--muted)}
+/* smaller boards (phones): a tighter card, smaller again on the smallest boards, so it always fits on the board */
+@container cvcard (max-width:540px){
+  .cv-card-in{padding:16px}
+  .cv-card-in h2{font-size:23px}
+  .cv-card-in p{margin-bottom:14px}
+}
+@container cvcard (max-height:359px){
+  .cv-card-in{width:min(94cqw,340px);padding:12px 12px 13px;border-radius:18px}
+  .cv-card-face{margin-bottom:6px;font-size:clamp(34px,15cqmin,54px)}
+  .cv-card-in h2{margin-bottom:4px;font-size:20px}
+  .cv-card-in p{margin-bottom:10px;font-size:12.5px;line-height:1.38}
+  .cv-side-pick{gap:4px;margin-bottom:10px}
+  .cv-side-pick button{height:32px;padding:0 6px;gap:4px;border-radius:10px;font-size:12.5px}
+  .cv-side-pick .sw{width:12px;height:12px}
+  .cv-go{height:36px;padding:0 20px;font-size:14px}
+  .cv-link{margin-top:7px;font-size:12.5px}
+}
+@container cvcard (max-height:250px){
+  .cv-card[data-start] .cv-card-in p{display:none}
+  .cv-card-in{width:96cqw;padding:10px 10px 11px}
+  .cv-card-in h2{margin-bottom:8px;font-size:18px}
+  .cv-side-pick{gap:3px}
+  .cv-side-pick button{font-size:12px}
+  .cv-card-face{margin-bottom:4px}
+}
+/* the side: whose turn and the score, the trash talk, the buttons */
+.cv-side{display:flex;flex-direction:column;gap:14px;min-width:0;min-height:0}
+.cv-head{display:flex;align-items:center;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;min-height:var(--stage-h)}
+.cv-status{font:500 24px/1.2 var(--serif);letter-spacing:-.012em}
+.cv-status.busy{color:var(--muted)}
+.cv-score{display:flex;gap:6px}
+.cv-score span{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 11px;border-radius:999px;font-size:12.5px;color:var(--muted);background:var(--hover);border:1px solid var(--line2)}
+.cv-score b{color:var(--text);font-weight:700;font-variant-numeric:tabular-nums}
+.cv-talk{position:relative;flex:1 1 0;min-height:0;display:flex;flex-direction:column;border-radius:22px;overflow:hidden;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--panel) 90%,#7c3aed),var(--panel) 42%);border:1px solid var(--line2);box-shadow:0 24px 60px -38px rgba(0,0,0,.85)}
+.cv-talk-body{display:flex;flex-direction:column;flex:1;min-height:0}
+.cv-talk-top{display:flex;align-items:center;gap:9px;padding:12px 16px 11px;border-bottom:1px solid var(--line);font-size:13.5px}
+.cv-talk-top b{font-weight:650}
+.cv-talk-top small{margin-left:auto;font-size:12px;color:var(--faint)}
+.cv-talk-x{display:none;width:28px;height:28px;margin:-4px -6px -4px 0;border-radius:50%;place-items:center;color:var(--muted)}
+.cv-talk-x:hover{background:var(--hover);color:var(--text)}
+/* "View Live Chat": the folded chat on phones and tablets, in the same glass as Wind's bubble */
+.cv-talk-open{position:relative;display:none;align-items:center;justify-content:center;gap:10px;width:100%;height:54px;border-radius:18px;overflow:hidden;
+  font-size:15px;font-weight:650;letter-spacing:.005em;color:var(--glass-ink);border:1px solid transparent;background:var(--glass);box-shadow:var(--glass-shadow);transition:transform .15s,filter .15s}
+.cv-talk-open:hover{filter:brightness(1.08)}.cv-talk-open:active{transform:scale(.98)}
+.cv-talk-open .ic{transform:rotate(180deg);opacity:.7}
+.cv-talk-open::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.14) 50%,transparent 65%) 0 0/260% 100% no-repeat}
+.cv-talk-open.ping::after{animation:cvShine 1s ease-out}
+:root[data-theme=light] .cv-talk-open::after{background-image:linear-gradient(105deg,transparent 35%,rgba(124,58,237,.10) 50%,transparent 65%)}
+.cv-unread{display:grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#ff4d6d;color:#fff;font-size:11.5px;font-weight:700;line-height:1}
+.cv-unread[hidden]{display:none}
+.cv-live{position:relative;width:8px;height:8px;border-radius:50%;background:#ff4d6d}
+.cv-live::before{animation-duration:1.8s;--r:2.75}
+.cv-log{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:14px 14px 8px;display:flex;flex-direction:column;gap:7px;contain:content}
+.cv-msg{max-width:86%;padding:8px 13px;border-radius:18px;font-size:14px;line-height:1.42;overflow-wrap:anywhere;animation:cvMsg .42s var(--spring) both}
+.cv-msg.old{animation:none}
+.cv-msg.wind{align-self:flex-start;background:var(--hover);border:1px solid var(--line2);border-bottom-left-radius:6px;transform-origin:0 100%}
+.cv-msg.you{align-self:flex-end;color:#fff;background:linear-gradient(135deg,#3b82f6,#7c3aed);border-bottom-right-radius:6px;transform-origin:100% 100%}
+.cv-msg.sys{align-self:center;max-width:none;padding:3px 10px;font-size:10.5px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
+.cv-msg.sys.hint{margin:auto 0;text-transform:none;letter-spacing:0;font-size:13px;font-weight:500}
+.cv-msg.typing{display:flex;gap:4px;padding:12px 14px}
+.cv-msg.typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:cvType 1s ease-in-out infinite}
+.cv-msg.typing i:nth-child(2){animation-delay:.15s}.cv-msg.typing i:nth-child(3){animation-delay:.3s}
+@keyframes cvType{0%,60%,100%{transform:none;opacity:.45}30%{transform:translateY(-4px);opacity:1}}
+@keyframes cvMsg{from{opacity:0;transform:translateY(10px) scale(.92)}}
+.cv-sayform{display:flex;gap:8px;padding:10px 12px 12px}
+.cv-sayform input{flex:1;min-width:0;height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);background:var(--bg);color:var(--text);font:inherit;font-size:16px;outline:0;transition:border-color .15s,box-shadow .15s}
+.cv-sayform input::placeholder{color:var(--placeholder)}
+.cv-sayform input:focus{border-color:color-mix(in srgb,var(--high) 55%,var(--line2));box-shadow:0 0 0 3px color-mix(in srgb,var(--high) 16%,transparent)}
+.cv-sayform button{width:44px;height:44px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,#3b82f6,#7c3aed);box-shadow:0 8px 20px -10px rgba(124,58,237,.9);transition:transform .15s,opacity .2s,filter .15s}
+.cv-sayform button:hover:not(:disabled){filter:brightness(1.1)}.cv-sayform button:active:not(:disabled){transform:scale(.92)}
+.cv-sayform button:disabled{opacity:.35;box-shadow:none;cursor:default}
+.cv-actions{display:flex;gap:8px;flex-wrap:wrap}
+/* narrower: everything in one column; the buttons come before the chat */
+/* phones and tablets (the chess view under 1000 px wide): one column that fits the screen exactly while the chat is
+   folded. Every row has a set height (the "chrome"); the board is the largest square that fits in what is left, so
+   nothing scrolls, from a small phone to a tablet. The status line sits under "You" and the score at the end of the
+   buttons row, unless the screen is tall enough to give them a row of their own for free. Shorter screens get more
+   compact rows (the tiers below); landscape phones put the board beside everything else. The open chat simply adds
+   below (and the page scrolls to it). */
+@container (max-width:1000px){
+  .cv{--face:60px;--sp-fs:14px;--sp-pad:10px;--name-h:22px;--stage-gap:7px;
+    --pt:6px;--pb:12px;--px:16px;--g:12px;--wp:5px;--you-h:42px;--head-row:32px;--head-h:0px;--act-h:38px;--chat-h:50px;--gaps:4;
+    --chrome:calc(var(--pt) + var(--pb) + var(--stage-h) + var(--you-h) + var(--head-h) + var(--act-h) + var(--chat-h) + 2 * var(--wp) + var(--gaps) * var(--g));
+    --sz:max(196px,min(100cqw - 2 * var(--px) - 2 * var(--wp),100cqh - var(--chrome),640px));
+    display:flex;flex-direction:column;justify-content:center;gap:var(--g);min-height:100%;box-sizing:border-box;padding:var(--pt) var(--px) var(--pb)}
+  .cv-play,.cv-side{gap:var(--g);width:100%;max-width:calc(640px + 2 * var(--wp));align-self:center}
+  .cv-bar.top{height:var(--stage-h);min-height:0;gap:12px}
+  .cv-bar.you{height:var(--you-h);min-height:0}
+  .cv-av{width:calc(var(--you-h) - 4px);height:calc(var(--you-h) - 4px)}
+  .cv-board-wrap{box-sizing:border-box;width:calc(var(--sz) + 2 * var(--wp));padding:var(--wp);align-self:center}
+  .cv-head{display:none;height:var(--head-h);min-height:0;flex-wrap:nowrap}
+  #cvYouSide{display:none}
+  .cv-you-status{display:block!important}
+  .cv-score-mini{display:inline-flex}
+  .cv-status{min-width:0;font-size:21px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cv-score{flex:none}
+  .cv-score span:nth-child(n+3){display:none}
+  .cv-score span{height:calc(var(--head-h) - 4px)}
+  .cv-actions{order:1;height:var(--act-h);flex-wrap:nowrap}
+  .cv-btn{height:var(--act-h)}.cv-btn.icon{width:var(--act-h)}
+  .cv-score-mini{height:calc(var(--act-h) - 6px)}
+  .cv-talk{order:2;flex:none}
+  .cv-talk-open{height:var(--chat-h)}
+  .cv-talk:not(.open){height:auto;border:0;border-radius:18px;background:none;box-shadow:none;overflow:visible}
+  .cv-talk:not(.open) .cv-talk-body{display:none}
+  .cv-talk:not(.open) .cv-talk-open{display:flex}
+  .cv-talk.open{height:min(72cqh,560px)}
+  .cv-talk.open .cv-talk-top{cursor:pointer}
+  .cv-talk.open .cv-talk-x{display:grid}
+}
+/* tall, slim screens (a Pixel 7, a Galaxy S24, an iPhone X): the board is already as wide as the screen allows, so
+   the status line and the score get their own row back, at no cost to the board. (Slim enough means at most 0.535 as
+   wide as tall; checked against the sizes below, the row then costs the board at most a few pixels.) */
+@container (max-width:1000px) and (min-height:581px) and (max-aspect-ratio:107/200){
+  .cv{--head-h:var(--head-row);--gaps:5}
+  .cv-head{display:flex}
+  #cvYouSide{display:block}
+  .cv-you-status{display:none!important}
+  .cv-score-mini{display:none}
+}
+/* medium-height screens: a two-line bubble and a little less space around everything */
+@container (max-width:1000px) and (max-height:700px){
+  .cv{--sp-lines:2;--face:56px;--pt:4px;--pb:10px;--g:10px;--wp:4px;--you-h:40px;--head-row:30px;--act-h:36px;--chat-h:46px}
+  .cv-status{font-size:20px}
+}
+/* short screens (an iPhone SE, a 13 mini): smaller rows again, so the board stays big enough to tap */
+@container (max-width:1000px) and (max-height:580px){
+  .cv{--face:50px;--sp-fs:13.5px;--sp-pad:8px;--name-h:18px;--stage-gap:5px;--pt:2px;--pb:8px;--g:8px;--you-h:38px;--act-h:34px;--chat-h:42px}
+  .cv-bar.top .cv-id b{font-size:14px}
+}
+/* narrow phones: tighter sides and smaller buttons, so every row stays on one line */
+@container (max-width:560px){
+  .cv{--px:12px}
+  .cv-board-wrap{border-radius:18px}
+  .cv-board{border-radius:14px}
+}
+@container (max-width:400px){
+  .cv-btn{padding:0 11px;font-size:13.5px}
+  .cv-actions{gap:6px}
+  .cv-score span{padding:0 8px}
+  .cv-score-mini{padding:0 9px;font-size:12px}
+}
+@container (max-width:340px){
+  .cv-btn{padding:0 8px;font-size:13px}
+  .cv-actions{gap:5px}
+  .cv-score-mini{gap:3px;padding:0 7px;font-size:11.5px}
+}
+@container (max-width:300px){
+  .cv-score-mini{display:none!important}
+  .cv .cv-status{font-size:17px}
+  .cv-score{gap:4px}
+  .cv-score span{gap:4px;padding:0 6px;font-size:11.5px}
+}
+/* landscape phones: the board on the left, as tall as the screen allows; Wind Bot, you, the buttons and the chat on
+   the right */
+@container (max-width:1000px) and (min-width:540px) and (orientation:landscape) and (max-height:520px){
+  .cv{--sp-lines:2;--face:48px;--sp-fs:13.5px;--sp-pad:8px;--name-h:18px;--stage-gap:5px;--pt:8px;--pb:8px;--px:14px;--g:6px;--wp:4px;--you-h:36px;--head-h:28px;--act-h:34px;--chat-h:40px;
+    --sz:max(150px,min(100cqh - var(--pt) - var(--pb) - 2 * var(--wp),55cqw));
+    display:grid;grid-template-columns:calc(var(--sz) + 2 * var(--wp)) minmax(0,520px);grid-template-areas:"board stage" "board you" "board side";
+    grid-template-rows:auto auto auto;column-gap:18px;row-gap:var(--g);align-content:center;justify-content:center}
+  .cv-play{display:contents}
+  .cv-bar.top{grid-area:stage}.cv-board-wrap{grid-area:board;align-self:center}.cv-bar.you{grid-area:you}.cv-side{grid-area:side;max-width:none}
+  .cv .cv-status{font-size:17px}
+  .cv-head{display:flex}
+  #cvYouSide{display:block}
+  .cv-you-status{display:none!important}
+  .cv-score-mini{display:none}
+  /* the open chat takes the whole right-hand side, beside the board (Wind Bot's face is back when it folds) */
+  .cv:has(.cv-talk.open){grid-template-areas:"board side" "board side" "board side"}
+  .cv:has(.cv-talk.open) .cv-bar.top,.cv:has(.cv-talk.open) .cv-bar.you{display:none}
+  .cv:has(.cv-talk.open) .cv-side{height:calc(var(--sz) + 2 * var(--wp))}
+  .cv-talk.open{flex:1 1 0;height:auto;min-height:0}
+}
+@container (max-width:640px) and (min-width:540px) and (orientation:landscape) and (max-height:520px){
+  .cv-score{gap:4px}
+  .cv-score span{gap:4px;padding:0 7px;font-size:11.5px}
+}
+@supports not (container-type:inline-size){
+  .cv{--sz:min(calc(100vh - 158px - var(--stage-h)),620px)}
+  /* phones and tablets in browsers without container queries (an iPhone 6s or 7 on iOS 15): the same one-column
+     layout that fits the screen, in its compact form, sized from the window instead of the chess view */
+  @media(max-width:1000px){
+    .cv{--vh:100vh;--sp-lines:2;--face:54px;--sp-fs:13.5px;--sp-pad:8px;--name-h:20px;--stage-gap:6px;--px:12px;--g:8px;--wp:4px;
+      --you-h:38px;--act-h:34px;--chat-h:44px;
+      --chrome:calc(4px + 10px + var(--stage-h) + var(--you-h) + var(--act-h) + var(--chat-h) + 2 * var(--wp) + 4 * var(--g));
+      --sz:max(196px,min(100vw - 2 * var(--px) - 2 * var(--wp),var(--vh) - 56px - env(safe-area-inset-top,0px) - var(--chrome),640px));
+      display:flex;flex-direction:column;justify-content:center;gap:var(--g);min-height:100%;box-sizing:border-box;padding:4px var(--px) 10px}
+    .cv-play,.cv-side{gap:var(--g);width:100%;max-width:calc(640px + 2 * var(--wp));align-self:center}
+    .cv-bar.top{height:var(--stage-h);min-height:0;gap:12px}
+    .cv-bar.you{height:var(--you-h);min-height:0}
+    .cv-av{width:calc(var(--you-h) - 4px);height:calc(var(--you-h) - 4px)}
+    .cv-board-wrap{box-sizing:border-box;width:calc(var(--sz) + 2 * var(--wp));padding:var(--wp);align-self:center}
+    .cv-head{display:none}
+    #cvYouSide{display:none}
+    .cv-you-status{display:block!important}
+    .cv-actions{order:1;height:var(--act-h);flex-wrap:nowrap;gap:6px}
+    .cv-btn{height:var(--act-h);padding:0 10px;font-size:13.5px}.cv-btn.icon{width:var(--act-h)}
+    .cv-score-mini{display:inline-flex;height:calc(var(--act-h) - 6px);padding:0 8px;font-size:12px}
+    .cv-talk{order:2;flex:none}
+    .cv-talk-open{height:var(--chat-h)}
+    .cv-talk:not(.open){height:auto;border:0;border-radius:18px;background:none;box-shadow:none;overflow:visible}
+    .cv-talk:not(.open) .cv-talk-body{display:none}
+    .cv-talk:not(.open) .cv-talk-open{display:flex}
+    .cv-talk.open{height:min(72vh,560px)}
+    .cv-talk.open .cv-talk-top{cursor:pointer}
+    .cv-talk.open .cv-talk-x{display:grid}
+  }
+  @supports (height:100dvh){ @media(max-width:1000px){ .cv{--vh:100dvh} } }   /* the screen as it is now, toolbars and all */
+  /* the start and end card on a smaller board (--sz is the board's size here) */
+  @media(max-width:400px),(max-height:680px) and (max-width:1000px){
+    .cv-card-in{width:min(calc(var(--sz) * .94),340px);padding:12px 12px 13px;border-radius:18px}
+    .cv-card-face{margin-bottom:6px;font-size:clamp(34px,calc(var(--sz) * .15),54px)}
+    .cv-card-in h2{margin-bottom:4px;font-size:20px}
+    .cv-card-in p{margin-bottom:10px;font-size:12.5px;line-height:1.38}
+    .cv-side-pick{gap:4px;margin-bottom:10px}
+    .cv-side-pick button{height:32px;padding:0 6px;gap:4px;border-radius:10px;font-size:12.5px}
+    .cv-side-pick .sw{width:12px;height:12px}
+    .cv-go{height:36px;padding:0 20px;font-size:14px}
+    .cv-link{margin-top:7px;font-size:12.5px}
+  }
+  @media(max-width:290px),(max-height:570px) and (max-width:1000px){
+    .cv-card[data-start] .cv-card-in p{display:none}
+    .cv-card-in h2{margin-bottom:8px;font-size:18px}
+    .cv-side-pick button{font-size:12px}
+  }
+}
+
+/* ---- Wind's bot face: a dark rounded head, two glowing rounded-square eyes, an antenna. Sizes are in em, so the
+   font-size of the box sets the size. Expressions come from data-mood (set by chess-bot.js). */
+.bot{--eye:#e6f8ff;--glow:rgba(92,190,255,.9);--glow2:rgba(92,150,255,.42);--tip:#7cc4ff;--spring:cubic-bezier(.34,1.56,.64,1);
+  position:relative;display:inline-block;width:1.16em;height:1em;flex-shrink:0;vertical-align:middle;line-height:0}
+.bot-float,.bot-fx,.bot-head{position:absolute;inset:0;display:block}
+.bot-float{animation:botFloat 4.2s ease-in-out infinite}
+.bot-fx{transform-origin:50% 92%}
+.bot-head{border-radius:.31em;background:linear-gradient(165deg,#2c2848 0%,#16142a 46%,#0d0c18 100%);
+  box-shadow:inset 0 .018em 0 rgba(255,255,255,.16),inset 0 -.05em .08em rgba(0,0,0,.55),0 0 0 .02em rgba(140,120,255,.6),0 .06em .16em rgba(0,0,0,.5),0 0 .32em rgba(110,90,255,.3);
+  transition:transform .38s var(--spring)}
+:root[data-theme=light] .bot-head{box-shadow:inset 0 .018em 0 rgba(255,255,255,.16),inset 0 -.05em .08em rgba(0,0,0,.55),0 0 0 .02em rgba(124,58,237,.55),0 .08em .2em rgba(40,20,90,.3)}
+.bot-ant{position:absolute;left:50%;top:-.15em;width:.035em;height:.17em;margin-left:-.0175em;border-radius:.02em;background:linear-gradient(#625b92,#2a2546);transform-origin:50% 100%;animation:botSway 5s ease-in-out infinite}
+.bot-ant b{position:absolute;left:50%;top:-.055em;width:.1em;height:.1em;margin-left:-.05em;border-radius:50%;background:var(--tip);box-shadow:0 0 .07em var(--tip),0 0 .2em var(--tip);transition:background-color .3s,box-shadow .3s}
+.bot-screen{position:absolute;inset:.095em .095em .11em;border-radius:.23em;background:#090812;overflow:hidden;box-shadow:inset 0 0 .06em rgba(0,0,0,.9)}
+.bot-screen::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,0) 38%,rgba(120,100,255,.06));pointer-events:none}
+.bot-gaze,.bot-pose,.bot-blink{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.bot-gaze,.bot-blink{will-change:transform}
+.bot.off,.bot.off *{animation-play-state:paused!important}
+.bot-pose{transition:transform .38s var(--spring)}
+.bot-blink{gap:.15em;transition:transform .09s ease-out;filter:drop-shadow(0 0 .04em var(--glow)) drop-shadow(0 0 .13em var(--glow2))}
+.bot.blink .bot-blink{transform:scaleY(.08);transition-duration:.06s}
+.bot.talk .bot-blink{animation:botTalk .2s ease-in-out 6 alternate}
+.bot-eye{position:relative;display:block;width:.27em;height:.29em;border-radius:.085em;background:var(--eye);transition:clip-path .36s var(--spring),transform .38s var(--spring),border-radius .3s,background-color .3s}
+.bot-blush{position:absolute;top:63%;width:.17em;height:.075em;border-radius:50%;background:rgba(255,120,170,.6);opacity:0;transition:opacity .3s}
+.bot-blush.l{left:15%}.bot-blush.r{right:15%}
+.bot-acc{position:absolute;display:block;pointer-events:none;opacity:0;transition:opacity .25s,transform .45s var(--spring)}
+.bot-acc svg{display:block;width:100%;height:100%;overflow:visible}
+.bot-acc.glasses{left:7%;right:7%;top:31%;height:.32em;z-index:2;transform:translateY(-1.2em) rotate(-8deg)}
+.bot-acc.mark{right:-.08em;top:-.32em;width:.13em;height:.3em;transform:scale(.2) rotate(-20deg)}
+.bot-acc.vein{right:-.07em;top:-.08em;width:.25em;height:.25em;transform:scale(.3)}
+.bot-acc.sweat{right:.03em;top:.05em;width:.12em;height:.17em}
+.bot-acc.zzz{right:-.16em;top:-.34em;width:.4em;height:.4em}
+.bot-acc.zzz b{position:absolute;left:0;bottom:0;font:800 .17em/1 var(--sans);color:#9ad8ff;opacity:0}
+.bot-acc.spark{width:.17em;height:.17em;fill:#ffd66b}
+.bot-acc.spark.a{left:-.12em;top:-.08em}.bot-acc.spark.b{right:-.12em;top:.3em;width:.12em;height:.12em}
+/* the expressions */
+.bot[data-mood=happy],.bot[data-mood=laugh],.bot[data-mood=wink]{--eye:#fff6dc;--glow:rgba(255,200,90,.9);--glow2:rgba(255,170,60,.4);--tip:#ffcf5c}
+.bot[data-mood=happy] .bot-blush,.bot[data-mood=laugh] .bot-blush,.bot[data-mood=wink] .bot-blush{opacity:1}
+.bot[data-mood=smug]{--eye:#f1e9ff;--glow:rgba(170,120,255,.95);--glow2:rgba(140,90,255,.45);--tip:#b79dff}
+.bot[data-mood=annoyed]{--eye:#ffe4df;--glow:rgba(255,92,80,.95);--glow2:rgba(255,60,60,.45);--tip:#ff6b6b}
+.bot[data-mood=worried]{--eye:#e9ecff;--glow:rgba(150,165,255,.75);--glow2:rgba(120,140,255,.35);--tip:#9aa6ff}
+.bot[data-mood=bored]{--glow:rgba(92,190,255,.45);--glow2:rgba(92,150,255,.15);--tip:#4f6f92}
+.bot[data-mood=surprised]{--eye:#fff;--glow:rgba(140,220,255,1)}
+.bot[data-mood=surprised] .bot-eye{border-radius:50%}
+.bot[data-mood=cool]{--tip:#ffcf5c}
+.bot[data-mood=dizzy]{--eye:#ffd9f3;--glow:rgba(255,110,200,.8);--glow2:rgba(255,110,200,.3);--tip:#ff8ad8}
+.bot[data-mood=dizzy] .bot-eye{background:transparent}
+.bot[data-mood=dizzy] .bot-eye::before,.bot[data-mood=dizzy] .bot-eye::after{content:"";position:absolute;left:42%;top:-4%;width:16%;height:108%;border-radius:.03em;background:var(--eye);transform:rotate(45deg)}
+.bot[data-mood=dizzy] .bot-eye::after{transform:rotate(-45deg)}
+.bot[data-mood=dizzy] .bot-head{animation:botWobble 1.4s ease-in-out infinite}
+.bot[data-mood=laugh] .bot-pose{animation:botHop .34s ease-in-out infinite alternate}
+/* the evil laugh (after Wind wins): pink-red glow, a grin with one fang, little horns, "ha"s, and chuckling bursts:
+   about a second of laughing, a pause, again. Transforms and opacity only. */
+.bot-mouth{position:absolute;left:50%;top:69%;width:.3em;height:.135em;margin-left:-.15em;opacity:0;transform:scale(.3);transform-origin:50% 0;transition:opacity .2s,transform .35s var(--spring);filter:drop-shadow(0 0 .03em rgba(255,60,120,.9))}
+.bot-mouth svg{display:block;width:100%;height:100%}
+.bot[data-mood=evil]{--eye:#ffe3ec;--glow:rgba(255,51,102,.95);--glow2:rgba(255,0,85,.45);--tip:#ff3d6e}
+.bot[data-mood=evil] .bot-blush{opacity:1}
+.bot[data-mood=evil] .bot-mouth{opacity:1;transform:none;animation:botEvilMouth 2.8s ease-in-out infinite}
+.bot[data-mood=evil] .bot-head{animation:botEvilLaugh 2.8s ease-in-out infinite}
+.bot[data-mood=evil] .bot-screen{box-shadow:inset 0 -.1em .2em rgba(255,40,90,.25),inset 0 0 .06em rgba(0,0,0,.9)}
+.bot-acc.horn{top:-.13em;width:.17em;height:.22em;transform:translateY(.12em) scale(.2);transform-origin:50% 100%}
+.bot-acc.horn.l{left:.09em}.bot-acc.horn.r{right:.09em}
+.bot-acc.horn.r svg{transform:scaleX(-1)}
+.bot[data-mood=evil] .bot-acc.horn{opacity:1;transform:none}
+.bot[data-mood=evil] .bot-acc.horn.l{transform:rotate(-10deg)}.bot[data-mood=evil] .bot-acc.horn.r{transform:rotate(10deg)}
+.bot-acc.ha{right:-.3em;top:-.22em;width:.5em;height:.5em}
+.bot-acc.ha b{position:absolute;left:0;bottom:0;font:800 .15em/1 var(--sans);color:#ff5c8a;opacity:0;text-shadow:0 0 .2em rgba(255,60,120,.6)}
+.bot[data-mood=evil] .bot-acc.ha{opacity:1}
+.bot[data-mood=evil] .bot-acc.ha b{animation:botHa 2.8s ease-out infinite}
+.bot[data-mood=evil] .bot-acc.ha b:nth-child(2){animation-delay:.32s;left:.5em}.bot[data-mood=evil] .bot-acc.ha b:nth-child(3){animation-delay:.64s;left:.15em}
+@keyframes botEvilLaugh{0%,100%{transform:rotate(-4deg)}5%{transform:translateY(.03em) rotate(-7deg)}10%{transform:translateY(-.025em) rotate(-1deg)}15%{transform:translateY(.03em) rotate(-7deg)}20%{transform:translateY(-.025em) rotate(-1deg)}25%{transform:translateY(.03em) rotate(-7deg)}30%{transform:translateY(-.02em) rotate(-2deg)}36%{transform:translateY(.015em) rotate(-5deg)}44%{transform:rotate(-4deg)}}
+@keyframes botEvilMouth{0%,44%,100%{transform:none}5%,15%,25%{transform:scaleY(.55)}10%,20%,30%{transform:scaleY(1.08)}}
+@keyframes botHa{0%{transform:translate(0,0) scale(.5);opacity:0}8%{opacity:1}40%{transform:translate(.4em,-1.6em) scale(1.15);opacity:0}100%{opacity:0}}
+.bot[data-mood=think] .bot-ant b{animation:botTip .7s ease-in-out infinite alternate}
+.bot[data-mood=cool] .bot-acc.glasses{opacity:1;transform:none}
+.bot[data-mood=surprised] .bot-acc.mark{opacity:1;transform:rotate(12deg)}
+.bot[data-mood=annoyed] .bot-acc.vein{opacity:1;transform:none;animation:botVein .9s ease-in-out infinite}
+.bot[data-mood=worried] .bot-acc.sweat{opacity:1;animation:botSweat 1.8s ease-in infinite}
+.bot[data-mood=bored] .bot-acc.zzz{opacity:1}
+.bot[data-mood=bored] .bot-acc.zzz b{animation:botZ 2.6s ease-out infinite}
+.bot[data-mood=bored] .bot-acc.zzz b+b{animation-delay:1.3s}
+.bot[data-mood=happy] .bot-acc.spark,.bot[data-mood=laugh] .bot-acc.spark,.bot[data-mood=cool] .bot-acc.spark{opacity:1;animation:botTwinkle 1.6s ease-in-out infinite}
+.bot-acc.spark.b{animation-delay:.8s!important}
+@keyframes botFloat{50%{transform:translateY(-.035em)}}
+@keyframes botSway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+@keyframes botTip{to{transform:scale(1.35);filter:brightness(1.35)}}
+@keyframes botHop{from{transform:translate(0,-9%)}to{transform:translate(0,3%)}}
+@keyframes botTalk{to{transform:scaleY(.8)}}
+@keyframes botWobble{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+@keyframes botVein{50%{transform:scale(1.18)}}
+@keyframes botSweat{0%{transform:translateY(-.03em);opacity:0}20%{opacity:1}100%{transform:translateY(.14em);opacity:0}}
+@keyframes botZ{0%{transform:translate(0,0) scale(.6);opacity:0}25%{opacity:1}100%{transform:translate(.9em,-1.4em) scale(1.25);opacity:0}}
+@keyframes botTwinkle{0%,100%{transform:scale(.35) rotate(0);opacity:.25}50%{transform:scale(1) rotate(45deg);opacity:1}}
+/* one-off moves */
+.bot-fx.fx-bounce{animation:botBounce .56s cubic-bezier(.3,.7,.4,1)}
+.bot-fx.fx-jump{animation:botJump .5s cubic-bezier(.3,.7,.4,1)}
+.bot-fx.fx-shake{animation:botShake .6s ease-in-out}
+.bot-fx.fx-nod{animation:botNod .6s ease-in-out}
+.bot-fx.fx-pop{animation:botPop .52s var(--spring)}
+@keyframes botBounce{0%{transform:none}25%{transform:translateY(.03em) scale(1.07,.9)}55%{transform:translateY(-.08em) scale(.95,1.06)}80%{transform:scale(1.02,.98)}100%{transform:none}}
+@keyframes botJump{0%{transform:none}35%{transform:translateY(-.14em) scale(.96,1.05)}70%{transform:translateY(.02em) scale(1.04,.96)}100%{transform:none}}
+@keyframes botShake{0%,100%{transform:none}20%{transform:rotate(-7deg)}40%{transform:rotate(6deg)}60%{transform:rotate(-4deg)}80%{transform:rotate(2deg)}}
+@keyframes botNod{0%,100%{transform:none}30%{transform:translateY(.04em) rotate(2deg)}60%{transform:translateY(-.01em)}}
+@keyframes botPop{from{transform:scale(.4);opacity:0}}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+  .mark.spin{stroke-dasharray:none;animation:calm 1.6s ease-in-out infinite!important}
+  .shimmer{animation:none!important;color:var(--muted);background:none}
+  .answer.streaming .caret::after{animation:calm 1.6s ease-in-out infinite!important}
+  .composer-wrap,.composer,.composer textarea,.sidebar{transition:none!important}
+}
+@keyframes calm{50%{opacity:.45}}
+@media(forced-colors:active){
+  .send,.stop{border:1px solid ButtonText}
+  .hitem.active{outline:1px solid Highlight}
+}
+@media print{
+  body{overflow:visible}
+  #app{display:block;height:auto}
+  .sidebar,.topbar,.composer-wrap,.overlay,.toasts,.acts,.skip{display:none!important}
+  .scroll{overflow:visible;-webkit-mask-image:none!important;mask-image:none!important}
+  .inner{width:100%}
+}
+
+/* ============================================================================
+   Tabs: Chat, Wisp, Games. Each tab paints its own sky behind the main column.
+   ============================================================================ */
+.main{background:var(--sky-soft)}
+.main::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .6s ease}
+.main::before{background:var(--sky-home)}
+.main.tab-chat:not(.chatting)::before,.main.tab-games:not(.chess-mode)::before{opacity:1}
+.main.tab-wisp::before{background:var(--sky-vivid);opacity:1}
+
+
+/* the app fills exactly the visible screen (see fitScreen); --sab is the home-bar gap, gone while the keyboard is up */
+#app{position:relative;height:var(--app-h,100dvh)}
+:root{--sab:env(safe-area-inset-bottom,0px)}
+:root.kb-open{--sab:0px}
+
+/* views per tab */
+.wisp-view,.games-view{display:none}
+.main.tab-wisp .scroll,.main.tab-wisp .composer-wrap,.main.tab-wisp .chess-view,
+.main.tab-games .scroll,.main.tab-games .composer-wrap{display:none!important}
+.main.tab-wisp .wisp-view{display:flex}
+.main.tab-games:not(.chess-mode) .games-view{display:block}
+.main.tab-wisp .mode-pick,.main.tab-games .mode-pick,.main.tab-wisp #tempBtn,.main.tab-games #tempBtn,.main.tab-wisp #chatPill,.main.tab-games #chatPill{display:none!important}
+.main.tab-wisp .icon-btn.round{background:var(--glass);border-color:var(--glass-line);color:var(--glass-ink);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+
+/* back from a game to the Games tab */
+.back-btn{display:none!important}
+.main.chess-mode .back-btn{display:grid!important}
+.main.chess-mode #menu{display:none!important}
+.rb-back{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+
+/* filled icon (Wisp) */
+.ic-fill{fill:currentColor!important;stroke:none!important}
+
+/* desktop: the tabs sit at the top of the sidebar */
+.side-tabs{padding:0 10px 8px;margin-bottom:6px;display:flex;flex-direction:column;gap:2px;flex-shrink:0;border-bottom:1px solid var(--line)}
+.side-tabs .side-row[aria-current=page]{background:var(--active)}
+.side-tabs .side-row[aria-current=page] .ic{color:var(--text)}
+.side-tabs .ic.ic-fill{width:21px;height:21px}
+
+/* phones: a floating tab bar */
+.tabbar{display:none}
+@media(max-width:820px),(hover:none) and (pointer:coarse){
+  .side-tabs{display:none}
+  .tabbar{position:absolute;left:50%;bottom:calc(10px + var(--sab));transform:translateX(-50%);width:min(calc(100% - 32px),360px);height:64px;padding:7px;border-radius:999px;background:var(--tab);border:1px solid var(--tab-line);box-shadow:0 14px 34px -14px rgba(10,35,80,.42);display:grid;grid-template-columns:repeat(3,1fr);gap:6px;z-index:20;transition:transform .45s var(--glide),opacity .3s ease}
+  .tabbar.away{transform:translate(-50%,150%);opacity:0;pointer-events:none}
+  .tab{border-radius:999px;display:grid;place-items:center;color:var(--tab-ink);transition:background .2s,color .2s,transform .2s var(--spring)}
+  .tab:active{transform:scale(.94)}
+  .tab[aria-current=page]{background:var(--tab-active);color:var(--tab-ink-on)}
+  .tab .ic{width:24px;height:24px;stroke-width:1.8}
+  .tab .ic.ic-fill{width:31px;height:31px}
+  .main.has-tabbar .composer-wrap{padding-bottom:calc(86px + var(--sab))!important;transition:none}
+}
+
+/* ============================================================================
+   Games
+   ============================================================================ */
+.games-view{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;position:relative;z-index:1;overscroll-behavior:contain}
+.gm-inner{width:min(760px,100% - 32px);margin:0 auto;padding:12px 0 40px}
+.gm-head h1{font:400 clamp(32px,4vw,40px)/1.12 var(--serif);letter-spacing:-.012em;text-wrap:balance}
+.gm-head p{margin-top:8px;color:var(--muted);font-size:15.5px;max-width:42ch}
+.gm-grid{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:14px}
+.gm-card{position:relative;display:flex;flex-direction:column;text-align:left;border-radius:24px;background:var(--card);border:1px solid var(--card-line);box-shadow:var(--shadow-m);overflow:hidden;transition:transform .3s var(--spring),box-shadow .3s}
+button.gm-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-l)}
+button.gm-card:active{transform:scale(.98)}
+.gm-art{display:grid;place-items:center;width:100%;aspect-ratio:16/10}
+.gm-art.chess{background:conic-gradient(var(--board-a) 25%,var(--board-b) 0 50%,var(--board-a) 0 75%,var(--board-b) 0) 0 0/46px 46px}
+.gm-knight{width:86px;height:86px;border-radius:50%;display:grid;place-items:center;background:var(--cta);color:var(--cta-ink);box-shadow:0 14px 30px -10px rgba(5,20,50,.5)}
+.gm-knight svg{width:46px;height:46px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.gm-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:3px}
+.gm-title{font-size:17px;font-weight:650;letter-spacing:-.01em;color:var(--text)}
+.gm-sub{font-size:14px;line-height:1.45;color:var(--muted)}
+.gm-badge{position:absolute;top:12px;left:12px;padding:5px 11px;border-radius:999px;background:var(--cta);color:var(--cta-ink);font-size:12px;font-weight:650;letter-spacing:.01em}
+.gm-card.soon{background:transparent;border:1.5px dashed var(--line2);box-shadow:none}
+.gm-art.soon{color:var(--faint);aspect-ratio:auto;height:112px}
+.gm-art.soon svg{width:44px;height:44px;fill:currentColor;opacity:.75}
+@media(max-width:820px),(hover:none) and (pointer:coarse){.gm-inner{padding-bottom:calc(104px + var(--sab))}}
+
+/* ============================================================================
+   Wisp: the puffy mascot in the Wisp tab. A white puff built from circles, lit as one soft clay shape by an SVG
+   lighting filter; mask-cut eyes that morph between feelings; a curl of wind on top; little extras around it.
+   Everything is prefixed wp- so it never meets the chat's own classes.
+   ============================================================================ */
+.wisp-view{flex:1;min-height:0;flex-direction:column;align-items:center;overflow-y:auto;overflow-x:hidden;position:relative;z-index:1;padding:0 16px 32px;color:var(--wp-ink)}
+@media(max-width:820px),(hover:none) and (pointer:coarse){.wisp-view{padding-bottom:calc(90px + var(--sab))}}
+.wp-wrap{--s:min(62vw,290px,calc(var(--stable-h,100dvh) * .38));flex:1;width:100%;display:grid;place-items:center;padding-top:70px;min-height:320px}
+.wp-box{position:relative}
+.wp-stage{position:relative;width:var(--s);aspect-ratio:1;font-size:calc(var(--s) / 16);cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;border-radius:40%;outline:0!important}
+.wp-stage:focus:not(:focus-visible){box-shadow:none}
+.wp-stage:focus-visible{box-shadow:0 0 0 3px var(--glass-line)}   /* a ring only for keyboard users */
+.wp-halo{position:absolute;inset:-14%;border-radius:50%;background:radial-gradient(circle,var(--wp-halo) 0%,transparent 62%);pointer-events:none}
+.wp-ground{position:absolute;left:22%;right:22%;bottom:-4%;height:11%;border-radius:50%;background:radial-gradient(ellipse at center,var(--wp-ground) 0%,transparent 72%)}
+.wp-l{position:absolute;inset:0;transform-origin:50% 88%}
+.wp-pose{transition:transform .75s var(--spring)}
+.wp-breath{animation:wpBreathe 3.8s ease-in-out infinite}
+.wp-stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* the body and the curl are bitmaps drawn once (see paintPuff), so moving them costs the GPU nothing; the tint is the
+   body's silhouette as a mask; only the face is vector, and it is redrawn only when something on it changes */
+.wp-stage>.wp-l{opacity:0;transition:opacity .35s ease}
+.wp-stage.ready>.wp-l{opacity:1}
+#wpLean,.wp-eyes{will-change:transform}   /* moved on the GPU: leaning and looking around repaint nothing */
+.wp-stage .wp-body,.wp-stage .wp-tint{position:absolute;inset:auto;left:10%;top:16.875%;width:80%;height:80%}
+.wp-tint{opacity:0;mix-blend-mode:multiply;pointer-events:none;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.wp-stage .wp-tuft{position:absolute;inset:auto;left:43.75%;top:5.625%;width:28.75%;height:30%}
+.wp-eye{fill:var(--wp-eye)}
+.wp-shine{fill:#fff}
+.wp-gs{fill:none;stroke:var(--wp-eye);stroke-width:5.4;stroke-linecap:round;stroke-linejoin:round}
+.wp-heart{fill:#ff4d7a}
+.wp-star{fill:#ffc23a;stroke:#f5a300;stroke-width:1.4;stroke-linejoin:round}
+.wp-glyph{opacity:0;transform:scale(.3);transform-box:fill-box;transform-origin:center;transition:opacity .16s ease,transform .34s var(--spring)}
+.wp-glyph.on{opacity:1;transform:none}
+.wp-spin{transform-box:fill-box;transform-origin:center}
+.wp-glyph.on .wp-spin{animation:wpSpin 1.1s linear infinite}   /* SVG shapes can't spin on the GPU: only while the spiral eyes show */
+.wp-cheek{fill:#ff8fab}
+.wp-blushline{stroke:#ff6f93;stroke-width:2.6;stroke-linecap:round;fill:none}
+
+.wp-tuft{transform-origin:29.35% 85.4%;transition:rotate .7s var(--spring),scale .5s var(--spring)}
+.wt-sway{animation:wpTSway 3.4s ease-in-out infinite}
+.wt-wiggle{animation:wpTWig .42s ease-in-out infinite}
+.wt-perk{rotate:-7deg;scale:1 1.12;animation:wpTSway 1.8s ease-in-out infinite}
+.wt-droop{rotate:52deg;animation:wpTSway 5s ease-in-out infinite}
+.wt-droopSoft{rotate:26deg;animation:wpTSway 4.4s ease-in-out infinite}
+.wt-stiff{rotate:-12deg;scale:1.08 1.2;animation:wpTTrem .12s linear infinite}
+.wt-squiggle{rotate:-24deg;animation:wpTSway 2.2s ease-in-out infinite}
+.wt-spin{animation:wpSpin .9s linear infinite}
+@keyframes wpTSway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(6deg)}}
+@keyframes wpTWig{0%,100%{transform:rotate(-13deg)}50%{transform:rotate(12deg)}}
+@keyframes wpTTrem{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@keyframes wpSpin{to{transform:rotate(360deg)}}
+
+@keyframes wpBreathe{0%,100%{transform:scale(1,1)}50%{transform:scale(.99,1.025)}}
+@keyframes wpFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes wpFloatSlow{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes wpBounce{0%,100%{transform:translateY(0) scale(1.03,.97)}45%{transform:translateY(-12px) scale(.98,1.03)}}
+@keyframes wpHop{0%,14%,100%{transform:translateY(0) scale(1.06,.93)}46%{transform:translateY(-30px) scale(.95,1.06)}78%{transform:translateY(0) scale(1.02,.98)}}
+@keyframes wpJump{0%{transform:translateY(0) scale(1.1,.88)}35%{transform:translateY(-34px) scale(.92,1.1)}70%{transform:translateY(0) scale(1.06,.94)}100%{transform:none}}
+@keyframes wpShake{0%,50%,100%{transform:rotate(-3deg) translateY(0)}25%,75%{transform:rotate(3deg) translateY(-5px)}}
+@keyframes wpTremble{0%,100%{transform:translateX(0)}25%{transform:translateX(-1.7px)}75%{transform:translateX(1.7px)}}
+@keyframes wpSob{0%,40%,100%{transform:translateY(0) scale(1,1)}20%,60%{transform:translateY(-3px) scale(.98,1.02)}}
+@keyframes wpSway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+@keyframes wpSwaySlow{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes wpWobble{0%,100%{transform:rotate(0) translate(0,0)}25%{transform:rotate(8deg) translate(6px,-3px)}50%{transform:rotate(0) translate(0,-6px)}75%{transform:rotate(-8deg) translate(-6px,-3px)}}
+@keyframes wpHuff{0%,100%{transform:scale(1)}50%{transform:scale(1.045,1.03)}}
+@keyframes wpCreep{0%,100%{transform:translateX(-5px) rotate(-2deg)}50%{transform:translateX(5px) rotate(2deg)}}
+@keyframes wpNod{0%,100%{transform:rotate(0) translateY(0)}50%{transform:rotate(3deg) translateY(3px)}}
+@keyframes wpShuffle{0%,50%,100%{transform:translateX(0)}25%{transform:translateX(5px) rotate(2deg)}75%{transform:translateX(-5px) rotate(-2deg)}}
+@keyframes wpPump{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-5px) scale(1.02)}}
+@keyframes wpDrowse{0%,60%,100%{transform:rotate(0) translateY(0)}80%{transform:rotate(-5deg) translateY(6px)}87%{transform:rotate(1deg) translateY(-2px)}}
+@keyframes wpSnore{0%,100%{transform:scale(1,1)}50%{transform:scale(1.04,.97) translateY(2px)}}
+@keyframes wpFidget{0%,100%{transform:rotate(0)}30%{transform:rotate(-3deg)}60%{transform:rotate(2deg)}}
+@keyframes wpTap{0%,22%,100%{transform:translateY(0)}11%{transform:translateY(-3px)}}
+@keyframes wpExhale{0%{transform:scale(1.04,1)}50%{transform:translateY(8px) scale(1.06,.92)}100%{transform:none}}
+.wm-float{animation:wpFloat 4.2s ease-in-out infinite}
+.wm-floatSlow{animation:wpFloatSlow 6s ease-in-out infinite}
+.wm-bounce{animation:wpBounce .8s ease-in-out infinite}
+.wm-hop{animation:wpHop .62s ease-in-out infinite}
+.wm-hopOnce{animation:wpHop .62s ease-in-out 1,wpFloat 4.2s .62s ease-in-out infinite}
+.wm-jumpOnce{animation:wpJump .6s ease-out 1,wpFloat 4.2s .6s ease-in-out infinite}
+.wm-shake{animation:wpShake .5s ease-in-out infinite}
+.wm-tremble{animation:wpTremble .11s linear infinite}
+.wm-sob{animation:wpSob 1.1s ease-in-out infinite}
+.wm-sway{animation:wpSway 2.6s ease-in-out infinite}
+.wm-swaySlow{animation:wpSwaySlow 4s ease-in-out infinite}
+.wm-wobble{animation:wpWobble 1.4s linear infinite}
+.wm-huff{animation:wpHuff 1s ease-in-out infinite}
+.wm-creep{animation:wpCreep 3.4s ease-in-out infinite}
+.wm-nod{animation:wpNod 1.4s ease-in-out infinite}
+.wm-shuffle{animation:wpShuffle 1.6s ease-in-out infinite}
+.wm-pump{animation:wpPump .45s ease-in-out infinite}
+.wm-drowse{animation:wpDrowse 4s ease-in-out infinite}
+.wm-snore{animation:wpSnore 3.2s ease-in-out infinite}
+.wm-fidget{animation:wpFidget 2.2s ease-in-out infinite}
+.wm-tap{animation:wpTap 1s ease-in-out infinite}
+.wm-exhale{animation:wpExhale 1.6s ease-in-out 1,wpFloatSlow 6s 1.6s ease-in-out infinite}
+
+.wp-fx{position:absolute;inset:0;pointer-events:none}
+.wp-fx i{position:absolute;display:none;translate:-50% -50%;font-style:normal;line-height:1}
+.wp-fx svg{position:static;width:100%;height:100%;overflow:visible}
+.wp-drop{fill:#5fb4ff;stroke:#fff;stroke-width:1.6}
+.wp-fx .wp-txt{font-weight:800;color:var(--wp-mark);text-shadow:0 2px 10px rgba(0,0,0,.12)}
+[data-fx~="tear"] .f-tear,[data-fx~="streams"] .f-stream,[data-fx~="joy"] .f-joy,[data-fx~="sweat"] .f-sweat.a,[data-fx~="sweat2"] .f-sweat,
+[data-fx~="anger"] .f-anger,[data-fx~="tick"] .f-tick,[data-fx~="question"] .f-q,[data-fx~="exclaim"] .f-ex,[data-fx~="exclaim2"] .f-ex2,
+[data-fx~="sparkles"] .f-spark,[data-fx~="twinkle"] .f-twinkle,[data-fx~="hearts"] .f-heart,[data-fx~="zzz"] .f-z,[data-fx~="z1"] .f-zs,
+[data-fx~="raincloud"] .f-rain,[data-fx~="orbit"] .f-orb,[data-fx~="thought"] .f-th,[data-fx~="notes"] .f-note,[data-fx~="waves"] .f-waves,
+[data-fx~="dots"] .f-dot{display:block}
+.f-tear{left:41%;top:59%;width:.55em;height:.78em;animation:wpTear 2.6s ease-in infinite}
+@keyframes wpTear{0%{transform:translateY(0) scale(0);opacity:0}12%{transform:translateY(0) scale(1);opacity:1}55%{transform:translateY(1.3em)}85%{opacity:1}100%{transform:translateY(3.2em) scale(.9);opacity:0}}
+.f-stream{top:57%;width:.66em;height:.92em}
+.f-stream.L{left:42%;animation:wpStreamL 1s ease-in infinite}.f-stream.R{left:60%;animation:wpStreamR 1s ease-in infinite}
+.f-stream.d2{animation-delay:.33s}.f-stream.d3{animation-delay:.66s}
+@keyframes wpStreamL{0%{transform:translate(0,0) scale(.5);opacity:0}10%{opacity:1}100%{transform:translate(-2.6em,3.4em) scale(1);opacity:0}}
+@keyframes wpStreamR{0%{transform:translate(0,0) scale(.5);opacity:0}10%{opacity:1}100%{transform:translate(2.6em,3.4em) scale(1);opacity:0}}
+.f-joy{top:53%;width:.42em;height:.6em}
+.f-joy.L{left:41%;animation:wpJoyL .9s ease-out infinite}.f-joy.R{left:61%;animation:wpJoyR .9s ease-out infinite}.f-joy.d2{animation-delay:.45s}
+@keyframes wpJoyL{0%{transform:translate(0,0) scale(.4);opacity:0}15%{opacity:1}60%{transform:translate(-1.5em,-.9em) scale(1)}100%{transform:translate(-2.2em,.5em) scale(.8);opacity:0}}
+@keyframes wpJoyR{0%{transform:translate(0,0) scale(.4);opacity:0}15%{opacity:1}60%{transform:translate(1.5em,-.9em) scale(1)}100%{transform:translate(2.2em,.5em) scale(.8);opacity:0}}
+.f-sweat{width:.72em;height:1em;animation:wpSweat 2.2s ease-in infinite}
+.f-sweat.a{left:74%;top:32%;rotate:18deg}.f-sweat.b{left:25%;top:35%;rotate:-18deg;animation-delay:.6s}
+@keyframes wpSweat{0%{transform:translateY(-.2em) scale(.6);opacity:0}20%{transform:none;opacity:1}80%{opacity:1}100%{transform:translateY(.9em);opacity:0}}
+.f-anger{left:76%;top:26%;width:1.5em;height:1.5em;animation:wpPulse .7s ease-in-out infinite}
+.f-tick{left:77%;top:29%;width:1.05em;height:1.05em;animation:wpPulse 1.1s ease-in-out infinite}
+@keyframes wpPulse{0%,100%{transform:scale(.85)}50%{transform:scale(1.12)}}
+.f-q{left:78%;top:17%;font-size:2.3em;animation:wpPop .45s var(--spring) both,wpBob 1.6s .45s ease-in-out infinite}
+.f-ex{left:77%;top:15%;font-size:2.4em;animation:wpPop .45s var(--spring) both,wpBob 1.4s .45s ease-in-out infinite}
+.f-ex2{left:79%;top:14%;font-size:2.3em;letter-spacing:-.08em;animation:wpPop .4s var(--spring) both,wpBob 1s .4s ease-in-out infinite}
+@keyframes wpPop{0%{transform:scale(0) rotate(-20deg)}100%{transform:scale(1) rotate(0)}}
+@keyframes wpBob{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(8deg) translateY(-.18em)}}
+.f-spark{width:1em;height:1em;color:var(--wp-spark);animation:wpTwinkle 1.8s ease-in-out infinite}
+.f-spark.s1{left:13%;top:30%;width:1.25em;height:1.25em}.f-spark.s2{left:85%;top:20%;width:.9em;height:.9em;animation-delay:.45s}
+.f-spark.s3{left:90%;top:62%;animation-delay:.9s}.f-spark.s4{left:9%;top:66%;width:.8em;height:.8em;animation-delay:1.3s}
+.f-twinkle{left:71%;top:41%;width:1.05em;height:1.05em;color:#ffc23a;animation:wpTwinkle 1.5s ease-in-out infinite}
+@keyframes wpTwinkle{0%,100%{transform:scale(0) rotate(0);opacity:0}50%{transform:scale(1) rotate(45deg);opacity:1}}
+.f-spark path,.f-twinkle path,.f-orb path{fill:currentColor}
+.f-heart{width:1.1em;height:1.1em;animation:wpHeartUp 2.4s ease-out infinite}
+.f-heart.h1{left:16%;top:52%}.f-heart.h2{left:84%;top:45%;animation-delay:.8s;--r:-10deg}.f-heart.h3{left:72%;top:20%;animation-delay:1.6s;width:.8em;height:.8em}
+@keyframes wpHeartUp{0%{transform:translateY(.6em) scale(.3);opacity:0}20%{opacity:1}100%{transform:translateY(-2.6em) scale(1.05) rotate(var(--r,9deg));opacity:0}}
+.f-z{left:69%;top:27%;font-size:1.25em;animation:wpZUp 3s ease-out infinite}
+.f-z.z2{animation-delay:1s}.f-z.z3{animation-delay:2s}
+.f-zs{left:67%;top:30%;font-size:1em;animation:wpZUp 4s ease-out infinite}
+@keyframes wpZUp{0%{transform:translate(0,0) scale(.5);opacity:0}20%{opacity:1}100%{transform:translate(1.7em,-2.4em) scale(1.35);opacity:0}}
+.f-rain{left:67%;top:5%;width:4.4em;height:3.6em;animation:wpFloat 2.6s ease-in-out infinite}
+.f-rain .rl{stroke:#7cc6ff;stroke-width:2.4;stroke-linecap:round;animation:wpRain .7s linear infinite}
+.f-rain .rl:nth-of-type(2){animation-delay:.23s}.f-rain .rl:nth-of-type(3){animation-delay:.46s}
+@keyframes wpRain{0%{transform:translateY(-4px);opacity:0}30%{opacity:1}100%{transform:translateY(12px);opacity:0}}
+.f-orb{left:0;top:0;width:.9em;height:.9em;color:#ffc23a}
+.f-th{border-radius:50%;background:var(--glass-solid);border:1px solid var(--glass-line);animation:wpThPop 2.4s ease-in-out infinite}
+.f-th.t1{left:71%;top:25%;width:.45em;height:.45em}.f-th.t2{left:78%;top:15%;width:.7em;height:.7em;animation-delay:.25s}.f-th.t3{left:87%;top:3%;width:1.2em;height:1.2em;animation-delay:.5s}
+@keyframes wpThPop{0%,8%{transform:scale(0)}24%,84%{transform:scale(1)}100%{transform:scale(0)}}
+.f-note{font-size:1.5em;animation:wpNoteUp 3s ease-out infinite}
+.f-note.n1{left:80%;top:34%}.f-note.n2{left:19%;top:30%;animation-delay:1.5s}
+@keyframes wpNoteUp{0%{transform:translate(0,.5em) rotate(-10deg);opacity:0}20%{opacity:1}100%{transform:translate(.8em,-2.2em) rotate(12deg);opacity:0}}
+.f-waves{left:5%;top:50%;width:1.8em;height:2.2em}
+.f-waves path{fill:none;stroke:var(--wp-mark);stroke-width:2.6;stroke-linecap:round;opacity:.15;animation:wpWave 1.2s ease-in-out infinite}
+.f-waves path:nth-child(2){animation-delay:.2s}.f-waves path:nth-child(3){animation-delay:.4s}
+@keyframes wpWave{0%,100%{opacity:.15}40%{opacity:.85}}
+.f-dot{top:21%;width:.38em;height:.38em;border-radius:50%;background:var(--wp-mark);animation:wpDot 1.6s ease-in-out infinite}
+.f-dot.d1{left:74%}.f-dot.d2{left:80%;animation-delay:.2s}.f-dot.d3{left:86%;animation-delay:.4s}
+@keyframes wpDot{0%,100%{opacity:.15;transform:translateY(0)}35%{opacity:.9;transform:translateY(-.25em)}}
+
+/* speech bubble beside Wisp's head */
+.wp-bubble{position:absolute;bottom:80%;left:50%;margin-left:-14px;transform:translateX(-100%);max-width:min(220px,44vw);min-height:44px;padding:11px 16px;border-radius:20px;background:var(--glass-solid);border:1px solid var(--glass-line);color:var(--glass-ink);font-size:15px;font-weight:550;line-height:1.35;text-wrap:balance;z-index:2;display:flex;align-items:center}
+.wp-bubble::before,.wp-bubble::after{content:"";position:absolute;border-radius:50%;background:var(--glass-solid);border:1px solid var(--glass-line)}
+.wp-bubble::before{width:11px;height:11px;right:4px;bottom:-15px}
+.wp-bubble::after{width:6px;height:6px;right:-4px;bottom:-24px}
+.wp-bubble.pop{animation:wpBubble .38s var(--spring)}
+@keyframes wpBubble{0%{transform:translateX(-100%) scale(.88);opacity:.4}100%{transform:translateX(-100%) scale(1);opacity:1}}
+.wp-typing{display:none;gap:4px;padding-block:5px}
+.wp-bubble.is-typing .wp-typing{display:flex}
+.wp-bubble.is-typing .wp-say{display:none}
+.wp-typing i{width:7px;height:7px;border-radius:50%;background:currentColor;animation:wpDot 1s ease-in-out infinite}
+.wp-typing i:nth-child(2){animation-delay:.15s}.wp-typing i:nth-child(3){animation-delay:.3s}
+
+/* caption and the big button */
+.wp-caption{text-align:center;margin-top:18px;display:flex;flex-direction:column;align-items:center;gap:8px;width:100%}
+.wp-caption h1{font-size:23px;font-weight:700;letter-spacing:-.025em;text-wrap:balance;color:var(--wp-ink)}
+.wp-caption p{max-width:34ch;font-size:15.5px;line-height:1.5;color:var(--wp-ink-soft);text-wrap:pretty}
+.wp-caption.swap{animation:wpCapIn .45s var(--spring)}
+@keyframes wpCapIn{from{opacity:0;transform:translateY(8px)}}
+.wp-field{width:min(100%,340px);height:52px;margin-top:8px;padding:0 20px;border-radius:999px;border:1px solid var(--field-line);background:var(--field);color:var(--wp-ink);font-size:17px;font-weight:550;text-align:center;outline:0;transition:border-color .2s,box-shadow .2s}
+.wp-field::placeholder{color:var(--wp-ink-soft);opacity:.75;font-weight:500}
+.wp-field:focus{border-color:var(--wp-ink);box-shadow:0 0 0 4px color-mix(in srgb,var(--wp-ink) 12%,transparent)}
+.wp-cta{width:min(100%,360px);height:54px;margin-top:22px;flex-shrink:0;border-radius:999px;background:var(--cta);color:var(--cta-ink);font-size:16.5px;font-weight:600;letter-spacing:-.01em;transition:transform .2s var(--spring),opacity .2s}
+.wp-cta:active{transform:scale(.97)}
+.wp-cta:disabled{opacity:.35;cursor:default}
+@media (prefers-reduced-motion: reduce){
+  .wp-l,.wp-tuft,.wp-fx i,.wp-fx i *,.wp-typing i,.wp-bubble.pop,.wp-caption.swap,.wp-spin{animation:none!important}
+}
+
+/* ---------- chatting with Wisp: the bubble by its head is Wisp's newest text; earlier texts fade upward in the log */
+.wp-more{display:none!important}
+.main.tab-wisp.wisp-chatting .wp-more{display:grid!important}
+.rb-dots{width:4.5px;height:19.1px}
+/* Wisp's size: from the screen's full height (so the keyboard doesn't resize him), and only on a short screen with the
+   keyboard up does he shrink, smoothly, to leave room for the message box above the tab bar */
+@property --s{syntax:"<length>";inherits:true;initial-value:200px}
+.wisp-view.chatmode .wp-wrap{transition:--s .32s var(--glide)}
+.wisp-view.chatmode .wp-wrap{flex:none;--s:min(48vw,210px,calc(var(--stable-h,100dvh) * .27));padding-top:76px;min-height:0}
+.wisp-view.chatmode .wp-caption,.wisp-view.chatmode .wp-cta{display:none}
+.wp-chat{width:min(100%,560px);flex:1;min-height:150px;transition:min-height .2s;display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.wp-log{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;gap:6px;padding:28px 2px 4px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.18) 26px,rgba(0,0,0,.6) 52px,#000 84px);mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.18) 26px,rgba(0,0,0,.6) 52px,#000 84px)}
+.wp-log>:first-child{margin-top:auto}
+.wp-msg{max-width:82%;padding:8px 13px;border-radius:19px;font-size:15px;line-height:1.4;overflow-wrap:anywhere;animation:wpMsgIn .32s var(--glide) both}
+.wp-msg.you{align-self:flex-end;background:var(--wp-you);color:var(--wp-you-ink);border-bottom-right-radius:7px}
+.wp-msg.wisp{align-self:flex-start;background:var(--wp-msg);color:var(--wp-msg-ink);border-bottom-left-radius:7px}
+.wp-msg.you+.wp-msg.wisp,.wp-msg.wisp+.wp-msg.you{margin-top:6px}
+.wp-day{align-self:center;margin:8px 0 2px;font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--wp-ink-soft);opacity:.8}
+@keyframes wpMsgIn{from{opacity:0;transform:translateY(8px)}}
+.wp-compose{flex-shrink:0;display:flex;align-items:center;gap:6px;height:54px;padding:0 7px 0 18px;border-radius:999px;background:var(--composer);border:1px solid var(--composer-line);box-shadow:var(--composer-shadow)}
+.wp-input{flex:1;min-width:0;height:100%;border:0;outline:0;background:transparent;color:var(--text);font-size:16px}
+.wp-input::placeholder{color:var(--composer-ph)}
+.wp-send{width:40px;height:40px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:var(--wp-you);color:var(--wp-you-ink);transition:opacity .2s,transform .2s var(--spring)}
+.wp-send .ic{width:20px;height:20px;stroke-width:2.2}
+.wp-send:disabled{opacity:.3;cursor:default}
+.wp-send:not(:disabled):active{transform:scale(.92)}
+@media(max-width:820px),(hover:none) and (pointer:coarse){.wisp-view.chatmode .wp-wrap{padding-top:70px}}
+@media (prefers-reduced-motion: reduce){.wp-msg{animation:none}}
+/* the speech bubble: as wide as its words need; while chatting it sits in the flow above Wisp's head, so long texts
+   push Wisp down instead of running off the top */
+.wp-bubble{width:max-content}
+.wisp-view.chatmode .wp-wrap{display:flex;flex-direction:column;align-items:center;padding-top:10px}
+.wisp-view.chatmode .wp-box{display:flex;flex-direction:column;align-items:center}
+.wisp-view.chatmode .wp-bubble{position:relative;bottom:auto;left:auto;margin:0 0 22px;transform:none;max-width:min(320px,calc(100vw - 48px));text-align:center;justify-content:center}
+.wisp-view.chatmode .wp-bubble::before{left:calc(50% - 2px);right:auto;bottom:-15px}
+.wisp-view.chatmode .wp-bubble::after{left:calc(50% + 9px);right:auto;bottom:-25px}
+.wisp-view.chatmode .wp-bubble.pop{animation:wpBubbleC .38s var(--spring)}
+@keyframes wpBubbleC{0%{transform:scale(.9);opacity:.4}100%{transform:none;opacity:1}}
+@media(max-width:820px),(hover:none) and (pointer:coarse){.wisp-view.chatmode .wp-wrap{padding-top:8px}}
+
+/* while typing on a phone the history steps aside (the bubble shows Wisp's latest text) so the box fits above the bar */
+/* A short screen (typing on a phone, or a phone on its side): there is no room for the bubble ABOVE Wisp, so it glides to the right with its bubble beside it,
+   the history steps aside (the bubble shows Wisp's latest text), and Wisp shrinks only if the screen is short.
+   Everything moves with the keyboard and glides back when it closes. */
+.wisp-view.chatmode .wp-wrap{container-type:inline-size}
+.wisp-view.chatmode .wp-box{transition:transform .34s var(--glide)}
+:root.short .wp-chat{min-height:0;margin-top:8px;justify-content:flex-end}
+:root.short .wp-log{display:none}
+:root.short .wisp-view.chatmode .wp-wrap{padding-top:6px;--s:max(64px,min(48vw,210px,calc(var(--stable-h,100dvh) * .27),calc(var(--app-h,100dvh) - 228px)))}
+:root.short .wisp-view.chatmode .wp-box{transform:translateX(calc(50vw - 16px - var(--s) / 2));transform:translateX(min(calc(50cqw - var(--s) / 2),190px))}
+:root.short .wisp-view.chatmode .wp-bubble{position:absolute;right:calc(100% + 12px);left:auto;top:2%;bottom:auto;margin:0;max-width:calc(100vw - 44px - var(--s));max-width:min(380px,calc(100cqw - 12px - var(--s)));text-align:left;justify-content:flex-start;font-size:14.5px;padding:9px 14px}
+:root.short .wisp-view.chatmode .wp-bubble::before{left:auto;right:-10px;bottom:8px}
+:root.short .wisp-view.chatmode .wp-bubble::after{left:auto;right:-18px;bottom:0}
+/* the name step: the description steps aside and Wisp shrinks to keep the field in view */
+:root.short .wisp-view:not(.chatmode) #wpText{display:none}
+:root.short .wisp-view:not(.chatmode) .wp-wrap{flex:none;min-height:0;padding-top:8px;--s:max(64px,min(62vw,290px,calc(var(--stable-h,100dvh) * .38),calc(var(--app-h,100dvh) - 290px)))}
+:root.short .wisp-view:not(.chatmode):has(#wpNameForm:not([hidden])) .wp-wrap{--s:max(64px,min(62vw,290px,calc(var(--stable-h,100dvh) * .38),calc(var(--app-h,100dvh) - 352px)))}
+:root.short .wisp-view:not(.chatmode) .wp-bubble{bottom:auto;top:6%;left:auto;right:calc(100% + 12px);margin:0;transform:none;max-width:min(240px,calc(50vw - var(--s) / 2 - 30px))}
+:root.short .wisp-view:not(.chatmode) .wp-bubble.pop{animation:wpBubbleC .38s var(--spring)}
+:root.short .wisp-view:not(.chatmode) .wp-bubble::before{right:-10px;bottom:8px}
+:root.short .wisp-view:not(.chatmode) .wp-bubble::after{right:-18px;bottom:0}
+:root.short .wp-caption{margin-top:8px;gap:4px}
+:root.short .wp-cta{margin-top:12px}
+
+/* the poke: a ripple where the finger lands and a few sparks flying off it */
+.wp-pokefx{position:absolute;z-index:3;width:0;height:0;pointer-events:none}
+.wp-pokefx .ring{position:absolute;left:-1.6em;top:-1.6em;width:3.2em;height:3.2em;border-radius:50%;border:.16em solid var(--wp-poke);box-shadow:0 0 .6em var(--wp-poke-glow);animation:wpRing .5s cubic-bezier(.2,.7,.3,1) forwards}
+.wp-pokefx b{position:absolute;left:-.16em;top:-.16em;width:.32em;height:.32em;border-radius:50%;background:var(--wp-poke);box-shadow:0 0 .4em var(--wp-poke-glow);animation:wpSpark .55s cubic-bezier(.2,.7,.3,1) both}
+.wp-pokefx b:nth-child(odd){background:#ffffff}
+@keyframes wpRing{0%{transform:scale(.25);opacity:.95}100%{transform:scale(1.25);opacity:0}}
+@keyframes wpSpark{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--x),var(--y)) scale(.3);opacity:0}}
+:root{--wp-poke:#9fd0ff;--wp-poke-glow:rgba(140,190,255,.75)}
+:root[data-theme=light]{--wp-poke:#3b8ae6;--wp-poke-glow:rgba(255,255,255,.9)}
+
+/* the intro: Wisp's size follows the screen's height too, so Continue always clears the tab bar (on a small phone the
+   first screen had it under the bar). The name step has an input under the caption, so Wisp is smaller there. */
+.wisp-view:not(.chatmode) .wp-wrap{min-height:0;padding-top:48px;--s:max(64px,min(62vw,290px,calc(var(--stable-h,100dvh) * .38),calc(var(--app-h,100dvh) - 400px)))}
+.wisp-view:not(.chatmode):has(#wpNameForm:not([hidden])) .wp-wrap{min-height:0;padding-top:48px;--s:max(64px,min(62vw,290px,calc(var(--stable-h,100dvh) * .38),calc(var(--app-h,100dvh) - 430px)))}
+
+/* ============================================================================
+   The mode picker: a slim pill in the top bar (the mode's icon in its colour, "Wind Instant", a chevron) and a small
+   menu of two rows, each with a tinted icon, a name, a one-line hint and a check on the one in use.
+   ============================================================================ */
+:root{--mp-instant:#6cb6ff}
+:root[data-theme=light]{--mp-instant:#2a74d0}
+
+.mode-pick{height:38px;padding:0 11px 0 12px;gap:7px;border-radius:999px;background:var(--rb-bg);border:1px solid var(--rb-line);font-size:15px;transition:background .15s,transform .2s var(--spring)}
+.mode-pick:hover,.mode-pick[aria-expanded=true]{background:var(--rb-hover)}
+.mode-pick:active{transform:translate(-50%,-50%) scale(.97)}
+.mp-tile{display:grid;place-items:center;width:16px;height:16px;flex-shrink:0}
+.mode-pick .mp-ic{width:16px;height:16px;stroke-width:2.1;color:var(--mp-instant)}
+.mode-pick.high .mp-ic{color:var(--high)}
+.mp-text{display:flex;align-items:baseline;gap:5px;white-space:nowrap}
+.mode-pick .mp-name{font-weight:600}
+.mode-pick .mp-mode,.mode-pick.high .mp-mode{font-weight:500;color:var(--muted)}
+.mode-pick .mp-chev{width:14px;height:14px;margin-left:-1px;color:var(--faint)}
+@media(max-width:400px){.main.chatting .mode-pick{padding:0 10px 0 11px}}
+/* the smallest phones, in a chat: just the mode's icon (its colour says which) and the chevron */
+@media(max-width:340px){.main.chatting .mode-pick{gap:4px;padding:0 9px 0 12px}.main.chatting .mode-pick .mp-ic{display:block}.main.chatting .mode-pick .mp-text{display:none}}
+
+.mode-menu{width:min(264px,calc(100vw - 24px));padding:5px;border-radius:18px}
+.mm-opt{display:flex;align-items:center;gap:11px;width:100%;min-height:52px;padding:7px 10px 7px 8px;border-radius:13px;text-align:left;transition:background .15s;animation:mmIn .28s var(--glide) both}
+.mm-opt+.mm-opt{margin-top:2px;animation-delay:.04s}
+.mm-opt:hover,.mm-opt:focus-visible{background:var(--hover);outline:0}
+@keyframes mmIn{from{opacity:0;transform:translateY(-3px)}}
+.mm-ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.mm-ic.instant{background:color-mix(in srgb,var(--mp-instant) 14%,transparent);color:var(--mp-instant)}
+.mm-ic.high{background:color-mix(in srgb,var(--high) 15%,transparent);color:var(--high)}
+.mm-ic .ic{width:17px;height:17px;stroke-width:2}
+.mm-text{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.mm-title{font-size:14.5px;font-weight:600;line-height:1.25;color:var(--text)}
+.mm-sub{font-size:12.5px;line-height:1.3;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* the check moves to your pick, then the menu closes */
+.mm-check{display:grid;place-items:center;width:18px;height:18px;flex-shrink:0;color:var(--mp-instant);opacity:0;transform:scale(.4);transition:opacity .15s,transform .3s var(--spring)}
+.mm-opt.high .mm-check{color:var(--high)}
+.mm-check .ic{width:17px;height:17px;stroke-width:2.4}
+.mm-opt[aria-checked=true] .mm-check{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.mm-opt{animation:none}.mm-check{transition:none}}
+
+/* ============================================================================
+   Chess, made light for phones: the two glows behind the board stay still (they used to drift, moved by a timer
+   every 0.4 s, and each step repainted the whole board); the pieces (each with a drop shadow) are their own layer,
+   so they are only redrawn when a piece moves, not when a square lights up or the bot blinks; the bot's face is its
+   own small layer too.
+   ============================================================================ */
+.cv-glow.a{transform:translate(4.5%,3.5%) scale(1.06)}
+.cv-glow.b{transform:translate(4.5%,3.5%) scale(1.06)}
+.cv-pcs{will-change:transform}
+.cv .bot{will-change:transform}
+
+/* ============================================================================
+   Follow-up questions, the Wisp tab's dot, the chess record
+   ============================================================================ */
+.group{color:var(--muted)}   /* the history's day labels: readable on the sidebar in both themes */
+
+/* under the reply's buttons (they hang in the space below the message: up to 36px), never on top of them */
+.fups{display:flex;flex-direction:column;align-items:flex-start;gap:7px;margin:8px 0 30px}
+@keyframes stIn{from{opacity:0;transform:translateY(8px)}}
+.fup{display:flex;align-items:center;gap:8px;max-width:100%;min-height:38px;padding:8px 14px 8px 11px;border-radius:14px;background:var(--composer);border:1px solid var(--composer-line);font-size:14px;font-weight:500;line-height:1.35;color:var(--text);text-align:left;animation:stIn .45s var(--glide) both;transition:transform .2s var(--spring),border-color .15s}
+.fup:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--composer-line))}
+.fup:active{transform:scale(.98)}
+.fup .ic{width:16px;height:16px;flex-shrink:0;color:var(--accent)}
+
+[data-tab="wisp"]{position:relative}
+[data-tab="wisp"].news::after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:#3b8ae6;box-shadow:0 0 0 2px var(--tab);animation:newsIn .5s var(--spring) both}
+.tab[data-tab="wisp"].news::after{top:12px;left:calc(50% + 10px)}
+.side-row[data-tab="wisp"].news::after{top:50%;right:12px;margin-top:-4.5px;box-shadow:none}
+@keyframes newsIn{from{transform:scale(0)}}
+
+.gm-record{margin-top:6px;font-size:13px;color:var(--muted)}
+.gm-record b{color:var(--text);font-weight:700;font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion: reduce){.fup{animation:none}}
+
+/* ============================================================================
+   The chat home: the W draws itself in a soft breathing glow, the greeting rises under it with a line for the hour,
+   and faint streaks of wind drift across the sky. Only transform and opacity animate (nothing repaints), and all of it
+   rests when you're on another tab or asked for less motion.
+   ============================================================================ */
+:root{--gust:rgba(170,205,255,.5);--halo:rgba(70,135,255,.34);--halo2:rgba(120,100,255,.12);--home-glow:rgba(70,130,255,.2)}
+:root[data-theme=light]{--gust:rgba(255,255,255,.95);--halo:rgba(255,255,255,.95);--halo2:rgba(255,255,255,.35);--home-glow:rgba(59,130,246,.2)}
+
+.welcome .hero{position:relative;isolation:isolate}
+.home-mark{position:relative;display:grid;place-items:center}
+.home-mark::before{content:"";position:absolute;left:50%;top:50%;width:3.6em;height:3.6em;margin:-1.8em 0 0 -1.8em;border-radius:50%;z-index:-1;
+  background:radial-gradient(closest-side,var(--halo),var(--halo2) 58%,transparent);animation:homeIn 1.2s var(--glide) both,halo 7s ease-in-out 1.2s infinite}
+@keyframes homeIn{from{opacity:0;transform:scale(.6)}}
+@keyframes halo{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.12);opacity:.72}}
+/* the W writes itself, like a gust */
+.home-mark .mark{stroke-dasharray:100 120;animation:wdraw 1.25s var(--glide) .12s both}
+@keyframes wdraw{from{stroke-dashoffset:101;opacity:.35}to{stroke-dashoffset:0;opacity:1}}
+
+.greet-sub{margin:-.06em 0 0;max-width:22em;font:400 16.5px/1.45 var(--sans);color:var(--muted);letter-spacing:.003em;text-wrap:balance;animation:rise .7s var(--glide) .2s both}
+:root[data-theme=light] .greet-sub{color:#4d5a6c}
+@media(min-width:821px){.greet-sub{font-size:17px}}
+
+/* wind across the sky */
+/* anchored from the bottom: never more than 46px under the words, so it never makes the home screen scroll */
+.breeze{position:absolute;left:50%;bottom:-46px;width:min(1100px,100vw);height:320px;transform:translateX(-50%);pointer-events:none;z-index:-2}
+.gust{position:absolute;height:44px;overflow:visible;opacity:0;will-change:transform,opacity;animation:gust 14s cubic-bezier(.45,.05,.55,.95) infinite}
+.gust path{fill:none;stroke:url(#gustGrad);stroke-width:1.6;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.gust path+path{stroke-width:1.1;opacity:.7}
+/* above and below the words, never through them */
+.gust.g1{left:2%;top:40px;width:62%;animation-delay:.9s}
+.gust.g2{left:36%;top:0;width:58%;animation-duration:16s;animation-delay:5.4s}
+.gust.g3{left:10%;bottom:0;width:54%;animation-duration:13s;animation-delay:10s}
+@keyframes gust{0%{opacity:0;transform:translate3d(-16%,0,0)}30%,62%{opacity:1}100%{opacity:0;transform:translate3d(16%,0,0)}}
+
+/* the chat box glows a little on the home screen, inviting the first message */
+.main:not(.chatting):not(.temp) .composer:not(:focus-within){box-shadow:var(--composer-shadow),0 14px 44px -16px var(--home-glow)}
+
+/* Delete all data: the page lets go while everything is cleared */
+html.wiping body{opacity:.4;pointer-events:none;transition:opacity .3s}
+
+@media(orientation:landscape) and (max-height:520px){.home-mark,.greet-sub,.breeze{display:none}}   /* a phone on its side: just the greeting */
+.short .breeze{display:none}
+@media (prefers-reduced-motion: reduce){
+  .breeze{display:none}
+  .home-mark::before{animation:none}
+  .home-mark .mark{animation:none;stroke-dasharray:none}
+}
+
+/* ---- home tidy-up: a calmer, evenly spaced start screen ---- */
+/* the W gets room to breathe: a smaller, softer halo that stays behind the mark instead of washing over the greeting */
+.welcome .hero{gap:0}
+.home-mark{margin-bottom:.34em}
+.home-mark::before{width:2.5em;height:2.5em;margin:-1.25em 0 0 -1.25em;opacity:.8}
+@keyframes halo{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.08);opacity:.55}}
+.greet-sub{margin:.5em 0 0}
+/* the wind streaks: fainter, and fading in and out at their ends so they never look like a stray line cut off mid-air */
+.breeze{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%,#000 78%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 22%,#000 78%,transparent 100%)}
+.gust path{stroke-width:1.2}
+.gust path+path{stroke-width:.9;opacity:.5}
+@keyframes gust{0%{opacity:0;transform:translate3d(-16%,0,0)}30%,62%{opacity:.55}100%{opacity:0;transform:translate3d(16%,0,0)}}
+
+/* ============================================================================
+   Phones: the top dock. On the Chat tab the top bar is a twin of the tab bar: the same capsule, surface, outline and
+   shadow and the same soft grey icons, with the mode picker sitting right on it. Wisp, Games and chess keep their own
+   tops.
+   ============================================================================ */
+@media(max-width:820px){
+  /* exactly the tab bar: surface, outline, shadow, 58px tall, 6px inside */
+  .main.tab-chat:not(.chess-mode) .topbar{width:min(calc(100% - 24px),400px);height:58px;flex-shrink:0;margin:8px auto 2px;padding:0 6px;gap:0;border-radius:999px;background:var(--tab);border:1px solid var(--tab-line);box-shadow:0 14px 34px -14px rgba(10,35,80,.42)}
+  .main.tab-chat:not(.chess-mode) .top-side{min-width:44px}
+  .main.tab-chat.chatting:not(.chess-mode):not(.temp) .top-side{min-width:88px}   /* both sides as wide as the right pair, so the picker stays centred */
+  /* the buttons look like the tab bar's other tabs: soft grey icons, the lighter pill when pressed */
+  .main.tab-chat .topbar .icon-btn.round{width:44px;height:44px;background:transparent;border:0;color:var(--tab-ink)}
+  .main.tab-chat .topbar .top-pill{width:88px;height:44px;background:transparent;border:0;color:var(--tab-ink)}
+  .main.tab-chat .topbar .tp-btn{width:44px;height:44px;border-radius:999px}
+  .main.tab-chat .topbar :is(.icon-btn.round,.tp-btn):hover,.main.tab-chat .topbar .tp-btn[aria-expanded=true],.main.tab-chat .topbar #tempBtn[aria-pressed=true]{background:var(--tab-active);color:var(--tab-ink-on)}
+  /* the mode picker sits right on the bar, no shade of its own */
+  .main.tab-chat .topbar .mode-pick,.main.tab-chat .topbar .mode-pick:hover,.main.tab-chat .topbar .mode-pick[aria-expanded=true]{height:44px;background:transparent;border:0;padding:0 14px;color:var(--tab-ink-on)}
+
+  /* the ground under the bars: the tab bar sits on the dark (or pale) bottom of the sky, the top bar sat on its bright
+     blue top, so the same bar looked heavy up there. Behind the top bar the sky now starts from that same ground and
+     fades into the blue below it: same bar, same ground, top and bottom. Only on the Chat tab, where the dock is. */
+  :root{--bar-ground:#08090c}
+  :root[data-theme=light]{--bar-ground:#eef4fb}
+  .main::after{content:"";position:absolute;left:0;right:0;top:0;height:240px;z-index:0;pointer-events:none;opacity:0;transition:opacity .6s ease;background:linear-gradient(180deg,var(--bar-ground) 0,color-mix(in srgb,var(--bar-ground) 70%,transparent) 60px,color-mix(in srgb,var(--bar-ground) 30%,transparent) 140px,transparent 240px)}
+  .main.tab-chat:not(.chess-mode)::after{opacity:1}
+
+  /* the tab bar: the same width as the top dock, a touch slimmer */
+  .tabbar{width:min(calc(100% - 24px),400px);height:58px;padding:6px}
+  .main.has-tabbar .composer-wrap{padding-bottom:calc(80px + var(--sab))!important}
+  .toasts{top:calc(74px + env(safe-area-inset-top))}
+}
+
+/* ============================================================================
+   Wind 2 (2026-11-22): the redesign layer, on top of everything above.
+   One idea: an aurora sky that slowly breathes behind a calm, glassy app. Colour lives in the light (the aurora, the
+   brand edge on the chat box, your own messages); surfaces stay quiet so replies are easy to read.
+   Looks only, plus the starter cards on the home screen (see fillStarters in the script).
+   ============================================================================ */
+:root{
+  --bg:#06070b; --side:#08090e; --panel:#0f1118; --raised:#12141c; --hover:#191c26; --active:#202431;
+  --line:#151821; --line2:#242835;
+  --text:#f2f4f9; --muted:#a3a9b8; --faint:#7c8395; --placeholder:#878ea0;
+  --composer:#0e1017; --composer-line:rgba(255,255,255,.09); --composer-ph:#8a91a3;
+  --accent:#8fb4ff; --accent-soft:rgba(110,150,255,.14); --accent-ring:rgba(120,160,255,.55);
+  --g1:#67e8f9; --g2:#3b82f6; --g3:#8b5cf6;
+  --brand:linear-gradient(115deg,#67e8f9 0%,#3b82f6 45%,#8b5cf6 100%);
+  --brand-deep:linear-gradient(135deg,#2563eb 0%,#4f46e5 58%,#7c3aed 100%);
+  --brand-glow:rgba(79,70,229,.7);
+  --voice:var(--brand-deep); --voice-glow:rgba(79,70,229,.55);
+  --code:rgba(3,4,8,.55); --code-head:rgba(255,255,255,.025); --code-line:rgba(255,255,255,.075); --inline-code:rgba(255,255,255,.075);
+  --gl:rgba(17,19,27,.58); --gl-strong:rgba(13,15,22,.8); --gl-line:rgba(255,255,255,.085); --gl-hi:rgba(255,255,255,.07);
+  --frost:saturate(170%) blur(22px);
+  --sky-soft:#06070b; --sky-home:transparent;
+  --tab:rgba(15,17,24,.72); --tab-line:rgba(255,255,255,.08); --tab-active:rgba(255,255,255,.09); --tab-ink:#8d93a2; --tab-ink-on:#ffffff;
+  --rb-bg:rgba(17,19,27,.58); --rb-line:rgba(255,255,255,.085); --rb-hover:rgba(32,35,48,.78);
+  --card:rgba(17,19,27,.62); --card-line:rgba(255,255,255,.08);
+  --menu-bg:rgba(17,19,27,.88);
+  --shadow-m:0 18px 40px -18px rgba(0,0,0,.85),0 2px 8px rgba(0,0,0,.3);
+  --shadow-l:0 30px 80px -24px rgba(0,0,0,.9),0 8px 20px rgba(0,0,0,.35);
+  --composer-shadow:inset 0 1px 0 var(--gl-hi),0 28px 70px -30px rgba(0,0,0,.95),0 2px 8px rgba(0,0,0,.28);
+  --focus-glow:rgba(91,120,255,.2);
+  --a1:rgba(139,92,246,.44); --a2:rgba(37,99,235,.52); --a3:rgba(59,130,246,.36); --grain-o:.06;
+  --c-blue:#60a5fa; --c-violet:#a78bfa; --c-cyan:#22d3ee; --c-pink:#f472b6; --c-amber:#fbbf24; --c-green:#34d399;
+}
+:root[data-theme=light]{
+  --bg:#f6f8fc; --side:#f1f4fa; --panel:#ffffff; --raised:#ffffff; --hover:#ebf0f8; --active:#e1e8f4;
+  --line:#e2e8f1; --line2:#d2dbe8;
+  --text:#0e1321; --muted:#4a5468; --faint:#667086; --placeholder:#6b7589;
+  --composer:#ffffff; --composer-line:rgba(15,23,42,.1); --composer-ph:#6b7589;
+  --accent:#2f62e0; --accent-soft:rgba(47,98,224,.1); --accent-ring:rgba(47,98,224,.45);
+  --g1:#06b6d4; --g2:#2563eb; --g3:#7c3aed;
+  --brand:linear-gradient(115deg,#06b6d4 0%,#2563eb 45%,#7c3aed 100%);
+  --brand-glow:rgba(79,70,229,.45); --voice-glow:rgba(79,70,229,.35);
+  --code:#f8fafd; --code-head:#f1f5fa; --code-line:#e1e8f1; --inline-code:#edf2f9;
+  --gl:rgba(255,255,255,.6); --gl-strong:rgba(255,255,255,.86); --gl-line:rgba(15,23,42,.08); --gl-hi:rgba(255,255,255,.95);
+  --sky-soft:#f6f8fc;
+  --tab:rgba(255,255,255,.76); --tab-line:rgba(15,23,42,.07); --tab-active:rgba(15,23,42,.06); --tab-ink:#7a8496; --tab-ink-on:#0e1321;
+  --rb-bg:rgba(255,255,255,.62); --rb-line:rgba(15,23,42,.08); --rb-hover:rgba(255,255,255,.92);
+  --card:rgba(255,255,255,.72); --card-line:rgba(15,23,42,.07);
+  --menu-bg:rgba(255,255,255,.9);
+  --shadow-m:0 18px 40px -20px rgba(30,50,100,.25),0 2px 8px rgba(30,50,100,.06);
+  --shadow-l:0 30px 80px -28px rgba(30,50,100,.32),0 8px 20px rgba(30,50,100,.08);
+  --composer-shadow:inset 0 1px 0 var(--gl-hi),0 26px 60px -32px rgba(30,60,130,.42),0 2px 6px rgba(30,60,130,.06);
+  --focus-glow:rgba(47,98,224,.13);
+  --a1:rgba(167,139,250,.4); --a2:rgba(129,140,248,.34); --a3:rgba(125,211,252,.42); --grain-o:.035;
+  --c-blue:#2563eb; --c-violet:#7c3aed; --c-cyan:#0891b2; --c-pink:#db2777; --c-amber:#c26a05; --c-green:#059669;
+}
+::selection{background:color-mix(in srgb,var(--g2) 35%,transparent)}
+:focus-visible{outline:2px solid var(--accent-ring);outline-offset:2px}
+
+/* ---------- the aurora sky ---------- */
+.aurora{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;transition:opacity 1.1s var(--ease)}
+.aurora i{position:absolute;display:block;border-radius:50%;will-change:transform}
+.aurora .a1{width:64vmax;height:64vmax;left:-20vmax;top:-36vmax;background:radial-gradient(closest-side,var(--a1),transparent);animation:aur1 28s ease-in-out infinite alternate}
+.aurora .a2{width:64vmax;height:64vmax;right:-20vmax;top:-34vmax;background:radial-gradient(closest-side,var(--a2),transparent);animation:aur2 34s ease-in-out infinite alternate}
+.aurora .a3{width:70vmax;height:70vmax;left:calc(50% - 35vmax);top:-38vmax;background:radial-gradient(closest-side,var(--a3),transparent);animation:aur3 23s ease-in-out infinite alternate}
+/* film grain: keeps the gradients from banding and gives the glass something to catch */
+.aurora::after{content:"";position:absolute;inset:0;opacity:var(--grain-o);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@keyframes aur1{to{transform:translate3d(14vmax,7vmax,0) scale(1.12)}}
+@keyframes aur2{to{transform:translate3d(-12vmax,9vmax,0) scale(.9)}}
+@keyframes aur3{from{transform:translate3d(-8vmax,0,0) scale(.92)}to{transform:translate3d(8vmax,4vmax,0) scale(1.1)}}
+/* reading: the sky settles to a glow at the top and stops moving */
+.main.chatting .aurora{opacity:.42}
+.main.chatting .aurora i{animation-play-state:paused}
+.main.tab-wisp .aurora,.main.chess-mode .aurora{opacity:0}
+.main.tab-wisp .aurora i,.main.chess-mode .aurora i{animation-play-state:paused}
+.breeze{display:none!important}
+/* touch devices keep the sky still: the glass layers over it would otherwise be redrawn on every frame */
+@media (prefers-reduced-motion: reduce),(hover:none) and (pointer:coarse){.aurora i{animation:none}}
+
+/* ---------- home: an icon, a greeting with a sheen, the box, and ideas ---------- */
+.welcome .hero{font-size:clamp(38px,3.4vw,50px)}
+.home-mark{width:1.56em;height:1.56em;margin-bottom:.46em;border-radius:.44em;display:grid;place-items:center;background:var(--gl);border:1px solid var(--gl-line);-webkit-backdrop-filter:var(--frost);backdrop-filter:var(--frost);
+  box-shadow:inset 0 1px 0 var(--gl-hi),0 24px 50px -22px var(--brand-glow);animation:orbIn .9s var(--glide) both,orbFloat 7s ease-in-out 1s infinite}
+.home-mark::before{display:none}
+.welcome .home-mark .mark{height:.6em;width:calc(.6em * 1.637)}
+@keyframes orbIn{from{opacity:0;transform:translateY(12px) scale(.88)}}
+@keyframes orbFloat{50%{transform:translateY(-5px)}}
+.greet{letter-spacing:-.022em;background:linear-gradient(180deg,#ffffff 0%,#e6ebff 48%,#a5b6ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .06em .16em;margin-bottom:-.16em}
+:root[data-theme=light] .greet{background-image:linear-gradient(180deg,#0a0f1e 0%,#1a2446 55%,#3d4f99 100%)}
+.greet-sub{margin:.5em 0 0;font-size:18px;color:var(--muted)}
+:root[data-theme=light] .greet-sub{color:var(--muted)}
+.welcome{padding-bottom:34px}
+@media (prefers-reduced-motion: reduce){.home-mark{animation:none}}
+
+/* starter cards: under the box on wide screens, a swipeable row above it on phones */
+.starters{display:none}
+.main.tab-chat:not(.chatting):not(.temp) .starters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px;animation:rise .7s var(--glide) .25s both}
+.starter{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-width:0;padding:13px 14px 14px;border-radius:18px;text-align:left;color:var(--text);
+  background:var(--gl);border:1px solid var(--gl-line);-webkit-backdrop-filter:var(--frost);backdrop-filter:var(--frost);box-shadow:inset 0 1px 0 var(--gl-hi);
+  transition:transform .3s var(--spring),border-color .2s,box-shadow .3s,background .2s}
+.starter[data-c=blue]{--c:var(--c-blue)}.starter[data-c=violet]{--c:var(--c-violet)}.starter[data-c=cyan]{--c:var(--c-cyan)}
+.starter[data-c=pink]{--c:var(--c-pink)}.starter[data-c=amber]{--c:var(--c-amber)}.starter[data-c=green]{--c:var(--c-green)}
+.st-ic{width:32px;height:32px;flex-shrink:0;border-radius:10px;display:grid;place-items:center;color:var(--c);background:color-mix(in srgb,var(--c) 15%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 22%,transparent)}
+.st-ic .ic{width:17px;height:17px;stroke-width:1.9}
+.st-tx{display:flex;flex-direction:column;gap:2px;min-width:0;width:100%}
+.st-tx b{font-size:14px;font-weight:600;letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st-tx small{font-size:12.5px;line-height:1.35;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(hover:hover){.starter:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--c) 42%,var(--gl-line));box-shadow:inset 0 1px 0 var(--gl-hi),0 18px 36px -20px color-mix(in srgb,var(--c) 70%,transparent)}}
+.starter:active{transform:scale(.97)}
+/* the home block (greeting, box, ideas) sits centred in the space under the top bar */
+@media(min-width:821px){:root{--lift:clamp(16px,calc(50vh - 300px),360px)}}
+@media(min-width:821px) and (max-width:1000px){.main.tab-chat:not(.chatting):not(.temp) .starters{grid-template-columns:repeat(2,minmax(0,1fr))}.starter:nth-child(n+3){display:none}}
+@media(min-width:821px) and (max-height:640px){.main.tab-chat:not(.chatting):not(.temp) .starters{display:none}}
+/* phones: the ideas step aside while the keyboard is up, and on a phone held sideways */
+:root.kb-open .main .starters{display:none!important}
+@media(orientation:landscape) and (max-height:520px){.main .starters{display:none!important}}
+@media(max-width:820px){
+  .main.tab-chat:not(.chatting):not(.temp) .starters{order:-1;display:flex;gap:8px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;
+    margin:0 calc(-1 * clamp(16px,8.9vw,37px)) 12px;padding:2px clamp(16px,8.9vw,37px) 2px;scroll-padding-inline:clamp(16px,8.9vw,37px)}
+  .starters::-webkit-scrollbar{display:none}
+  .starter{flex:0 0 auto;width:min(196px,58vw);flex-direction:row;align-items:center;gap:10px;padding:10px 12px;border-radius:16px;scroll-snap-align:start}
+  .st-tx b{font-size:13.5px}
+  .st-tx small{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+}
+@media (prefers-reduced-motion: reduce){.starters{animation:none!important}}
+
+/* ---------- the chat box: glass, with the brand edge lighting up while you type ---------- */
+.composer{background:var(--gl-strong);-webkit-backdrop-filter:var(--frost);backdrop-filter:var(--frost);border:1px solid var(--gl-line);box-shadow:var(--composer-shadow);border-radius:26px}
+.main:not(.chatting):not(.temp) .composer:not(:focus-within){box-shadow:var(--composer-shadow)}
+.composer::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1.2px;background:var(--brand);pointer-events:none;opacity:0;transition:opacity .35s var(--ease);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.composer:focus-within:not(.listening):not(.drop)::before{opacity:.85}
+.composer:focus-within:not(.listening):not(.drop){border-color:transparent;box-shadow:0 0 0 5px var(--focus-glow),var(--composer-shadow)}
+.composer textarea::placeholder{color:var(--composer-ph)}
+@media(min-width:821px){
+  /* a roomy card on wide screens: the text on top, the tools underneath */
+  .composer,.composer.tall{grid-template-areas:"banner banner banner" "chips chips chips" "text text text" "left . right";align-content:start;padding:14px 12px 10px 12px;border-radius:26px}
+  .composer textarea{min-height:50px;padding:3px 6px;font-size:16.5px}
+  .composer .bar-left,.composer .bar-right,.composer.tall .bar-left,.composer.tall .bar-right{margin-top:8px}
+  .composer.drop::after,.composer.tall.drop::after{border-radius:22px}
+}
+#attachBtn{width:36px;height:36px;border:1px solid var(--gl-line);color:var(--muted)}
+#attachBtn:hover{color:var(--text)}
+#attachBtn .pl{width:19px;height:19px}
+.voice,.send,.stop{width:36px;height:36px}
+.voice{background:var(--brand-deep);box-shadow:0 8px 20px -8px var(--voice-glow)}
+.send:not(:disabled){background:var(--brand-deep);color:#fff;box-shadow:0 8px 20px -8px var(--voice-glow)}
+.send:hover:not(:disabled){opacity:1;filter:brightness(1.12)}
+.disclaimer{font-size:11.5px;opacity:.85}
+
+/* ---------- top bar ---------- */
+@media(min-width:821px){
+  .icon-btn.round{width:42px;height:42px;background:transparent;border-color:transparent;color:var(--muted);transition:background .2s,border-color .2s,color .2s}
+  .icon-btn.round:hover{background:var(--gl);border-color:var(--gl-line);color:var(--text)}
+  .rb-lines{width:40px;height:40px}
+  .rb-bubble{width:23px;height:23px}
+  .top-pill{width:86px;height:42px;background:var(--gl);border-color:var(--gl-line);color:var(--text);-webkit-backdrop-filter:var(--frost);backdrop-filter:var(--frost);box-shadow:inset 0 1px 0 var(--gl-hi)}
+  .tp-btn{width:40px;height:40px}
+  .tp-pen{width:20px;height:20px}
+  .mode-pick{height:38px;padding:0 12px 0 14px;border-radius:999px;font-size:15px;background:var(--gl);border:1px solid var(--gl-line);-webkit-backdrop-filter:var(--frost);backdrop-filter:var(--frost);box-shadow:inset 0 1px 0 var(--gl-hi)}
+  .mode-pick:hover,.mode-pick[aria-expanded=true]{background:var(--rb-hover)}
+}
+@media(max-width:820px),(hover:none) and (pointer:coarse){
+  .main.tab-chat:not(.chess-mode) .topbar,.tabbar{-webkit-backdrop-filter:var(--frost);backdrop-filter:var(--frost);box-shadow:inset 0 1px 0 var(--gl-hi),0 18px 40px -18px rgba(0,0,0,.6)}
+  :root[data-theme=light] .main.tab-chat:not(.chess-mode) .topbar,:root[data-theme=light] .tabbar{box-shadow:inset 0 1px 0 var(--gl-hi),0 16px 36px -18px rgba(30,60,130,.3)}
+  .tab[aria-current=page]{background:var(--tab-active);color:var(--tab-ink-on)}
+}
+@media(max-width:820px){.main.tab-chat:not(.chess-mode)::after{opacity:0}}
+
+/* ---------- sidebar ---------- */
+.sidebar{background:var(--side);border-right-color:var(--line)}
+.sidebar::before{content:"";position:absolute;inset:0 0 auto 0;height:260px;z-index:-1;pointer-events:none;background:radial-gradient(130% 100% at 0% 0%,color-mix(in srgb,var(--g3) 16%,transparent),transparent 68%)}
+.brand .mark{height:15px;width:25px}
+.brand span{font-size:22px}
+.side-tabs{border-bottom:0;padding-bottom:2px;margin-bottom:2px}
+.side-actions{gap:4px;padding:6px 10px 8px}
+#newChat{height:40px;border-radius:12px;font-weight:600;background:var(--gl);border:1px solid var(--gl-line);box-shadow:inset 0 1px 0 var(--gl-hi),var(--shadow-s);transition:background .15s,border-color .2s}
+#newChat .ic{color:var(--accent)}
+#newChat:hover{border-color:color-mix(in srgb,var(--accent) 38%,var(--gl-line))}
+.side-search{border:1px solid var(--line2);background:color-mix(in srgb,var(--panel) 60%,transparent)}
+.side-search input::placeholder{color:var(--faint);font-weight:500}
+.side-search:focus-within{border-color:var(--accent-ring);box-shadow:0 0 0 3px var(--focus-glow)}
+.group{font-size:11px;font-weight:650;text-transform:uppercase;letter-spacing:.09em;color:var(--faint)}
+.side-tabs .side-row[aria-current=page],.hitem.active{position:relative;background:color-mix(in srgb,var(--accent) 11%,var(--active))}
+.side-tabs .side-row[aria-current=page]::before,.hitem.active::before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:3px;border-radius:3px;background:var(--brand)}
+.side-tabs .side-row[aria-current=page] .ic{color:var(--accent)}
+
+/* ---------- messages ---------- */
+.bubble{background:var(--brand-deep);color:#fff;border:0;border-radius:22px 22px 6px 22px;padding:11px 17px;box-shadow:0 14px 30px -16px var(--brand-glow)}
+.bubble::selection{background:rgba(255,255,255,.32)}
+/* Wind's mark beside each reply, where the column leaves room for it */
+.scroll{container-type:inline-size}
+@container (min-width:920px){
+  .msg.assistant::before{content:"";position:absolute;left:-50px;top:-1px;width:32px;height:32px;border-radius:11px;box-shadow:0 8px 20px -8px var(--brand-glow);
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='2.6 13.6 59.6 36.4'%3E%3Cpath d='M8 20C12 33 15.5 44 20.5 44S27.5 33 31.5 27C35.5 33 37.5 44 42.5 44S50 31 54 19c1-3 3.5-4.5 6-3.5' fill='none' stroke='white' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' transform='translate(-1.6 2.2)'/%3E%3C/svg%3E") center/18px auto no-repeat,var(--brand-deep)}
+}
+.answer{line-height:1.74}
+.answer h1,.answer h2,.answer h3{letter-spacing:-.022em}
+.answer h2{font-size:1.26em}
+.answer ul>li::marker{color:var(--accent)}
+.answer ol>li::marker{color:var(--faint);font-weight:600;font-variant-numeric:tabular-nums}
+.answer li{margin:.3em 0}
+.answer strong{font-weight:650}
+.answer blockquote:not(.callout){position:relative;border-left:0;padding:.75em 1em .75em 1.2em;border-radius:14px;background:color-mix(in srgb,var(--accent) 7%,transparent);color:var(--text)}
+.answer blockquote:not(.callout)::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:3px;background:var(--brand)}
+.table-wrap{border-color:var(--gl-line);border-radius:14px;background:var(--gl)}
+.answer th{background:transparent;font-size:.78em;font-weight:650;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.answer th,.answer td{border-bottom-color:var(--gl-line)}
+.answer tbody tr{transition:background .15s}
+@media(hover:hover){.answer tbody tr:hover{background:color-mix(in srgb,var(--accent) 6%,transparent)}}
+.codeblock{border-radius:14px}
+.answer :not(pre)>code{border-radius:6px}
+.fup{background:var(--gl);border-color:var(--gl-line);-webkit-backdrop-filter:var(--frost);backdrop-filter:var(--frost);transition:transform .25s var(--spring),border-color .2s,box-shadow .25s}
+@media(hover:hover){.fup:hover{transform:translateX(3px);box-shadow:0 10px 24px -14px var(--brand-glow)}}
+.to-bottom{background:var(--gl-strong);border-color:var(--gl-line);-webkit-backdrop-filter:var(--frost);backdrop-filter:var(--frost)}
+
+/* ---------- menus, dialogs, toasts: frosted glass ---------- */
+.menu,.toast{background:var(--menu-bg);-webkit-backdrop-filter:var(--frost);backdrop-filter:var(--frost);border-color:var(--gl-line)}
+.menu{border-radius:18px}
+.menu-item{border-radius:11px}
+.dialog{background:var(--menu-bg);-webkit-backdrop-filter:var(--frost);backdrop-filter:var(--frost);border-color:var(--gl-line);border-radius:24px}
+
+/* ---------- Games ---------- */
+.gm-card{background:var(--card);border-color:var(--card-line);border-radius:26px;-webkit-backdrop-filter:var(--frost);backdrop-filter:var(--frost)}
+@media(hover:hover){button.gm-card:hover{box-shadow:var(--shadow-l),0 0 0 1px color-mix(in srgb,var(--accent) 35%,transparent)}
+  button.gm-card:hover .gm-knight{transform:rotate(-8deg) scale(1.06)}}
+.gm-knight{transition:transform .4s var(--spring)}
+.gm-card.soon{background:color-mix(in srgb,var(--card) 40%,transparent);-webkit-backdrop-filter:none;backdrop-filter:none}
+@media(min-width:821px){
+  .gm-inner{padding-top:7vh}
+  .gm-head{text-align:center}
+  .gm-head p{margin-left:auto;margin-right:auto}
+  .gm-grid{grid-template-columns:repeat(2,minmax(0,320px));justify-content:center;gap:18px;margin-top:32px}
+}
+@media(max-width:820px){
+  .gm-card.soon{flex-direction:row;align-items:center}
+  .gm-art.soon{width:76px;height:76px;flex-shrink:0;aspect-ratio:auto}
+  .gm-art.soon svg{width:30px;height:30px}
+  .gm-card.soon .gm-body{padding:14px 16px 14px 0}
+}
