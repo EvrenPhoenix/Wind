@@ -61,6 +61,7 @@
   --active:var(--sunk);--gl:var(--surface);--gl-line:var(--line);--focus-line:var(--sky-line);--brand:var(--line-2)}
 
 *,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{height:100%}
 body{background:var(--stage);color:var(--ink);font:400 16px/1.5 var(--f-text);-webkit-font-smoothing:antialiased;overflow:hidden}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -280,40 +281,12 @@ input,textarea{font:inherit;color:inherit}
 .game-card.soon{border-style:dashed;background:transparent;cursor:default}
 .game-card.soon .mini-board{background:var(--sunk);color:var(--ink-3)}
 .game-card.soon .mini-board .ico{width:34px;height:34px}
-.chess-wrap{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:12px;padding:4px 16px 18px}
-.player{width:100%;max-width:520px;display:flex;align-items:center;gap:11px}
-.player .wisp{width:40px;height:38px;flex:none}
-.player .me{width:38px;height:38px;border-radius:50%;background:var(--sunk);display:grid;place-items:center;font-weight:600;font-size:14px;flex:none}
-.player .who{font-weight:600;font-size:15px;line-height:1.2}
-.player .sub{color:var(--ink-3);font-size:12.5px}
-.clock{margin-left:auto;font:500 15px/1 var(--f-mono);padding:8px 11px;border-radius:11px;background:var(--sunk);color:var(--ink-2);font-variant-numeric:tabular-nums}
-.clock.run{background:var(--btn);color:var(--btn-ink)}
-/* Wind Bot, the chess opponent: today's face and its styles, unchanged (sized in em) */
+/* Today's chess view, unchanged (legacy/src/page/styles.css): layout, motion and Wind Bot's face. design/mockup/chess.css
+   holds those rules plus a Quiet Sky skin that only changes colours and surfaces. */
+/*@embed chess.css*/
 /*@embed bot.css*/
-.bot-stage{width:100%;max-width:520px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center}
-.bot-btn{font-size:56px;line-height:0;padding:14px 6px 4px;border-radius:18px;transition:background .15s}
-.bot-btn:hover{background:var(--sunk)}
-.bot-name{font-weight:600;font-size:15px;line-height:1.2}
-.bot-sub{color:var(--ink-3);font-size:12.5px}
-.bot-say{margin-top:7px;padding:9px 13px;border-radius:4px 16px 16px 16px;background:var(--surface);border:1px solid var(--line);font-size:14.5px;line-height:1.4;min-height:40px}
-.board{width:min(100%,520px);aspect-ratio:1;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-1);user-select:none;-webkit-user-select:none;flex:none}
-.sq{position:relative;display:grid;place-items:center;cursor:pointer}
-.sq.a{background:var(--board-a)}
-.sq.b{background:var(--board-b)}
-.sq.last::before{content:"";position:absolute;inset:0;background:var(--last)}
-.sq.sel::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 3px var(--sky)}
-.sq img{width:90%;height:90%;position:relative;pointer-events:none;transition:transform .15s}
-.sq.sel img{transform:scale(1.08)}
-.sq .cf,.sq .cr{position:absolute;font:600 9.5px/1 var(--f-text);opacity:.7}
-.sq .cf{right:4px;bottom:3px}
-.sq .cr{left:4px;top:4px}
-.sq.a .cf,.sq.a .cr{color:var(--board-b)}
-.sq.b .cf,.sq.b .cr{color:var(--board-a)}
-.chess-acts{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
-.pill{height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line-2);font-size:14px;font-weight:500;background:var(--surface);display:inline-flex;align-items:center;gap:8px}
-.pill:hover{background:var(--sunk)}
-.pill .ico{width:17px;height:17px}
-.mock-note{font-size:12px;color:var(--ink-3);text-align:center}
+.ic{width:20px;height:20px;flex:none}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ------------------------------------------------------------------ Settings */
 .sheet-wrap{position:absolute;inset:0;z-index:40;display:flex;align-items:flex-end;justify-content:center;background:var(--scrim);opacity:0;pointer-events:none;transition:opacity .22s}
@@ -383,6 +356,7 @@ input,textarea{font:inherit;color:inherit}
     <symbol id="i-speak" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5H4z"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.5a7.8 7.8 0 0 1 0 11"/></g></symbol>
     <symbol id="i-retry" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3"/><path d="M19.5 4.5v4.8h-4.8"/></g></symbol>
     <symbol id="i-share" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11M7.5 8 12 3.5 16.5 8"/><path d="M5 12.5v5.8A2.2 2.2 0 0 0 7.2 20.5h9.6a2.2 2.2 0 0 0 2.2-2.2v-5.8"/></g></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6.5 9.5 5.5 5.5 5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-back" viewBox="0 0 24 24"><path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
     <symbol id="i-bulb" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 17.5h5M10.5 20.5h3"/><path d="M12 3.5a5.8 5.8 0 0 0-3.4 10.5c.6.5 1 1.2 1 2v.5h4.8V16c0-.8.4-1.5 1-2A5.8 5.8 0 0 0 12 3.5z"/></g></symbol>
@@ -428,7 +402,7 @@ input,textarea{font:inherit;color:inherit}
       </aside>
       <div class="scrim" data-act="drawer-close"></div>
 
-      <main class="main">
+      <main class="main" id="main">
         <!-- chat -->
         <section class="screen on" id="scr-chat" aria-label="Chat">
           <header class="head">
@@ -507,21 +481,8 @@ input,textarea{font:inherit;color:inherit}
             <div class="title">Chess</div>
             <span style="width:42px"></span>
           </header>
-          <div class="chess-wrap">
-            <div class="bot-stage">
-              <button type="button" class="bot-btn" data-act="bot-poke" aria-label="Wind Bot. Tap to see its faces."><span id="bot-face"></span></button>
-              <div><div class="bot-name">Wind Bot</div><div class="bot-sub">Plays black · tap its face</div><div class="bot-say" id="chess-say" aria-live="polite">Bold of you to show up.</div></div>
-              <span class="clock" id="clock-b">10:00</span>
-            </div>
-            <div class="board" id="board" role="grid" aria-label="Chess board"></div>
-            <div class="player"><span class="me">You</span><span><div class="who">You</div><div class="sub">Plays white</div></span><span class="clock run" id="clock-w">10:00</span></div>
-            <div class="chess-acts">
-              <button class="pill" type="button" data-act="chess-new"><svg class="ico"><use href="#i-retry"/></svg>New game</button>
-              <button class="pill" type="button" data-act="chess-flip"><svg class="ico"><use href="#i-flip"/></svg>Flip</button>
-              <button class="pill" type="button" data-act="chess-resign"><svg class="ico"><use href="#i-flag"/></svg>Resign</button>
-            </div>
-            <p class="mock-note">Mockup: tap a piece, then a square. Moves aren’t checked yet.</p>
-          </div>
+          <div class="chess-view" id="chessView"></div>
+          <i id="chessBtn" hidden></i>
         </section>
       </main>
 
@@ -562,6 +523,7 @@ input,textarea{font:inherit;color:inherit}
       </div>
 
       <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      <div class="sr-only" id="sr-live" aria-live="polite"></div>
     </div>
   </div></div>
 </div>
@@ -572,6 +534,27 @@ input,textarea{font:inherit;color:inherit}
 const MD = (function () { const module = { exports: {} }; /*@embed markdown.js*/
   return module.exports; })();
 const PIECES = /*@embed pieces*/{};
+</script>
+<script>
+"use strict";
+// Today's chess, unchanged (legacy/src/page/js/chess-rules.js, chess-ui.js, chess-bot.js): the rules and fallback engine,
+// the board and its sounds, and Wind Bot with its moods, reactions, start and end cards and live chat. These are the few
+// helpers it expects from the old page. Without the Wind server, the AI-picked faces and AI-written lines fall back to
+// the bot's own reactions and built-in lines, exactly as the app does when the AI is busy.
+window.WindChess = (function () {
+  const $ = (id) => document.getElementById(id);
+  const esc = MD.esc;
+  const ICONS = { chevron: "i-chevron", retry: "i-retry", speaker: "i-speak", up: "i-up", x: "i-x" };
+  const ic = (name, cls) => '<svg class="ic' + (cls ? " " + cls : "") + '" aria-hidden="true"><use href="#' + (ICONS[name] || "i-" + name) + '"/></svg>';
+  const setLang = (el, t) => { if (!el) return; if (/[\u0980-\u09FF]/.test(t || "")) el.setAttribute("lang", "bn"); else el.removeAttribute("lang"); };
+  const announce = (t) => { const r = $("sr-live"); if (r) r.textContent = t; };
+  const closeMobile = () => {}, syncTitle = () => {}, showTab = () => {}, syncTabbar = () => {}, cancelEdit = () => {}, stopSpeaking = () => {};
+  const speaking = false;
+  const PIECE_SRC = (k) => PIECES[k] || "";
+  const TOUCH = matchMedia("(hover: none) and (pointer: coarse)"), WIDE = matchMedia("(min-width: 821px)");
+/*@embed chess.js*/
+  return { open: () => openChess(), close: () => closeChess() };
+})();
 </script>
 <script>
 "use strict";
@@ -791,8 +774,8 @@ function show(name) {
   S.screen = name;
   $$(".screen").forEach((s) => s.classList.toggle("on", s.id === "scr-" + name));
   app.classList.remove("drawer-open");
-  if (name === "chess") startClock();
-  else stopClock();
+  if (name === "chess") window.WindChess && WindChess.open();
+  else window.WindChess && WindChess.close();
 }
 function openWisp() {
   show("wisp"); S.wispNew = false; $("#wisp-dot").hidden = true; $("#wisp-badge").hidden = true;
@@ -816,10 +799,6 @@ document.addEventListener("click", (e) => {
     case "plus": $("#plus-menu").classList.toggle("on"); break;
     case "attach": $("#plus-menu").classList.remove("on"); toast("Photos work in the app. Wind reads them and answers."); break;
     case "poke": poke(); break;
-    case "chess-new": newGame(); break;
-    case "chess-flip": flip = !flip; renderBoard(); break;
-    case "chess-resign": botMood("laugh", 3000, "bounce"); chessSay(pick("resign")); stopClock(); break;
-    case "bot-poke": botPoke(); break;
     case "export": toast("In the app this saves your chats as a file."); break;
   }
 });
@@ -902,73 +881,7 @@ $("#scr-wisp").addEventListener("pointermove", (e) => {
   bigWisp.style.setProperty("--ex", Math.max(-1, Math.min(1, x)).toFixed(2)); bigWisp.style.setProperty("--ey", Math.max(-1, Math.min(1, y)).toFixed(2));
 });
 
-// ---------------------------------------------------------------- chess (a visual mockup: moves are not checked)
-const START = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
-let B = [], sel = -1, last = [], flip = false, turn = "w", sayN = 0;
-const pieceKey = (p) => (p === p.toUpperCase() ? "w" : "b") + p.toUpperCase();
-const sqName = (i) => "abcdefgh"[i % 8] + (8 - Math.floor(i / 8));
-const idx = (n) => (8 - +n[1]) * 8 + "abcdefgh".indexOf(n[0]);
-function newGame() { if (typeof face !== "undefined") { botMood("calm"); } B = []; for (const row of START.split("/")) for (const ch of row) { if (/\d/.test(ch)) for (let k = 0; k < +ch; k++) B.push(""); else B.push(ch); } sel = -1; last = []; turn = "w"; clocks = { w: 600, b: 600 }; renderClocks(); renderBoard(); $("#chess-say").textContent = BOT_START[Math.floor(Math.random() * BOT_START.length)]; if (S.screen === "chess") startClock(); }
-const BOT_START = ["Bold of you to show up.", "Let's make this quick.", "I've already seen how this ends."];
-function renderBoard() {
-  let html = "";
-  for (let v = 0; v < 64; v++) {
-    const i = flip ? 63 - v : v, r = Math.floor(v / 8), f = v % 8, p = B[i];
-    const shade = (Math.floor(i / 8) + (i % 8)) % 2 ? "b" : "a";
-    const coords = (f === 0 ? `<span class="cr">${sqName(i)[1]}</span>` : "") + (r === 7 ? `<span class="cf">${sqName(i)[0]}</span>` : "");
-    html += `<div class="sq ${shade}${last.includes(i) ? " last" : ""}${sel === i ? " sel" : ""}" data-sq="${i}" role="gridcell" aria-label="${sqName(i)}${p ? " " + pieceKey(p) : ""}">${coords}${p ? `<img alt="" src="${PIECES[pieceKey(p)] || ""}">` : ""}</div>`;
-  }
-  $("#board").innerHTML = html;
-}
-$("#board").addEventListener("pointermove", (e) => face.lookAt(e.clientX, e.clientY, 900));
-$("#board").addEventListener("click", (e) => {
-  const el = e.target.closest("[data-sq]"); if (!el || turn !== "w") return;
-  const i = +el.dataset.sq, p = B[i];
-  if (p && p === p.toUpperCase()) { sel = sel === i ? -1 : i; renderBoard(); if (sel >= 0) { face.lookAt(e.clientX, e.clientY, 1500); botMood("curious", 1500); } return; }
-  if (sel < 0) return;
-  const took = B[i];
-  B[i] = B[sel]; B[sel] = ""; last = [sel, i]; sel = -1; turn = "b"; renderBoard(); renderClocks();
-  if (took) { botMood("surprised", 1300, "jump"); chessSay(pick("you-capture")); setTimeout(wispMove, 1100); } else wispMove();
-});
-const BOOK = ["e7e5", "b8c6", "g8f6", "f8c5", "d7d6", "e8g8", "c8g4", "h7h6"];
-// Wind Bot: the live app's face, its 14 expressions and its own lines (legacy/src/page/js/chess-bot.js)
-/*@embed botface.js*/
-const botHost = $("#bot-face"); botHost.innerHTML = botFaceHTML();
-const face = new BotFace(botHost.querySelector(".bot"));
-const BOT_LINES = {
-  start: ["Bold of you to show up.", "Let's make this quick.", "I've already seen how this ends."],
-  "wind-capture": ["Mine now.", "Thanks, I'll take that.", "One less thing for you to worry about."],
-  "you-capture": ["Enjoy it. It won't last.", "Cute. Keep it as a souvenir.", "That was bait. Probably."],
-  "wind-move": ["Your move. Try to keep up.", "Interesting. Wrong, but interesting.", "Take your time. I'm only calculating millions of moves."],
-  resign: ["Smart choice.", "Giving up already? Understandable."],
-};
-const pick = (k) => { const a = BOT_LINES[k]; return a[Math.floor(Math.random() * a.length)]; };
-let moodT = 0, botN = 0, pokeN = 0;
-function botMood(m, ms, fx) { face.set(m); if (fx) face.play(fx); clearTimeout(moodT); if (ms) moodT = setTimeout(() => face.set("calm"), ms); }
-const FACES = [["happy", "Hey! That tickles.", "pop"], ["laugh", "Ha! Do it again.", "bounce"], ["surprised", "Whoa. Personal space?", "jump"],
-  ["annoyed", "Hands off the antenna.", "shake"], ["worried", "Is that a smudge on my screen?", "nod"], ["bored", "Wake me up when you move.", ""],
-  ["cool", "Too cool for this board.", "nod"], ["wink", "Our little secret.", "pop"], ["dizzy", "Stop spinning me…", "shake"],
-  ["evil", "Mwa-ha-ha!", "bounce"], ["smug", "I know. I’m adorable.", "nod"], ["curious", "What are you up to?", "pop"]];
-function botPoke() { const [m, line, fx] = FACES[pokeN++ % FACES.length]; botMood(m, 2600, fx || null); chessSay(line); }
-async function wispMove() {
-  botMood("think"); const r = $("#board").getBoundingClientRect();
-  face.lookAt(r.left + r.width * .2, r.top + r.height * .5, 450); await sleep(450); face.lookAt(r.left + r.width * .8, r.top + r.height * .5, 450); await sleep(500);
-  let mv = null;
-  for (const m of BOOK) { const a = idx(m.slice(0, 2)), b = idx(m.slice(2)); if (B[a] && B[a] === B[a].toLowerCase() && (!B[b] || B[b] === B[b].toUpperCase())) { mv = [a, b]; break; } }
-  if (!mv) { for (let a = 0; a < 56 && !mv; a++) if (B[a] === "p" && !B[a + 8]) mv = [a, a + 8]; }
-  let took = "";
-  if (mv) { took = B[mv[1]]; B[mv[1]] = B[mv[0]]; B[mv[0]] = ""; last = mv; }
-  turn = "w"; renderBoard(); renderClocks(); botN++;
-  if (took) { botMood("happy", 2400, "bounce"); chessSay(pick("wind-capture")); }
-  else if (botN % 4 === 0) { botMood("evil", 2600, "bounce"); chessSay("Mwa-ha-ha. Your move."); }
-  else { botMood(["smug", "cool", "wink"][botN % 3], 2200, "nod"); chessSay(pick("wind-move")); }
-}
-function chessSay(t) { $("#chess-say").textContent = t; face.flag("talk", 1300); }
-let clocks = { w: 600, b: 600 }, clockT = 0;
-const fmt = (s) => Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
-function renderClocks() { $("#clock-w").textContent = fmt(clocks.w); $("#clock-b").textContent = fmt(clocks.b); $("#clock-w").classList.toggle("run", turn === "w"); $("#clock-b").classList.toggle("run", turn === "b"); }
-function startClock() { stopClock(); clockT = setInterval(() => { if (clocks[turn] > 0) clocks[turn]--; renderClocks(); }, 1000); }
-function stopClock() { clearInterval(clockT); }
+// ---------------------------------------------------------------- chess: today's chess view (see the script after this one)
 $("#card-knight").src = PIECES.wN || "";
 
 // ---------------------------------------------------------------- stage
@@ -979,7 +892,7 @@ $("#view-full").addEventListener("click", () => setView("full"));
 setView(store.get("view", "phone"));
 
 // ---------------------------------------------------------------- start
-newGame(); renderList(); renderChat(); syncGo();
+renderList(); renderChat(); syncGo();
 setTimeout(() => { if (S.screen === "chat" && !curChat()) { $("#peek").classList.add("on"); setTimeout(() => $("#peek").classList.remove("on"), 4200); } }, 1200);
 })();
 </script>
