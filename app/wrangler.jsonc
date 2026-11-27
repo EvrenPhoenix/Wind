@@ -1,0 +1,31 @@
+// The new Wind: the same Worker ("assistant-api"), with the page and its files as static assets.
+// Upload a preview version (live traffic is NOT moved):   npm run preview:app
+// Secrets stay on Cloudflare and every upload keeps them; they are never in this file.
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "assistant-api",
+  "account_id": "43f672781197cf875864f0ec7e414d98",
+  "main": "src/worker/index.js",
+  "compatibility_date": "2026-11-06",
+  "workers_dev": true,
+  "preview_urls": true,
+  "assets": { "directory": "dist/public", "binding": "ASSETS" },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1,
+    "logs": { "enabled": true, "head_sampling_rate": 1, "persist": true, "invocation_logs": true },
+    "traces": { "enabled": true, "persist": true, "head_sampling_rate": 0.05 }
+  },
+  "vars": {
+    "GROQ_MODEL": "openai/gpt-oss-120b",
+    "GROQ_VISION_MODEL": "qwen/qwen3.8-27b",
+    "OPENROUTER_MODEL": "google/gemma-4-31b-it:free,nvidia/nemotron-3.5-super-vl:free,openrouter/free",
+    "OPENROUTER_VISION_MODELS": "google/gemma-4-31b-it:free,nvidia/nemotron-3.5-super-vl:free,google/gemma-4-26b-a4b-it:free"
+  },
+  "d1_databases": [
+    { "binding": "DAILY_USAGE", "database_name": "my-creation-daily-limits", "database_id": "acd3100a-05fd-494c-8ce2-3bcb0a3d96d0" }
+  ],
+  "ratelimits": [
+    { "name": "CHAT_LIMITER", "namespace_id": "62110606", "simple": { "limit": 30, "period": 60 } }
+  ]
+}

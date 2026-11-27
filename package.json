@@ -7,8 +7,10 @@
     "recover": "node tools/recover.mjs",
     "build:legacy": "node legacy/build.mjs --check",
     "preview:legacy": "node legacy/build.mjs --check && wrangler versions upload -c legacy/wrangler.jsonc",
-    "test": "node --test legacy/test/*.test.mjs",
-    "build:mockup": "node design/build-mockup.mjs"
+    "test": "node --test legacy/test/*.test.mjs app/test/*.test.mjs",
+    "build:mockup": "node design/build-mockup.mjs",
+    "build:app": "node app/build.mjs",
+    "preview:app": "node app/build.mjs && wrangler versions upload -c app/wrangler.jsonc"
   },
   "engines": {
     "node": ">=20"

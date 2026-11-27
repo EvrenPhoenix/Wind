@@ -7,3 +7,5 @@ design/dist/
 *.png
 !design/**/*.png
 !legacy/src/icons/*.png
+app/dist/
+app/src/worker/manifest.js
