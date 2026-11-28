@@ -46,7 +46,7 @@ chess engine.
 | `src/page/js/tabs.js` | The Chat, Wisp and Games tabs. |
 | `src/page/js/_begin.js`, `_end.js` | The wrapper that turns the modules into one script. |
 | `src/wisp-shade.js` | Wisp's clay lighting, run in a Web Worker. |
-| `src/icons/`, `src/fonts/`, `src/chess/`, `src/manifest.webmanifest` | Embedded files. `index.json` files keep their order and encoding. |
+| `src/icons/`, `src/fonts/`, `src/chess/`, `src/manifest.webmanifest` | Embedded files. `index.json` files keep their order and encoding. The licence notes `src/fonts/OFL.txt` and `src/chess/engine/README.md` are not embedded. |
 | `build.mjs` | The build: puts `src/` together into `dist/worker.js` and `dist/stockfish-19-lite-single.bin`. |
 | `wrangler.jsonc` | The live Worker's Cloudflare settings. Changing one here changes it on the live site at the next deploy. |
 | `test/` | The tests (below). |
@@ -75,3 +75,9 @@ Deploys are made by hand: `npm run deploy` builds the Worker and runs `wrangler 
 - To undo a bad deploy, put the previous version back: `npx wrangler rollback` (or choose a version in the
   Cloudflare dashboard, Workers & Pages > assistant-api > Deployments). Then revert the commit on `main`, so the next
   deploy doesn't bring it back.
+
+## Licence
+
+Wind's own code is under the MIT licence (see [LICENSE](LICENSE)). The third-party parts keep their own licences,
+listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md): the Stockfish.js chess engine (GPL-3.0), the chess
+pieces (CC BY-NC-SA 4.0, non-commercial use only) and the Noto Sans Bengali font (OFL-1.1).
