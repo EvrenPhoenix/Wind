@@ -1,0 +1,7 @@
+# Copy to .dev.vars for `npx wrangler dev`. Never commit .dev.vars.
+NVIDIA_API_KEY=
+NVIDIA_FACE_KEY=
+NVIDIA_TALK_KEY=
+GROQ_API_KEY=
+LANGSEARCH_API_KEY=
+TAVILY_API_KEY=
