@@ -388,7 +388,7 @@ function isChem(t) {
 function chemHtml(src) {
   return esc(String(src).trim())
     .replace(/&lt;=&gt;|&lt;-&gt;/g, " ⇌ ").replace(/-&gt;(?:\[([^\]]*)\])?/g, (m, a) => a ? ' <span class="mxarrow"><span class="mxlab">' + a + '</span><span class="mxarr">⟶</span></span> ' : " ⟶ ")
-    .replace(/\^\{?([0-9]*[+\-−])\}?/g, "<sup>$1</sup>").replace(/([A-Za-z)\]])(\d+)/g, "$1<sub>$2</sub>").replace(/ \+ /g, " + ");
+    .replace(/\^\{?([0-9]*[+\-−])\}?/g, "<sup>$1</sup>").replace(/([A-Za-z)\]])(\d+)/g, "$1<sub>$2</sub>");
 }
 // When the maths can't be laid out properly, show a readable plain version rather than its TeX source: commands become
 // their symbols (or vanish), \text{…} becomes its words, _x and ^x become small subscripts and superscripts.
