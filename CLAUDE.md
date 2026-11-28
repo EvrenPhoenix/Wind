@@ -1,19 +1,22 @@
 # Wind: notes for Claude
 
-This repository **is** the live site: the Cloudflare Worker `assistant-api`, at
-https://assistant-api.assistant-service.workers.dev. Every push to `main` that passes the tests is deployed to it
-by `.github/workflows/ci.yml`. Treat a push to `main` as a release. Push only changes the owner asked for, with
+This repository is the source of the live site: the Cloudflare Worker `assistant-api`, at
+https://assistant-api.assistant-service.workers.dev. Building `main` reproduces the live Worker byte for byte.
+Deploys are made by hand (`npm run deploy`): `.github/workflows/ci.yml` deploys only once a `CLOUDFLARE_API_TOKEN`
+repository secret exists, and none does. Treat a deploy as a release. Push only changes the owner asked for, with
 `npm test` passing.
 
 ## Commands
 
 - `npm test`: Worker tests (Miniflare) and the reply renderer's golden tests. Nothing calls an AI provider.
 - `npm run build`: builds `src/` into `dist/` (the Worker, with the page and its files inside).
-- `npm run deploy`: deploys by hand (needs `CLOUDFLARE_API_TOKEN`). Normally pushing to `main` does this.
+- `npm run deploy`: builds and deploys by hand (Wrangler uses `CLOUDFLARE_API_TOKEN` or a `npx wrangler login`
+  session). Pushing to `main` does not deploy.
 
 See README.md for the file map, and build.mjs for how the page and files are embedded in the Worker
 (`__embed("NAME")`, `/*@embed …*/`). The source was recovered from the live Worker (version 240) on 27 November 2026,
-which is why the page is one HTML file with everything inlined.
+which is why the page is one HTML file with everything inlined. The same content is live as version 250, deployed by
+hand from commit d150536.
 
 ## Rules
 
@@ -34,4 +37,4 @@ which is why the page is one HTML file with everything inlined.
 ## Undoing a bad deploy
 
 Roll back to the previous version (`npx wrangler rollback`, or Workers & Pages > assistant-api > Deployments in the
-Cloudflare dashboard), then revert the commit on `main` so the next push doesn't deploy it again.
+Cloudflare dashboard), then revert the commit on `main` so the next deploy doesn't bring it back.

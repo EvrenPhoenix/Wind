@@ -1,10 +1,9 @@
-# Keeps the live site in sync with this repository.
+# Tests every push and pull request.
 #
-# Every push and pull request is tested. A push to main that passes the tests is built and deployed to the live
-# site (Cloudflare Worker assistant-api, https://assistant-api.assistant-service.workers.dev).
-#
-# Deploying needs one repository secret: CLOUDFLARE_API_TOKEN (Settings > Secrets and variables > Actions).
-# Until it exists, the deploy job skips itself with a notice, and the site stays as it is.
+# The deploy job would build a push to main that passes the tests and deploy it to the live site (Cloudflare Worker
+# assistant-api, https://assistant-api.assistant-service.workers.dev), but only once the repository secret
+# CLOUDFLARE_API_TOKEN exists (Settings > Secrets and variables > Actions). None exists, so the job skips itself with
+# a notice and the live site changes only when it is deployed by hand (npm run deploy).
 name: ci
 on:
   push:

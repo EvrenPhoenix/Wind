@@ -1,11 +1,12 @@
 # Wind
 
-Wind is a friendly AI assistant: fast answers with live web sources, Wisp the companion, and chess against Wind Bot.
-It runs on Cloudflare Workers as the Worker `assistant-api`:
-https://assistant-api.assistant-service.workers.dev
+**Live site:** https://assistant-api.assistant-service.workers.dev (Cloudflare Worker `assistant-api`)
 
-**This repository is the live site.** A push to `main` that passes the tests is deployed to it automatically
-(see [Deploying](#deploying)).
+Wind — Personal AI is your personal AI assistant for stories, code, plans and ideas: fast answers with live web
+sources, Wisp the companion, and chess against Wind Bot.
+
+**This repository is the live site's source.** Building `main` reproduces the deployed Worker byte for byte. Deploys
+are made by hand with `npm run deploy` (see [Deploying](#deploying)).
 
 ## Working on it
 
@@ -23,7 +24,7 @@ npm run build
 
 1. Change files under `src/`.
 2. Run `npm test`.
-3. Push to `main`. GitHub tests the change again and deploys it to the live site.
+3. Push to `main` (GitHub runs the tests again), then run `npm run deploy` to put the change on the live site.
 
 `npm run build` writes the Worker to `dist/`: `worker.js`, with the page and every file it serves inside, and the
 chess engine.
@@ -62,14 +63,15 @@ chess engine.
 
 ## Deploying
 
-`.github/workflows/ci.yml` tests every push and pull request. On `main`, it then runs `npm run build` and
-`wrangler deploy`. Deploying needs one repository secret, `CLOUDFLARE_API_TOKEN`: a Cloudflare API token made from
-the "Edit Cloudflare Workers" template. Until it is added, the deploy job skips itself with a notice.
+Deploys are made by hand: `npm run deploy` builds the Worker and runs `wrangler deploy`. Wrangler uses
+`CLOUDFLARE_API_TOKEN` from the environment, or a `npx wrangler login` session.
 
-- `npm run deploy` deploys by hand. It needs `CLOUDFLARE_API_TOKEN` in the environment.
+- `.github/workflows/ci.yml` tests every push and pull request. Its deploy job would also deploy `main`, but only
+  once a repository secret `CLOUDFLARE_API_TOKEN` exists (a Cloudflare API token made from the "Edit Cloudflare
+  Workers" template). None exists, so the job skips itself with a notice and pushing never changes the live site.
 - Secrets (`NVIDIA_API_KEY`, `NVIDIA_FACE_KEY`, `NVIDIA_TALK_KEY`, `GROQ_API_KEY`, `LANGSEARCH_API_KEY`,
   `TAVILY_API_KEY`, `GEMINI_API_KEY`, `OPENROUTER_API_KEY`) live on Cloudflare only. Every deploy keeps them.
 - Preview links (Version URLs) are off on purpose (`"preview_urls": false` in `wrangler.jsonc`).
 - To undo a bad deploy, put the previous version back: `npx wrangler rollback` (or choose a version in the
   Cloudflare dashboard, Workers & Pages > assistant-api > Deployments). Then revert the commit on `main`, so the next
-  push doesn't deploy it again.
+  deploy doesn't bring it back.
