@@ -30,6 +30,17 @@ npm run build
 `npm run build` writes the Worker to `dist/`: `worker.js`, with the page and every file it serves inside, and the
 chess engine.
 
+## Running it locally
+
+```bash
+npm run build
+cp .dev.vars.example .dev.vars   # fill in the keys you need; never commit .dev.vars
+npx wrangler dev
+```
+
+`.dev.vars` holds the secrets for local runs only. Without `NVIDIA_API_KEY`, the page still loads and chat answers
+that Wind isn't set up.
+
 ## Files
 
 | Path | What it is |
@@ -69,8 +80,10 @@ Deploys are made by hand: `npm run deploy` builds the Worker and runs `wrangler 
 
 - `.github/workflows/ci.yml` tests every push to `main` and every pull request, builds the Worker and checks the
   bundle with `wrangler deploy --dry-run`. It never deploys, so pushing never changes the live site.
-- Secrets (`NVIDIA_API_KEY`, `NVIDIA_FACE_KEY`, `NVIDIA_TALK_KEY`, `GROQ_API_KEY`, `LANGSEARCH_API_KEY`,
-  `TAVILY_API_KEY`, `GEMINI_API_KEY`, `OPENROUTER_API_KEY`) live on Cloudflare only. Every deploy keeps them.
+- Secrets live on Cloudflare only; every deploy keeps them. The code reads `NVIDIA_API_KEY`, `NVIDIA_FACE_KEY`,
+  `NVIDIA_TALK_KEY`, `GROQ_API_KEY` (last-resort web search), `LANGSEARCH_API_KEY` and `TAVILY_API_KEY`.
+  `GEMINI_API_KEY` and `OPENROUTER_API_KEY` are also set on the live Worker but nothing reads them, and neither do
+  the four `GROQ_*`/`OPENROUTER_*` variables in `wrangler.jsonc`.
 - Preview links (Version URLs) are off on purpose (`"preview_urls": false` in `wrangler.jsonc`).
 - To undo a bad deploy, put the previous version back: `npx wrangler rollback` (or choose a version in the
   Cloudflare dashboard, Workers & Pages > assistant-api > Deployments). Then revert the commit on `main`, so the next
