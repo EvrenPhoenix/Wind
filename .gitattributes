@@ -1,0 +1,15 @@
+# Check out text files with LF line endings on every OS, so a build on Windows matches the live Worker byte for byte.
+* text=auto eol=lf
+
+# Stockfish's licence text is embedded in the Worker exactly as committed (CRLF line endings): keep its bytes.
+src/chess/engine/Copying.txt -text
+
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary
+*.wasm binary
+
+# Language statistics: the Stockfish engine is third-party code, and the Worker source is hand-written.
+src/chess/engine/** linguist-vendored
+src/worker/*.js linguist-generated=false
