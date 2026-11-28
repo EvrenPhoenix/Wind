@@ -6,7 +6,7 @@ Wind — Personal AI is your personal AI assistant for stories, code, plans and 
 sources, Wisp the companion, and chess against Wind Bot.
 
 **This repository is the live site's source.** Building `main` reproduces the deployed Worker byte for byte. Deploys
-are made by hand with `npm run deploy` (see [Deploying](#deploying)).
+are made by hand with `npm run deploy` (see [Deploying](#deploying)); CI tests every change but never deploys.
 
 ## Working on it
 
@@ -24,7 +24,8 @@ npm run build
 
 1. Change files under `src/`.
 2. Run `npm test`.
-3. Push to `main` (GitHub runs the tests again), then run `npm run deploy` to put the change on the live site.
+3. Push to `main` (CI runs the tests again; it never deploys), then run `npm run deploy` to put the change on the
+   live site.
 
 `npm run build` writes the Worker to `dist/`: `worker.js`, with the page and every file it serves inside, and the
 chess engine.
@@ -66,9 +67,8 @@ chess engine.
 Deploys are made by hand: `npm run deploy` builds the Worker and runs `wrangler deploy`. Wrangler uses
 `CLOUDFLARE_API_TOKEN` from the environment, or a `npx wrangler login` session.
 
-- `.github/workflows/ci.yml` tests every push and pull request. Its deploy job would also deploy `main`, but only
-  once a repository secret `CLOUDFLARE_API_TOKEN` exists (a Cloudflare API token made from the "Edit Cloudflare
-  Workers" template). None exists, so the job skips itself with a notice and pushing never changes the live site.
+- `.github/workflows/ci.yml` tests every push to `main` and every pull request, builds the Worker and checks the
+  bundle with `wrangler deploy --dry-run`. It never deploys, so pushing never changes the live site.
 - Secrets (`NVIDIA_API_KEY`, `NVIDIA_FACE_KEY`, `NVIDIA_TALK_KEY`, `GROQ_API_KEY`, `LANGSEARCH_API_KEY`,
   `TAVILY_API_KEY`, `GEMINI_API_KEY`, `OPENROUTER_API_KEY`) live on Cloudflare only. Every deploy keeps them.
 - Preview links (Version URLs) are off on purpose (`"preview_urls": false` in `wrangler.jsonc`).
