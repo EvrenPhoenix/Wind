@@ -52,7 +52,9 @@ test("serves the chat page with this origin filled in", async () => {
   const html = await r.text();
   assert.match(html, /<title>Wind — Personal AI<\/title>/);
   assert.ok(!html.includes("__ORIGIN__"), "origin placeholder left in the page");
-  assert.ok(html.includes(ORIGIN), "origin not filled in");
+  // The page names its own address in meta tags (og:url, og:image, twitter:image): compare parsed origins.
+  const pageOrigins = [...html.matchAll(/<meta [^>]*content="(https?:\/\/[^"]+)"/g)].map((m) => new URL(m[1]).origin);
+  assert.ok(pageOrigins.some((origin) => origin === ORIGIN), "origin not filled in");
   const again = await get(bare, "/", { headers: { "If-None-Match": r.headers.get("etag") } });
   assert.equal(again.status, 304);
 });
