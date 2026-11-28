@@ -2,18 +2,19 @@
   "name": "wind",
   "private": true,
   "type": "module",
-  "description": "Wind, a friendly AI assistant: the source of the live site (Cloudflare Worker assistant-api).",
+  "description": "Wind — Personal AI: the source of the live site (Cloudflare Worker assistant-api).",
   "scripts": {
     "build": "node build.mjs",
     "test": "node --test test/*.test.mjs",
-    "deploy": "node build.mjs && wrangler deploy"
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22.12.0"
   },
   "devDependencies": {
-    "miniflare": "^4.20260730.0",
-    "wrangler": "^4.168.0"
+    "miniflare": "4.20260730.0",
+    "wrangler": "4.168.0"
   },
   "overrides": {
     "undici": "7.30.2",

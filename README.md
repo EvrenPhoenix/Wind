@@ -10,6 +10,8 @@ are made by hand with `npm run deploy` (see [Deploying](#deploying)); CI tests e
 
 ## Working on it
 
+Use Node.js 22.12 or newer (`.nvmrc` names 22, the version CI uses).
+
 ```bash
 npm install
 ```
@@ -39,7 +41,7 @@ npx wrangler dev
 ```
 
 `.dev.vars` holds the secrets for local runs only. Without `NVIDIA_API_KEY`, the page still loads and chat answers
-that Wind isn't set up.
+that Wind isn't set up. `npm run dev` runs `wrangler dev` too, and Wrangler builds `dist/` first.
 
 ## Files
 

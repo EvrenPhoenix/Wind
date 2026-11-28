@@ -7,6 +7,8 @@
   "name": "assistant-api",
   "account_id": "43f672781197cf875864f0ec7e414d98",
   "main": "dist/worker.js",
+  // wrangler dev and wrangler deploy build dist/ first (node build.mjs).
+  "build": { "command": "npm run build" },
   "no_bundle": true,
   "base_dir": "dist",
   "find_additional_modules": true,
