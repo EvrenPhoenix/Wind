@@ -61,9 +61,12 @@ that Wind isn't set up. `npm run dev` runs `wrangler dev` too, and Wrangler buil
 | `src/page/js/_begin.js`, `_end.js` | The wrapper that turns the modules into one script. |
 | `src/wisp-shade.js` | Wisp's clay lighting, run in a Web Worker. |
 | `src/icons/`, `src/fonts/`, `src/chess/`, `src/manifest.webmanifest` | Embedded files. `index.json` files keep their order and encoding. The licence notes `src/fonts/OFL.txt` and `src/chess/engine/README.md` are not embedded. |
-| `build.mjs` | The build: puts `src/` together into `dist/worker.js` and `dist/stockfish-19-lite-single.bin`. |
+| `build.mjs` | The build: empties `dist/`, then puts `src/` together into `dist/worker.js` and `dist/stockfish-19-lite-single.bin`. |
 | `wrangler.jsonc` | The live Worker's Cloudflare settings. Changing one here changes it on the live site at the next deploy. |
 | `test/` | The tests (below). |
+| `LICENSE`, `THIRD_PARTY_NOTICES.md`, `SECURITY.md` | The MIT licence for Wind's own code, the licences of the third-party parts, and how to report a security problem. |
+| `.dev.vars.example` | The secret names `npx wrangler dev` reads. Copy it to `.dev.vars`, which is never committed. |
+| `.github/`, `.editorconfig`, `.gitattributes`, `.npmrc`, `.nvmrc` | CI and Dependabot, editor and line-ending settings, exact npm versions, and the Node version. |
 
 ## Tests
 

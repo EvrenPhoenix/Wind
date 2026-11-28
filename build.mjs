@@ -78,6 +78,9 @@ export function build() {
   let code = WORKER_PARTS.map((f) => read(f)).join("");
   for (const e of EMBEDS) code = put(code, `__embed("${e.name}")`, JSON.stringify(embedValue(e)), "worker");
   const files = { [MAIN_MODULE]: Buffer.from(code, "utf8"), [DATA_MODULE.name]: read(DATA_MODULE.file, null) };
+  // Start from an empty dist/: wrangler.jsonc uploads every module-like file in it (base_dir "dist",
+  // find_additional_modules), so anything left over from an earlier run would be deployed too.
+  fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
   for (const [name, buf] of Object.entries(files)) fs.writeFileSync(path.join(DIST, name), buf);
   return { dist: DIST, files };
