@@ -3,8 +3,8 @@
 This repository is the source of the live site: the Cloudflare Worker `assistant-api`, at
 https://assistant-api.assistant-service.workers.dev. Building `main` reproduces the live Worker byte for byte.
 Deploys are made by hand with `npm run deploy` (Wrangler uses `CLOUDFLARE_API_TOKEN` from the environment or a
-`npx wrangler login` session); CI (`.github/workflows/ci.yml`) tests every push and pull request but never deploys.
-Treat a deploy as a release. Push only changes the owner asked for, with `npm test` passing.
+`npx wrangler login` session); CI (`.github/workflows/ci.yml`) tests every push to `main` and every pull request
+but never deploys. Treat a deploy as a release. Push only changes the owner asked for, with `npm test` passing.
 
 ## Commands
 
