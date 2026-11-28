@@ -21,3 +21,8 @@ charset = unset
 end_of_line = unset
 indent_style = unset
 indent_size = unset
+
+# Licence texts stay exactly as published upstream.
+[{LICENSE,**/OFL.txt}]
+insert_final_newline = unset
+trim_trailing_whitespace = unset
