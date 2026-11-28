@@ -15,8 +15,7 @@ but never deploys. Treat a deploy as a release. Push only changes the owner aske
 
 See README.md for the file map, and build.mjs for how the page and files are embedded in the Worker
 (`__embed("NAME")`, `/*@embed …*/`). The source was recovered from the live Worker (version 240) on 27 November 2026,
-which is why the page is one HTML file with everything inlined. The same content is live as version 250, deployed by
-hand from commit d150536.
+which is why the page is one HTML file with everything inlined.
 
 ## Rules
 
@@ -33,6 +32,8 @@ hand from commit d150536.
 - **Wind Bot** (the chess opponent) must stay exactly as expressive as it is: its face, moods and talk.
 - After changing the reply renderer on purpose, update the golden file
   (`UPDATE_GOLDEN=1 node --test test/renderer.test.mjs`) and review the diff.
+- **`overrides` in package.json** pin patched `undici` and `sharp` for the miniflare 4 test tool. When wrangler or
+  miniflare is updated, raise or remove them so they match what wrangler itself uses, then run `npm test`.
 
 ## Undoing a bad deploy
 

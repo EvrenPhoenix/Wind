@@ -27,7 +27,7 @@ development tools (tests, build checks and deploys), and nothing from `node_modu
 - **Licence:** CC-BY-NC-SA-4.0, Creative Commons Attribution-NonCommercial-ShareAlike 4.0
   (https://creativecommons.org/licenses/by-nc-sa/4.0/). This adapted set is shared under the same licence.
   **Non-commercial use only:** if Wind is ever sold or carries ads, these pieces must be swapped out.
-- **In this repository:** `src/chess/pieces/` (12 SVG files; `index.json` only records their order). Served at
+- **In this repository:** `src/chess/pieces/` (12 SVG files; `index.json` lists their keys, file names, encoding and order). Served at
   `/chess/v2/<piece>.svg`, and at `/chess/v1/` for pages cached before the switch.
 - **Upstream:** both sets are by sadsnake1, as used by Lichess:
   https://github.com/lichess-org/lila/tree/master/public/piece

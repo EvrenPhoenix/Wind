@@ -11,7 +11,8 @@ trim_trailing_whitespace = true
 [*.md]
 trim_trailing_whitespace = false
 
-# Embedded in the live Worker byte for byte: an editor must not add or remove anything.
+# Almost everything here is embedded in the live Worker byte for byte (only src/fonts/OFL.txt and
+# src/chess/engine/README.md are not): an editor must not add or remove anything.
 [src/**]
 insert_final_newline = unset
 trim_trailing_whitespace = unset

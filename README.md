@@ -47,7 +47,7 @@ that Wind isn't set up. `npm run dev` runs `wrangler dev` too, and Wrangler buil
 
 | Path | What it is |
 |---|---|
-| `src/worker/shell.js` | Serves the page and its files (icons, manifest, font, chess pieces, Stockfish, service worker). Large embedded files appear as `__embed("NAME")`, and the build fills them in. |
+| `src/worker/shell.js` | Serves the page and its files (icons, manifest, font, chess pieces, Stockfish, Wisp's shading script, service worker). Large embedded files appear as `__embed("NAME")`, and the build fills them in. |
 | `src/worker/api.js` | The API: `/api/chat` (NVIDIA models, web research, weather), `/api/followups`, `/api/wisp/*`, `/api/chess/*`, `/api/health`. |
 | `src/page/index.html` | The page markup. `/*@embed …*/` marks where the stylesheet and scripts go. |
 | `src/page/styles.css` | All of the page's styles. |

@@ -28,6 +28,7 @@ const worker = (bindings) => new Miniflare({
     { type: "ESModule", path: path.join(dist, "worker.js") },
     { type: "Data", path: path.join(dist, "stockfish-19-lite-single.bin") },
   ],
+  // The live Worker uses 2026-11-06, but miniflare 4.20260730 (workerd 1.20260730) can't run dates after 2026-07-30.
   compatibilityDate: "2026-07-01",
   d1Databases: ["DAILY_USAGE"],
   bindings: { ...VARS, ...bindings },
